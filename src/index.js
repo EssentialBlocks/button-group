@@ -5,6 +5,7 @@ import "./style.scss";
 import Edit from "./edit";
 import save from "./save";
 import icon from "./icon";
+import attributes from "./attributes";
 
 registerBlockType("block/button-group", {
 	title: __("Button Group", "button-group"),
@@ -13,6 +14,7 @@ registerBlockType("block/button-group", {
 		"button-group"
 	),
 	icon,
+	attributes,
 	category: "widgets",
 	edit: Edit,
 	save,

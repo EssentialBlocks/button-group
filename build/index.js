@@ -170,6 +170,250 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/attributes.js":
+/*!***************************!*\
+  !*** ./src/attributes.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var attributes = {
+  marginTop: {
+    type: "number",
+    default: 0
+  },
+  marginRight: {
+    type: "number",
+    default: 0
+  },
+  marginBottom: {
+    type: "number",
+    default: 0
+  },
+  marginLeft: {
+    type: "number",
+    default: 0
+  },
+  paddingTop: {
+    type: "number",
+    default: 5
+  },
+  paddingRight: {
+    type: "number",
+    default: 25
+  },
+  paddingBottom: {
+    type: "number",
+    default: 5
+  },
+  paddingLeft: {
+    type: "number",
+    default: 25
+  },
+  borderWidth: {
+    type: "number"
+  },
+  borderOneColor: {
+    type: "string"
+  },
+  borderTwoColor: {
+    type: "string"
+  },
+  borderStyle: {
+    type: "string",
+    default: "none"
+  },
+  hoverBorderOneColor: {
+    type: "string"
+  },
+  hoverBorderTwoColor: {
+    type: "string"
+  },
+  borderRadiusTopLeft: {
+    type: "number",
+    default: 40
+  },
+  borderRadiusTopRight: {
+    type: "number",
+    default: 40
+  },
+  borderRadiusBottomRight: {
+    type: "number",
+    default: 40
+  },
+  borderRadiusBottomLeft: {
+    type: "number",
+    default: 40
+  },
+  buttonWidth: {
+    type: "number",
+    default: "auto"
+  },
+  widthUnit: {
+    type: "string",
+    default: "px"
+  },
+  buttonTextOne: {
+    type: "string",
+    default: "Button One"
+  },
+  buttonTextTwo: {
+    type: "string",
+    default: "Button Two"
+  },
+  buttonOneColor: {
+    type: "string"
+  },
+  hoverButtonOneColor: {
+    type: "string",
+    default: "#309bff"
+  },
+  textOneColor: {
+    type: "string"
+  },
+  hoverTextOneColor: {
+    type: "string"
+  },
+  buttonTwoColor: {
+    type: "string"
+  },
+  hoverButtonTwoColor: {
+    type: "string",
+    default: "#7967ff"
+  },
+  textTwoColor: {
+    type: "string"
+  },
+  hoverTextTwoColor: {
+    type: "string"
+  },
+  textSize: {
+    type: "number"
+  },
+  buttonURLOne: {
+    type: "string",
+    selector: ".eb-dual-button-link",
+    source: "attribute",
+    attribute: "href",
+    default: "#"
+  },
+  buttonURLTwo: {
+    type: "string",
+    selector: ".eb-dual-button-link-two",
+    source: "attribute",
+    attribute: "href",
+    default: "#"
+  },
+  buttonAlign: {
+    type: "string",
+    default: "center"
+  },
+  isHoverOne: {
+    type: "boolean",
+    default: false
+  },
+  isHoverTwo: {
+    type: "boolean",
+    default: false
+  },
+  marginUnit: {
+    type: "string",
+    default: "px"
+  },
+  paddingUnit: {
+    type: "string",
+    default: "px"
+  },
+  buttonSizeUnit: {
+    type: "string",
+    default: "px"
+  },
+  borderRadiusUnit: {
+    type: "string",
+    default: "px"
+  },
+  selectButtonStyleOne: {
+    type: "string",
+    default: "fill"
+  },
+  selectButtonStyleTwo: {
+    type: "string",
+    default: "fill"
+  },
+  seperateButtonsSpace: {
+    type: "number",
+    default: 0
+  },
+  seperateButtonsSpaceUnit: {
+    type: "string",
+    default: "px"
+  },
+  buttonFontFamily: {
+    type: "string"
+  },
+  buttonFontSize: {
+    type: "number"
+  },
+  buttonFontUnit: {
+    type: "string",
+    default: "px"
+  },
+  buttonFontWeight: {
+    type: "string",
+    default: "normal"
+  },
+  buttonTextTransform: {
+    type: "string",
+    default: "none"
+  },
+  buttonLetterSpacing: {
+    type: "number"
+  },
+  innerButtonSize: {
+    type: "number"
+  },
+  innerButtonTextSize: {
+    type: "number"
+  },
+  innerButtonText: {
+    type: "string",
+    default: "or"
+  },
+  innerButtonTextTransform: {
+    type: "string",
+    default: "uppercase"
+  },
+  innerButtonColor: {
+    type: "string"
+  },
+  innerButtonTextColor: {
+    type: "string"
+  },
+  innerButtonIcon: {
+    type: "string"
+  },
+  innerButtonLetterSpacing: {
+    type: "number"
+  },
+  isShowText: {
+    type: "boolean",
+    default: true
+  },
+  isShowIcon: {
+    type: "boolean",
+    default: false
+  },
+  borderType: {
+    type: "string",
+    default: "normal"
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (attributes);
+
+/***/ }),
+
 /***/ "./src/edit.js":
 /*!*********************!*\
   !*** ./src/edit.js ***!
@@ -298,6 +542,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
 /* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon */ "./src/icon.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
+
 
 
 
@@ -308,6 +554,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])("blo
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Button Group", "button-group"),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Create A Series of Buttons To Be Stacked Together ", "button-group"),
   icon: _icon__WEBPACK_IMPORTED_MODULE_5__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
   category: "widgets",
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
