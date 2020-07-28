@@ -20,12 +20,21 @@
   .eb-dual-button-one, .eb-dual-button-two {
     text-decoration: none; }
 
-.eb-dual-button-link, .eb-dual-button-link-two {
+.eb-dual-button-link,
+.eb-dual-button-link-two {
   line-height: inherit; }
 
 .eb-typography-base div {
   display: flex;
   justify-content: space-between; }
+
+.eb-inspector-btn-group {
+  display: flex;
+  padding-bottom: 5px; }
+
+.eb-inspector-btn-group button {
+  flex: 1;
+  padding-left: 40px !important; }
 
 .input-wrapper {
   width: 20%;

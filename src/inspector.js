@@ -32,6 +32,7 @@ import iconList from "../util/faIcons";
 import DimensionsControl from "../util/dimensions-control";
 import UnitControl from "../util/unit-control";
 import ColorControl from "../util/color-control";
+import FontPicker from "../util/typography-control/FontPicker"
 
 class Inspector extends Component {
 	handleButtonOneStyles = (style) => {
@@ -270,6 +271,14 @@ class Inspector extends Component {
 							)}
 							renderContent={() => (
 								<div style={{ padding: "1rem" }}>
+
+								<FontPicker
+									label={__("Font Family")}
+									value={buttonFontFamily}
+									onChange={(buttonFontFamily) =>
+										setAttributes({ buttonFontFamily })
+									}
+								/>
 									<UnitControl
 										selectedUnit={buttonFontUnit}
 										unitTypes={[
@@ -281,7 +290,7 @@ class Inspector extends Component {
 									/>
 
 									<RangeControl
-										label={__("Text Size")}
+										label={__("Font Size")}
 										value={buttonFontSize || 18}
 										allowReset
 										onChange={(newSize) =>
