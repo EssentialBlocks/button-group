@@ -1,12 +1,39 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
-.wp-block-create-block-button-group {
-	background-color: var(--wp-admin-theme-color);
-	color: #fff;
-	padding: 2px;
+.eb-dual-button {
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  &__midldeInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
 }
+
+.eb-dual-button {
+  transition: all 0.3s ease-in-out;
+
+  &-one,
+  &-two {
+    text-decoration: none;
+  }
+}
+
+.eb-dual-button-link , .eb-dual-button-link-two {
+	line-height: inherit;
+}
+
+// Typography style
+.eb-typography-base div{
+		display: flex;
+		justify-content: space-between;
+}
+

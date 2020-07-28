@@ -43,6 +43,15 @@ function create_block_button_group_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
+  $frontend_js = 'src/frontend.js';
+  wp_enqueue_script(
+    'essential-blocks-dual-button-frontend',
+    plugins_url($frontend_js, __FILE__),
+    array( "jquery","wp-editor"),
+    true
+  );
+
+
 	register_block_type( 'create-block/button-group', array(
 		'editor_script' => 'create-block-button-group-block-editor',
 		'style'         => 'create-block-button-group-block',
