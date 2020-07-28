@@ -1,0 +1,10 @@
+{
+	"name": "block/button-group",
+	"title": "Button Group",
+	"category": "widgets",
+	"description": "Create A Series of Buttons To Be Stacked Together ",
+	"textdomain": "button-group",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
