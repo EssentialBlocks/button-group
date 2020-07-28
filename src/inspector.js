@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n"
-import { Component } from "@wordpress/element"
+import { __ } from "@wordpress/i18n";
+import { Component } from "@wordpress/element";
 import {
 	PanelBody,
 	SelectControl,
@@ -13,8 +13,8 @@ import {
 	ButtonGroup,
 	BaseControl,
 	Dropdown,
-} from "@wordpress/components"
-import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor"
+} from "@wordpress/components";
+import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
 
 /**
  * Internal depencencies
@@ -32,7 +32,7 @@ import iconList from "../util/faIcons";
 import DimensionsControl from "../util/dimensions-control";
 import UnitControl from "../util/unit-control";
 import ColorControl from "../util/color-control";
-import FontPicker from "../util/typography-control/FontPicker"
+import FontPicker from "../util/typography-control/FontPicker";
 
 class Inspector extends Component {
 	handleButtonOneStyles = (style) => {
@@ -271,14 +271,13 @@ class Inspector extends Component {
 							)}
 							renderContent={() => (
 								<div style={{ padding: "1rem" }}>
-
-								<FontPicker
-									label={__("Font Family")}
-									value={buttonFontFamily}
-									onChange={(buttonFontFamily) =>
-										setAttributes({ buttonFontFamily })
-									}
-								/>
+									<FontPicker
+										label={__("Font Family")}
+										value={buttonFontFamily}
+										onChange={(buttonFontFamily) =>
+											setAttributes({ buttonFontFamily })
+										}
+									/>
 									<UnitControl
 										selectedUnit={buttonFontUnit}
 										unitTypes={[
@@ -462,7 +461,7 @@ class Inspector extends Component {
 							/>
 
 							<ColorControl
-								label={__("Text Color")}
+								label={__("Icon Color")}
 								color={innerButtonTextColor}
 								onChange={(innerButtonTextColor) =>
 									setAttributes({ innerButtonTextColor })

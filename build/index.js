@@ -4684,7 +4684,7 @@ var Inspector = /*#__PURE__*/function (_Component) {
           });
         }
       }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Text Color"),
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Icon Color"),
         color: innerButtonTextColor,
         onChange: function onChange(innerButtonTextColor) {
           return setAttributes({
