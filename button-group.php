@@ -2,10 +2,11 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create A Series of Buttons To Be Stacked Together 
- * Version:         0.1.0
- * Author:          The WordPress Contributors
- * License:         GPL-2.0-or-later
- * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
+ * Version:         1.0.0
+ * Author:          WPDeveloper
+ * Author URI:      https://wpdeveloper.net
+ * License:         GPL-3.0-or-later
+ * License URI:     https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:     button-group
  *
  * @package         button-group 
