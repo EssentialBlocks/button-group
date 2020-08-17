@@ -77,7 +77,7 @@ function create_block_button_group_block_init() {
 	);
 
 	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/dual-button' ) ) {
-    register_block_type( 'create-block/button-group', array(
+    register_block_type( 'block/button-group', array(
       'editor_script' => 'create-block-button-group-block-editor',
       'style'         => 'create-block-button-group-block',
     ) );
