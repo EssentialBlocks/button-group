@@ -28,7 +28,7 @@ function create_block_button_group_block_init() {
 	$script_asset_path = "$dir/build/index.asset.php";
 	if ( ! file_exists( $script_asset_path ) ) {
 		throw new Error(
-			'You need to run `npm start` or `npm run build` for the "block/button-group" block first.'
+			'You need to run `npm start` or `npm run build` for the "button-group/button-group-block" block first.'
 		);
 	}
 	$index_js     = 'build/index.js';
@@ -78,7 +78,7 @@ function create_block_button_group_block_init() {
 	);
 
 	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/dual-button' ) ) {
-    register_block_type( 'block/button-group', array(
+    register_block_type( 'button-group/button-group-block', array(
       'editor_script' => 'create-block-button-group-block-editor',
       'style'         => 'create-block-button-group-block',
     ) );
