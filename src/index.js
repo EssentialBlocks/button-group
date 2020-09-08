@@ -13,6 +13,7 @@ registerBlockType("block/button-group", {
 		"Create A Series of Buttons To Be Stacked Together ",
 		"button-group"
 	),
+	keywords: [__("buttons", "grouped button", "button group")],
 	icon,
 	attributes,
 	category: "widgets",
