@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create A Series of Buttons To Be Stacked Together 
- * Version:         1.0.1
+ * Version:         1.0.2
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
