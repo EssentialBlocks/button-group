@@ -165,7 +165,7 @@ const Edit = (props) => {
 					onMouseEnter={() => setAttributes({ isHoverOne: true })}
 					onMouseLeave={() => setAttributes({ isHoverOne: false })}
 				>
-					<RichText
+					<RichText 
 						style={textStylesOne}
 						placeholder="Add Text.."
 						value={buttonTextOne}
