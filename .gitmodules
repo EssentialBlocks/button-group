@@ -1,33 +1,6 @@
-[submodule "util/color-control"]
-	path = util/color-control
-	url = git@github.com:EssentialBlocks/color-control.git
-[submodule "util/dimensions-control"]
-	path = util/dimensions-control
-	url = git@github.com:EssentialBlocks/dimensions-control.git
-[submodule "util/typography-control"]
-	path = util/typography-control
-	url = git@github.com:EssentialBlocks/typography-control.git
-[submodule "util/unit-control"]
-	path = util/unit-control
-	url = git@github.com:EssentialBlocks/unit-control.git
 [submodule "lib/style-handler"]
 	path = lib/style-handler
 	url = git@github.com:EssentialBlocks/style-handler.git
-[submodule "util/responsive-range-control"]
-	path = util/responsive-range-control
-	url = git@github.com:EssentialBlocks/responsive-range-control.git
-[submodule "util/background-control"]
-	path = util/background-control
-	url = git@github.com:EssentialBlocks/background-control.git
-[submodule "util/helpers"]
-	path = util/helpers
-	url = git@github.com:EssentialBlocks/helpers.git
-[submodule "util/border-shadow-control"]
-	path = util/border-shadow-control
-	url = git@github.com:EssentialBlocks/border-shadow-control.git
-[submodule "util/typography-control-v2"]
-	path = util/typography-control-v2
-	url = git@github.com:EssentialBlocks/typography-control-v2.git
-[submodule "util/dimensions-control-v2"]
-	path = util/dimensions-control-v2
-	url = git@github.com:EssentialBlocks/dimensions-control-v2.git
+[submodule "util"]
+	path = util
+	url = git@github.com:EssentialBlocks/controls.git

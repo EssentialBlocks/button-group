@@ -80,7 +80,9 @@ function Inspector(props) {
 		widthUnit,
 		seperateButtonsSpace,
 		seperateButtonsSpaceUnit,
+		buttonTextOne,
 		buttonURLOne,
+		buttonTextTwo,
 		buttonURLTwo,
 		innerButtonText,
 		innerButtonSize,
@@ -193,7 +195,12 @@ function Inspector(props) {
 
 	return (
 		<InspectorControls key="controls">
-			<PanelBody title={__("Button Settings")} initialOpen={false}>
+			<PanelBody title={__("General Settings")} initialOpen={true}>
+				<TextControl
+					label={__("Button One Text")}
+					value={buttonTextOne}
+					onChange={(text) => setAttributes({ buttonTextOne: text })}
+				/>
 				<TextControl
 					label={__("Button One Link")}
 					value={buttonURLOne}
@@ -201,13 +208,18 @@ function Inspector(props) {
 				/>
 
 				<TextControl
+					label={__("Button Two Text")}
+					value={buttonTextTwo}
+					onChange={(text) => setAttributes({ buttonTextTwo: text })}
+				/>
+				<TextControl
 					label={__("Button Two Link")}
 					value={buttonURLTwo}
 					onChange={(link) => setAttributes({ buttonURLTwo: link })}
 				/>
 			</PanelBody>
 
-			<PanelBody title={__("Button Styles")} initialOpen={false}>
+			<PanelBody title={__("Button 1")} initialOpen={false}>
 				<SelectControl
 					label={__("Button One Styles")}
 					value={selectButtonStyleOne}
@@ -338,6 +350,10 @@ function Inspector(props) {
 						)}
 					/>
 				</BaseControl>
+			</PanelBody>
+
+			<PanelBody title={__("Button 2")} initialOpen={false}>
+
 			</PanelBody>
 
 			<PanelBody title={__("Button Connector")} initialOpen={false}>

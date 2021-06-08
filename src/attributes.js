@@ -1,4 +1,15 @@
-const attributes = {
+import {
+	generateDimensionsAttributes,
+	generateTypographyAttributes,
+	generateBackgroundAttributes,
+	generateBorderShadowAttributes,
+} from "../util/helpers";
+import {
+	WrpBdShadow,
+	TestimonialWrapBg
+} from "./constants";
+
+const attributes = { 
 	marginTop: {
 		type: "number",
 		default: 0,
