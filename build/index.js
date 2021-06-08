@@ -5125,7 +5125,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _color_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../color-control */ "./util/color-control/index.js");
-/* harmony import */ var _reset_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reset-control */ "./util/reset-control/index.js");
+/* harmony import */ var _reset_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reset-control */ "./util/reset-control/index.js");
 /* harmony import */ var _dimensions_control_v2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
 /* harmony import */ var _typography_control_v2_Icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../typography-control-v2/Icon */ "./util/typography-control-v2/Icon.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -5337,7 +5337,7 @@ function BorderShadowControl(_ref) {
         onChange: function onChange(shadowColor) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "shadowColor"), shadowColor));
         }
-      }), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hOffset"), undefined));
         }
@@ -5349,7 +5349,7 @@ function BorderShadowControl(_ref) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "vOffset"), undefined));
         }
@@ -5361,7 +5361,7 @@ function BorderShadowControl(_ref) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "blur"), undefined));
         }
@@ -5373,7 +5373,7 @@ function BorderShadowControl(_ref) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "spread"), undefined));
         }
@@ -5391,7 +5391,7 @@ function BorderShadowControl(_ref) {
         onChange: function onChange(hoverShadowColor) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverShadowColor"), hoverShadowColor));
         }
-      }), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverHOffset"), undefined));
         }
@@ -5403,7 +5403,7 @@ function BorderShadowControl(_ref) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverVOffset"), undefined));
         }
@@ -5415,7 +5415,7 @@ function BorderShadowControl(_ref) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverBlur"), undefined));
         }
@@ -5427,7 +5427,7 @@ function BorderShadowControl(_ref) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverSpread"), undefined));
         }
