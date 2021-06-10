@@ -1,10 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n";
-import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
-import {
-	PanelBody,
+const { __ } = wp.i18n;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
@@ -12,9 +11,8 @@ import {
 	Button,
 	ButtonGroup,
 	BaseControl,
-	Dropdown,
-} from "@wordpress/components";
-import { useEffect } from "@wordpress/element";
+	Dropdown, } = wp.components;
+const { useEffect } = wp.element;
 
 /**
  * Internal depencencies
@@ -26,7 +24,19 @@ import {
 	FONT_WEIGHTS,
 	TEXT_TRANSFORM,
 	BORDER_TYPES,
-} from "./constants";
+	UNIT_TYPES,
+	BUTTON_BORDER_SHADOW,
+	BUTTON_ONE_BG,
+	BUTTON_TWO_BG,
+	WRAPPER_MARGIN,
+	BUTTONS_MARGIN,
+	BUTTONS_PADDING,
+	BUTTONS_WIDTH,
+	BUTTONS_GAP,
+	BUTTONS_CONNECTOR_SIZE,
+	CONNECTOR_TYPE
+} from "./constants/constants";
+import {BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY} from "./constants/typographyPrefixConstants";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconList from "../util/faIcons";
 import DimensionsControl from "../util/dimensions-control";
@@ -36,11 +46,13 @@ import FontPicker from "../util/typography-control/FontPicker";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
 import BorderShadowControl from "../util/border-shadow-control";
+import ResponsiveRangeController from "../util/responsive-range-control";
 // import BackgroundControl from "../util/background-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
 	const {
+		resOption,
 		marginTop,
 		marginRight,
 		marginBottom,
@@ -99,6 +111,7 @@ function Inspector(props) {
 		innerButtonLetterSpacing,
 		isShowText,
 		borderType,
+		connectorType,
 	} = attributes;
 
 	const hasConnector = isShowText || isShowIcon;
@@ -193,520 +206,445 @@ function Inspector(props) {
 		});
 	}
 
+	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
+	useEffect(() => {
+		const bodyClasses = document.body.className;
+		// console.log("----log from inspector useEffect with empty []", {
+		// 	bodyClasses,
+		// });
+
+		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
+			document.body.classList.add("eb-res-option-desktop");
+			setAttributes({
+				resOption: "desktop",
+			});
+		} else {
+			const resOption = bodyClasses
+				.match(/eb-res-option-[^\s]+/g)[0]
+				.split("-")[3];
+			setAttributes({ resOption });
+		}
+	}, []);
+
+	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
+	useEffect(() => {
+		const allEbBlocksWrapper = document.querySelectorAll(
+			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
+		);
+		// console.log("---inspector", { allEbBlocksWrapper });
+		if (allEbBlocksWrapper.length < 1) return;
+		allEbBlocksWrapper.forEach((styleTag) => {
+			const cssStrings = styleTag.textContent;
+			const minCss = cssStrings.replace(/\s+/g, " ");
+			const regexCssMimmikSpace =
+				/(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
+			let newCssStrings = " ";
+			if (resOption === "tab") {
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+				// console.log({ tabCssStrings });
+				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
+			} else if (resOption === "mobile") {
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+
+				const mobCssStrings = (minCss.match(
+					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
+				) || [" "])[0];
+
+				// console.log({ tabCssStrings, mobCssStrings });
+
+				newCssStrings = minCss.replace(
+					regexCssMimmikSpace,
+					`${tabCssStrings} ${mobCssStrings}`
+				);
+			} else {
+				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
+			}
+			styleTag.textContent = newCssStrings;
+		});
+	}, [resOption]);
+
+	const resRequiredProps = {
+		setAttributes,
+		resOption,
+		attributes,
+	};
+
 	return (
 		<InspectorControls key="controls">
-			<PanelBody title={__("General Settings")} initialOpen={true}>
-				<TextControl
-					label={__("Button One Text")}
-					value={buttonTextOne}
-					onChange={(text) => setAttributes({ buttonTextOne: text })}
-				/>
-				<TextControl
-					label={__("Button One Link")}
-					value={buttonURLOne}
-					onChange={(link) => setAttributes({ buttonURLOne: link })}
-				/>
+			<div className="eb-panel-control">
+				<PanelBody title={__("General Settings")} initialOpen={false}>
+					<TextControl
+						label={__("Button One Text")}
+						value={buttonTextOne}
+						onChange={(text) => setAttributes({ buttonTextOne: text })}
+					/>
+					<TextControl
+						label={__("Button One Link")}
+						value={buttonURLOne}
+						onChange={(link) => setAttributes({ buttonURLOne: link })}
+					/>
 
-				<TextControl
-					label={__("Button Two Text")}
-					value={buttonTextTwo}
-					onChange={(text) => setAttributes({ buttonTextTwo: text })}
-				/>
-				<TextControl
-					label={__("Button Two Link")}
-					value={buttonURLTwo}
-					onChange={(link) => setAttributes({ buttonURLTwo: link })}
-				/>
-			</PanelBody>
+					<TextControl
+						label={__("Button Two Text")}
+						value={buttonTextTwo}
+						onChange={(text) => setAttributes({ buttonTextTwo: text })}
+					/>
+					<TextControl
+						label={__("Button Two Link")}
+						value={buttonURLTwo}
+						onChange={(link) => setAttributes({ buttonURLTwo: link })}
+					/>
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={WRAPPER_MARGIN}
+						baseLabel="Margin"
+					/>
+				</PanelBody>
 
-			<PanelBody title={__("Button 1")} initialOpen={false}>
-				<SelectControl
-					label={__("Button One Styles")}
-					value={selectButtonStyleOne}
-					options={BUTTON_ONE_STYLES}
-					onChange={(style) => handleButtonOneStyles(style)}
-				/>
+				<PanelBody title={__("Buttons Settings")} initialOpen={false}>
+					<SelectControl
+						label={__("Button One Styles")}
+						value={selectButtonStyleOne}
+						options={BUTTON_ONE_STYLES}
+						onChange={(style) => handleButtonOneStyles(style)}
+					/>
 
-				<SelectControl
-					label={__("Button Two Styles")}
-					value={selectButtonStyleTwo}
-					options={BUTTON_TWO_STYLES}
-					onChange={(style) => handleButtonTwoStyles(style)}
-				/>
+					<SelectControl
+						label={__("Button Two Styles")}
+						value={selectButtonStyleTwo}
+						options={BUTTON_TWO_STYLES}
+						onChange={(style) => handleButtonTwoStyles(style)}
+					/>
 
-				<UnitControl
-					selectedUnit={widthUnit}
-					unitTypes={[
-						{ label: "px", value: "px" },
-						{ label: "em", value: "em" },
-					]}
-					onClick={(widthUnit) => setAttributes({ widthUnit })}
-				/>
+					<ResponsiveRangeController
+						baseLabel={__("Buttons Width", "button-group")}
+						controlName={BUTTONS_WIDTH}
+						resRequiredProps={resRequiredProps}
+						units={UNIT_TYPES}
+						min={100}
+						max={600}
+						step={1}
+					/>
 
-				<RangeControl
-					label={__("Buttons Width")}
-					value={buttonWidth || 0}
-					allowReset
-					onChange={(newSize) => setAttributes({ buttonWidth: newSize })}
-					min={0}
-					max={400}
-				/>
+					<ResponsiveRangeController
+						baseLabel={__("Buttons Gap", "button-group")}
+						controlName={BUTTONS_GAP}
+						resRequiredProps={resRequiredProps}
+						units={UNIT_TYPES}
+						min={100}
+						max={600}
+						step={1}
+					/>
 
-				<UnitControl
-					selectedUnit={seperateButtonsSpaceUnit}
-					unitTypes={[
-						{ label: "px", value: "px" },
-						{ label: "em", value: "em" },
-					]}
-					onClick={(unit) =>
-						setAttributes({ seperateButtonsSpaceUnit: unit })
-					}
-				/>
+					<TypographyDropdown
+						baseLabel={__("Typography", "button-group")}
+						typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
+						resRequiredProps={resRequiredProps}
+					/>
+				</PanelBody>
 
-				<RangeControl
-					label={__("Seperator")}
-					value={seperateButtonsSpace || 0}
-					allowReset
-					onChange={(newSize) =>
-						setAttributes({
-							seperateButtonsSpace: newSize,
-						})
-					}
-				/>
-
-				<BaseControl label={__("Typography")} className="eb-typography-base">
-					<Dropdown
-						className="eb-typography-dropdown"
-						contentClassName="my-popover-content-classname"
-						position="bottom right"
-						renderToggle={({ isOpen, onToggle }) => (
-							<Button
-								isSmall
-								onClick={onToggle}
-								aria-expanded={isOpen}
-								icon="edit"
-							></Button>
-						)}
-						renderContent={() => (
-							<div style={{ padding: "1rem" }}>
-								<FontPicker
-									label={__("Font Family")}
-									value={buttonFontFamily}
-									onChange={(buttonFontFamily) =>
-										setAttributes({ buttonFontFamily })
-									}
-								/>
-								<UnitControl
-									selectedUnit={buttonFontUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "em", value: "em" },
-										{ label: "%", value: "%" },
-									]}
-									onClick={(unit) => setAttributes({ buttonFontUnit: unit })}
-								/>
-
-								<RangeControl
-									label={__("Font Size")}
-									value={buttonFontSize || 18}
-									allowReset
-									onChange={(newSize) =>
+				<PanelBody title={__("Connector Settings")} initialOpen={false}>
+					<BaseControl label={__("Connector Type")}>
+						<ButtonGroup id="eb-duel-button-connector-type">
+							{CONNECTOR_TYPE.map((item) => (
+								<Button
+									isLarge
+									isPrimary={connectorType === item.value}
+									isSecondary={connectorType !== item.value}
+									onClick={() =>
 										setAttributes({
-											buttonFontSize: newSize,
+											connectorType: item.value,
 										})
 									}
+								>
+									{item.label}
+								</Button>
+							))}
+						</ButtonGroup>
+					</BaseControl>
+
+					{connectorType === "icon" && (
+						<PanelBody title={__("Icon Settings")} initialOpen={true}>
+							<BaseControl label={__("Icon")}>
+								<FontIconPicker
+									icons={iconList}
+									value={innerButtonIcon}
+									onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
+									appendTo="body"
 								/>
+							</BaseControl>
+						</PanelBody>
+					)}
 
-								<SelectControl
-									label={__("Font Weight")}
-									value={buttonFontWeight}
-									options={FONT_WEIGHTS}
-									onChange={(buttonFontWeight) =>
-										setAttributes({ buttonFontWeight })
-									}
-								/>
+					{connectorType === "text" && (
+						<TextControl
+							label={__("Text")}
+							value={innerButtonText}
+							onChange={(text) => setAttributes({ innerButtonText: text })}
+						/>
+					)}
 
-								<SelectControl
-									label={__("Text Transform")}
-									value={buttonTextTransform}
-									options={TEXT_TRANSFORM}
-									onChange={(buttonTextTransform) =>
-										setAttributes({ buttonTextTransform })
-									}
-								/>
+					{hasConnector && (
+						<RangeControl
+							label={__("Button Size")}
+							value={innerButtonSize || 40}
+							allowReset
+							onChange={(newSize) =>
+								setAttributes({
+									innerButtonSize: newSize,
+								})
+							}
+						/>
+					)}
 
-								<RangeControl
-									label={__("Letter Spacing")}
-									value={buttonLetterSpacing || 0}
-									onChange={(buttonLetterSpacing) =>
-										setAttributes({ buttonLetterSpacing })
-									}
-									allowReset
-									min={0}
-									max={10}
-									step={0.1}
-								/>
-							</div>
-						)}
-					/>
-				</BaseControl>
-			</PanelBody>
+					{hasConnector && (
+						<TypographyDropdown
+							baseLabel={__("Typography", "button-group")}
+							typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
+							resRequiredProps={resRequiredProps}
+						/>
+					)}
 
-			<PanelBody title={__("Button 2")} initialOpen={false}>
-
-			</PanelBody>
-
-			<PanelBody title={__("Button Connector")} initialOpen={false}>
-				<ToggleControl
-					label={__("Display Text")}
-					checked={isShowText}
-					onChange={() =>
-						setAttributes({
-							isShowText: !isShowText,
-							isShowIcon: isShowText === true ? false : false,
-						})
-					}
-				/>
-				<ToggleControl
-					label={__("Display Icon")}
-					checked={isShowIcon}
-					onChange={() =>
-						setAttributes({
-							isShowIcon: !isShowIcon,
-							isShowText: isShowIcon === true ? false : false,
-						})
-					}
-				/>
-
-				{isShowIcon && (
-					<PanelBody title={__("Icon Settings")} initialOpen={true}>
-						<BaseControl label={__("Icon")}>
-							<FontIconPicker
-								icons={iconList}
-								value={innerButtonIcon}
-								onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
-								appendTo="body"
+					{hasConnector && (
+						<>
+							<ColorControl
+								label={__("Background Color")}
+								color={innerButtonColor}
+								onChange={(innerButtonColor) =>
+									setAttributes({ innerButtonColor })
+								}
 							/>
-						</BaseControl>
-					</PanelBody>
-				)}
 
-				{isShowText && (
-					<TextControl
-						label={__("Text")}
-						value={innerButtonText}
-						onChange={(text) => setAttributes({ innerButtonText: text })}
+							<ColorControl
+								label={__("Icon Color")}
+								color={innerButtonTextColor}
+								onChange={(innerButtonTextColor) =>
+									setAttributes({ innerButtonTextColor })
+								}
+							/>
+						</>
+					)}
+				</PanelBody>
+
+				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
+					<UnitControl
+						selectedUnit={marginUnit}
+						unitTypes={[
+							{ label: "px", value: "px" },
+							{ label: "em", value: "em" },
+							{ label: "%", value: "%" },
+						]}
+						onClick={(marginUnit) => setAttributes({ marginUnit })}
 					/>
-				)}
 
-				{hasConnector && (
-					<RangeControl
-						label={__("Button Size")}
-						value={innerButtonSize || 40}
-						allowReset
-						onChange={(newSize) =>
+					<DimensionsControl
+						label="Margin"
+						top={marginTop}
+						right={marginRight}
+						bottom={marginBottom}
+						left={marginLeft}
+						onChange={({ top, right, bottom, left }) => {
 							setAttributes({
-								innerButtonSize: newSize,
+								marginTop: top,
+								marginRight: right,
+								marginBottom: bottom,
+								marginLeft: left,
+							});
+						}}
+					/>
+
+					<UnitControl
+						selectedUnit={paddingUnit}
+						unitTypes={[
+							{ label: "px", value: "px" },
+							{ label: "em", value: "em" },
+							{ label: "%", value: "%" },
+						]}
+						onClick={(paddingUnit) => setAttributes({ paddingUnit })}
+					/>
+
+					<DimensionsControl
+						label="Padding"
+						top={paddingTop}
+						right={paddingRight}
+						bottom={paddingBottom}
+						left={paddingLeft}
+						onChange={({ top, right, bottom, left }) => {
+							setAttributes({
+								paddingTop: top,
+								paddingRight: right,
+								paddingBottom: bottom,
+								paddingLeft: left,
+							});
+						}}
+					/>
+				</PanelBody>
+
+				<PanelColorSettings
+					title={__("Button One Colors")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: buttonOneColor,
+							onChange: (newColor) =>
+								setAttributes({ buttonOneColor: newColor }),
+							label: __("Button Color"),
+						},
+						{
+							value: textOneColor,
+							onChange: (newColor) => setAttributes({ textOneColor: newColor }),
+							label: __("Text Color"),
+						},
+						{
+							value: hoverButtonOneColor,
+							onChange: (newColor) =>
+								setAttributes({
+									hoverButtonOneColor: newColor,
+								}),
+							label: __("Hover Button Color"),
+						},
+						{
+							value: hoverTextOneColor,
+							onChange: (newColor) =>
+								setAttributes({
+									hoverTextOneColor: newColor,
+								}),
+							label: __("Hover Text Color"),
+						},
+					]}
+				/>
+
+				<PanelColorSettings
+					title={__("Button Two Colors")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: buttonTwoColor,
+							onChange: (newColor) =>
+								setAttributes({ buttonTwoColor: newColor }),
+							label: __("Button Color"),
+						},
+						{
+							value: textTwoColor,
+							onChange: (newColor) => setAttributes({ textTwoColor: newColor }),
+							label: __("Text Color"),
+						},
+						{
+							value: hoverButtonTwoColor,
+							onChange: (newColor) =>
+								setAttributes({
+									hoverButtonTwoColor: newColor,
+								}),
+							label: __("Hover Button Color"),
+						},
+						{
+							value: hoverTextTwoColor,
+							onChange: (newColor) =>
+								setAttributes({
+									hoverTextTwoColor: newColor,
+								}),
+							label: __("Hover Text Color"),
+						},
+					]}
+				/>
+
+				<PanelBody title={__("Border Settings")} initialOpen={false}>
+					<SelectControl
+						label={__("Border Style")}
+						value={borderStyle}
+						options={BORDER_STYLES}
+						onChange={(newStyle) => setAttributes({ borderStyle: newStyle })}
+					/>
+
+					<RangeControl
+						label={__("Border Width")}
+						value={borderWidth || 0}
+						allowReset
+						onChange={(newValue) => setAttributes({ borderWidth: newValue })}
+						min={0}
+						max={20}
+					/>
+
+					<ButtonGroup className="eb-inspector-btn-group">
+						{BORDER_TYPES.map((item) => (
+							<Button
+								isLarge
+								isPrimary={borderType === item.value}
+								isSecondary={borderType !== item.value}
+								onClick={() => setAttributes({ borderType: item.value })}
+							>
+								{item.label}
+							</Button>
+						))}
+					</ButtonGroup>
+
+					{borderType === "normal" && (
+						<>
+							<ColorControl
+								label={__("Button One Border Color")}
+								color={borderOneColor}
+								onChange={(borderOneColor) => setAttributes({ borderOneColor })}
+							/>
+
+							<ColorControl
+								label={__("Button Two Border Color ")}
+								color={borderTwoColor}
+								onChange={(borderTwoColor) => setAttributes({ borderTwoColor })}
+							/>
+						</>
+					)}
+
+					{borderType === "hover" && (
+						<>
+							<ColorControl
+								label={__("Button One Hover Color")}
+								color={hoverBorderOneColor}
+								onChange={(hoverBorderOneColor) =>
+									setAttributes({ hoverBorderOneColor })
+								}
+							/>
+
+							<ColorControl
+								label={__("Button Two Hover Color")}
+								color={hoverBorderTwoColor}
+								onChange={(hoverBorderTwoColor) =>
+									setAttributes({ hoverBorderTwoColor })
+								}
+							/>
+						</>
+					)}
+
+					<UnitControl
+						selectedUnit={borderRadiusUnit}
+						unitTypes={[
+							{ label: "px", value: "px" },
+							{ label: "em", value: "em" },
+							{ label: "%", value: "%" },
+						]}
+						onClick={(borderRadiusUnit) => setAttributes({ borderRadiusUnit })}
+					/>
+
+					<DimensionsControl
+						label={__("Border Radius")}
+						top={borderRadiusTopLeft}
+						right={borderRadiusTopRight}
+						bottom={borderRadiusBottomRight}
+						left={borderRadiusBottomLeft}
+						onChange={({ top, right, bottom, left }) =>
+							setAttributes({
+								borderRadiusTopLeft: top,
+								borderRadiusTopRight: right,
+								borderRadiusBottomRight: bottom,
+								borderRadiusBottomLeft: left,
 							})
 						}
 					/>
-				)}
-
-				{hasConnector && (
-					<BaseControl
-						label={__("Typography")}
-						className="eb-typography-base"
-					>
-						<Dropdown
-							className="eb-typography-dropdown"
-							contentClassName="my-popover-content-classname"
-							position="bottom right"
-							renderToggle={({ isOpen, onToggle }) => (
-								<Button
-									isSmall
-									onClick={onToggle}
-									aria-expanded={isOpen}
-									icon="edit"
-								></Button>
-							)}
-							renderContent={() => (
-								<div style={{ padding: "1rem" }}>
-									<RangeControl
-										label={__(`${isShowText ? "Text" : "Icon"} Size`)}
-										value={innerButtonTextSize || 14}
-										allowReset
-										onChange={(newSize) =>
-											setAttributes({
-												innerButtonTextSize: newSize,
-											})
-										}
-									/>
-
-									{isShowText && (
-										<SelectControl
-											label={__("Text Transform")}
-											value={innerButtonTextTransform}
-											options={TEXT_TRANSFORM}
-											onChange={(innerButtonTextTransform) =>
-												setAttributes({ innerButtonTextTransform })
-											}
-										/>
-									)}
-
-									{isShowText && (
-										<RangeControl
-											label={__("Letter Spacing")}
-											value={innerButtonLetterSpacing || 0}
-											onChange={(innerButtonLetterSpacing) =>
-												setAttributes({ innerButtonLetterSpacing })
-											}
-											allowReset
-											min={0}
-											max={5}
-											step={0.1}
-										/>
-									)}
-								</div>
-							)}
-						/>
-					</BaseControl>
-				)}
-
-				{hasConnector && (
-					<>
-						<ColorControl
-							label={__("Background Color")}
-							color={innerButtonColor}
-							onChange={(innerButtonColor) =>
-								setAttributes({ innerButtonColor })
-							}
-						/>
-
-						<ColorControl
-							label={__("Icon Color")}
-							color={innerButtonTextColor}
-							onChange={(innerButtonTextColor) =>
-								setAttributes({ innerButtonTextColor })
-							}
-						/>
-					</>
-				)}
-			</PanelBody>
-
-			<PanelBody title={__("Margin & Padding")} initialOpen={false}>
-				<UnitControl
-					selectedUnit={marginUnit}
-					unitTypes={[
-						{ label: "px", value: "px" },
-						{ label: "em", value: "em" },
-						{ label: "%", value: "%" },
-					]}
-					onClick={(marginUnit) => setAttributes({ marginUnit })}
-				/>
-
-				<DimensionsControl
-					label="Margin"
-					top={marginTop}
-					right={marginRight}
-					bottom={marginBottom}
-					left={marginLeft}
-					onChange={({ top, right, bottom, left }) => {
-						setAttributes({
-							marginTop: top,
-							marginRight: right,
-							marginBottom: bottom,
-							marginLeft: left,
-						});
-					}}
-				/>
-
-				<UnitControl
-					selectedUnit={paddingUnit}
-					unitTypes={[
-						{ label: "px", value: "px" },
-						{ label: "em", value: "em" },
-						{ label: "%", value: "%" },
-					]}
-					onClick={(paddingUnit) => setAttributes({ paddingUnit })}
-				/>
-
-				<DimensionsControl
-					label="Padding"
-					top={paddingTop}
-					right={paddingRight}
-					bottom={paddingBottom}
-					left={paddingLeft}
-					onChange={({ top, right, bottom, left }) => {
-						setAttributes({
-							paddingTop: top,
-							paddingRight: right,
-							paddingBottom: bottom,
-							paddingLeft: left,
-						});
-					}}
-				/>
-			</PanelBody>
-
-			<PanelColorSettings
-				title={__("Button One Colors")}
-				initialOpen={false}
-				colorSettings={[
-					{
-						value: buttonOneColor,
-						onChange: (newColor) =>
-							setAttributes({ buttonOneColor: newColor }),
-						label: __("Button Color"),
-					},
-					{
-						value: textOneColor,
-						onChange: (newColor) => setAttributes({ textOneColor: newColor }),
-						label: __("Text Color"),
-					},
-					{
-						value: hoverButtonOneColor,
-						onChange: (newColor) =>
-							setAttributes({
-								hoverButtonOneColor: newColor,
-							}),
-						label: __("Hover Button Color"),
-					},
-					{
-						value: hoverTextOneColor,
-						onChange: (newColor) =>
-							setAttributes({
-								hoverTextOneColor: newColor,
-							}),
-						label: __("Hover Text Color"),
-					},
-				]}
-			/>
-
-			<PanelColorSettings
-				title={__("Button Two Colors")}
-				initialOpen={false}
-				colorSettings={[
-					{
-						value: buttonTwoColor,
-						onChange: (newColor) =>
-							setAttributes({ buttonTwoColor: newColor }),
-						label: __("Button Color"),
-					},
-					{
-						value: textTwoColor,
-						onChange: (newColor) => setAttributes({ textTwoColor: newColor }),
-						label: __("Text Color"),
-					},
-					{
-						value: hoverButtonTwoColor,
-						onChange: (newColor) =>
-							setAttributes({
-								hoverButtonTwoColor: newColor,
-							}),
-						label: __("Hover Button Color"),
-					},
-					{
-						value: hoverTextTwoColor,
-						onChange: (newColor) =>
-							setAttributes({
-								hoverTextTwoColor: newColor,
-							}),
-						label: __("Hover Text Color"),
-					},
-				]}
-			/>
-
-			<PanelBody title={__("Border Settings")} initialOpen={false}>
-				<SelectControl
-					label={__("Border Style")}
-					value={borderStyle}
-					options={BORDER_STYLES}
-					onChange={(newStyle) => setAttributes({ borderStyle: newStyle })}
-				/>
-
-				<RangeControl
-					label={__("Border Width")}
-					value={borderWidth || 0}
-					allowReset
-					onChange={(newValue) => setAttributes({ borderWidth: newValue })}
-					min={0}
-					max={20}
-				/>
-
-				<ButtonGroup className="eb-inspector-btn-group">
-					{BORDER_TYPES.map((item) => (
-						<Button
-							isLarge
-							isPrimary={borderType === item.value}
-							isSecondary={borderType !== item.value}
-							onClick={() => setAttributes({ borderType: item.value })}
-						>
-							{item.label}
-						</Button>
-					))}
-				</ButtonGroup>
-
-				{borderType === "normal" && (
-					<>
-						<ColorControl
-							label={__("Button One Border Color")}
-							color={borderOneColor}
-							onChange={(borderOneColor) => setAttributes({ borderOneColor })}
-						/>
-
-						<ColorControl
-							label={__("Button Two Border Color ")}
-							color={borderTwoColor}
-							onChange={(borderTwoColor) => setAttributes({ borderTwoColor })}
-						/>
-					</>
-				)}
-
-				{borderType === "hover" && (
-					<>
-						<ColorControl
-							label={__("Button One Hover Color")}
-							color={hoverBorderOneColor}
-							onChange={(hoverBorderOneColor) =>
-								setAttributes({ hoverBorderOneColor })
-							}
-						/>
-
-						<ColorControl
-							label={__("Button Two Hover Color")}
-							color={hoverBorderTwoColor}
-							onChange={(hoverBorderTwoColor) =>
-								setAttributes({ hoverBorderTwoColor })
-							}
-						/>
-					</>
-				)}
-
-				<UnitControl
-					selectedUnit={borderRadiusUnit}
-					unitTypes={[
-						{ label: "px", value: "px" },
-						{ label: "em", value: "em" },
-						{ label: "%", value: "%" },
-					]}
-					onClick={(borderRadiusUnit) => setAttributes({ borderRadiusUnit })}
-				/>
-
-				<DimensionsControl
-					label={__("Border Radius")}
-					top={borderRadiusTopLeft}
-					right={borderRadiusTopRight}
-					bottom={borderRadiusBottomRight}
-					left={borderRadiusBottomLeft}
-					onChange={({ top, right, bottom, left }) =>
-						setAttributes({
-							borderRadiusTopLeft: top,
-							borderRadiusTopRight: right,
-							borderRadiusBottomRight: bottom,
-							borderRadiusBottomLeft: left,
-						})
-					}
-				/>
-			</PanelBody>
+				</PanelBody>
+			</div>
 		</InspectorControls>
 	);
 }

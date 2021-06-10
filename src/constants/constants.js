@@ -1,5 +1,16 @@
 const { __ } = wp.i18n;
 
+// the consts defined here should be unique from one another
+export const WRAPPER_MARGIN = "wrpMargin";
+export const BUTTONS_MARGIN = "buttonsMargin";
+export const BUTTONS_PADDING = "buttonsPadding";
+export const BUTTON_BORDER_SHADOW = "wrpBorderShadow";
+export const BUTTON_ONE_BG = "button1Bg";
+export const BUTTON_TWO_BG = "button2Bg";
+export const BUTTONS_WIDTH = "buttonsWidth";
+export const BUTTONS_GAP = "buttonsGap";
+export const BUTTONS_CONNECTOR_SIZE = "buttonsConnectorSize";
+
 export const BORDER_STYLES = [
 	{ label: __("None"), value: "none" },
 	{ label: __("Dashed"), value: "dashed" },
@@ -47,4 +58,9 @@ export const FONT_WEIGHTS = [
 export const BORDER_TYPES = [
 	{ label: "Normal", value: "normal" },
 	{ label: "Hover", value: "hover" },
+];
+
+export const CONNECTOR_TYPE = [
+	{ label: __("Text"), value: "text" },
+	{ label: __("Icon"), value: "icon" },
 ];

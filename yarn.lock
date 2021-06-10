@@ -2326,9 +2326,9 @@
     "core-js" "^3.6.4"
 
 "@wordpress/base-styles@^3.4.2":
-  "integrity" "sha512-fK0BYDW4+Ch3JqjC/mObnOKjhYNGrIotZjrY2PfAOckRR3sBWY3g4ujgx1sSlcAeNskhGDULylQWhuF+MvQ7bw=="
-  "resolved" "https://registry.npmjs.org/@wordpress/base-styles/-/base-styles-3.5.1.tgz"
-  "version" "3.5.1"
+  "integrity" "sha512-29M9yiZte+1gInnHmAvfRr8HaPrkm8c+kDX2PkO1IJ5trWOUFcM8sCG/Cxm0N+c+6EpE5ToxME0Ex8CgZ52IKA=="
+  "resolved" "https://registry.npmjs.org/@wordpress/base-styles/-/base-styles-3.5.2.tgz"
+  "version" "3.5.2"
 
 "@wordpress/blob@^2.13.2":
   "integrity" "sha512-Us71BMrvjiMjW9WTV1UzZbEBd+Q7W05P0WW+Tfo6qHJLBMYXPDN9dP9s6JhK6fzzL+U/PzotMJwA6P85BqL30w=="
@@ -6226,7 +6226,7 @@
   dependencies:
     "flat-cache" "^3.0.4"
 
-"file-loader@^6.2.0":
+"file-loader@*", "file-loader@^6.2.0":
   "integrity" "sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw=="
   "resolved" "https://registry.npmjs.org/file-loader/-/file-loader-6.2.0.tgz"
   "version" "6.2.0"
@@ -10312,9 +10312,9 @@
     "postcss" "^7.0.14"
 
 "postcss-load-config@^2.0.0":
-  "integrity" "sha512-4pV3JJVPLd5+RueiVVB+gFOAa7GWc25XQcMp86Zexzke69mKf6Nx9LRcQywdz7yZI9n1udOxmLuAwTBypypF8Q=="
-  "resolved" "https://registry.npmjs.org/postcss-load-config/-/postcss-load-config-2.1.0.tgz"
-  "version" "2.1.0"
+  "integrity" "sha512-/rDeGV6vMUo3mwJZmeHfEDvwnTKKqQ0S7OHUi/kJvvtx3aWtyWG2/0ZWnzCt2keEclwN6Tf0DST2v9kITdOKYw=="
+  "resolved" "https://registry.npmjs.org/postcss-load-config/-/postcss-load-config-2.1.2.tgz"
+  "version" "2.1.2"
   dependencies:
     "cosmiconfig" "^5.0.0"
     "import-cwd" "^2.0.0"
@@ -11591,7 +11591,7 @@
     "schema-utils" "^2.6.1"
     "semver" "^6.3.0"
 
-"sass@^1.26.11":
+"sass@^1.26.11", "sass@^1.3.0":
   "integrity" "sha512-scLA7EIZM+MmYlej6sdVr0HRbZX5caX5ofDT9asWnUJj21oqgsC+1LuNfm0eg+vM0fCTZHhwImTiCU0sx9h9CQ=="
   "resolved" "https://registry.npmjs.org/sass/-/sass-1.34.1.tgz"
   "version" "1.34.1"
@@ -11636,22 +11636,22 @@
     "ajv-keywords" "^3.1.0"
 
 "schema-utils@^2.5.0":
-  "integrity" "sha512-0ilKFI6QQF5nxDZLFn2dMjvc4hjg/Wkg7rHd3jK6/A4a1Hl9VFdQWvgB1UMGoU94pad1P/8N7fMcEnLnSiju8A=="
-  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.0.tgz"
-  "version" "2.7.0"
+  "integrity" "sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg=="
+  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.1.tgz"
+  "version" "2.7.1"
   dependencies:
-    "@types/json-schema" "^7.0.4"
-    "ajv" "^6.12.2"
-    "ajv-keywords" "^3.4.1"
+    "@types/json-schema" "^7.0.5"
+    "ajv" "^6.12.4"
+    "ajv-keywords" "^3.5.2"
 
 "schema-utils@^2.6.1":
-  "integrity" "sha512-0ilKFI6QQF5nxDZLFn2dMjvc4hjg/Wkg7rHd3jK6/A4a1Hl9VFdQWvgB1UMGoU94pad1P/8N7fMcEnLnSiju8A=="
-  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.0.tgz"
-  "version" "2.7.0"
+  "integrity" "sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg=="
+  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.1.tgz"
+  "version" "2.7.1"
   dependencies:
-    "@types/json-schema" "^7.0.4"
-    "ajv" "^6.12.2"
-    "ajv-keywords" "^3.4.1"
+    "@types/json-schema" "^7.0.5"
+    "ajv" "^6.12.4"
+    "ajv-keywords" "^3.5.2"
 
 "schema-utils@^2.6.5":
   "integrity" "sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg=="
@@ -11672,13 +11672,13 @@
     "ajv-keywords" "^3.4.1"
 
 "schema-utils@^2.7.0":
-  "integrity" "sha512-0ilKFI6QQF5nxDZLFn2dMjvc4hjg/Wkg7rHd3jK6/A4a1Hl9VFdQWvgB1UMGoU94pad1P/8N7fMcEnLnSiju8A=="
-  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.0.tgz"
-  "version" "2.7.0"
+  "integrity" "sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg=="
+  "resolved" "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.1.tgz"
+  "version" "2.7.1"
   dependencies:
-    "@types/json-schema" "^7.0.4"
-    "ajv" "^6.12.2"
-    "ajv-keywords" "^3.4.1"
+    "@types/json-schema" "^7.0.5"
+    "ajv" "^6.12.4"
+    "ajv-keywords" "^3.5.2"
 
 "schema-utils@^3.0.0":
   "integrity" "sha512-6D82/xSzO094ajanoOSbe4YvXWMfn2A//8Y1+MUqFAJul5Bs+yn36xbK9OtNDcRVSBJ9jjeoXftM6CfztsjOAA=="
@@ -13564,7 +13564,7 @@
     "source-list-map" "^2.0.1"
     "source-map" "^0.6.1"
 
-"webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.42.0", "webpack@^4.8.3 || ^5.0.0", "webpack@>=2":
+"webpack@^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.36.0 || ^5.0.0", "webpack@^4.4.0", "webpack@^4.42.0", "webpack@^4.8.3 || ^5.0.0", "webpack@>=2":
   "integrity" "sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q=="
   "resolved" "https://registry.npmjs.org/webpack/-/webpack-4.46.0.tgz"
   "version" "4.46.0"

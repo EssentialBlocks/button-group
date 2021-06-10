@@ -1,9 +1,10 @@
 {
-	"name": "button-group/button-group-block",
-	"title": "Button Group",
+	"apiVersion": 2,
+	"name": "create-block/duel-button",
+	"title": "Duel Button",
 	"category": "widgets",
 	"description": "Create A Series of Buttons To Be Stacked Together ",
-	"textdomain": "button-group",
+	"textdomain": "duel-button",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

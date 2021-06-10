@@ -1,6 +1,3 @@
-import PropTypes from "prop-types";
-import "./style.scss";
-
 const { useState } = wp.element;
 
 const ImageAvatar = ({ imageUrl, onDeleteImage }) => {
@@ -38,11 +35,6 @@ const ImageAvatar = ({ imageUrl, onDeleteImage }) => {
       ></span>
     </div>
   );
-};
-
-ImageAvatar.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  onDeleteImage: PropTypes.func.isRequired,
 };
 
 export default ImageAvatar;

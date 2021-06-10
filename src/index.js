@@ -7,13 +7,13 @@ import save from "./save";
 import icon from "./icon";
 import attributes from "./attributes";
 
-registerBlockType("block/button-group", {
-	title: __("Button Group", "button-group"),
+registerBlockType("create-block/duel-button", {
+	title: __("Duel Button", "button-group"),
 	description: __(
 		"Create A Series of Buttons To Be Stacked Together ",
 		"button-group"
 	),
-	keywords: [__("buttons", "grouped button", "button group")],
+	keywords: [__("buttons", "grouped button", "Duel Button")],
 	icon,
 	attributes,
 	category: "widgets",

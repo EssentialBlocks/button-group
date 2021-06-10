@@ -1,15 +1,40 @@
 import {
+	BUTTON_BORDER_SHADOW,
+	BUTTON_ONE_BG,
+	BUTTON_TWO_BG,
+	WRAPPER_MARGIN,
+	BUTTONS_MARGIN,
+	BUTTONS_PADDING,
+	BUTTONS_WIDTH,
+	BUTTONS_GAP,
+	BUTTONS_CONNECTOR_SIZE,
+} from "./constants/constants";
+import {
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
 } from "../util/helpers";
-import {
-	WrpBdShadow,
-	TestimonialWrapBg
-} from "./constants";
+import * as typographyObjs from "./constants/typographyPrefixConstants";
 
-const attributes = { 
+const attributes = {
+	resOption: {
+		type: "string",
+		default: "desktop",
+	},
+
+	// blockId attribute for making unique className and other uniqueness
+	blockId: {
+		type: "string",
+	},
+	blockRoot: {
+		type: "string",
+		default: "essential_block",
+	},
+	blockMeta: {
+		type: "object",
+	},
+
 	marginTop: {
 		type: "number",
 		default: 0,
@@ -235,10 +260,53 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	connectorType: {
+		type: "string",
+		default: "text"
+	},
 	borderType: {
 		type: "string",
 		default: "normal",
 	},
+
+	// typography attributes ⬇
+	...generateTypographyAttributes(Object.values(typographyObjs)),
+
+	// margin padding attributes ⬇
+	...generateDimensionsAttributes(WRAPPER_MARGIN),
+	...generateDimensionsAttributes(BUTTONS_MARGIN),
+	...generateDimensionsAttributes(BUTTONS_PADDING, {
+		top: 5,
+		bottom: 5,
+		right: 25,
+		left: 25,
+	}),
+
+	// border shadow attributes ⬇
+	...generateBorderShadowAttributes(BUTTON_BORDER_SHADOW, {
+		// bdrDefaults: {
+		// 	top: 0,
+		// 	bottom: 0,
+		// 	right: 0,
+		// 	left: 0,
+		// },
+		// rdsDefaults: {
+		// 	top: 0,
+		// 	bottom: 50,
+		// 	right: 500,
+		// 	left: 1000,
+		// },
+		// noShadow: true,
+		// noBorder: true,
+	}),
+
+	// background attributes ⬇
+	...generateBackgroundAttributes(BUTTON_ONE_BG, {
+		defaultFillColor: "#3074ff",
+	}),
+	...generateBackgroundAttributes(BUTTON_TWO_BG, {
+		defaultFillColor: "#3074ff",
+	}),
 };
 
 export default attributes;

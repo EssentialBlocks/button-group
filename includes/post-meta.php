@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Button_Group_Post_Meta
+class Duel_Button_Post_Meta
 {
     public function __construct()
     {
@@ -39,4 +39,4 @@ class Button_Group_Post_Meta
     }
 }
 
-new Button_Group_Post_Meta();
+new Duel_Button_Post_Meta();

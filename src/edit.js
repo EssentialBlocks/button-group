@@ -8,6 +8,7 @@ import { RichText } from "@wordpress/block-editor";
  * Internal dependencies
  */
 import Inspector from "./inspector";
+import "./editor.scss";
 
 const Edit = (props) => {
 	const { attributes, isSelected, setAttributes } = props;
