@@ -7,6 +7,9 @@
 .wp-block-create-block-duel-button {
 	border: 1px dotted #f00;
 }
+.block-editor-block-inspector .components-panel__body.eb-subpanel {
+    border: 0;
+}
 
 /* Import All CSS for Controls */
 @import "../util/backend.scss";

@@ -3,7 +3,9 @@
  */
 const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody,
+const { 
+	PanelBody,
+	PanelRow,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
@@ -23,7 +25,7 @@ import {
 	BUTTON_TWO_STYLES,
 	FONT_WEIGHTS,
 	TEXT_TRANSFORM,
-	BORDER_TYPES,
+	NORMAL_HOVER,
 	UNIT_TYPES,
 	BUTTON_BORDER_SHADOW,
 	BUTTON_ONE_BG,
@@ -79,19 +81,11 @@ function Inspector(props) {
 		textTwoColor,
 		hoverButtonTwoColor,
 		hoverTextTwoColor,
-		buttonFontSize,
-		buttonAlign,
 		selectButtonStyleOne,
 		selectButtonStyleTwo,
-		buttonStyleTwo,
 		marginUnit,
 		paddingUnit,
-		buttonFontUnit,
 		borderRadiusUnit,
-		buttonWidth,
-		widthUnit,
-		seperateButtonsSpace,
-		seperateButtonsSpaceUnit,
 		buttonTextOne,
 		buttonURLOne,
 		buttonTextTwo,
@@ -100,18 +94,13 @@ function Inspector(props) {
 		innerButtonSize,
 		innerButtonColor,
 		innerButtonTextColor,
-		innerButtonTextSize,
 		isShowIcon,
 		innerButtonIcon,
-		buttonFontFamily,
-		buttonFontWeight,
-		buttonTextTransform,
-		innerButtonTextTransform,
-		buttonLetterSpacing,
-		innerButtonLetterSpacing,
 		isShowText,
 		borderType,
+		showConnector,
 		connectorType,
+		buttonsColorType,
 	} = attributes;
 
 	const hasConnector = isShowText || isShowIcon;
@@ -305,7 +294,7 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<PanelBody title={__("Buttons Settings")} initialOpen={false}>
+				<PanelBody title={__("Button Settings")} initialOpen={false}>
 					<SelectControl
 						label={__("Button One Styles")}
 						value={selectButtonStyleOne}
@@ -345,304 +334,204 @@ function Inspector(props) {
 						typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
 						resRequiredProps={resRequiredProps}
 					/>
-				</PanelBody>
-
-				<PanelBody title={__("Connector Settings")} initialOpen={false}>
-					<BaseControl label={__("Connector Type")}>
-						<ButtonGroup id="eb-duel-button-connector-type">
-							{CONNECTOR_TYPE.map((item) => (
-								<Button
-									isLarge
-									isPrimary={connectorType === item.value}
-									isSecondary={connectorType !== item.value}
-									onClick={() =>
-										setAttributes({
-											connectorType: item.value,
-										})
-									}
-								>
-									{item.label}
-								</Button>
-							))}
-						</ButtonGroup>
-					</BaseControl>
-
-					{connectorType === "icon" && (
-						<PanelBody title={__("Icon Settings")} initialOpen={true}>
-							<BaseControl label={__("Icon")}>
-								<FontIconPicker
-									icons={iconList}
-									value={innerButtonIcon}
-									onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
-									appendTo="body"
-								/>
-							</BaseControl>
-						</PanelBody>
-					)}
-
-					{connectorType === "text" && (
-						<TextControl
-							label={__("Text")}
-							value={innerButtonText}
-							onChange={(text) => setAttributes({ innerButtonText: text })}
-						/>
-					)}
-
-					{hasConnector && (
-						<RangeControl
-							label={__("Button Size")}
-							value={innerButtonSize || 40}
-							allowReset
-							onChange={(newSize) =>
-								setAttributes({
-									innerButtonSize: newSize,
-								})
-							}
-						/>
-					)}
-
-					{hasConnector && (
-						<TypographyDropdown
-							baseLabel={__("Typography", "button-group")}
-							typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
-							resRequiredProps={resRequiredProps}
-						/>
-					)}
-
-					{hasConnector && (
-						<>
-							<ColorControl
-								label={__("Background Color")}
-								color={innerButtonColor}
-								onChange={(innerButtonColor) =>
-									setAttributes({ innerButtonColor })
-								}
-							/>
-
-							<ColorControl
-								label={__("Icon Color")}
-								color={innerButtonTextColor}
-								onChange={(innerButtonTextColor) =>
-									setAttributes({ innerButtonTextColor })
-								}
-							/>
-						</>
-					)}
-				</PanelBody>
-
-				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
-					<UnitControl
-						selectedUnit={marginUnit}
-						unitTypes={[
-							{ label: "px", value: "px" },
-							{ label: "em", value: "em" },
-							{ label: "%", value: "%" },
-						]}
-						onClick={(marginUnit) => setAttributes({ marginUnit })}
-					/>
-
-					<DimensionsControl
-						label="Margin"
-						top={marginTop}
-						right={marginRight}
-						bottom={marginBottom}
-						left={marginLeft}
-						onChange={({ top, right, bottom, left }) => {
-							setAttributes({
-								marginTop: top,
-								marginRight: right,
-								marginBottom: bottom,
-								marginLeft: left,
-							});
-						}}
-					/>
-
-					<UnitControl
-						selectedUnit={paddingUnit}
-						unitTypes={[
-							{ label: "px", value: "px" },
-							{ label: "em", value: "em" },
-							{ label: "%", value: "%" },
-						]}
-						onClick={(paddingUnit) => setAttributes({ paddingUnit })}
-					/>
-
-					<DimensionsControl
-						label="Padding"
-						top={paddingTop}
-						right={paddingRight}
-						bottom={paddingBottom}
-						left={paddingLeft}
-						onChange={({ top, right, bottom, left }) => {
-							setAttributes({
-								paddingTop: top,
-								paddingRight: right,
-								paddingBottom: bottom,
-								paddingLeft: left,
-							});
-						}}
-					/>
-				</PanelBody>
-
-				<PanelColorSettings
-					title={__("Button One Colors")}
-					initialOpen={false}
-					colorSettings={[
-						{
-							value: buttonOneColor,
-							onChange: (newColor) =>
-								setAttributes({ buttonOneColor: newColor }),
-							label: __("Button Color"),
-						},
-						{
-							value: textOneColor,
-							onChange: (newColor) => setAttributes({ textOneColor: newColor }),
-							label: __("Text Color"),
-						},
-						{
-							value: hoverButtonOneColor,
-							onChange: (newColor) =>
-								setAttributes({
-									hoverButtonOneColor: newColor,
-								}),
-							label: __("Hover Button Color"),
-						},
-						{
-							value: hoverTextOneColor,
-							onChange: (newColor) =>
-								setAttributes({
-									hoverTextOneColor: newColor,
-								}),
-							label: __("Hover Text Color"),
-						},
-					]}
-				/>
-
-				<PanelColorSettings
-					title={__("Button Two Colors")}
-					initialOpen={false}
-					colorSettings={[
-						{
-							value: buttonTwoColor,
-							onChange: (newColor) =>
-								setAttributes({ buttonTwoColor: newColor }),
-							label: __("Button Color"),
-						},
-						{
-							value: textTwoColor,
-							onChange: (newColor) => setAttributes({ textTwoColor: newColor }),
-							label: __("Text Color"),
-						},
-						{
-							value: hoverButtonTwoColor,
-							onChange: (newColor) =>
-								setAttributes({
-									hoverButtonTwoColor: newColor,
-								}),
-							label: __("Hover Button Color"),
-						},
-						{
-							value: hoverTextTwoColor,
-							onChange: (newColor) =>
-								setAttributes({
-									hoverTextTwoColor: newColor,
-								}),
-							label: __("Hover Text Color"),
-						},
-					]}
-				/>
-
-				<PanelBody title={__("Border Settings")} initialOpen={false}>
-					<SelectControl
-						label={__("Border Style")}
-						value={borderStyle}
-						options={BORDER_STYLES}
-						onChange={(newStyle) => setAttributes({ borderStyle: newStyle })}
-					/>
-
-					<RangeControl
-						label={__("Border Width")}
-						value={borderWidth || 0}
-						allowReset
-						onChange={(newValue) => setAttributes({ borderWidth: newValue })}
-						min={0}
-						max={20}
-					/>
 
 					<ButtonGroup className="eb-inspector-btn-group">
-						{BORDER_TYPES.map((item) => (
+						{NORMAL_HOVER.map((item) => (
 							<Button
 								isLarge
-								isPrimary={borderType === item.value}
-								isSecondary={borderType !== item.value}
-								onClick={() => setAttributes({ borderType: item.value })}
+								isPrimary={buttonsColorType === item.value}
+								isSecondary={buttonsColorType !== item.value}
+								onClick={() => setAttributes({ buttonsColorType: item.value })}
 							>
 								{item.label}
 							</Button>
 						))}
 					</ButtonGroup>
 
-					{borderType === "normal" && (
-						<>
-							<ColorControl
-								label={__("Button One Border Color")}
-								color={borderOneColor}
-								onChange={(borderOneColor) => setAttributes({ borderOneColor })}
-							/>
-
-							<ColorControl
-								label={__("Button Two Border Color ")}
-								color={borderTwoColor}
-								onChange={(borderTwoColor) => setAttributes({ borderTwoColor })}
-							/>
-						</>
+					{buttonsColorType === "normal" && (
+						<PanelColorSettings
+							className={"eb-subpanel"}
+							title={__("Normal Colors")}
+							initialOpen={true}
+							colorSettings={[
+								{
+									value: buttonOneColor,
+									onChange: (newColor) =>
+										setAttributes({ buttonOneColor: newColor }),
+									label: __("Button One Color"),
+								},
+								{
+									value: textOneColor,
+									onChange: (newColor) => setAttributes({ textOneColor: newColor }),
+									label: __("Button One Text Color"),
+								},
+								{
+									value: buttonTwoColor,
+									onChange: (newColor) =>
+										setAttributes({
+											buttonTwoColor: newColor,
+										}),
+									label: __("Button Two Color"),
+								},
+								{
+									value: textTwoColor,
+									onChange: (newColor) =>
+										setAttributes({
+											textTwoColor: newColor,
+										}),
+									label: __("Button Two Text Color"),
+								},
+							]}
+						/>
 					)}
 
-					{borderType === "hover" && (
-						<>
-							<ColorControl
-								label={__("Button One Hover Color")}
-								color={hoverBorderOneColor}
-								onChange={(hoverBorderOneColor) =>
-									setAttributes({ hoverBorderOneColor })
-								}
-							/>
-
-							<ColorControl
-								label={__("Button Two Hover Color")}
-								color={hoverBorderTwoColor}
-								onChange={(hoverBorderTwoColor) =>
-									setAttributes({ hoverBorderTwoColor })
-								}
-							/>
-						</>
+					{buttonsColorType === "hover" && (
+						<PanelColorSettings
+							className={"eb-subpanel"}
+							title={__("Hover Colors")}
+							initialOpen={true}
+							colorSettings={[
+								{
+									value: hoverButtonOneColor,
+									onChange: (newColor) =>
+										setAttributes({ hoverButtonOneColor: newColor }),
+									label: __("Button One Color"),
+								},
+								{
+									value: hoverTextOneColor,
+									onChange: (newColor) => setAttributes({ hoverTextOneColor: newColor }),
+									label: __("Button One Text Color"),
+								},
+								{
+									value: hoverButtonTwoColor,
+									onChange: (newColor) =>
+										setAttributes({
+											hoverButtonTwoColor: newColor,
+										}),
+									label: __("Button Two Color"),
+								},
+								{
+									value: hoverTextTwoColor,
+									onChange: (newColor) =>
+										setAttributes({
+											hoverTextTwoColor: newColor,
+										}),
+									label: __("Button Two Text Color"),
+								},
+							]}
+						/>
 					)}
 
-					<UnitControl
-						selectedUnit={borderRadiusUnit}
-						unitTypes={[
-							{ label: "px", value: "px" },
-							{ label: "em", value: "em" },
-							{ label: "%", value: "%" },
-						]}
-						onClick={(borderRadiusUnit) => setAttributes({ borderRadiusUnit })}
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={BUTTONS_PADDING}
+						baseLabel="Padding"
 					/>
 
-					<DimensionsControl
-						label={__("Border Radius")}
-						top={borderRadiusTopLeft}
-						right={borderRadiusTopRight}
-						bottom={borderRadiusBottomRight}
-						left={borderRadiusBottomLeft}
-						onChange={({ top, right, bottom, left }) =>
-							setAttributes({
-								borderRadiusTopLeft: top,
-								borderRadiusTopRight: right,
-								borderRadiusBottomRight: bottom,
-								borderRadiusBottomLeft: left,
-							})
-						}
+					<PanelBody className={"eb-subpanel"} title={__("Border")} initialOpen={true}>
+						<BorderShadowControl
+							controlName={BUTTON_BORDER_SHADOW}
+							resRequiredProps={resRequiredProps}
+							noShadow
+						/>
+					</PanelBody>
+
+					
+				</PanelBody>
+
+				<PanelBody title={__("Connector Settings")} initialOpen={false}>
+					<ToggleControl
+						label={__("Show Connector?")}
+						checked={showConnector}
+						onChange={() => {
+							setAttributes({ showConnector: !showConnector });
+						}}
 					/>
+					{showConnector && (
+						<>
+							<BaseControl label={__("Connector Type")}>
+								<ButtonGroup id="eb-duel-button-connector-type">
+									{CONNECTOR_TYPE.map((item) => (
+										<Button
+											isLarge
+											isPrimary={connectorType === item.value}
+											isSecondary={connectorType !== item.value}
+											onClick={() =>
+												setAttributes({
+													connectorType: item.value,
+												})
+											}
+										>
+											{item.label}
+										</Button>
+									))}
+								</ButtonGroup>
+							</BaseControl>
+
+							{connectorType === "icon" && (
+								<PanelBody title={__("Icon Settings")} initialOpen={true}>
+									<BaseControl label={__("Icon")}>
+										<FontIconPicker
+											icons={iconList}
+											value={innerButtonIcon}
+											onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
+											appendTo="body"
+										/>
+									</BaseControl>
+								</PanelBody>
+							)}
+
+							{connectorType === "text" && (
+								<TextControl
+									label={__("Text")}
+									value={innerButtonText}
+									onChange={(text) => setAttributes({ innerButtonText: text })}
+								/>
+							)}
+
+							{hasConnector && (
+								<RangeControl
+									label={__("Button Size")}
+									value={innerButtonSize || 40}
+									allowReset
+									onChange={(newSize) =>
+										setAttributes({
+											innerButtonSize: newSize,
+										})
+									}
+								/>
+							)}
+
+							{hasConnector && (
+								<TypographyDropdown
+									baseLabel={__("Typography", "button-group")}
+									typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
+									resRequiredProps={resRequiredProps}
+								/>
+							)}
+
+							{hasConnector && (
+								<>
+									<ColorControl
+										label={__("Background Color")}
+										color={innerButtonColor}
+										onChange={(innerButtonColor) =>
+											setAttributes({ innerButtonColor })
+										}
+									/>
+
+									<ColorControl
+										label={__("Text/ Icon Color")}
+										color={innerButtonTextColor}
+										onChange={(innerButtonTextColor) =>
+											setAttributes({ innerButtonTextColor })
+										}
+									/>
+								</>
+							)}
+						</>
+					)}
+					
 				</PanelBody>
 			</div>
 		</InspectorControls>

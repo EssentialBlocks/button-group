@@ -3791,11 +3791,19 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "boolean",
     "default": false
   },
+  showConnector: {
+    type: "boolean",
+    "default": true
+  },
   connectorType: {
     type: "string",
     "default": "text"
   },
   borderType: {
+    type: "string",
+    "default": "normal"
+  },
+  buttonsColorType: {
     type: "string",
     "default": "normal"
   }
@@ -3832,7 +3840,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
 /*!************************************!*\
   !*** ./src/constants/constants.js ***!
   \************************************/
-/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BORDER_STYLES, BUTTON_ONE_STYLES, BUTTON_TWO_STYLES, UNIT_TYPES, TEXT_TRANSFORM, FONT_WEIGHTS, BORDER_TYPES, CONNECTOR_TYPE */
+/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BORDER_STYLES, BUTTON_ONE_STYLES, BUTTON_TWO_STYLES, UNIT_TYPES, TEXT_TRANSFORM, FONT_WEIGHTS, NORMAL_HOVER, CONNECTOR_TYPE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3852,7 +3860,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNIT_TYPES", function() { return UNIT_TYPES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_TRANSFORM", function() { return TEXT_TRANSFORM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FONT_WEIGHTS", function() { return FONT_WEIGHTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BORDER_TYPES", function() { return BORDER_TYPES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NORMAL_HOVER", function() { return NORMAL_HOVER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONNECTOR_TYPE", function() { return CONNECTOR_TYPE; });
 var __ = wp.i18n.__; // the consts defined here should be unique from one another
 
@@ -3949,7 +3957,7 @@ var FONT_WEIGHTS = [{
   label: __("Bolder"),
   value: "bolder"
 }];
-var BORDER_TYPES = [{
+var NORMAL_HOVER = [{
   label: "Normal",
   value: "normal"
 }, {
@@ -4303,6 +4311,7 @@ var _wp$blockEditor = wp.blockEditor,
     PanelColorSettings = _wp$blockEditor.PanelColorSettings;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl,
@@ -4359,19 +4368,11 @@ function Inspector(props) {
       textTwoColor = attributes.textTwoColor,
       hoverButtonTwoColor = attributes.hoverButtonTwoColor,
       hoverTextTwoColor = attributes.hoverTextTwoColor,
-      buttonFontSize = attributes.buttonFontSize,
-      buttonAlign = attributes.buttonAlign,
       selectButtonStyleOne = attributes.selectButtonStyleOne,
       selectButtonStyleTwo = attributes.selectButtonStyleTwo,
-      buttonStyleTwo = attributes.buttonStyleTwo,
       marginUnit = attributes.marginUnit,
       paddingUnit = attributes.paddingUnit,
-      buttonFontUnit = attributes.buttonFontUnit,
       borderRadiusUnit = attributes.borderRadiusUnit,
-      buttonWidth = attributes.buttonWidth,
-      widthUnit = attributes.widthUnit,
-      seperateButtonsSpace = attributes.seperateButtonsSpace,
-      seperateButtonsSpaceUnit = attributes.seperateButtonsSpaceUnit,
       buttonTextOne = attributes.buttonTextOne,
       buttonURLOne = attributes.buttonURLOne,
       buttonTextTwo = attributes.buttonTextTwo,
@@ -4380,18 +4381,13 @@ function Inspector(props) {
       innerButtonSize = attributes.innerButtonSize,
       innerButtonColor = attributes.innerButtonColor,
       innerButtonTextColor = attributes.innerButtonTextColor,
-      innerButtonTextSize = attributes.innerButtonTextSize,
       isShowIcon = attributes.isShowIcon,
       innerButtonIcon = attributes.innerButtonIcon,
-      buttonFontFamily = attributes.buttonFontFamily,
-      buttonFontWeight = attributes.buttonFontWeight,
-      buttonTextTransform = attributes.buttonTextTransform,
-      innerButtonTextTransform = attributes.innerButtonTextTransform,
-      buttonLetterSpacing = attributes.buttonLetterSpacing,
-      innerButtonLetterSpacing = attributes.innerButtonLetterSpacing,
       isShowText = attributes.isShowText,
       borderType = attributes.borderType,
-      connectorType = attributes.connectorType;
+      showConnector = attributes.showConnector,
+      connectorType = attributes.connectorType,
+      buttonsColorType = attributes.buttonsColorType;
   var hasConnector = isShowText || isShowIcon;
 
   var handleButtonOneStyles = function handleButtonOneStyles(style) {
@@ -4586,7 +4582,7 @@ function Inspector(props) {
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["WRAPPER_MARGIN"],
     baseLabel: "Margin"
   })), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Buttons Settings"),
+    title: __("Button Settings"),
     initialOpen: false
   }, /*#__PURE__*/React.createElement(SelectControl, {
     label: __("Button One Styles"),
@@ -4622,10 +4618,117 @@ function Inspector(props) {
     baseLabel: __("Typography", "button-group"),
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__["BUTTONS_TYPOGRAPHY"],
     resRequiredProps: resRequiredProps
-  })), /*#__PURE__*/React.createElement(PanelBody, {
+  }), /*#__PURE__*/React.createElement(ButtonGroup, {
+    className: "eb-inspector-btn-group"
+  }, _constants_constants__WEBPACK_IMPORTED_MODULE_0__["NORMAL_HOVER"].map(function (item) {
+    return /*#__PURE__*/React.createElement(Button, {
+      isLarge: true,
+      isPrimary: buttonsColorType === item.value,
+      isSecondary: buttonsColorType !== item.value,
+      onClick: function onClick() {
+        return setAttributes({
+          buttonsColorType: item.value
+        });
+      }
+    }, item.label);
+  })), buttonsColorType === "normal" && /*#__PURE__*/React.createElement(PanelColorSettings, {
+    className: "eb-subpanel",
+    title: __("Normal Colors"),
+    initialOpen: true,
+    colorSettings: [{
+      value: buttonOneColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          buttonOneColor: newColor
+        });
+      },
+      label: __("Button One Color")
+    }, {
+      value: textOneColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          textOneColor: newColor
+        });
+      },
+      label: __("Button One Text Color")
+    }, {
+      value: buttonTwoColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          buttonTwoColor: newColor
+        });
+      },
+      label: __("Button Two Color")
+    }, {
+      value: textTwoColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          textTwoColor: newColor
+        });
+      },
+      label: __("Button Two Text Color")
+    }]
+  }), buttonsColorType === "hover" && /*#__PURE__*/React.createElement(PanelColorSettings, {
+    className: "eb-subpanel",
+    title: __("Hover Colors"),
+    initialOpen: true,
+    colorSettings: [{
+      value: hoverButtonOneColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          hoverButtonOneColor: newColor
+        });
+      },
+      label: __("Button One Color")
+    }, {
+      value: hoverTextOneColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          hoverTextOneColor: newColor
+        });
+      },
+      label: __("Button One Text Color")
+    }, {
+      value: hoverButtonTwoColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          hoverButtonTwoColor: newColor
+        });
+      },
+      label: __("Button Two Color")
+    }, {
+      value: hoverTextTwoColor,
+      onChange: function onChange(newColor) {
+        return setAttributes({
+          hoverTextTwoColor: newColor
+        });
+      },
+      label: __("Button Two Text Color")
+    }]
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    resRequiredProps: resRequiredProps,
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_PADDING"],
+    baseLabel: "Padding"
+  }), /*#__PURE__*/React.createElement(PanelBody, {
+    className: "eb-subpanel",
+    title: __("Border"),
+    initialOpen: true
+  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_BORDER_SHADOW"],
+    resRequiredProps: resRequiredProps,
+    noShadow: true
+  }))), /*#__PURE__*/React.createElement(PanelBody, {
     title: __("Connector Settings"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(BaseControl, {
+  }, /*#__PURE__*/React.createElement(ToggleControl, {
+    label: __("Show Connector?"),
+    checked: showConnector,
+    onChange: function onChange() {
+      setAttributes({
+        showConnector: !showConnector
+      });
+    }
+  }), showConnector && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(BaseControl, {
     label: __("Connector Type")
   }, /*#__PURE__*/React.createElement(ButtonGroup, {
     id: "eb-duel-button-connector-type"
@@ -4684,262 +4787,14 @@ function Inspector(props) {
       });
     }
   }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __("Icon Color"),
+    label: __("Text/ Icon Color"),
     color: innerButtonTextColor,
     onChange: function onChange(innerButtonTextColor) {
       return setAttributes({
         innerButtonTextColor: innerButtonTextColor
       });
     }
-  }))), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Margin & Padding"),
-    initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    selectedUnit: marginUnit,
-    unitTypes: [{
-      label: "px",
-      value: "px"
-    }, {
-      label: "em",
-      value: "em"
-    }, {
-      label: "%",
-      value: "%"
-    }],
-    onClick: function onClick(marginUnit) {
-      return setAttributes({
-        marginUnit: marginUnit
-      });
-    }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    label: "Margin",
-    top: marginTop,
-    right: marginRight,
-    bottom: marginBottom,
-    left: marginLeft,
-    onChange: function onChange(_ref) {
-      var top = _ref.top,
-          right = _ref.right,
-          bottom = _ref.bottom,
-          left = _ref.left;
-      setAttributes({
-        marginTop: top,
-        marginRight: right,
-        marginBottom: bottom,
-        marginLeft: left
-      });
-    }
-  }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    selectedUnit: paddingUnit,
-    unitTypes: [{
-      label: "px",
-      value: "px"
-    }, {
-      label: "em",
-      value: "em"
-    }, {
-      label: "%",
-      value: "%"
-    }],
-    onClick: function onClick(paddingUnit) {
-      return setAttributes({
-        paddingUnit: paddingUnit
-      });
-    }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    label: "Padding",
-    top: paddingTop,
-    right: paddingRight,
-    bottom: paddingBottom,
-    left: paddingLeft,
-    onChange: function onChange(_ref2) {
-      var top = _ref2.top,
-          right = _ref2.right,
-          bottom = _ref2.bottom,
-          left = _ref2.left;
-      setAttributes({
-        paddingTop: top,
-        paddingRight: right,
-        paddingBottom: bottom,
-        paddingLeft: left
-      });
-    }
-  })), /*#__PURE__*/React.createElement(PanelColorSettings, {
-    title: __("Button One Colors"),
-    initialOpen: false,
-    colorSettings: [{
-      value: buttonOneColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          buttonOneColor: newColor
-        });
-      },
-      label: __("Button Color")
-    }, {
-      value: textOneColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          textOneColor: newColor
-        });
-      },
-      label: __("Text Color")
-    }, {
-      value: hoverButtonOneColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          hoverButtonOneColor: newColor
-        });
-      },
-      label: __("Hover Button Color")
-    }, {
-      value: hoverTextOneColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          hoverTextOneColor: newColor
-        });
-      },
-      label: __("Hover Text Color")
-    }]
-  }), /*#__PURE__*/React.createElement(PanelColorSettings, {
-    title: __("Button Two Colors"),
-    initialOpen: false,
-    colorSettings: [{
-      value: buttonTwoColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          buttonTwoColor: newColor
-        });
-      },
-      label: __("Button Color")
-    }, {
-      value: textTwoColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          textTwoColor: newColor
-        });
-      },
-      label: __("Text Color")
-    }, {
-      value: hoverButtonTwoColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          hoverButtonTwoColor: newColor
-        });
-      },
-      label: __("Hover Button Color")
-    }, {
-      value: hoverTextTwoColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          hoverTextTwoColor: newColor
-        });
-      },
-      label: __("Hover Text Color")
-    }]
-  }), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Border Settings"),
-    initialOpen: false
-  }, /*#__PURE__*/React.createElement(SelectControl, {
-    label: __("Border Style"),
-    value: borderStyle,
-    options: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BORDER_STYLES"],
-    onChange: function onChange(newStyle) {
-      return setAttributes({
-        borderStyle: newStyle
-      });
-    }
-  }), /*#__PURE__*/React.createElement(RangeControl, {
-    label: __("Border Width"),
-    value: borderWidth || 0,
-    allowReset: true,
-    onChange: function onChange(newValue) {
-      return setAttributes({
-        borderWidth: newValue
-      });
-    },
-    min: 0,
-    max: 20
-  }), /*#__PURE__*/React.createElement(ButtonGroup, {
-    className: "eb-inspector-btn-group"
-  }, _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BORDER_TYPES"].map(function (item) {
-    return /*#__PURE__*/React.createElement(Button, {
-      isLarge: true,
-      isPrimary: borderType === item.value,
-      isSecondary: borderType !== item.value,
-      onClick: function onClick() {
-        return setAttributes({
-          borderType: item.value
-        });
-      }
-    }, item.label);
-  })), borderType === "normal" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __("Button One Border Color"),
-    color: borderOneColor,
-    onChange: function onChange(borderOneColor) {
-      return setAttributes({
-        borderOneColor: borderOneColor
-      });
-    }
-  }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __("Button Two Border Color "),
-    color: borderTwoColor,
-    onChange: function onChange(borderTwoColor) {
-      return setAttributes({
-        borderTwoColor: borderTwoColor
-      });
-    }
-  })), borderType === "hover" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __("Button One Hover Color"),
-    color: hoverBorderOneColor,
-    onChange: function onChange(hoverBorderOneColor) {
-      return setAttributes({
-        hoverBorderOneColor: hoverBorderOneColor
-      });
-    }
-  }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __("Button Two Hover Color"),
-    color: hoverBorderTwoColor,
-    onChange: function onChange(hoverBorderTwoColor) {
-      return setAttributes({
-        hoverBorderTwoColor: hoverBorderTwoColor
-      });
-    }
-  })), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    selectedUnit: borderRadiusUnit,
-    unitTypes: [{
-      label: "px",
-      value: "px"
-    }, {
-      label: "em",
-      value: "em"
-    }, {
-      label: "%",
-      value: "%"
-    }],
-    onClick: function onClick(borderRadiusUnit) {
-      return setAttributes({
-        borderRadiusUnit: borderRadiusUnit
-      });
-    }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    label: __("Border Radius"),
-    top: borderRadiusTopLeft,
-    right: borderRadiusTopRight,
-    bottom: borderRadiusBottomRight,
-    left: borderRadiusBottomLeft,
-    onChange: function onChange(_ref3) {
-      var top = _ref3.top,
-          right = _ref3.right,
-          bottom = _ref3.bottom,
-          left = _ref3.left;
-      return setAttributes({
-        borderRadiusTopLeft: top,
-        borderRadiusTopRight: right,
-        borderRadiusBottomRight: bottom,
-        borderRadiusBottomLeft: left
-      });
-    }
-  }))));
+  }))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Inspector);

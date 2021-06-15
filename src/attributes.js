@@ -260,11 +260,19 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	showConnector: {
+		type: "boolean",
+		default: true
+	},
 	connectorType: {
 		type: "string",
 		default: "text"
 	},
 	borderType: {
+		type: "string",
+		default: "normal",
+	},
+	buttonsColorType: {
 		type: "string",
 		default: "normal",
 	},

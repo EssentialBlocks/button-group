@@ -55,7 +55,7 @@ export const FONT_WEIGHTS = [
 	{ label: __("Bolder"), value: "bolder" },
 ];
 
-export const BORDER_TYPES = [
+export const NORMAL_HOVER = [
 	{ label: "Normal", value: "normal" },
 	{ label: "Hover", value: "hover" },
 ];
