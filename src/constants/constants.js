@@ -11,25 +11,7 @@ export const BUTTONS_WIDTH = "buttonsWidth";
 export const BUTTONS_GAP = "buttonsGap";
 export const BUTTONS_CONNECTOR_SIZE = "buttonsConnectorSize";
 
-export const BORDER_STYLES = [
-	{ label: __("None"), value: "none" },
-	{ label: __("Dashed"), value: "dashed" },
-	{ label: __("Solid"), value: "solid" },
-	{ label: __("Dotted"), value: "dotted" },
-	{ label: __("Double"), value: "double" },
-	{ label: __("Groove"), value: "groove" },
-	{ label: __("Inset"), value: "inset" },
-	{ label: __("Outset"), value: "outset" },
-	{ label: __("Ridge"), value: "ridge" },
-];
-
-export const BUTTON_ONE_STYLES = [
-	{ label: __("Fill"), value: "fill" },
-	{ label: __("Outline"), value: "outline" },
-	{ label: __("Text"), value: "text" },
-];
-
-export const BUTTON_TWO_STYLES = [
+export const BUTTON_STYLES = [
 	{ label: __("Fill"), value: "fill" },
 	{ label: __("Outline"), value: "outline" },
 	{ label: __("Text"), value: "text" },
@@ -41,20 +23,6 @@ export const UNIT_TYPES = [
 	{ label: "em", value: "em" },
 ];
 
-export const TEXT_TRANSFORM = [
-	{ label: __("None"), value: "none" },
-	{ label: __("Lowercase"), value: "lowercase" },
-	{ label: __("Capitalize"), value: "capitalize" },
-	{ label: __("Uppercase"), value: "uppercase" },
-];
-
-export const FONT_WEIGHTS = [
-	{ label: __("Lighter"), value: "lighter" },
-	{ label: __("Normal"), value: "normal" },
-	{ label: __("Bold"), value: "bold" },
-	{ label: __("Bolder"), value: "bolder" },
-];
-
 export const NORMAL_HOVER = [
 	{ label: "Normal", value: "normal" },
 	{ label: "Hover", value: "hover" },
@@ -63,4 +31,10 @@ export const NORMAL_HOVER = [
 export const CONNECTOR_TYPE = [
 	{ label: __("Text"), value: "text" },
 	{ label: __("Icon"), value: "icon" },
+];
+
+export const PRESETS = [
+	{ label: __("Button 1"), value: "button-1" },
+	{ label: __("Button 2"), value: "button-2" },
+	{ label: __("Button 3"), value: "button-3" }
 ];

@@ -5,74 +5,45 @@ const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { 
 	PanelBody,
-	PanelRow,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
 	TextControl,
 	Button,
 	ButtonGroup,
-	BaseControl,
-	Dropdown, } = wp.components;
+	BaseControl 
+} = wp.components;
 const { useEffect } = wp.element;
 
 /**
  * Internal depencencies
  */
 import {
-	BORDER_STYLES,
-	BUTTON_ONE_STYLES,
-	BUTTON_TWO_STYLES,
-	FONT_WEIGHTS,
-	TEXT_TRANSFORM,
+	BUTTON_STYLES,
 	NORMAL_HOVER,
 	UNIT_TYPES,
 	BUTTON_BORDER_SHADOW,
-	BUTTON_ONE_BG,
-	BUTTON_TWO_BG,
 	WRAPPER_MARGIN,
-	BUTTONS_MARGIN,
 	BUTTONS_PADDING,
 	BUTTONS_WIDTH,
 	BUTTONS_GAP,
-	BUTTONS_CONNECTOR_SIZE,
-	CONNECTOR_TYPE
+	CONNECTOR_TYPE,
+	PRESETS,
 } from "./constants/constants";
 import {BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY} from "./constants/typographyPrefixConstants";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconList from "../util/faIcons";
-import DimensionsControl from "../util/dimensions-control";
-import UnitControl from "../util/unit-control";
 import ColorControl from "../util/color-control";
-import FontPicker from "../util/typography-control/FontPicker";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
 import BorderShadowControl from "../util/border-shadow-control";
 import ResponsiveRangeController from "../util/responsive-range-control";
-// import BackgroundControl from "../util/background-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
 	const {
 		resOption,
-		marginTop,
-		marginRight,
-		marginBottom,
-		marginLeft,
-		paddingTop,
-		paddingRight,
-		paddingBottom,
-		paddingLeft,
-		borderWidth,
-		borderOneColor,
-		hoverBorderOneColor,
-		borderTwoColor,
-		hoverBorderTwoColor,
-		borderStyle,
-		borderRadiusTopLeft,
-		borderRadiusTopRight,
-		borderRadiusBottomRight,
-		borderRadiusBottomLeft,
+		preset,
 		buttonOneColor,
 		textOneColor,
 		hoverButtonOneColor,
@@ -83,9 +54,6 @@ function Inspector(props) {
 		hoverTextTwoColor,
 		selectButtonStyleOne,
 		selectButtonStyleTwo,
-		marginUnit,
-		paddingUnit,
-		borderRadiusUnit,
 		buttonTextOne,
 		buttonURLOne,
 		buttonTextTwo,
@@ -97,7 +65,6 @@ function Inspector(props) {
 		isShowIcon,
 		innerButtonIcon,
 		isShowText,
-		borderType,
 		showConnector,
 		connectorType,
 		buttonsColorType,
@@ -265,7 +232,13 @@ function Inspector(props) {
 	return (
 		<InspectorControls key="controls">
 			<div className="eb-panel-control">
-				<PanelBody title={__("General Settings")} initialOpen={false}>
+				<PanelBody title={__("General Settings")} initialOpen={true}>
+					<SelectControl
+						label={__("Preset Designs")}
+						value={preset}
+						options={PRESETS}
+						onChange={(selected) => setAttributes({ preset: selected })}
+					/>
 					<TextControl
 						label={__("Button One Text")}
 						value={buttonTextOne}
@@ -298,14 +271,14 @@ function Inspector(props) {
 					<SelectControl
 						label={__("Button One Styles")}
 						value={selectButtonStyleOne}
-						options={BUTTON_ONE_STYLES}
+						options={BUTTON_STYLES}
 						onChange={(style) => handleButtonOneStyles(style)}
 					/>
 
 					<SelectControl
 						label={__("Button Two Styles")}
 						value={selectButtonStyleTwo}
-						options={BUTTON_TWO_STYLES}
+						options={BUTTON_STYLES}
 						onChange={(style) => handleButtonTwoStyles(style)}
 					/>
 
@@ -422,12 +395,6 @@ function Inspector(props) {
 						/>
 					)}
 
-					<ResponsiveDimensionsControl
-						resRequiredProps={resRequiredProps}
-						controlName={BUTTONS_PADDING}
-						baseLabel="Padding"
-					/>
-
 					<PanelBody className={"eb-subpanel"} title={__("Border")} initialOpen={true}>
 						<BorderShadowControl
 							controlName={BUTTON_BORDER_SHADOW}
@@ -436,6 +403,11 @@ function Inspector(props) {
 						/>
 					</PanelBody>
 
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={BUTTONS_PADDING}
+						baseLabel="Padding"
+					/>
 					
 				</PanelBody>
 
