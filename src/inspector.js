@@ -14,6 +14,7 @@ const {
 	BaseControl 
 } = wp.components;
 const { useEffect } = wp.element;
+const { select } = wp.data;
 
 /**
  * Internal depencencies
@@ -22,14 +23,20 @@ import {
 	BUTTON_STYLES,
 	NORMAL_HOVER,
 	UNIT_TYPES,
-	BUTTON_BORDER_SHADOW,
+	BUTTON_ONE_BORDER_SHADOW,
+	BUTTON_TWO_BORDER_SHADOW,
 	WRAPPER_MARGIN,
 	BUTTONS_PADDING,
 	BUTTONS_WIDTH,
 	BUTTONS_GAP,
 	CONNECTOR_TYPE,
 	PRESETS,
+	BUTTONS_CONNECTOR_SIZE,
 } from "./constants/constants";
+import {
+	mimmikCssForResBtns,
+	mimmikCssOnPreviewBtnClickWhileBlockSelected,
+} from "../util/helpers";
 import {BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY} from "./constants/typographyPrefixConstants";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconList from "../util/faIcons";
@@ -164,64 +171,30 @@ function Inspector(props) {
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
-		const bodyClasses = document.body.className;
-		// console.log("----log from inspector useEffect with empty []", {
-		// 	bodyClasses,
-		// });
-
-		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-			document.body.classList.add("eb-res-option-desktop");
-			setAttributes({
-				resOption: "desktop",
-			});
-		} else {
-			const resOption = bodyClasses
-				.match(/eb-res-option-[^\s]+/g)[0]
-				.split("-")[3];
-			setAttributes({ resOption });
-		}
+		setAttributes({
+			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+		});
 	}, []);
 
 	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
 	useEffect(() => {
-		const allEbBlocksWrapper = document.querySelectorAll(
-			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
-		);
-		// console.log("---inspector", { allEbBlocksWrapper });
-		if (allEbBlocksWrapper.length < 1) return;
-		allEbBlocksWrapper.forEach((styleTag) => {
-			const cssStrings = styleTag.textContent;
-			const minCss = cssStrings.replace(/\s+/g, " ");
-			const regexCssMimmikSpace =
-				/(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
-			let newCssStrings = " ";
-			if (resOption === "tab") {
-				const tabCssStrings = (minCss.match(
-					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
-				) || [" "])[0];
-				// console.log({ tabCssStrings });
-				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
-			} else if (resOption === "mobile") {
-				const tabCssStrings = (minCss.match(
-					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
-				) || [" "])[0];
-
-				const mobCssStrings = (minCss.match(
-					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
-				) || [" "])[0];
-
-				// console.log({ tabCssStrings, mobCssStrings });
-
-				newCssStrings = minCss.replace(
-					regexCssMimmikSpace,
-					`${tabCssStrings} ${mobCssStrings}`
-				);
-			} else {
-				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
-			}
-			styleTag.textContent = newCssStrings;
+		mimmikCssForResBtns({
+			domObj: document,
+			resOption,
 		});
 	}, [resOption]);
+
+	// this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+	useEffect(() => {
+		const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
+			domObj: document,
+			select,
+			setAttributes,
+		});
+		return () => {
+			cleanUp();
+		};
+	}, []);
 
 	const resRequiredProps = {
 		setAttributes,
@@ -283,27 +256,27 @@ function Inspector(props) {
 					/>
 
 					<ResponsiveRangeController
-						baseLabel={__("Buttons Width", "button-group")}
+						baseLabel={__("Buttons Width", "duel-button")}
 						controlName={BUTTONS_WIDTH}
 						resRequiredProps={resRequiredProps}
 						units={UNIT_TYPES}
-						min={100}
-						max={600}
+						min={50}
+						max={500}
 						step={1}
 					/>
 
 					<ResponsiveRangeController
-						baseLabel={__("Buttons Gap", "button-group")}
+						baseLabel={__("Buttons Gap", "duel-button")}
 						controlName={BUTTONS_GAP}
 						resRequiredProps={resRequiredProps}
 						units={UNIT_TYPES}
-						min={100}
-						max={600}
+						min={0}
+						max={100}
 						step={1}
 					/>
 
 					<TypographyDropdown
-						baseLabel={__("Typography", "button-group")}
+						baseLabel={__("Typography", "duel-button")}
 						typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
 						resRequiredProps={resRequiredProps}
 					/>
@@ -395,9 +368,17 @@ function Inspector(props) {
 						/>
 					)}
 
-					<PanelBody className={"eb-subpanel"} title={__("Border")} initialOpen={true}>
+					<PanelBody className={"eb-subpanel"} title={__("Button One Border")} initialOpen={false}>
 						<BorderShadowControl
-							controlName={BUTTON_BORDER_SHADOW}
+							controlName={BUTTON_ONE_BORDER_SHADOW}
+							resRequiredProps={resRequiredProps}
+							noShadow
+						/>
+					</PanelBody>
+
+					<PanelBody className={"eb-subpanel"} title={__("Button Two Border")} initialOpen={false}>
+						<BorderShadowControl
+							controlName={BUTTON_TWO_BORDER_SHADOW}
 							resRequiredProps={resRequiredProps}
 							noShadow
 						/>
@@ -462,21 +443,20 @@ function Inspector(props) {
 							)}
 
 							{hasConnector && (
-								<RangeControl
-									label={__("Button Size")}
-									value={innerButtonSize || 40}
-									allowReset
-									onChange={(newSize) =>
-										setAttributes({
-											innerButtonSize: newSize,
-										})
-									}
+								<ResponsiveRangeController
+									baseLabel={__("Connector Size", "duel-button")}
+									controlName={BUTTONS_CONNECTOR_SIZE}
+									resRequiredProps={resRequiredProps}
+									units={UNIT_TYPES}
+									min={0}
+									max={100}
+									step={1}
 								/>
 							)}
 
 							{hasConnector && (
 								<TypographyDropdown
-									baseLabel={__("Typography", "button-group")}
+									baseLabel={__("Typography", "duel-button")}
 									typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
 									resRequiredProps={resRequiredProps}
 								/>

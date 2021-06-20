@@ -4,6 +4,7 @@
 const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings, RichText, useBlockProps } = wp.blockEditor;
 const { useEffect } = wp.element;
+const { select } = wp.data;
 
 /**
   * Internal depencencies
@@ -14,13 +15,15 @@ import {
 	BUTTON_STYLES,
 	NORMAL_HOVER,
 	UNIT_TYPES,
-	BUTTON_BORDER_SHADOW,
+	BUTTON_ONE_BORDER_SHADOW,
+	BUTTON_TWO_BORDER_SHADOW,
 	WRAPPER_MARGIN,
 	BUTTONS_PADDING,
 	BUTTONS_WIDTH,
 	BUTTONS_GAP,
 	CONNECTOR_TYPE,
 	PRESETS,
+	BUTTONS_CONNECTOR_SIZE,
 } from "./constants/constants";
 import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
@@ -30,6 +33,9 @@ import {
 	generateDimensionsControlStyles,
 	generateBackgroundControlStyles,
 	generateBorderShadowStyles,
+	generateResponsiveRangeStyles,
+	mimmikCssForPreviewBtnClick,
+	duplicateBlockIdFix,
 } from "../util/helpers";
 
 export default function Edit(props) {
@@ -42,7 +48,18 @@ export default function Edit(props) {
 		preset,
 		buttonTextOne,
 		buttonTextTwo,
+		buttonOneColor,
+		hoverButtonOneColor,
+		textOneColor,
+		hoverTextOneColor,
+		buttonTwoColor,
+		hoverButtonTwoColor,
+		textTwoColor,
+		hoverTextTwoColor,
 		innerButtonText,
+		innerButtonSize,
+		innerButtonColor,
+		innerButtonTextColor,
 		isShowIcon,
 		innerButtonIcon,
 		isShowText,
@@ -52,64 +69,30 @@ export default function Edit(props) {
 	useEffect(() => {
 		const bodyClasses = document.body.className;
 
-		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-			document.body.classList.add("eb-res-option-desktop");
-			setAttributes({
-				resOption: "desktop",
-			});
-		} else {
-			const resOption = bodyClasses
-				.match(/eb-res-option-[^\s]+/g)[0]
-				.split("-")[3];
-			setAttributes({ resOption });
-		}
+		setAttributes({
+			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+		});
+
 	}, []);
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
-		// const current_block_id = attributes.blockId;
-
 		const BLOCK_PREFIX = "eb-duel-button";
-		const unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
+		duplicateBlockIdFix({
+			BLOCK_PREFIX,
+			blockId,
+			setAttributes,
+			select,
+			clientId,
+		});
+	}, []);
 
-		/**
-		 * Define and Generate Unique Block ID
-		 */
-		if (!blockId) {
-			setAttributes({ blockId: unique_id });
-		}
-
-		/**
-		 * Assign New Unique ID when duplicate BlockId found
-		 * Mostly happens when User Duplicate a Block
-		 */
-		const all_blocks = wp.data.select("core/block-editor").getBlocks();
-
-		// console.log({ all_blocks });
-
-		let duplicateFound = false;
-		const fixDuplicateBlockId = (blocks) => {
-			if (duplicateFound) return;
-			for (const item of blocks) {
-				const { innerBlocks } = item;
-				if (item.attributes.blockId === blockId) {
-					if (item.clientId !== clientId) {
-						setAttributes({ blockId: unique_id });
-						// console.log("found a duplicate");
-						duplicateFound = true;
-						return;
-					} else if (innerBlocks.length > 0) {
-						fixDuplicateBlockId(innerBlocks);
-					}
-				} else if (innerBlocks.length > 0) {
-					fixDuplicateBlockId(innerBlocks);
-				}
-			}
-		};
-
-		fixDuplicateBlockId(all_blocks);
-
-		// console.log({ blockId });
+	// this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
+	useEffect(() => {
+		mimmikCssForPreviewBtnClick({
+			domObj: document,
+			select,
+		});
 	}, []);
 
 	const blockProps = useBlockProps({
@@ -160,80 +143,240 @@ export default function Edit(props) {
 	});
 
 	const {
-		styesDesktop: bdShadowStyesDesktop,
-		styesTab: bdShadowStyesTab,
-		styesMobile: bdShadowStyesMobile,
-		stylesHoverDesktop: bdShadowStylesHoverDesktop,
-		stylesHoverTab: bdShadowStylesHoverTab,
-		stylesHoverMobile: bdShadowStylesHoverMobile,
+		styesDesktop: buttonOneBDShadowDesktop,
+		styesTab: buttonOneBDShadowTab,
+		styesMobile: buttonOneBDShadowMobile,
+		stylesHoverDesktop: buttonOneBDShadowHoverDesktop,
+		stylesHoverTab: buttonOneBDShadowHoverTab,
+		stylesHoverMobile: buttonOneBDShadowHoverMobile,
 	} = generateBorderShadowStyles({
-		controlName: BUTTON_BORDER_SHADOW,
+		controlName: BUTTON_ONE_BORDER_SHADOW,
 		attributes,
 		noShadow: true,
+	});
+
+	const {
+		styesDesktop: buttonTwoBDShadowDesktop,
+		styesTab: buttonTwoBDShadowTab,
+		styesMobile: buttonTwoBDShadowMobile,
+		stylesHoverDesktop: buttonTwoBDShadowHoverDesktop,
+		stylesHoverTab: buttonTwoBDShadowHoverTab,
+		stylesHoverMobile: buttonTwoBDShadowHoverMobile,
+	} = generateBorderShadowStyles({
+		controlName: BUTTON_TWO_BORDER_SHADOW,
+		attributes,
+		noShadow: true,
+	});
+
+	// responsive range controller
+	const {
+		rangeStylesDesktop: buttonWidthStyleDesktop,
+		rangeStylesTab: buttonWidthStyleTab,
+		rangeStylesMobile: buttonWidthStyleMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: BUTTONS_WIDTH,
+		property: "width",
+		attributes,
+	});
+
+	const {
+		rangeStylesDesktop: buttonGapStyleDesktop,
+		rangeStylesTab: buttonGapStyleTab,
+		rangeStylesMobile: buttonGapStyleMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: BUTTONS_GAP,
+		property: "margin-right",
+		attributes,
+	});
+
+	const {
+		rangeStylesDesktop: buttonConnectorHeightDesktop,
+		rangeStylesTab: buttonConnectorHeightTab,
+		rangeStylesMobile: buttonConnectorHeightMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: BUTTONS_CONNECTOR_SIZE,
+		property: "height",
+		attributes,
+	});
+
+	const {
+		rangeStylesDesktop: buttonConnectorWidthDesktop,
+		rangeStylesTab: buttonConnectorWidthTab,
+		rangeStylesMobile: buttonConnectorWidthMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: BUTTONS_CONNECTOR_SIZE,
+		property: "width",
+		attributes,
 	});
 
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 		.eb-duel-button-wrapper.${blockId}{
-			
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			${wrapperMarginStylesDesktop}
 		}
 	`;
 
 	const wrapperStylesTab = `
 		.eb-duel-button-wrapper.${blockId}{
+			${wrapperMarginStylesTab}
 
 		}
 	`;
 
 	const wrapperStylesMobile = `
 		.eb-duel-button-wrapper.${blockId}{
+			${wrapperMarginStylesMobile}
 
 		}
 	`;
 
 	// Buttons Common styles css in strings ⬇
 	const buttonsCommonStyleDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-duel-button-title{
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
 			${buttonsTypoStylesDesktop}
+			${buttonsPaddingStylesDesktop}
+			${buttonWidthStyleDesktop}
+			text-align: center
+			cursor: pointer
 		}
-		`;
+	`;
 
 	const buttonsCommonStyleTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-duel-button-title{
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
 			${buttonsTypoStylesTab}
+			${buttonsPaddingStylesTab}
+			${buttonWidthStyleTab}
 		}
-		`;
+	`;
 
 	const buttonsCommonStyleMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-duel-button-title{
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
 			${buttonsTypoStylesMobile}
+			${buttonsPaddingStylesMobile}
+			${buttonWidthStyleMobile}
 		}
-		`;
+	`;
+
+	// Buttons One styles css in strings ⬇
+	const buttonOneStyleDesktop = `
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+			${buttonOneBDShadowDesktop}
+			${buttonGapStyleDesktop}
+			background-color: ${buttonOneColor};
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+			${buttonOneBDShadowHoverDesktop}
+			background-color: ${hoverButtonOneColor};
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+			color: ${textOneColor};
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
+			color: ${hoverTextOneColor};
+		}
+	`;
+	const buttonOneStyleTab = `
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+			${buttonOneBDShadowTab}
+			${buttonGapStyleTab}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+			${buttonOneBDShadowHoverTab}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+
+		}
+	`;
+	const buttonOneStyleMobile = `
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+			${buttonOneBDShadowMobile}
+			${buttonGapStyleMobile}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+			${buttonOneBDShadowHoverMobile}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+
+		}
+	`;
+
+	// Buttons Two styles css in strings ⬇
+	const buttonTwoStyleDesktop = `
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+			${buttonTwoBDShadowDesktop}
+			${buttonGapStyleDesktop}
+			background-color: ${buttonTwoColor};
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+			${buttonTwoBDShadowHoverDesktop}
+			background-color: ${hoverButtonTwoColor};
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+			color: ${textTwoColor};
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
+			color: ${hoverTextTwoColor};
+		}
+	`;
+	const buttonTwoStyleTab = `
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+			${buttonTwoBDShadowTab}
+			${buttonGapStyleTab}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+			${buttonTwoBDShadowHoverTab}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+
+		}
+	`;
+	const buttonTwoStyleMobile = `
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+			${buttonTwoBDShadowMobile}
+			${buttonGapStyleMobile}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+			${buttonTwoBDShadowHoverMobile}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+
+		}
+	`;
 
 	// Connector styles css in strings ⬇
 	const connectorStylesDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-duel-button-text{
+		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner {
 			${connectorTypoStylesDesktop}
+			${buttonConnectorHeightDesktop}
+			${buttonConnectorWidthDesktop}
+			background: ${innerButtonColor};
+			color: ${innerButtonTextColor};
 		}
-		`;
+	`;
 
 	const connectorStylesTab = `
 		.eb-duel-button-wrapper.${blockId} .eb-duel-button-text{
 			${connectorTypoStylesTab}
 		}
-		`;
+	`;
 
 	const connectorStylesMobile = `
 		.eb-duel-button-wrapper.${blockId} .eb-duel-button-text{
 			${connectorTypoStylesMobile}
 		}
-		`;
+	`;
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = softMinifyCssStrings(`
 			${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
 			${isCssExists(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " "}
-			${isCssExists(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " "}
+			${isCssExists(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " "}
+			${isCssExists(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " "}
 			${isCssExists(connectorStylesDesktop) ? connectorStylesDesktop : " "}
 		`);
 
@@ -241,6 +384,8 @@ export default function Edit(props) {
 	const tabAllStyles = softMinifyCssStrings(`
 			${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
 			${isCssExists(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " "}
+			${isCssExists(buttonOneStyleTab) ? buttonOneStyleTab : " "}
+			${isCssExists(buttonTwoStyleTab) ? buttonTwoStyleTab : " "}
 			${isCssExists(connectorStylesTab) ? connectorStylesTab : " "}
 		`);
 
@@ -248,6 +393,8 @@ export default function Edit(props) {
 	const mobileAllStyles = softMinifyCssStrings(`
 			${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
 			${isCssExists(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " "}
+			${isCssExists(buttonOneStyleMobile) ? buttonOneStyleMobile : " "}
+			${isCssExists(buttonTwoStyleMobile) ? buttonTwoStyleMobile : " "}
 			${isCssExists(connectorStylesMobile) ? connectorStylesMobile : " "}
 		`);
 
@@ -378,13 +525,14 @@ export default function Edit(props) {
 
 			<div className={`eb-duel-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				<div
-					className={"eb-button-1"}
+					className={"eb-button-parent eb-button-one"}
 					// style={buttonStyleOne}
 					onMouseEnter={() => setAttributes({ isHoverOne: true })}
 					onMouseLeave={() => setAttributes({ isHoverOne: false })}
 				>
 					<RichText
 						// style={textStylesOne}
+						className={"eb-button-one-text"}
 						placeholder="Add Text.."
 						value={buttonTextOne}
 						onChange={(newText) => setAttributes({ buttonTextOne: newText })}
@@ -392,13 +540,14 @@ export default function Edit(props) {
 					/>
 				</div>
 				<div
-					className={"eb-button-2"}
+					className={"eb-button-parent eb-button-two"}
 					// style={buttonStyleTwo}
 					onMouseEnter={() => setAttributes({ isHoverTwo: true })}
 					onMouseLeave={() => setAttributes({ isHoverTwo: false })}
 				>
 					<RichText
 						// style={textStylesTwo}
+						className={"eb-button-two-text"}
 						placeholder="Add Text.."
 						value={buttonTextTwo}
 						onChange={(newText) => setAttributes({ buttonTextTwo: newText })}

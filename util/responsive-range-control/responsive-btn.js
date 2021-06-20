@@ -1,8 +1,9 @@
+const { dispatch } = wp.data;
 import {
   handleDesktopBtnClick,
-  handleMobileBtnClick,
   handleTabBtnClick,
-} from "./helpers";
+  handleMobileBtnClick,
+} from "../helpers";
 
 export default function WithResBtns({
   children,
@@ -11,21 +12,20 @@ export default function WithResBtns({
   controlName,
   onReset,
 }) {
-  const { setAttributes, attributes, resOption, objAttributes } =
-    resRequiredProps;
+  const { setAttributes, resOption, objAttributes } = resRequiredProps;
   onReset = () => {
-    resOption == "desktop"
+    resOption == "Desktop"
       ? setAttributes({
           [`${controlName}Range`]: objAttributes[`${controlName}Range`].default,
         })
       : "";
-    resOption == "tab"
+    resOption == "Tablet"
       ? setAttributes({
           [`TAB${controlName}Range`]:
             objAttributes[`TAB${controlName}Range`].default,
         })
       : "";
-    resOption == "mobile"
+    resOption == "Mobile"
       ? setAttributes({
           [`MOB${controlName}Range`]:
             objAttributes[`MOB${controlName}Range`].default,
@@ -37,21 +37,39 @@ export default function WithResBtns({
       <div className="responsive-btn">
         <span className="responsive-btn-label">{label}</span>
         <span
-          onClick={() => handleDesktopBtnClick({ setAttributes })}
+          onClick={() =>
+            handleDesktopBtnClick({
+              setPreviewDeviceType:
+                dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
+              setAttributes,
+            })
+          }
           class={`typoResButton dashicons dashicons-desktop ${
-            resOption === "desktop" ? "active" : " "
+            resOption === "Desktop" ? "active" : " "
           }`}
         ></span>
         <span
-          onClick={() => handleTabBtnClick({ setAttributes })}
+          onClick={() =>
+            handleTabBtnClick({
+              setPreviewDeviceType:
+                dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
+              setAttributes,
+            })
+          }
           class={`typoResButton dashicons dashicons-tablet ${
-            resOption === "tab" ? "active" : " "
+            resOption === "Tablet" ? "active" : " "
           }`}
         ></span>
         <span
-          onClick={() => handleMobileBtnClick({ setAttributes })}
+          onClick={() =>
+            handleMobileBtnClick({
+              setPreviewDeviceType:
+                dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
+              setAttributes,
+            })
+          }
           class={`typoResButton dashicons dashicons-smartphone ${
-            resOption === "mobile" ? "active" : " "
+            resOption === "Mobile" ? "active" : " "
           }`}
         ></span>
       </div>

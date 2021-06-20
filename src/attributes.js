@@ -1,16 +1,21 @@
 import {
-	BUTTON_BORDER_SHADOW,
+	BUTTON_ONE_BORDER_SHADOW,
+	BUTTON_TWO_BORDER_SHADOW,
 	BUTTON_ONE_BG,
 	BUTTON_TWO_BG,
 	WRAPPER_MARGIN,
 	BUTTONS_MARGIN,
 	BUTTONS_PADDING,
+	BUTTONS_WIDTH,
+	BUTTONS_GAP,
+	BUTTONS_CONNECTOR_SIZE,
 } from "./constants/constants";
 import {
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
+	generateResponsiveRangeAttributes
 } from "../util/helpers";
 import * as typographyObjs from "./constants/typographyPrefixConstants";
 
@@ -54,32 +59,33 @@ const attributes = {
 	},
 	buttonOneColor: {
 		type: "string",
+		default: "#7967ff"
 	},
 	hoverButtonOneColor: {
 		type: "string",
-		default: "#309bff",
+		default: "#513fd4",
 	},
 	textOneColor: {
 		type: "string",
+		default: "#fff"
 	},
 	hoverTextOneColor: {
 		type: "string",
 	},
 	buttonTwoColor: {
 		type: "string",
+		default: "#309bff"
 	},
 	hoverButtonTwoColor: {
 		type: "string",
-		default: "#7967ff",
+		default: "#2587e2",
 	},
 	textTwoColor: {
 		type: "string",
+		default: "#fff"
 	},
 	hoverTextTwoColor: {
 		type: "string",
-	},
-	textSize: {
-		type: "number",
 	},
 	buttonURLOne: {
 		type: "string",
@@ -111,11 +117,17 @@ const attributes = {
 		type: "string",
 		default: "or",
 	},
+	innerButtonSize: {
+		type: "string",
+		default: "30",
+	},
 	innerButtonColor: {
 		type: "string",
+		default: "#fff"
 	},
 	innerButtonTextColor: {
 		type: "string",
+		default: "#000"
 	},
 	innerButtonIcon: {
 		type: "string",
@@ -159,20 +171,36 @@ const attributes = {
 	}),
 
 	// border shadow attributes ⬇
-	...generateBorderShadowAttributes(BUTTON_BORDER_SHADOW, {
-		// bdrDefaults: {
-		// 	top: 0,
-		// 	bottom: 0,
-		// 	right: 0,
-		// 	left: 0,
-		// },
-		// rdsDefaults: {
-		// 	top: 0,
-		// 	bottom: 50,
-		// 	right: 500,
-		// 	left: 1000,
-		// },
-		// noShadow: true,
+	...generateBorderShadowAttributes(BUTTON_ONE_BORDER_SHADOW, {
+		bdrDefaults: {
+			top: 2,
+			bottom: 2,
+			right: 2,
+			left: 2,
+		},
+		rdsDefaults: {
+			top: 20,
+			bottom: 0,
+			right: 0,
+			left: 20,
+		},
+		noShadow: true,
+		// noBorder: true,
+	}),
+	...generateBorderShadowAttributes(BUTTON_TWO_BORDER_SHADOW, {
+		bdrDefaults: {
+			top: 2,
+			bottom: 2,
+			right: 2,
+			left: 2,
+		},
+		rdsDefaults: {
+			top: 0,
+			bottom: 20,
+			right: 20,
+			left: 0,
+		},
+		noShadow: true,
 		// noBorder: true,
 	}),
 
@@ -182,6 +210,17 @@ const attributes = {
 	}),
 	...generateBackgroundAttributes(BUTTON_TWO_BG, {
 		defaultFillColor: "#3074ff",
+	}),
+
+	// range controller
+	...generateResponsiveRangeAttributes(BUTTONS_WIDTH, {
+		defaultRange: 200,
+	}),
+	...generateResponsiveRangeAttributes(BUTTONS_GAP, {
+		defaultRange: 0,
+	}),
+	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_SIZE, {
+		defaultRange: 30,
 	}),
 };
 

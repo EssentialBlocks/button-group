@@ -3550,7 +3550,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({
+var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({
   resOption: {
     type: "string",
     "default": "desktop"
@@ -3587,33 +3587,34 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     "default": "Button Two"
   },
   buttonOneColor: {
-    type: "string"
+    type: "string",
+    "default": "#7967ff"
   },
   hoverButtonOneColor: {
     type: "string",
-    "default": "#309bff"
+    "default": "#513fd4"
   },
   textOneColor: {
-    type: "string"
+    type: "string",
+    "default": "#fff"
   },
   hoverTextOneColor: {
     type: "string"
   },
   buttonTwoColor: {
-    type: "string"
+    type: "string",
+    "default": "#309bff"
   },
   hoverButtonTwoColor: {
     type: "string",
-    "default": "#7967ff"
+    "default": "#2587e2"
   },
   textTwoColor: {
-    type: "string"
+    type: "string",
+    "default": "#fff"
   },
   hoverTextTwoColor: {
     type: "string"
-  },
-  textSize: {
-    type: "number"
   },
   buttonURLOne: {
     type: "string",
@@ -3645,11 +3646,17 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "string",
     "default": "or"
   },
+  innerButtonSize: {
+    type: "string",
+    "default": "30"
+  },
   innerButtonColor: {
-    type: "string"
+    type: "string",
+    "default": "#fff"
   },
   innerButtonTextColor: {
-    type: "string"
+    type: "string",
+    "default": "#000"
   },
   innerButtonIcon: {
     type: "string"
@@ -3683,24 +3690,46 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
   bottom: 5,
   right: 25,
   left: 25
-})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateBorderShadowAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_BORDER_SHADOW"], {// bdrDefaults: {
-  // 	top: 0,
-  // 	bottom: 0,
-  // 	right: 0,
-  // 	left: 0,
-  // },
-  // rdsDefaults: {
-  // 	top: 0,
-  // 	bottom: 50,
-  // 	right: 500,
-  // 	left: 1000,
-  // },
-  // noShadow: true,
-  // noBorder: true,
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateBorderShadowAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_ONE_BORDER_SHADOW"], {
+  bdrDefaults: {
+    top: 2,
+    bottom: 2,
+    right: 2,
+    left: 2
+  },
+  rdsDefaults: {
+    top: 20,
+    bottom: 0,
+    right: 0,
+    left: 20
+  },
+  noShadow: true // noBorder: true,
+
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateBorderShadowAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_TWO_BORDER_SHADOW"], {
+  bdrDefaults: {
+    top: 2,
+    bottom: 2,
+    right: 2,
+    left: 2
+  },
+  rdsDefaults: {
+    top: 0,
+    bottom: 20,
+    right: 20,
+    left: 0
+  },
+  noShadow: true // noBorder: true,
+
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateBackgroundAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_ONE_BG"], {
   defaultFillColor: "#3074ff"
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateBackgroundAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_TWO_BG"], {
   defaultFillColor: "#3074ff"
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateResponsiveRangeAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_WIDTH"], {
+  defaultRange: 200
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateResponsiveRangeAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_GAP"], {
+  defaultRange: 0
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateResponsiveRangeAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_CONNECTOR_SIZE"], {
+  defaultRange: 30
 }));
 
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
@@ -3711,7 +3740,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
 /*!************************************!*\
   !*** ./src/constants/constants.js ***!
   \************************************/
-/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BUTTON_STYLES, UNIT_TYPES, NORMAL_HOVER, CONNECTOR_TYPE, PRESETS */
+/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_ONE_BORDER_SHADOW, BUTTON_TWO_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BUTTON_STYLES, UNIT_TYPES, NORMAL_HOVER, CONNECTOR_TYPE, PRESETS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3719,7 +3748,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WRAPPER_MARGIN", function() { return WRAPPER_MARGIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTONS_MARGIN", function() { return BUTTONS_MARGIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTONS_PADDING", function() { return BUTTONS_PADDING; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTON_BORDER_SHADOW", function() { return BUTTON_BORDER_SHADOW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTON_ONE_BORDER_SHADOW", function() { return BUTTON_ONE_BORDER_SHADOW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTON_TWO_BORDER_SHADOW", function() { return BUTTON_TWO_BORDER_SHADOW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTON_ONE_BG", function() { return BUTTON_ONE_BG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTON_TWO_BG", function() { return BUTTON_TWO_BG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUTTONS_WIDTH", function() { return BUTTONS_WIDTH; });
@@ -3735,7 +3765,8 @@ var __ = wp.i18n.__; // the consts defined here should be unique from one anothe
 var WRAPPER_MARGIN = "wrpMargin";
 var BUTTONS_MARGIN = "buttonsMargin";
 var BUTTONS_PADDING = "buttonsPadding";
-var BUTTON_BORDER_SHADOW = "wrpBorderShadow";
+var BUTTON_ONE_BORDER_SHADOW = "buttonOneBorderShadow";
+var BUTTON_TWO_BORDER_SHADOW = "buttonTwoBorderShadow";
 var BUTTON_ONE_BG = "button1Bg";
 var BUTTON_TWO_BG = "button2Bg";
 var BUTTONS_WIDTH = "buttonsWidth";
@@ -3821,12 +3852,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants/constants */ "./src/constants/constants.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 /**
  * WordPress dependencies
 */
@@ -3837,6 +3862,7 @@ var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
     useBlockProps = _wp$blockEditor.useBlockProps;
 var useEffect = wp.element.useEffect;
+var select = wp.data.select;
 /**
   * Internal depencencies
 */
@@ -3857,84 +3883,45 @@ function Edit(props) {
       preset = attributes.preset,
       buttonTextOne = attributes.buttonTextOne,
       buttonTextTwo = attributes.buttonTextTwo,
+      buttonOneColor = attributes.buttonOneColor,
+      hoverButtonOneColor = attributes.hoverButtonOneColor,
+      textOneColor = attributes.textOneColor,
+      hoverTextOneColor = attributes.hoverTextOneColor,
+      buttonTwoColor = attributes.buttonTwoColor,
+      hoverButtonTwoColor = attributes.hoverButtonTwoColor,
+      textTwoColor = attributes.textTwoColor,
+      hoverTextTwoColor = attributes.hoverTextTwoColor,
       innerButtonText = attributes.innerButtonText,
+      innerButtonSize = attributes.innerButtonSize,
+      innerButtonColor = attributes.innerButtonColor,
+      innerButtonTextColor = attributes.innerButtonTextColor,
       isShowIcon = attributes.isShowIcon,
       innerButtonIcon = attributes.innerButtonIcon,
       isShowText = attributes.isShowText; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 
   useEffect(function () {
     var bodyClasses = document.body.className;
-
-    if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-      document.body.classList.add("eb-res-option-desktop");
-      setAttributes({
-        resOption: "desktop"
-      });
-    } else {
-      var _resOption = bodyClasses.match(/eb-res-option-[^\s]+/g)[0].split("-")[3];
-      setAttributes({
-        resOption: _resOption
-      });
-    }
+    setAttributes({
+      resOption: select("core/edit-post").__experimentalGetPreviewDeviceType()
+    });
   }, []); // this useEffect is for creating a unique id for each block's unique className by a random unique number
 
   useEffect(function () {
-    // const current_block_id = attributes.blockId;
     var BLOCK_PREFIX = "eb-duel-button";
-    var unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
-    /**
-     * Define and Generate Unique Block ID
-     */
+    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["duplicateBlockIdFix"])({
+      BLOCK_PREFIX: BLOCK_PREFIX,
+      blockId: blockId,
+      setAttributes: setAttributes,
+      select: select,
+      clientId: clientId
+    });
+  }, []); // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
 
-    if (!blockId) {
-      setAttributes({
-        blockId: unique_id
-      });
-    }
-    /**
-     * Assign New Unique ID when duplicate BlockId found
-     * Mostly happens when User Duplicate a Block
-     */
-
-
-    var all_blocks = wp.data.select("core/block-editor").getBlocks(); // console.log({ all_blocks });
-
-    var duplicateFound = false;
-
-    var fixDuplicateBlockId = function fixDuplicateBlockId(blocks) {
-      if (duplicateFound) return;
-
-      var _iterator = _createForOfIteratorHelper(blocks),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var item = _step.value;
-          var innerBlocks = item.innerBlocks;
-
-          if (item.attributes.blockId === blockId) {
-            if (item.clientId !== clientId) {
-              setAttributes({
-                blockId: unique_id
-              }); // console.log("found a duplicate");
-
-              duplicateFound = true;
-              return;
-            } else if (innerBlocks.length > 0) {
-              fixDuplicateBlockId(innerBlocks);
-            }
-          } else if (innerBlocks.length > 0) {
-            fixDuplicateBlockId(innerBlocks);
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    };
-
-    fixDuplicateBlockId(all_blocks); // console.log({ blockId });
+  useEffect(function () {
+    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["mimmikCssForPreviewBtnClick"])({
+      domObj: document,
+      select: select
+    });
   }, []);
   var blockProps = useBlockProps({
     className: "eb-guten-block-main-parent-wrapper"
@@ -3978,35 +3965,92 @@ function Edit(props) {
       buttonsPaddingStylesMobile = _generateDimensionsCo2.dimensionStylesMobile;
 
   var _generateBorderShadow = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateBorderShadowStyles"])({
-    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTON_BORDER_SHADOW"],
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTON_ONE_BORDER_SHADOW"],
     attributes: attributes,
     noShadow: true
   }),
-      bdShadowStyesDesktop = _generateBorderShadow.styesDesktop,
-      bdShadowStyesTab = _generateBorderShadow.styesTab,
-      bdShadowStyesMobile = _generateBorderShadow.styesMobile,
-      bdShadowStylesHoverDesktop = _generateBorderShadow.stylesHoverDesktop,
-      bdShadowStylesHoverTab = _generateBorderShadow.stylesHoverTab,
-      bdShadowStylesHoverMobile = _generateBorderShadow.stylesHoverMobile; // wrapper styles css in strings ⬇
+      buttonOneBDShadowDesktop = _generateBorderShadow.styesDesktop,
+      buttonOneBDShadowTab = _generateBorderShadow.styesTab,
+      buttonOneBDShadowMobile = _generateBorderShadow.styesMobile,
+      buttonOneBDShadowHoverDesktop = _generateBorderShadow.stylesHoverDesktop,
+      buttonOneBDShadowHoverTab = _generateBorderShadow.stylesHoverTab,
+      buttonOneBDShadowHoverMobile = _generateBorderShadow.stylesHoverMobile;
+
+  var _generateBorderShadow2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateBorderShadowStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTON_TWO_BORDER_SHADOW"],
+    attributes: attributes,
+    noShadow: true
+  }),
+      buttonTwoBDShadowDesktop = _generateBorderShadow2.styesDesktop,
+      buttonTwoBDShadowTab = _generateBorderShadow2.styesTab,
+      buttonTwoBDShadowMobile = _generateBorderShadow2.styesMobile,
+      buttonTwoBDShadowHoverDesktop = _generateBorderShadow2.stylesHoverDesktop,
+      buttonTwoBDShadowHoverTab = _generateBorderShadow2.stylesHoverTab,
+      buttonTwoBDShadowHoverMobile = _generateBorderShadow2.stylesHoverMobile; // responsive range controller
 
 
-  var wrapperStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t\n\t\t}\n\t");
-  var wrapperStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\n\t\t}\n\t");
-  var wrapperStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\n\t\t}\n\t"); // Buttons Common styles css in strings ⬇
+  var _generateResponsiveRa = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_WIDTH"],
+    property: "width",
+    attributes: attributes
+  }),
+      buttonWidthStyleDesktop = _generateResponsiveRa.rangeStylesDesktop,
+      buttonWidthStyleTab = _generateResponsiveRa.rangeStylesTab,
+      buttonWidthStyleMobile = _generateResponsiveRa.rangeStylesMobile;
 
-  var buttonsCommonStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-title{\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t}\n\t\t");
-  var buttonsCommonStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-title{\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t}\n\t\t");
-  var buttonsCommonStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-title{\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t}\n\t\t"); // Connector styles css in strings ⬇
+  var _generateResponsiveRa2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_GAP"],
+    property: "margin-right",
+    attributes: attributes
+  }),
+      buttonGapStyleDesktop = _generateResponsiveRa2.rangeStylesDesktop,
+      buttonGapStyleTab = _generateResponsiveRa2.rangeStylesTab,
+      buttonGapStyleMobile = _generateResponsiveRa2.rangeStylesMobile;
 
-  var connectorStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesDesktop, "\n\t\t}\n\t\t");
-  var connectorStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesTab, "\n\t\t}\n\t\t");
-  var connectorStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesMobile, "\n\t\t}\n\t\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var _generateResponsiveRa3 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_CONNECTOR_SIZE"],
+    property: "height",
+    attributes: attributes
+  }),
+      buttonConnectorHeightDesktop = _generateResponsiveRa3.rangeStylesDesktop,
+      buttonConnectorHeightTab = _generateResponsiveRa3.rangeStylesTab,
+      buttonConnectorHeightMobile = _generateResponsiveRa3.rangeStylesMobile;
 
-  var desktopAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesDesktop) ? connectorStylesDesktop : " ", "\n\t\t")); // all css styles for Tab in strings ⬇
+  var _generateResponsiveRa4 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_CONNECTOR_SIZE"],
+    property: "width",
+    attributes: attributes
+  }),
+      buttonConnectorWidthDesktop = _generateResponsiveRa4.rangeStylesDesktop,
+      buttonConnectorWidthTab = _generateResponsiveRa4.rangeStylesTab,
+      buttonConnectorWidthMobile = _generateResponsiveRa4.rangeStylesMobile; // wrapper styles css in strings ⬇
 
-  var tabAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesTab) ? connectorStylesTab : " ", "\n\t\t")); // all css styles for Mobile in strings ⬇
 
-  var mobileAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesMobile) ? connectorStylesMobile : " ", "\n\t\t")); // Set All Style in "blockMeta" Attribute
+  var wrapperStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\tdisplay: flex;\n\t\t\tflex-direction: row;\n\t\t\talign-items: center;\n\t\t\tjustify-content: center;\n\t\t\tposition: relative;\n\t\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t}\n\t");
+  var wrapperStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesTab, "\n\n\t\t}\n\t");
+  var wrapperStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesMobile, "\n\n\t\t}\n\t"); // Buttons Common styles css in strings ⬇
+
+  var buttonsCommonStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonWidthStyleDesktop, "\n\t\t\ttext-align: center\n\t\t\tcursor: pointer\n\t\t}\n\t");
+  var buttonsCommonStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t\t").concat(buttonsPaddingStylesTab, "\n\t\t\t").concat(buttonWidthStyleTab, "\n\t\t}\n\t");
+  var buttonsCommonStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t\t").concat(buttonsPaddingStylesMobile, "\n\t\t\t").concat(buttonWidthStyleMobile, "\n\t\t}\n\t"); // Buttons One styles css in strings ⬇
+
+  var buttonOneStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowDesktop, "\n\t\t\t").concat(buttonGapStyleDesktop, "\n\t\t\tbackground-color: ").concat(buttonOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\t\t\tcolor: ").concat(textOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover .eb-button-one-text {\n\t\t\tcolor: ").concat(hoverTextOneColor, ";\n\t\t}\n\t");
+  var buttonOneStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowTab, "\n\t\t\t").concat(buttonGapStyleTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t");
+  var buttonOneStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowMobile, "\n\t\t\t").concat(buttonGapStyleMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t"); // Buttons Two styles css in strings ⬇
+
+  var buttonTwoStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowDesktop, "\n\t\t\t").concat(buttonGapStyleDesktop, "\n\t\t\tbackground-color: ").concat(buttonTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\t\t\tcolor: ").concat(textTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover .eb-button-two-text {\n\t\t\tcolor: ").concat(hoverTextTwoColor, ";\n\t\t}\n\t");
+  var buttonTwoStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowTab, "\n\t\t\t").concat(buttonGapStyleTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t");
+  var buttonTwoStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowMobile, "\n\t\t\t").concat(buttonGapStyleMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"); // Connector styles css in strings ⬇
+
+  var connectorStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesDesktop, "\n\t\t\t").concat(buttonConnectorHeightDesktop, "\n\t\t\t").concat(buttonConnectorWidthDesktop, "\n\t\t\tbackground: ").concat(innerButtonColor, ";\n\t\t\tcolor: ").concat(innerButtonTextColor, ";\n\t\t}\n\t");
+  var connectorStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesTab, "\n\t\t}\n\t");
+  var connectorStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesMobile, "\n\t\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+
+  var desktopAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesDesktop) ? connectorStylesDesktop : " ", "\n\t\t")); // all css styles for Tab in strings ⬇
+
+  var tabAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonOneStyleTab) ? buttonOneStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonTwoStyleTab) ? buttonTwoStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesTab) ? connectorStylesTab : " ", "\n\t\t")); // all css styles for Mobile in strings ⬇
+
+  var mobileAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonOneStyleMobile) ? buttonOneStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonTwoStyleMobile) ? buttonTwoStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesMobile) ? connectorStylesMobile : " ", "\n\t\t")); // Set All Style in "blockMeta" Attribute
 
   useEffect(function () {
     var styleObject = {
@@ -4103,7 +4147,7 @@ function Edit(props) {
     className: "eb-duel-button-wrapper ".concat(blockId, " ").concat(preset),
     "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
-    className: "eb-button-1" // style={buttonStyleOne}
+    className: "eb-button-parent eb-button-one" // style={buttonStyleOne}
     ,
     onMouseEnter: function onMouseEnter() {
       return setAttributes({
@@ -4117,6 +4161,7 @@ function Edit(props) {
     }
   }, /*#__PURE__*/React.createElement(RichText // style={textStylesOne}
   , {
+    className: "eb-button-one-text",
     placeholder: "Add Text..",
     value: buttonTextOne,
     onChange: function onChange(newText) {
@@ -4126,7 +4171,7 @@ function Edit(props) {
     },
     allowedFormats: ["bold", "italic", "strikethrough"]
   })), /*#__PURE__*/React.createElement("div", {
-    className: "eb-button-2" // style={buttonStyleTwo}
+    className: "eb-button-parent eb-button-two" // style={buttonStyleTwo}
     ,
     onMouseEnter: function onMouseEnter() {
       return setAttributes({
@@ -4140,6 +4185,7 @@ function Edit(props) {
     }
   }, /*#__PURE__*/React.createElement(RichText // style={textStylesTwo}
   , {
+    className: "eb-button-two-text",
     placeholder: "Add Text..",
     value: buttonTextTwo,
     onChange: function onChange(newText) {
@@ -4262,15 +4308,16 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])("cre
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/constants */ "./src/constants/constants.js");
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ "./node_modules/@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.react.js");
-/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _util_faIcons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/faIcons */ "./util/faIcons.js");
-/* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
-/* harmony import */ var _util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
-/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
-/* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
-/* harmony import */ var _util_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/responsive-range-control */ "./util/responsive-range-control/index.js");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ "./node_modules/@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.react.js");
+/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_faIcons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/faIcons */ "./util/faIcons.js");
+/* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
+/* harmony import */ var _util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
+/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
+/* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
+/* harmony import */ var _util_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/responsive-range-control */ "./util/responsive-range-control/index.js");
 /**
  * WordPress dependencies
  */
@@ -4288,9 +4335,11 @@ var _wp$components = wp.components,
     ButtonGroup = _wp$components.ButtonGroup,
     BaseControl = _wp$components.BaseControl;
 var useEffect = wp.element.useEffect;
+var select = wp.data.select;
 /**
  * Internal depencencies
  */
+
 
 
 
@@ -4433,49 +4482,28 @@ function Inspector(props) {
 
 
   useEffect(function () {
-    var bodyClasses = document.body.className; // console.log("----log from inspector useEffect with empty []", {
-    // 	bodyClasses,
-    // });
-
-    if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-      document.body.classList.add("eb-res-option-desktop");
-      setAttributes({
-        resOption: "desktop"
-      });
-    } else {
-      var _resOption = bodyClasses.match(/eb-res-option-[^\s]+/g)[0].split("-")[3];
-      setAttributes({
-        resOption: _resOption
-      });
-    }
+    setAttributes({
+      resOption: select("core/edit-post").__experimentalGetPreviewDeviceType()
+    });
   }, []); // this useEffect is for mimmiking css for all the eb blocks on resOption changing
 
   useEffect(function () {
-    var allEbBlocksWrapper = document.querySelectorAll(".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"); // console.log("---inspector", { allEbBlocksWrapper });
-
-    if (allEbBlocksWrapper.length < 1) return;
-    allEbBlocksWrapper.forEach(function (styleTag) {
-      var cssStrings = styleTag.textContent;
-      var minCss = cssStrings.replace(/\s+/g, " ");
-      var regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
-      var newCssStrings = " ";
-
-      if (resOption === "tab") {
-        var tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0]; // console.log({ tabCssStrings });
-
-        newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
-      } else if (resOption === "mobile") {
-        var _tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0];
-        var mobCssStrings = (minCss.match(/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i) || [" "])[0]; // console.log({ tabCssStrings, mobCssStrings });
-
-        newCssStrings = minCss.replace(regexCssMimmikSpace, "".concat(_tabCssStrings, " ").concat(mobCssStrings));
-      } else {
-        newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
-      }
-
-      styleTag.textContent = newCssStrings;
+    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["mimmikCssForResBtns"])({
+      domObj: document,
+      resOption: resOption
     });
-  }, [resOption]);
+  }, [resOption]); // this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+
+  useEffect(function () {
+    var cleanUp = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["mimmikCssOnPreviewBtnClickWhileBlockSelected"])({
+      domObj: document,
+      select: select,
+      setAttributes: setAttributes
+    });
+    return function () {
+      cleanUp();
+    };
+  }, []);
   var resRequiredProps = {
     setAttributes: setAttributes,
     resOption: resOption,
@@ -4529,7 +4557,7 @@ function Inspector(props) {
         buttonURLTwo: link
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
     resRequiredProps: resRequiredProps,
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["WRAPPER_MARGIN"],
     baseLabel: "Margin"
@@ -4550,25 +4578,25 @@ function Inspector(props) {
     onChange: function onChange(style) {
       return handleButtonTwoStyles(style);
     }
-  }), /*#__PURE__*/React.createElement(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    baseLabel: __("Buttons Width", "button-group"),
+  }), /*#__PURE__*/React.createElement(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    baseLabel: __("Buttons Width", "duel-button"),
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_WIDTH"],
     resRequiredProps: resRequiredProps,
     units: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["UNIT_TYPES"],
-    min: 100,
-    max: 600,
+    min: 50,
+    max: 500,
     step: 1
-  }), /*#__PURE__*/React.createElement(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    baseLabel: __("Buttons Gap", "button-group"),
+  }), /*#__PURE__*/React.createElement(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    baseLabel: __("Buttons Gap", "duel-button"),
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_GAP"],
     resRequiredProps: resRequiredProps,
     units: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["UNIT_TYPES"],
-    min: 100,
-    max: 600,
+    min: 0,
+    max: 100,
     step: 1
-  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    baseLabel: __("Typography", "button-group"),
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__["BUTTONS_TYPOGRAPHY"],
+  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    baseLabel: __("Typography", "duel-button"),
+    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_TYPOGRAPHY"],
     resRequiredProps: resRequiredProps
   }), /*#__PURE__*/React.createElement(ButtonGroup, {
     className: "eb-inspector-btn-group"
@@ -4659,13 +4687,21 @@ function Inspector(props) {
     }]
   }), /*#__PURE__*/React.createElement(PanelBody, {
     className: "eb-subpanel",
-    title: __("Border"),
-    initialOpen: true
-  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_BORDER_SHADOW"],
+    title: __("Button One Border"),
+    initialOpen: false
+  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_ONE_BORDER_SHADOW"],
     resRequiredProps: resRequiredProps,
     noShadow: true
-  })), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  })), /*#__PURE__*/React.createElement(PanelBody, {
+    className: "eb-subpanel",
+    title: __("Button Two Border"),
+    initialOpen: false
+  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_TWO_BORDER_SHADOW"],
+    resRequiredProps: resRequiredProps,
+    noShadow: true
+  })), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
     resRequiredProps: resRequiredProps,
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_PADDING"],
     baseLabel: "Padding"
@@ -4700,8 +4736,8 @@ function Inspector(props) {
     initialOpen: true
   }, /*#__PURE__*/React.createElement(BaseControl, {
     label: __("Icon")
-  }, /*#__PURE__*/React.createElement(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    icons: _util_faIcons__WEBPACK_IMPORTED_MODULE_3__["default"],
+  }, /*#__PURE__*/React.createElement(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    icons: _util_faIcons__WEBPACK_IMPORTED_MODULE_4__["default"],
     value: innerButtonIcon,
     onChange: function onChange(icon) {
       return setAttributes({
@@ -4717,20 +4753,19 @@ function Inspector(props) {
         innerButtonText: text
       });
     }
-  }), hasConnector && /*#__PURE__*/React.createElement(RangeControl, {
-    label: __("Button Size"),
-    value: innerButtonSize || 40,
-    allowReset: true,
-    onChange: function onChange(newSize) {
-      return setAttributes({
-        innerButtonSize: newSize
-      });
-    }
-  }), hasConnector && /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    baseLabel: __("Typography", "button-group"),
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__["BUTTONS_CONNECTOR_TYPOGRAPHY"],
+  }), hasConnector && /*#__PURE__*/React.createElement(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    baseLabel: __("Connector Size", "duel-button"),
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_CONNECTOR_SIZE"],
+    resRequiredProps: resRequiredProps,
+    units: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["UNIT_TYPES"],
+    min: 0,
+    max: 100,
+    step: 1
+  }), hasConnector && /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    baseLabel: __("Typography", "duel-button"),
+    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_CONNECTOR_TYPOGRAPHY"],
     resRequiredProps: resRequiredProps
-  }), hasConnector && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), hasConnector && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
     label: __("Background Color"),
     color: innerButtonColor,
     onChange: function onChange(innerButtonColor) {
@@ -4738,7 +4773,7 @@ function Inspector(props) {
         innerButtonColor: innerButtonColor
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
     label: __("Text/ Icon Color"),
     color: innerButtonTextColor,
     onChange: function onChange(innerButtonTextColor) {
@@ -5391,6 +5426,7 @@ var ColorControl = function ColorControl(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DimensionsControl; });
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers */ "./util/helpers/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5412,6 +5448,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var _wp$element = wp.element,
     useEffect = _wp$element.useEffect,
     useState = _wp$element.useState;
+var dispatch = wp.data.dispatch;
+
 function DimensionsControl(_ref) {
   var top = _ref.top,
       right = _ref.right,
@@ -5433,11 +5471,11 @@ function DimensionsControl(_ref) {
   var baseLabel = neededProps.baseLabel,
       resOption = neededProps.resOption,
       forBorderRadius = neededProps.forBorderRadius,
-      handleDesktopBtnClick = neededProps.handleDesktopBtnClick,
-      handleTabBtnClick = neededProps.handleTabBtnClick,
-      handleMobileBtnClick = neededProps.handleMobileBtnClick;
+      setAttributes = neededProps.setAttributes,
+      dimensionIsLinked = neededProps.dimensionIsLinked,
+      controlName = neededProps.controlName;
 
-  var _useState3 = useState(false),
+  var _useState3 = useState(dimensionIsLinked),
       _useState4 = _slicedToArray(_useState3, 2),
       isLinked = _useState4[0],
       setIsLinked = _useState4[1];
@@ -5468,6 +5506,9 @@ function DimensionsControl(_ref) {
   useEffect(function () {
     onChange(dimensions);
   }, [dimensions]);
+  useEffect(function () {
+    setAttributes(_defineProperty({}, "".concat(controlName, "isLinked"), isLinked)); // console.log({ isLinked });
+  }, [isLinked]);
   return /*#__PURE__*/React.createElement("div", {
     className: "dimention-container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -5476,19 +5517,28 @@ function DimensionsControl(_ref) {
     className: "dimention-label"
   }, baseLabel), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
-      return handleDesktopBtnClick();
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleDesktopBtnClick"])({
+        setAttributes: setAttributes,
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType
+      });
     },
-    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "desktop" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "Desktop" ? "active" : " ")
   }), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
-      return handleTabBtnClick();
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleTabBtnClick"])({
+        setAttributes: setAttributes,
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType
+      });
     },
-    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "tab" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "Tablet" ? "active" : " ")
   }), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
-      return handleMobileBtnClick();
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleMobileBtnClick"])({
+        setAttributes: setAttributes,
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType
+      });
     },
-    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "mobile" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "Mobile" ? "active" : " ")
   })), /*#__PURE__*/React.createElement("div", {
     className: "input-container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -5559,7 +5609,8 @@ function ResponsiveDimensionsControl(_ref) {
   var attributes = resRequiredProps.attributes,
       setAttributes = resRequiredProps.setAttributes,
       resOption = resRequiredProps.resOption;
-  var dimensionUnit = attributes["".concat(controlName, "Unit")],
+  var dimensionIsLinked = attributes["".concat(controlName, "isLinked")],
+      dimensionUnit = attributes["".concat(controlName, "Unit")],
       dimensionTop = attributes["".concat(controlName, "Top")],
       dimensionRight = attributes["".concat(controlName, "Right")],
       dimensionBottom = attributes["".concat(controlName, "Bottom")],
@@ -5588,29 +5639,11 @@ function ResponsiveDimensionsControl(_ref) {
     resOption: resOption,
     baseLabel: baseLabel,
     forBorderRadius: forBorderRadius,
-    handleDesktopBtnClick: function handleDesktopBtnClick() {
-      document.body.classList.add("eb-res-option-desktop");
-      document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
-      setAttributes({
-        resOption: "desktop"
-      });
-    },
-    handleTabBtnClick: function handleTabBtnClick() {
-      document.body.classList.add("eb-res-option-tab");
-      document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
-      setAttributes({
-        resOption: "tab"
-      });
-    },
-    handleMobileBtnClick: function handleMobileBtnClick() {
-      document.body.classList.add("eb-res-option-mobile");
-      document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
-      setAttributes({
-        resOption: "mobile"
-      });
-    }
+    setAttributes: setAttributes,
+    dimensionIsLinked: dimensionIsLinked,
+    controlName: controlName
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
     selectedUnit: dimensionUnit,
     unitTypes: UNITS,
     onClick: function onClick(dimensionUnit) {
@@ -5631,7 +5664,7 @@ function ResponsiveDimensionsControl(_ref) {
           left = _ref2.left;
       return setAttributes((_setAttributes2 = {}, _defineProperty(_setAttributes2, "".concat(controlName, "Top"), top), _defineProperty(_setAttributes2, "".concat(controlName, "Right"), right), _defineProperty(_setAttributes2, "".concat(controlName, "Bottom"), bottom), _defineProperty(_setAttributes2, "".concat(controlName, "Left"), left), _setAttributes2));
     }
-  })), resOption == "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), resOption == "Tablet" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
     selectedUnit: TABdimensionUnit,
     unitTypes: UNITS,
     onClick: function onClick(TABdimensionUnit) {
@@ -5652,7 +5685,7 @@ function ResponsiveDimensionsControl(_ref) {
           left = _ref3.left;
       return setAttributes((_setAttributes4 = {}, _defineProperty(_setAttributes4, "TAB".concat(controlName, "Top"), top), _defineProperty(_setAttributes4, "TAB".concat(controlName, "Right"), right), _defineProperty(_setAttributes4, "TAB".concat(controlName, "Bottom"), bottom), _defineProperty(_setAttributes4, "TAB".concat(controlName, "Left"), left), _setAttributes4));
     }
-  })), resOption == "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), resOption == "Mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
     selectedUnit: MOBdimensionUnit,
     unitTypes: UNITS,
     onClick: function onClick(MOBdimensionUnit) {
@@ -5696,7 +5729,7 @@ var faIcons = ["fab fa-500px", "fab fa-accessible-icon", "fab fa-accusoft", "fas
 /*!*******************************!*\
   !*** ./util/helpers/index.js ***!
   \*******************************/
-/*! exports provided: hasVal, generateBackgroundAttributes, generateDimensionsAttributes, generateTypographyAttributes, generateBorderShadowAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, generateTypographyStyles, generateDimensionsControlStyles, generateBorderShadowStyles, generateBackgroundControlStyles, generateResponsiveRangeAttributes, generateResponsiveRangeStyles, getFlipTransform, getButtonClasses, getBackgroundImage */
+/*! exports provided: hasVal, generateBackgroundAttributes, generateDimensionsAttributes, generateTypographyAttributes, generateBorderShadowAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, generateTypographyStyles, generateDimensionsControlStyles, generateBorderShadowStyles, generateBackgroundControlStyles, generateResponsiveRangeAttributes, generateResponsiveRangeStyles, getFlipTransform, getButtonClasses, getBackgroundImage, handleDesktopBtnClick, handleTabBtnClick, handleMobileBtnClick, mimmikCssForResBtns, mimmikCssForPreviewBtnClick, mimmikCssOnPreviewBtnClickWhileBlockSelected, duplicateBlockIdFix */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5720,6 +5753,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFlipTransform", function() { return getFlipTransform; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getButtonClasses", function() { return getButtonClasses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBackgroundImage", function() { return getBackgroundImage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleDesktopBtnClick", function() { return handleDesktopBtnClick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleTabBtnClick", function() { return handleTabBtnClick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleMobileBtnClick", function() { return handleMobileBtnClick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mimmikCssForResBtns", function() { return mimmikCssForResBtns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mimmikCssForPreviewBtnClick", function() { return mimmikCssForPreviewBtnClick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mimmikCssOnPreviewBtnClickWhileBlockSelected", function() { return mimmikCssOnPreviewBtnClickWhileBlockSelected; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicateBlockIdFix", function() { return duplicateBlockIdFix; });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5844,13 +5890,15 @@ var generateBackgroundAttributes = function generateBackgroundAttributes(control
 }; // function to generate New Dimensions-Control's attributes for multiple Dimensions control based on the array of values(prefixs)
 
 var generateDimensionsAttributes = function generateDimensionsAttributes(controlName) {
-  var _objectSpread5;
+  var _objectSpread4, _objectSpread5;
 
   var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var top = defaults.top,
       right = defaults.right,
       bottom = defaults.bottom,
-      left = defaults.left;
+      left = defaults.left,
+      _defaults$isLinked = defaults.isLinked,
+      isLinked = _defaults$isLinked === void 0 ? true : _defaults$isLinked;
   var desktopTop = hasVal(top) ? _defineProperty({}, "".concat(controlName, "Top"), {
     type: "string",
     "default": "".concat(top)
@@ -5875,10 +5923,13 @@ var generateDimensionsAttributes = function generateDimensionsAttributes(control
   }) : _defineProperty({}, "".concat(controlName, "Left"), {
     type: "string"
   });
-  return _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_defineProperty({}, "".concat(controlName, "Unit"), {
+  return _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread((_objectSpread4 = {}, _defineProperty(_objectSpread4, "".concat(controlName, "isLinked"), {
+    type: "boolean",
+    "default": isLinked
+  }), _defineProperty(_objectSpread4, "".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
-  }), desktopTop), desktopRight), desktopBottom), desktopLeft), {}, (_objectSpread5 = {}, _defineProperty(_objectSpread5, "TAB".concat(controlName, "Unit"), {
+  }), _objectSpread4), desktopTop), desktopRight), desktopBottom), desktopLeft), {}, (_objectSpread5 = {}, _defineProperty(_objectSpread5, "TAB".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
   }), _defineProperty(_objectSpread5, "TAB".concat(controlName, "Top"), {
@@ -6442,48 +6493,58 @@ var generateBackgroundControlStyles = function generateBackgroundControlStyles(_
 }; // function to generate responsive range controller attributes for multiple range control based on the array of prefix
 
 var generateResponsiveRangeAttributes = function generateResponsiveRangeAttributes(controlName) {
-  var _objectSpread11;
+  var _ref17, _objectSpread10;
 
-  var defaultRange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var defaultRange = defaults.defaultRange,
+      noUnits = defaults.noUnits;
   var desktop = defaultRange ? _defineProperty({}, "".concat(controlName, "Range"), {
     type: "number",
-    "default": "".concat(defaultRange)
+    "default": defaultRange
   }) : _defineProperty({}, "".concat(controlName, "Range"), {
     type: "number"
   });
-
-  var result = _objectSpread(_objectSpread(_defineProperty({}, "".concat(controlName, "Unit"), {
+  var units = noUnits === true ? {} : (_ref17 = {}, _defineProperty(_ref17, "".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
-  }), desktop), {}, (_objectSpread11 = {}, _defineProperty(_objectSpread11, "TAB".concat(controlName, "Unit"), {
+  }), _defineProperty(_ref17, "TAB".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
-  }), _defineProperty(_objectSpread11, "TAB".concat(controlName, "Range"), {
+  }), _defineProperty(_ref17, "MOB".concat(controlName, "Unit"), {
+    type: "string",
+    "default": "px"
+  }), _ref17);
+  return _objectSpread(_objectSpread({}, desktop), {}, (_objectSpread10 = {}, _defineProperty(_objectSpread10, "TAB".concat(controlName, "Range"), {
     type: "number"
-  }), _defineProperty(_objectSpread11, "MOB".concat(controlName, "Unit"), {
-    type: "string",
-    "default": "px"
-  }), _defineProperty(_objectSpread11, "MOB".concat(controlName, "Range"), {
+  }), _defineProperty(_objectSpread10, "MOB".concat(controlName, "Range"), {
     type: "number"
-  }), _objectSpread11));
-
-  return _objectSpread({}, result);
+  }), _objectSpread10), units);
 }; // function to generate responsive range control styles for an element based on it's prefix
 
-var generateResponsiveRangeStyles = function generateResponsiveRangeStyles(_ref17) {
-  var controlName = _ref17.controlName,
-      property = _ref17.property,
-      attributes = _ref17.attributes;
-  var desktopSizeUnit = attributes["".concat(controlName, "Unit")],
-      desktopRange = attributes["".concat(controlName, "Range")],
-      TABsizeUnit = attributes["TAB".concat(controlName, "Unit")],
+var generateResponsiveRangeStyles = function generateResponsiveRangeStyles(_ref18) {
+  var controlName = _ref18.controlName,
+      property = _ref18.property,
+      attributes = _ref18.attributes,
+      customUnit = _ref18.customUnit;
+  // console.log({ controlName, property, attributes, customUnit });
+  var desktopSizeUnit;
+  var TABsizeUnit;
+  var MOBsizeUnit;
+
+  if (!customUnit) {
+    desktopSizeUnit = attributes["".concat(controlName, "Unit")];
+    TABsizeUnit = attributes["TAB".concat(controlName, "Unit")];
+    MOBsizeUnit = attributes["MOB".concat(controlName, "Unit")];
+  } else {
+    desktopSizeUnit = TABsizeUnit = MOBsizeUnit = customUnit;
+  }
+
+  var desktopRange = attributes["".concat(controlName, "Range")],
       TABrange = attributes["TAB".concat(controlName, "Range")],
-      MOBsizeUnit = attributes["MOB".concat(controlName, "Unit")],
       MOBrange = attributes["MOB".concat(controlName, "Range")];
-  var size = isNaN(parseFloat(desktopRange)) ? "" : desktopSizeUnit;
-  var rangeStylesDesktop = desktopRange || desktopRange === 0 ? property + ":" + desktopRange + size + ";" : "";
-  var rangeStylesTab = TABrange || TABrange === 0 ? property + ":" + TABrange + TABsizeUnit + ";" : "";
-  var rangeStylesMobile = MOBrange || MOBrange === 0 ? property + ":" + MOBrange + MOBsizeUnit + ";" : "";
+  var rangeStylesDesktop = desktopRange || desktopRange === 0 ? property + ":" + desktopRange + (customUnit || desktopSizeUnit) + ";" : "";
+  var rangeStylesTab = TABrange || TABrange === 0 ? property + ":" + TABrange + (customUnit || TABsizeUnit) + ";" : "";
+  var rangeStylesMobile = MOBrange || MOBrange === 0 ? property + ":" + MOBrange + (customUnit || MOBsizeUnit) + ";" : "";
   return {
     rangeStylesDesktop: rangeStylesDesktop,
     rangeStylesTab: rangeStylesTab,
@@ -6543,6 +6604,194 @@ var getBackgroundImage = function getBackgroundImage(type, gradientValue, imageU
 
       return "none";
   }
+}; //
+// These following 3 functions to handle the resBtns click
+// function 1: to handle desktop button click
+
+var handleDesktopBtnClick = function handleDesktopBtnClick(_ref19) {
+  var setPreviewDeviceType = _ref19.setPreviewDeviceType,
+      setAttributes = _ref19.setAttributes;
+  setAttributes({
+    resOption: "Desktop"
+  });
+  setPreviewDeviceType("Desktop");
+}; // function 2: to handle Tab button click
+
+var handleTabBtnClick = function handleTabBtnClick(_ref20) {
+  var setPreviewDeviceType = _ref20.setPreviewDeviceType,
+      setAttributes = _ref20.setAttributes;
+  setAttributes({
+    resOption: "Tablet"
+  });
+  setPreviewDeviceType("Tablet");
+}; // function 3: to handle Mobile button click
+
+var handleMobileBtnClick = function handleMobileBtnClick(_ref21) {
+  var setPreviewDeviceType = _ref21.setPreviewDeviceType,
+      setAttributes = _ref21.setAttributes;
+  setAttributes({
+    resOption: "Mobile"
+  });
+  setPreviewDeviceType("Mobile");
+}; //
+// function to mimmik css when clicking the responsive buttons in the inspector panel
+
+var mimmikCssForResBtns = function mimmikCssForResBtns(_ref22) {
+  var _ref22$isForPreviewBu = _ref22.isForPreviewButton,
+      isForPreviewButton = _ref22$isForPreviewBu === void 0 ? false : _ref22$isForPreviewBu,
+      domObj = _ref22.domObj,
+      resOption = _ref22.resOption;
+  var allEbBlocksWrapper;
+
+  if (isForPreviewButton) {
+    allEbBlocksWrapper = domObj.querySelectorAll(".eb-guten-block-main-parent-wrapper > style");
+  } else {
+    allEbBlocksWrapper = domObj.querySelectorAll(".eb-guten-block-main-parent-wrapper:not(.is-selected) > style");
+  }
+
+  if (allEbBlocksWrapper.length < 1) return;
+  allEbBlocksWrapper.forEach(function (styleTag) {
+    var cssStrings = styleTag.textContent;
+    var minCss = cssStrings.replace(/\s+/g, " "); // console.log({ minCss });
+
+    var regexCssMimmikSpace = /(mimmikcssStart\s\*\/)(.+)(\/\*\smimmikcssEnd)/i;
+    var newCssStrings = " ";
+
+    if (resOption === "Tablet") {
+      var tabCssStrings = (minCss.match(/tabcssStart\s\*\/(.+)(?=\/\*\stabcssEnd)/i) || [, " "])[1]; // console.log({ tabCssStrings });
+
+      newCssStrings = minCss.replace(regexCssMimmikSpace, "$1 ".concat(tabCssStrings, " $3"));
+    } else if (resOption === "Mobile") {
+      var _tabCssStrings = (minCss.match(/tabcssStart\s\*\/(.+)(?=\/\*\stabcssEnd)/i) || [, " "])[1];
+      var mobCssStrings = (minCss.match( // /(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
+      /mobcssStart\s\*\/(.+)(?=\/\*\smobcssEnd)/i) || [, " "])[1]; // console.log({ tabCssStrings, mobCssStrings });
+
+      newCssStrings = minCss.replace(regexCssMimmikSpace, "$1 ".concat(_tabCssStrings, " ").concat(mobCssStrings, " $3"));
+    } else {
+      newCssStrings = minCss.replace(regexCssMimmikSpace, "$1  $3");
+    }
+
+    styleTag.textContent = newCssStrings;
+  });
+}; //
+// IMPORTANT: The following fuction declaration must be below the 'mimmikCssForResBtns' function declaration
+// function to mimmik css for responsive preview when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button
+
+var mimmikCssForPreviewBtnClick = function mimmikCssForPreviewBtnClick(_ref23) {
+  var domObj = _ref23.domObj,
+      select = _ref23.select;
+  var bodyClasses = domObj.body.className;
+  if (/eb\-mimmik\-added/i.test(bodyClasses)) return;
+  domObj.body.classList.add("eb-mimmik-added");
+  var wpResBtnsWrap = domObj.querySelector("#editor .edit-post-layout + .popover-slot");
+  wpResBtnsWrap.addEventListener("click", function (e) {
+    if (/block\-editor\-post\-preview__button\-resize|components\-menu\-item__item/i.test(e.target.className)) {
+      setTimeout(function () {
+        var resOption = select("core/edit-post").__experimentalGetPreviewDeviceType(); // console.log("---mimmikCssForPreviewBtnClick", { resOption });
+
+
+        mimmikCssForResBtns({
+          isForPreviewButton: true,
+          domObj: domObj,
+          resOption: resOption
+        });
+      }, 0);
+    }
+  });
+}; // IMPORTANT: The following fuction declaration must be below the 'mimmikCssForResBtns' function declaration
+// function to mimmik css for responsive preview when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+
+var mimmikCssOnPreviewBtnClickWhileBlockSelected = function mimmikCssOnPreviewBtnClickWhileBlockSelected(_ref24) {
+  var domObj = _ref24.domObj,
+      select = _ref24.select,
+      setAttributes = _ref24.setAttributes;
+  var wpResBtnsWrap = domObj.querySelector("#editor .edit-post-layout + .popover-slot");
+
+  var handleCLick = function handleCLick(e) {
+    if (/block\-editor\-post\-preview__button\-resize|components\-menu\-item__item/i.test(e.target.className)) {
+      setTimeout(function () {
+        var resOption = select("core/edit-post").__experimentalGetPreviewDeviceType(); // console.log("---resoption from setTimeout", { resOption });
+
+
+        mimmikCssForResBtns({
+          isForPreviewButton: true,
+          domObj: domObj,
+          resOption: resOption
+        });
+        setAttributes({
+          resOption: resOption
+        });
+      }, 0);
+    }
+  };
+
+  wpResBtnsWrap.addEventListener("click", handleCLick);
+  return function () {
+    wpResBtnsWrap.removeEventListener("click", handleCLick);
+  };
+}; //
+// this function is for creating a unique blockId for each block's unique className
+
+var duplicateBlockIdFix = function duplicateBlockIdFix(_ref25) {
+  var BLOCK_PREFIX = _ref25.BLOCK_PREFIX,
+      blockId = _ref25.blockId,
+      setAttributes = _ref25.setAttributes,
+      select = _ref25.select,
+      clientId = _ref25.clientId;
+  var unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
+  /**
+   * Define and Generate Unique Block ID
+   */
+
+  if (!blockId) {
+    setAttributes({
+      blockId: unique_id
+    });
+  }
+  /**
+   * Assign New Unique ID when duplicate BlockId found
+   * Mostly happens when User Duplicate a Block
+   */
+
+
+  var all_blocks = select("core/block-editor").getBlocks(); // console.log({ all_blocks });
+
+  var duplicateFound = false;
+
+  var fixDuplicateBlockId = function fixDuplicateBlockId(blocks) {
+    if (duplicateFound) return;
+
+    var _iterator = _createForOfIteratorHelper(blocks),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        var innerBlocks = item.innerBlocks;
+
+        if (item.attributes.blockId === blockId) {
+          if (item.clientId !== clientId) {
+            setAttributes({
+              blockId: unique_id
+            }); // console.log("found a duplicate");
+
+            duplicateFound = true;
+            return;
+          } else if (innerBlocks.length > 0) {
+            fixDuplicateBlockId(innerBlocks);
+          }
+        } else if (innerBlocks.length > 0) {
+          fixDuplicateBlockId(innerBlocks);
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  };
+
+  fixDuplicateBlockId(all_blocks);
 };
 
 /***/ }),
@@ -6577,45 +6826,6 @@ var ResetControl = function ResetControl(_ref) {
 
 /***/ }),
 
-/***/ "./util/responsive-range-control/helpers.js":
-/*!**************************************************!*\
-  !*** ./util/responsive-range-control/helpers.js ***!
-  \**************************************************/
-/*! exports provided: handleDesktopBtnClick, handleTabBtnClick, handleMobileBtnClick */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleDesktopBtnClick", function() { return handleDesktopBtnClick; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleTabBtnClick", function() { return handleTabBtnClick; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleMobileBtnClick", function() { return handleMobileBtnClick; });
-var handleDesktopBtnClick = function handleDesktopBtnClick(_ref) {
-  var setAttributes = _ref.setAttributes;
-  document.body.classList.add("eb-res-option-desktop");
-  document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
-  setAttributes({
-    resOption: "desktop"
-  });
-};
-var handleTabBtnClick = function handleTabBtnClick(_ref2) {
-  var setAttributes = _ref2.setAttributes;
-  document.body.classList.add("eb-res-option-tab");
-  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
-  setAttributes({
-    resOption: "tab"
-  });
-};
-var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
-  var setAttributes = _ref3.setAttributes;
-  document.body.classList.add("eb-res-option-mobile");
-  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
-  setAttributes({
-    resOption: "mobile"
-  });
-};
-
-/***/ }),
-
 /***/ "./util/responsive-range-control/index.js":
 /*!************************************************!*\
   !*** ./util/responsive-range-control/index.js ***!
@@ -6625,16 +6835,12 @@ var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit-control */ "./util/responsive-range-control/unit-control.js");
-/* harmony import */ var _responsive_btn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./responsive-btn */ "./util/responsive-range-control/responsive-btn.js");
+/* harmony import */ var _responsive_btn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./responsive-btn */ "./util/responsive-range-control/responsive-btn.js");
+/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../unit-control */ "./util/unit-control/index.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-
+var __ = wp.i18n.__;
+var RangeControl = wp.components.RangeControl;
 
 
 
@@ -6645,81 +6851,126 @@ var ResponsiveRangeController = function ResponsiveRangeController(_ref) {
       units = _ref.units,
       min = _ref.min,
       max = _ref.max,
-      step = _ref.step;
+      step = _ref.step,
+      noUnits = _ref.noUnits;
   var attributes = resRequiredProps.attributes,
       setAttributes = resRequiredProps.setAttributes,
       resOption = resRequiredProps.resOption;
+  var desktopSizeUnit;
+  var TABsizeUnit;
+  var MOBsizeUnit;
+  var defaultUnits;
   var desktopRange = attributes["".concat(controlName, "Range")],
-      desktopSizeUnit = attributes["".concat(controlName, "Unit")],
       TABrange = attributes["TAB".concat(controlName, "Range")],
-      TABsizeUnit = attributes["TAB".concat(controlName, "Unit")],
-      MOBrange = attributes["MOB".concat(controlName, "Range")],
-      MOBsizeUnit = attributes["MOB".concat(controlName, "Unit")];
-  var UNITS = [{
-    label: "px",
-    value: "px"
-  }, {
-    label: "em",
-    value: "em"
-  }, {
-    label: "%",
-    value: "%"
-  }];
-  return /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    selectedUnit: desktopSizeUnit,
-    unitTypes: units || UNITS,
-    onClick: function onClick(desktopSizeUnit) {
-      return setAttributes(_defineProperty({}, "".concat(controlName, "Unit"), desktopSizeUnit));
-    }
-  }), /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      MOBrange = attributes["MOB".concat(controlName, "Range")];
+
+  if (!noUnits) {
+    desktopSizeUnit = attributes["".concat(controlName, "Unit")];
+    TABsizeUnit = attributes["TAB".concat(controlName, "Unit")];
+    MOBsizeUnit = attributes["MOB".concat(controlName, "Unit")];
+    defaultUnits = [{
+      label: "px",
+      value: "px"
+    }, {
+      label: "em",
+      value: "em"
+    }, {
+      label: "%",
+      value: "%"
+    }];
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, noUnits ? /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "Desktop" && /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
     label: baseLabel,
     resRequiredProps: resRequiredProps,
     controlName: controlName
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["RangeControl"], {
+  }, /*#__PURE__*/React.createElement(RangeControl, {
     value: desktopRange,
     onChange: function onChange(desktopRange) {
       return setAttributes(_defineProperty({}, "".concat(controlName, "Range"), desktopRange));
     },
-    step: desktopSizeUnit === "em" ? 0.1 : desktopSizeUnit === "%" ? 1 : step,
-    min: desktopSizeUnit === "em" ? 0 : desktopSizeUnit === "%" ? 0 : min,
-    max: desktopSizeUnit === "em" ? 10 : desktopSizeUnit === "%" ? 100 : max
-  }))), resOption == "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    selectedUnit: TABsizeUnit,
-    unitTypes: units || UNITS,
-    onClick: function onClick(TABsizeUnit) {
-      return setAttributes(_defineProperty({}, "TAB".concat(controlName, "Unit"), TABsizeUnit));
-    }
-  }), /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    step: step || 1,
+    min: min || 0,
+    max: max || 2000
+  })), resOption == "Tablet" && /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
     label: baseLabel,
     resRequiredProps: resRequiredProps,
     controlName: controlName
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["RangeControl"], {
+  }, /*#__PURE__*/React.createElement(RangeControl, {
     value: TABrange,
     onChange: function onChange(TABrange) {
       return setAttributes(_defineProperty({}, "TAB".concat(controlName, "Range"), TABrange));
     },
-    step: TABsizeUnit === "em" ? 0.1 : TABsizeUnit === "%" ? 1 : step,
-    min: TABsizeUnit === "em" ? 0 : TABsizeUnit === "%" ? 0 : min,
-    max: TABsizeUnit === "em" ? 10 : TABsizeUnit === "%" ? 100 : max
-  }))), resOption == "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    selectedUnit: MOBsizeUnit,
-    unitTypes: units || UNITS,
-    onClick: function onClick(MOBsizeUnit) {
-      return setAttributes(_defineProperty({}, "MOB".concat(controlName, "Unit"), MOBsizeUnit));
-    }
-  }), /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    step: step || 1,
+    min: min || 0,
+    max: max || 2000
+  })), resOption == "Mobile" && /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
     label: baseLabel,
     resRequiredProps: resRequiredProps,
     controlName: controlName
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["RangeControl"], {
+  }, /*#__PURE__*/React.createElement(RangeControl, {
     value: MOBrange,
     onChange: function onChange(MOBrange) {
       return setAttributes(_defineProperty({}, "MOB".concat(controlName, "Range"), MOBrange));
     },
-    step: MOBsizeUnit === "em" ? 0.1 : MOBsizeUnit === "%" ? 1 : step,
-    min: MOBsizeUnit === "em" ? 0 : MOBsizeUnit === "%" ? 0 : min,
-    max: MOBsizeUnit === "em" ? 10 : MOBsizeUnit === "%" ? 100 : max
-  }))));
+    step: step || 1,
+    min: min || 0,
+    max: max || 2000
+  }))) : /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    selectedUnit: desktopSizeUnit,
+    unitTypes: units || defaultUnits,
+    onClick: function onClick(desktopSizeUnit) {
+      return setAttributes(_defineProperty({}, "".concat(controlName, "Unit"), desktopSizeUnit));
+    }
+  }), /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    label: baseLabel,
+    resRequiredProps: resRequiredProps,
+    controlName: controlName
+  }, /*#__PURE__*/React.createElement(RangeControl, {
+    value: desktopRange,
+    onChange: function onChange(desktopRange) {
+      return setAttributes(_defineProperty({}, "".concat(controlName, "Range"), desktopRange));
+    },
+    step: step || (desktopSizeUnit !== "em" ? 1 : 0.1),
+    min: min || 0,
+    max: max || (desktopSizeUnit === "px" ? 2000 : 100)
+  }))), resOption == "Tablet" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    selectedUnit: TABsizeUnit,
+    unitTypes: units || defaultUnits,
+    onClick: function onClick(TABsizeUnit) {
+      return setAttributes(_defineProperty({}, "TAB".concat(controlName, "Unit"), TABsizeUnit));
+    }
+  }), /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    label: baseLabel,
+    resRequiredProps: resRequiredProps,
+    controlName: controlName
+  }, /*#__PURE__*/React.createElement(RangeControl, {
+    value: TABrange,
+    onChange: function onChange(TABrange) {
+      return setAttributes(_defineProperty({}, "TAB".concat(controlName, "Range"), TABrange));
+    },
+    step: step || (TABsizeUnit !== "em" ? 1 : 0.1),
+    min: min || 0,
+    max: max || (TABsizeUnit === "px" ? 2000 : 100)
+  }))), resOption == "Mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    selectedUnit: MOBsizeUnit,
+    unitTypes: units || defaultUnits,
+    onClick: function onClick(MOBsizeUnit) {
+      return setAttributes(_defineProperty({}, "MOB".concat(controlName, "Unit"), MOBsizeUnit));
+    }
+  }), /*#__PURE__*/React.createElement(_responsive_btn__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    label: baseLabel,
+    resRequiredProps: resRequiredProps,
+    controlName: controlName
+  }, /*#__PURE__*/React.createElement(RangeControl, {
+    value: MOBrange,
+    onChange: function onChange(MOBrange) {
+      return setAttributes(_defineProperty({}, "MOB".concat(controlName, "Range"), MOBrange));
+    },
+    step: step || (MOBsizeUnit !== "em" ? 1 : 0.1),
+    min: min || 0,
+    max: max || (MOBsizeUnit === "px" ? 2000 : 100)
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ResponsiveRangeController);
@@ -6736,9 +6987,10 @@ var ResponsiveRangeController = function ResponsiveRangeController(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResBtns; });
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./util/responsive-range-control/helpers.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers */ "./util/helpers/index.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var dispatch = wp.data.dispatch;
 
 function WithResBtns(_ref) {
   var children = _ref.children,
@@ -6747,14 +6999,13 @@ function WithResBtns(_ref) {
       controlName = _ref.controlName,
       onReset = _ref.onReset;
   var setAttributes = resRequiredProps.setAttributes,
-      attributes = resRequiredProps.attributes,
       resOption = resRequiredProps.resOption,
       objAttributes = resRequiredProps.objAttributes;
 
   onReset = function onReset() {
-    resOption == "desktop" ? setAttributes(_defineProperty({}, "".concat(controlName, "Range"), objAttributes["".concat(controlName, "Range")]["default"])) : "";
-    resOption == "tab" ? setAttributes(_defineProperty({}, "TAB".concat(controlName, "Range"), objAttributes["TAB".concat(controlName, "Range")]["default"])) : "";
-    resOption == "mobile" ? setAttributes(_defineProperty({}, "MOB".concat(controlName, "Range"), objAttributes["MOB".concat(controlName, "Range")]["default"])) : "";
+    resOption == "Desktop" ? setAttributes(_defineProperty({}, "".concat(controlName, "Range"), objAttributes["".concat(controlName, "Range")]["default"])) : "";
+    resOption == "Tablet" ? setAttributes(_defineProperty({}, "TAB".concat(controlName, "Range"), objAttributes["TAB".concat(controlName, "Range")]["default"])) : "";
+    resOption == "Mobile" ? setAttributes(_defineProperty({}, "MOB".concat(controlName, "Range"), objAttributes["MOB".concat(controlName, "Range")]["default"])) : "";
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -6766,24 +7017,27 @@ function WithResBtns(_ref) {
   }, label), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
       return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleDesktopBtnClick"])({
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
         setAttributes: setAttributes
       });
     },
-    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "desktop" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "Desktop" ? "active" : " ")
   }), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
       return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleTabBtnClick"])({
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
         setAttributes: setAttributes
       });
     },
-    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "tab" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "Tablet" ? "active" : " ")
   }), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
       return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleMobileBtnClick"])({
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
         setAttributes: setAttributes
       });
     },
-    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "mobile" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "Mobile" ? "active" : " ")
   })), /*#__PURE__*/React.createElement("div", {
     className: "eb-component-wrapper"
   }, children, /*#__PURE__*/React.createElement("button", {
@@ -6793,44 +7047,6 @@ function WithResBtns(_ref) {
     className: "dashicon dashicons dashicons-image-rotate"
   }))));
 }
-
-/***/ }),
-
-/***/ "./util/responsive-range-control/unit-control.js":
-/*!*******************************************************!*\
-  !*** ./util/responsive-range-control/unit-control.js ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * WordPress dependencies
- */
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-var UnitControl = function UnitControl(_ref) {
-  var selectedUnit = _ref.selectedUnit,
-      unitTypes = _ref.unitTypes,
-      _onClick = _ref.onClick;
-  return /*#__PURE__*/React.createElement(ButtonGroup, {
-    className: "eb-unit-control-btn-group"
-  }, unitTypes.map(function (unit) {
-    return /*#__PURE__*/React.createElement(Button, {
-      className: "eb-unit-control-btn ".concat(unit.value === selectedUnit && "eb-unit-active"),
-      isSmall: true,
-      isPrimary: unit.value === selectedUnit,
-      onClick: function onClick() {
-        return _onClick(unit.value);
-      }
-    }, unit.label);
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (UnitControl);
 
 /***/ }),
 
@@ -6997,7 +7213,8 @@ var TypographyIcon = function TypographyIcon() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResButtons; });
-/* harmony import */ var _typoHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typoHelpers */ "./util/typography-control-v2/typoHelpers.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers */ "./util/helpers/index.js");
+var dispatch = wp.data.dispatch;
 
 function WithResButtons(_ref) {
   var className = _ref.className,
@@ -7010,25 +7227,28 @@ function WithResButtons(_ref) {
     className: "resIcons"
   }, /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
-      return Object(_typoHelpers__WEBPACK_IMPORTED_MODULE_0__["handleDesktopBtnClick"])({
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleDesktopBtnClick"])({
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
         setAttributes: setAttributes
       });
     },
-    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "desktop" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "Desktop" ? "active" : " ")
   }), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
-      return Object(_typoHelpers__WEBPACK_IMPORTED_MODULE_0__["handleTabBtnClick"])({
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleTabBtnClick"])({
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
         setAttributes: setAttributes
       });
     },
-    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "tab" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "Tablet" ? "active" : " ")
   }), /*#__PURE__*/React.createElement("span", {
     onClick: function onClick() {
-      return Object(_typoHelpers__WEBPACK_IMPORTED_MODULE_0__["handleMobileBtnClick"])({
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleMobileBtnClick"])({
+        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
         setAttributes: setAttributes
       });
     },
-    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "mobile" ? "active" : " ")
+    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "Mobile" ? "active" : " ")
   })), children);
 }
 
@@ -7312,7 +7532,7 @@ function TypographyDropdown(_ref) {
         className: "forFontSize",
         resOption: resOption,
         setAttributes: setAttributes
-      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      }, resOption === "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: sizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["sizeUnitTypes"],
         onClick: function onClick(sizeUnit) {
@@ -7327,7 +7547,7 @@ function TypographyDropdown(_ref) {
         step: sizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: sizeUnit === "em" ? 10 : 300
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })), resOption === "Tablet" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: TABsizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["sizeUnitTypes"],
         onClick: function onClick(TABsizeUnit) {
@@ -7342,7 +7562,7 @@ function TypographyDropdown(_ref) {
         step: TABsizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: TABsizeUnit === "em" ? 10 : 300
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })), resOption === "Mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: MOBsizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["sizeUnitTypes"],
         onClick: function onClick(MOBsizeUnit) {
@@ -7382,7 +7602,7 @@ function TypographyDropdown(_ref) {
         className: "forLetterSpacing",
         resOption: resOption,
         setAttributes: setAttributes
-      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      }, resOption === "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: letterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
         onClick: function onClick(LetterSpacingUnit) {
@@ -7397,7 +7617,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: letterSpacingUnit === "em" ? 10 : 100,
         step: letterSpacingUnit === "em" ? 0.1 : 1
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })), resOption === "Tablet" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: TABletterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
         onClick: function onClick(TABletterSpacingUnit) {
@@ -7412,7 +7632,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: TABletterSpacingUnit === "em" ? 10 : 100,
         step: TABletterSpacingUnit === "em" ? 0.1 : 1
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })), resOption === "Mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: MOBletterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
         onClick: function onClick(MOBletterSpacingUnit) {
@@ -7431,7 +7651,7 @@ function TypographyDropdown(_ref) {
         className: "forLineHeight",
         resOption: resOption,
         setAttributes: setAttributes
-      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      }, resOption === "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: lineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
         onClick: function onClick(LineHeightUnit) {
@@ -7446,7 +7666,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: lineHeightUnit === "em" ? 10 : 600,
         step: lineHeightUnit === "em" ? 0.1 : 1
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })), resOption === "Tablet" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: TABlineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
         onClick: function onClick(TABlineHeightUnit) {
@@ -7461,7 +7681,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: TABlineHeightUnit === "em" ? 10 : 600,
         step: TABlineHeightUnit === "em" ? 0.1 : 1
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      })), resOption === "Mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: MOBlineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
         onClick: function onClick(MOBlineHeightUnit) {
@@ -7482,45 +7702,6 @@ function TypographyDropdown(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (TypographyDropdown);
-
-/***/ }),
-
-/***/ "./util/typography-control-v2/typoHelpers.js":
-/*!***************************************************!*\
-  !*** ./util/typography-control-v2/typoHelpers.js ***!
-  \***************************************************/
-/*! exports provided: handleDesktopBtnClick, handleTabBtnClick, handleMobileBtnClick */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleDesktopBtnClick", function() { return handleDesktopBtnClick; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleTabBtnClick", function() { return handleTabBtnClick; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleMobileBtnClick", function() { return handleMobileBtnClick; });
-var handleDesktopBtnClick = function handleDesktopBtnClick(_ref) {
-  var setAttributes = _ref.setAttributes;
-  document.body.classList.add("eb-res-option-desktop");
-  document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
-  setAttributes({
-    resOption: "desktop"
-  });
-};
-var handleTabBtnClick = function handleTabBtnClick(_ref2) {
-  var setAttributes = _ref2.setAttributes;
-  document.body.classList.add("eb-res-option-tab");
-  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
-  setAttributes({
-    resOption: "tab"
-  });
-};
-var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
-  var setAttributes = _ref3.setAttributes;
-  document.body.classList.add("eb-res-option-mobile");
-  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
-  setAttributes({
-    resOption: "mobile"
-  });
-};
 
 /***/ }),
 
@@ -7608,17 +7789,6 @@ var UnitControl = function UnitControl(_ref) {
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["blocks"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!************************************!*\
-  !*** external ["wp","components"] ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = window["wp"]["components"]; }());
 
 /***/ }),
 
