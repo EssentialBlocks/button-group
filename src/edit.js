@@ -63,6 +63,8 @@ export default function Edit(props) {
 		isShowIcon,
 		innerButtonIcon,
 		isShowText,
+		showConnector,
+		buttonTextAlign,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
@@ -241,8 +243,9 @@ export default function Edit(props) {
 			${buttonsTypoStylesDesktop}
 			${buttonsPaddingStylesDesktop}
 			${buttonWidthStyleDesktop}
-			text-align: center
-			cursor: pointer
+			text-align: center;
+			cursor: pointer;
+			buttonTextAlign: ${buttonTextAlign};
 		}
 	`;
 
@@ -360,14 +363,16 @@ export default function Edit(props) {
 	`;
 
 	const connectorStylesTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-duel-button-text{
+		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner {
 			${connectorTypoStylesTab}
+			${buttonConnectorHeightTab}
 		}
 	`;
 
 	const connectorStylesMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-duel-button-text{
+		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner {
 			${connectorTypoStylesMobile}
+			${buttonConnectorHeightMobile}
 		}
 	`;
 
@@ -554,7 +559,7 @@ export default function Edit(props) {
 						allowedFormats={["bold", "italic", "strikethrough"]}
 					/>
 				</div>
-				{(isShowText || isShowIcon) && (
+				{showConnector && (
 					<div
 						className="eb-dual-button__midldeInner"
 						// style={buttonMiddleInnerStyles}

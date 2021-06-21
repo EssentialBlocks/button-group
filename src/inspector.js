@@ -32,6 +32,7 @@ import {
 	CONNECTOR_TYPE,
 	PRESETS,
 	BUTTONS_CONNECTOR_SIZE,
+	TEXT_ALIGN,
 } from "./constants/constants";
 import {
 	mimmikCssForResBtns,
@@ -75,6 +76,7 @@ function Inspector(props) {
 		showConnector,
 		connectorType,
 		buttonsColorType,
+		buttonTextAlign,
 	} = attributes;
 
 	const hasConnector = isShowText || isShowIcon;
@@ -202,6 +204,49 @@ function Inspector(props) {
 		attributes,
 	};
 
+	const changePreset = (selected) => {
+		setAttributes({ preset: selected });
+		if (selected === 'button-1') {
+			setAttributes({
+				showConnector: "true",
+				buttonOneBorderShadowRds_Top: 20,
+				buttonOneBorderShadowRds_Bottom: 0,
+				buttonOneBorderShadowRds_Left: 20,
+				buttonOneBorderShadowRds_Right: 0,
+				buttonTwoBorderShadowRds_Top: 0,
+				buttonTwoBorderShadowRds_Bottom: 20,
+				buttonTwoBorderShadowRds_Left: 0,
+				buttonTwoBorderShadowRds_Right: 20,
+				buttonsGapRange: 0,
+				buttonOneColor: "#000",
+			});
+		}
+		else if (selected === 'button-2') {
+			setAttributes({
+				showConnector: false,
+				buttonOneBorderShadowRds_Top: 30,
+				buttonOneBorderShadowRds_Bottom: 30,
+				buttonOneBorderShadowRds_Left: 30,
+				buttonOneBorderShadowRds_Right: 30,
+				buttonTwoBorderShadowRds_Top: 30,
+				buttonTwoBorderShadowRds_Bottom: 30,
+				buttonTwoBorderShadowRds_Left: 30,
+				buttonTwoBorderShadowRds_Right: 30,
+				buttonsGapRange: 20,
+			});
+		}
+		else if (selected === 'button-3') {
+			setAttributes({
+				buttonOneColor: "#444",
+				buttonTwoColor: "#888",
+			});
+		}
+		else {
+
+		}
+		
+	};
+
 	return (
 		<InspectorControls key="controls">
 			<div className="eb-panel-control">
@@ -210,7 +255,7 @@ function Inspector(props) {
 						label={__("Preset Designs")}
 						value={preset}
 						options={PRESETS}
-						onChange={(selected) => setAttributes({ preset: selected })}
+						onChange={(selected) => changePreset(selected)}
 					/>
 					<TextControl
 						label={__("Button One Text")}
@@ -274,6 +319,25 @@ function Inspector(props) {
 						max={100}
 						step={1}
 					/>
+
+					<BaseControl label={__("Text Align")} id="eb-duel-button-text-align">
+						<ButtonGroup id="eb-duel-button-text-align">
+							{TEXT_ALIGN.map((item) => (
+								<Button
+									isLarge
+									isPrimary={buttonTextAlign === item.value}
+									isSecondary={buttonTextAlign !== item.value}
+									onClick={() =>
+										setAttributes({
+											buttonTextAlign: item.value,
+										})
+									}
+								>
+									{item.label}
+								</Button>
+							))}
+						</ButtonGroup>
+					</BaseControl>
 
 					<TypographyDropdown
 						baseLabel={__("Typography", "duel-button")}

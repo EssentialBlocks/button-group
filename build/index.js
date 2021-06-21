@@ -3634,6 +3634,10 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "string",
     "default": "center"
   },
+  buttonTextAlign: {
+    type: "string",
+    "default": "center"
+  },
   isHoverOne: {
     type: "boolean",
     "default": false
@@ -3686,8 +3690,8 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     "default": "normal"
   }
 }, Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__))), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["WRAPPER_MARGIN"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_MARGIN"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTONS_PADDING"], {
-  top: 5,
-  bottom: 5,
+  top: 10,
+  bottom: 10,
   right: 25,
   left: 25
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["generateBorderShadowAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_0__["BUTTON_ONE_BORDER_SHADOW"], {
@@ -3740,7 +3744,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
 /*!************************************!*\
   !*** ./src/constants/constants.js ***!
   \************************************/
-/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_ONE_BORDER_SHADOW, BUTTON_TWO_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BUTTON_STYLES, UNIT_TYPES, NORMAL_HOVER, CONNECTOR_TYPE, PRESETS */
+/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_ONE_BORDER_SHADOW, BUTTON_TWO_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BUTTON_STYLES, UNIT_TYPES, NORMAL_HOVER, CONNECTOR_TYPE, PRESETS, TEXT_ALIGN */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3760,6 +3764,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NORMAL_HOVER", function() { return NORMAL_HOVER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONNECTOR_TYPE", function() { return CONNECTOR_TYPE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRESETS", function() { return PRESETS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_ALIGN", function() { return TEXT_ALIGN; });
 var __ = wp.i18n.__; // the consts defined here should be unique from one another
 
 var WRAPPER_MARGIN = "wrpMargin";
@@ -3815,6 +3820,16 @@ var PRESETS = [{
 }, {
   label: __("Button 3"),
   value: "button-3"
+}];
+var TEXT_ALIGN = [{
+  label: __("Left"),
+  value: "left"
+}, {
+  label: __("Center"),
+  value: "center"
+}, {
+  label: __("Right"),
+  value: "right"
 }];
 
 /***/ }),
@@ -3897,7 +3912,9 @@ function Edit(props) {
       innerButtonTextColor = attributes.innerButtonTextColor,
       isShowIcon = attributes.isShowIcon,
       innerButtonIcon = attributes.innerButtonIcon,
-      isShowText = attributes.isShowText; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+      isShowText = attributes.isShowText,
+      showConnector = attributes.showConnector,
+      buttonTextAlign = attributes.buttonTextAlign; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 
   useEffect(function () {
     var bodyClasses = document.body.className;
@@ -4030,7 +4047,7 @@ function Edit(props) {
   var wrapperStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesTab, "\n\n\t\t}\n\t");
   var wrapperStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesMobile, "\n\n\t\t}\n\t"); // Buttons Common styles css in strings ⬇
 
-  var buttonsCommonStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonWidthStyleDesktop, "\n\t\t\ttext-align: center\n\t\t\tcursor: pointer\n\t\t}\n\t");
+  var buttonsCommonStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonWidthStyleDesktop, "\n\t\t\ttext-align: center;\n\t\t\tcursor: pointer;\n\t\t\tbuttonTextAlign: ").concat(buttonTextAlign, ";\n\t\t}\n\t");
   var buttonsCommonStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t\t").concat(buttonsPaddingStylesTab, "\n\t\t\t").concat(buttonWidthStyleTab, "\n\t\t}\n\t");
   var buttonsCommonStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t\t").concat(buttonsPaddingStylesMobile, "\n\t\t\t").concat(buttonWidthStyleMobile, "\n\t\t}\n\t"); // Buttons One styles css in strings ⬇
 
@@ -4043,8 +4060,8 @@ function Edit(props) {
   var buttonTwoStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowMobile, "\n\t\t\t").concat(buttonGapStyleMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"); // Connector styles css in strings ⬇
 
   var connectorStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesDesktop, "\n\t\t\t").concat(buttonConnectorHeightDesktop, "\n\t\t\t").concat(buttonConnectorWidthDesktop, "\n\t\t\tbackground: ").concat(innerButtonColor, ";\n\t\t\tcolor: ").concat(innerButtonTextColor, ";\n\t\t}\n\t");
-  var connectorStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesTab, "\n\t\t}\n\t");
-  var connectorStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-duel-button-text{\n\t\t\t").concat(connectorTypoStylesMobile, "\n\t\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var connectorStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesTab, "\n\t\t\t").concat(buttonConnectorHeightTab, "\n\t\t}\n\t");
+  var connectorStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesMobile, "\n\t\t\t").concat(buttonConnectorHeightMobile, "\n\t\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
   var desktopAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesDesktop) ? connectorStylesDesktop : " ", "\n\t\t")); // all css styles for Tab in strings ⬇
 
@@ -4194,7 +4211,7 @@ function Edit(props) {
       });
     },
     allowedFormats: ["bold", "italic", "strikethrough"]
-  })), (isShowText || isShowIcon) && /*#__PURE__*/React.createElement("div", {
+  })), showConnector && /*#__PURE__*/React.createElement("div", {
     className: "eb-dual-button__midldeInner" // style={buttonMiddleInnerStyles}
 
   }, isShowIcon && /*#__PURE__*/React.createElement("span", {
@@ -4379,7 +4396,8 @@ function Inspector(props) {
       isShowText = attributes.isShowText,
       showConnector = attributes.showConnector,
       connectorType = attributes.connectorType,
-      buttonsColorType = attributes.buttonsColorType;
+      buttonsColorType = attributes.buttonsColorType,
+      buttonTextAlign = attributes.buttonTextAlign;
   var hasConnector = isShowText || isShowIcon;
 
   var handleButtonOneStyles = function handleButtonOneStyles(style) {
@@ -4509,6 +4527,47 @@ function Inspector(props) {
     resOption: resOption,
     attributes: attributes
   };
+
+  var changePreset = function changePreset(selected) {
+    setAttributes({
+      preset: selected
+    });
+
+    if (selected === 'button-1') {
+      setAttributes({
+        showConnector: "true",
+        buttonOneBorderShadowRds_Top: 20,
+        buttonOneBorderShadowRds_Bottom: 0,
+        buttonOneBorderShadowRds_Left: 20,
+        buttonOneBorderShadowRds_Right: 0,
+        buttonTwoBorderShadowRds_Top: 0,
+        buttonTwoBorderShadowRds_Bottom: 20,
+        buttonTwoBorderShadowRds_Left: 0,
+        buttonTwoBorderShadowRds_Right: 20,
+        buttonsGapRange: 0,
+        buttonOneColor: "#000"
+      });
+    } else if (selected === 'button-2') {
+      setAttributes({
+        showConnector: false,
+        buttonOneBorderShadowRds_Top: 30,
+        buttonOneBorderShadowRds_Bottom: 30,
+        buttonOneBorderShadowRds_Left: 30,
+        buttonOneBorderShadowRds_Right: 30,
+        buttonTwoBorderShadowRds_Top: 30,
+        buttonTwoBorderShadowRds_Bottom: 30,
+        buttonTwoBorderShadowRds_Left: 30,
+        buttonTwoBorderShadowRds_Right: 30,
+        buttonsGapRange: 20
+      });
+    } else if (selected === 'button-3') {
+      setAttributes({
+        buttonOneColor: "#444",
+        buttonTwoColor: "#888"
+      });
+    } else {}
+  };
+
   return /*#__PURE__*/React.createElement(InspectorControls, {
     key: "controls"
   }, /*#__PURE__*/React.createElement("div", {
@@ -4521,9 +4580,7 @@ function Inspector(props) {
     value: preset,
     options: _constants_constants__WEBPACK_IMPORTED_MODULE_0__["PRESETS"],
     onChange: function onChange(selected) {
-      return setAttributes({
-        preset: selected
-      });
+      return changePreset(selected);
     }
   }), /*#__PURE__*/React.createElement(TextControl, {
     label: __("Button One Text"),
@@ -4594,7 +4651,23 @@ function Inspector(props) {
     min: 0,
     max: 100,
     step: 1
-  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(BaseControl, {
+    label: __("Text Align"),
+    id: "eb-duel-button-text-align"
+  }, /*#__PURE__*/React.createElement(ButtonGroup, {
+    id: "eb-duel-button-text-align"
+  }, _constants_constants__WEBPACK_IMPORTED_MODULE_0__["TEXT_ALIGN"].map(function (item) {
+    return /*#__PURE__*/React.createElement(Button, {
+      isLarge: true,
+      isPrimary: buttonTextAlign === item.value,
+      isSecondary: buttonTextAlign !== item.value,
+      onClick: function onClick() {
+        return setAttributes({
+          buttonTextAlign: item.value
+        });
+      }
+    }, item.label);
+  }))), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
     baseLabel: __("Typography", "duel-button"),
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_TYPOGRAPHY"],
     resRequiredProps: resRequiredProps

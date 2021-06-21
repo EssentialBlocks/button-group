@@ -39,3 +39,9 @@ export const PRESETS = [
 	{ label: __("Button 2"), value: "button-2" },
 	{ label: __("Button 3"), value: "button-3" }
 ];
+
+export const TEXT_ALIGN = [
+	{ label: __("Left"), value: "left" },
+	{ label: __("Center"), value: "center" },
+	{ label: __("Right"), value: "right" }
+];

@@ -105,6 +105,10 @@ const attributes = {
 		type: "string",
 		default: "center",
 	},
+	buttonTextAlign: {
+		type: "string",
+		default: "center",
+	},
 	isHoverOne: {
 		type: "boolean",
 		default: false,
@@ -164,8 +168,8 @@ const attributes = {
 	...generateDimensionsAttributes(WRAPPER_MARGIN),
 	...generateDimensionsAttributes(BUTTONS_MARGIN),
 	...generateDimensionsAttributes(BUTTONS_PADDING, {
-		top: 5,
-		bottom: 5,
+		top: 10,
+		bottom: 10,
 		right: 25,
 		left: 25,
 	}),
