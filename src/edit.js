@@ -49,7 +49,6 @@ export default function Edit(props) {
 		contentPosition,
 		buttonTextOne,
 		buttonTextTwo,
-		buttonOneColor,
 		hoverButtonOneColor,
 		textOneColor,
 		hoverTextOneColor,
@@ -58,13 +57,11 @@ export default function Edit(props) {
 		textTwoColor,
 		hoverTextTwoColor,
 		innerButtonText,
-		innerButtonSize,
 		innerButtonColor,
 		innerButtonTextColor,
-		isShowIcon,
 		innerButtonIcon,
-		isShowText,
 		showConnector,
+		connectorType,
 		buttonTextAlign,
 	} = attributes;
 
@@ -249,7 +246,6 @@ export default function Edit(props) {
 	// Buttons Common styles css in strings ⬇
 	const buttonsCommonStyleDesktop = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
-			${buttonsTypoStylesDesktop}
 			${buttonsPaddingStylesDesktop}
 			${buttonWidthStyleDesktop}
 			${buttonGapDesktop}
@@ -257,23 +253,30 @@ export default function Edit(props) {
 			cursor: pointer;
 			buttonTextAlign: ${buttonTextAlign};
 		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+			${buttonsTypoStylesDesktop}
+		}
 	`;
 
 	const buttonsCommonStyleTab = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
-			${buttonsTypoStylesTab}
 			${buttonsPaddingStylesTab}
 			${buttonWidthStyleTab}
 			${buttonGapTab}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+			${buttonsTypoStylesTab}
 		}
 	`;
 
 	const buttonsCommonStyleMobile = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
-			${buttonsTypoStylesMobile}
 			${buttonsPaddingStylesMobile}
 			${buttonWidthStyleMobile}
 			${buttonGapMobile}
+		}
+		.eb-duel-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+			${buttonsTypoStylesMobile}
 		}
 	`;
 
@@ -464,7 +467,7 @@ export default function Edit(props) {
 
 			<div className={`eb-duel-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				{/* Button One */}
-				<div
+				<a
 					className={"eb-button-parent eb-button-one"}
 					// style={buttonStyleOne}
 					onMouseEnter={() => setAttributes({ isHoverOne: true })}
@@ -472,13 +475,13 @@ export default function Edit(props) {
 				>
 					<RichText
 						// style={textStylesOne}
-						className={"eb-button-one-text"}
+						className={"eb-button-text eb-button-one-text"}
 						placeholder="Add Text.."
 						value={buttonTextOne}
 						onChange={(newText) => setAttributes({ buttonTextOne: newText })}
 						allowedFormats={["bold", "italic", "strikethrough"]}
 					/>
-				</div>
+				</a>
 
 				{/* Connector */}
 
@@ -487,19 +490,19 @@ export default function Edit(props) {
 						className="eb-dual-button__midldeInner"
 						// style={buttonMiddleInnerStyles}
 					>
-						{isShowIcon && (
+						{connectorType === 'icon' && (
 							<span
 								className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"
 									}`}
 							/>
 						)}
 
-						{!isShowIcon && <span>{innerButtonText}</span>}
+						{connectorType === 'text' && <span>{innerButtonText}</span>}
 					</div>
 				)}
 
 				{/* Button Two */}
-				<div
+				<a
 					className={"eb-button-parent eb-button-two"}
 					// style={buttonStyleTwo}
 					onMouseEnter={() => setAttributes({ isHoverTwo: true })}
@@ -507,13 +510,13 @@ export default function Edit(props) {
 				>
 					<RichText
 						// style={textStylesTwo}
-						className={"eb-button-two-text"}
+						className={"eb-button-text eb-button-two-text"}
 						placeholder="Add Text.."
 						value={buttonTextTwo}
 						onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
 						allowedFormats={["bold", "italic", "strikethrough"]}
 					/>
-				</div>
+				</a>
 			</div>
 		</div>,
 	];

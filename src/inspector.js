@@ -225,49 +225,51 @@ function Inspector(props) {
 			case 'button-2':
 				setAttributes({
 					showConnector: false,
-					buttonOneBorderShadowRds_Top: 30,
-					buttonOneBorderShadowRds_Bottom: 30,
-					buttonOneBorderShadowRds_Left: 30,
-					buttonOneBorderShadowRds_Right: 30,
-					buttonTwoBorderShadowRds_Top: 30,
-					buttonTwoBorderShadowRds_Bottom: 30,
-					buttonTwoBorderShadowRds_Left: 30,
-					buttonTwoBorderShadowRds_Right: 30,
+					buttonOneBorderShadowRds_Top: "30",
+					buttonOneBorderShadowRds_Bottom: "30",
+					buttonOneBorderShadowRds_Left: "30",
+					buttonOneBorderShadowRds_Right: "30",
+					buttonTwoBorderShadowRds_Top: "30",
+					buttonTwoBorderShadowRds_Bottom: "30",
+					buttonTwoBorderShadowRds_Left: "30",
+					buttonTwoBorderShadowRds_Right: "30",
 					buttonsGapRange: 20,
 				});
 				break;
 			case 'button-3':
 				setAttributes({
 					showConnector: false,
-					buttonOneBorderShadowRds_Top: 0,
-					buttonOneBorderShadowRds_Bottom: 0,
-					buttonOneBorderShadowRds_Left: 15,
-					buttonOneBorderShadowRds_Right: 15,
-					buttonTwoBorderShadowRds_Top: 15,
-					buttonTwoBorderShadowRds_Bottom: 15,
-					buttonTwoBorderShadowRds_Left: 0,
-					buttonTwoBorderShadowRds_Right: 0,
+					buttonOneBorderShadowRds_Top: "0",
+					buttonOneBorderShadowRds_Bottom: "0",
+					buttonOneBorderShadowRds_Left: "15",
+					buttonOneBorderShadowRds_Right: "15",
+					buttonTwoBorderShadowRds_Top: "15",
+					buttonTwoBorderShadowRds_Bottom: "15",
+					buttonTwoBorderShadowRds_Left: "0",
+					buttonTwoBorderShadowRds_Right: "0",
 					buttonsGapRange: 20,
 				});
 				break;
 			case 'button-4':
 				setAttributes({
 					showConnector: false,
-					buttonOneBorderShadowRds_Top: 30,
-					buttonOneBorderShadowRds_Bottom: 30,
-					buttonOneBorderShadowRds_Left: 30,
-					buttonOneBorderShadowRds_Right: 30,
-					buttonTwoBorderShadowRds_Top: 30,
-					buttonTwoBorderShadowRds_Bottom: 30,
-					buttonTwoBorderShadowRds_Left: 30,
-					buttonTwoBorderShadowRds_Right: 30,
-					buttonsGapRange: 20,
+					buttonOneBorderShadowRds_Top: "30",
+					buttonOneBorderShadowRds_Bottom: "30",
+					buttonOneBorderShadowRds_Left: "30",
+					buttonOneBorderShadowRds_Right: "30",
+					buttonTwoBorderShadowRds_Top: "30",
+					buttonTwoBorderShadowRds_Bottom: "30",
+					buttonTwoBorderShadowRds_Left: "30",
+					buttonTwoBorderShadowRds_Right: "30",
+					buttonsGapRange: 10,
 				});
 				break;
 			default:
 			  return false;
 		}
 	};
+
+	console.log("Attributes", attributes);
 
 	return (
 		<InspectorControls key="controls">
@@ -472,7 +474,7 @@ function Inspector(props) {
 						/>
 					)}
 
-					<PanelBody className={"eb-subpanel"} title={__("Button One Border")} initialOpen={false}>
+					<PanelBody className={"eb-subpanel"} title={__("Button One Border")} initialOpen={true}>
 						<BorderShadowControl
 							controlName={BUTTON_ONE_BORDER_SHADOW}
 							resRequiredProps={resRequiredProps}
@@ -480,7 +482,7 @@ function Inspector(props) {
 						/>
 					</PanelBody>
 
-					<PanelBody className={"eb-subpanel"} title={__("Button Two Border")} initialOpen={false}>
+					<PanelBody className={"eb-subpanel"} title={__("Button Two Border")} initialOpen={true}>
 						<BorderShadowControl
 							controlName={BUTTON_TWO_BORDER_SHADOW}
 							resRequiredProps={resRequiredProps}
