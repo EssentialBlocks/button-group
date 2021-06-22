@@ -46,6 +46,7 @@ export default function Edit(props) {
 		// responsive control attribute ⬇
 		resOption,
 		preset,
+		contentPosition,
 		buttonTextOne,
 		buttonTextTwo,
 		buttonOneColor,
@@ -182,12 +183,12 @@ export default function Edit(props) {
 	});
 
 	const {
-		rangeStylesDesktop: buttonGapStyleDesktop,
-		rangeStylesTab: buttonGapStyleTab,
-		rangeStylesMobile: buttonGapStyleMobile,
+		rangeStylesDesktop: buttonGapDesktop,
+		rangeStylesTab: buttonGapTab,
+		rangeStylesMobile: buttonGapMobile,
 	} = generateResponsiveRangeStyles({
 		controlName: BUTTONS_GAP,
-		property: "margin-right",
+		property: "margin",
 		attributes,
 	});
 
@@ -211,25 +212,33 @@ export default function Edit(props) {
 		attributes,
 	});
 
+	const {
+		rangeStylesDesktop: buttonConnectorLineHeightDesktop,
+		rangeStylesTab: buttonConnectorLineHeightTab,
+		rangeStylesMobile: buttonConnectorLineHeightMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: BUTTONS_CONNECTOR_SIZE,
+		property: "line-height",
+		attributes,
+	});
+
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 		.eb-duel-button-wrapper.${blockId}{
 			display: flex;
 			flex-direction: row;
-			align-items: center;
-			justify-content: center;
+			align-items: ${contentPosition};
+			justify-content: ${contentPosition};
 			position: relative;
 			${wrapperMarginStylesDesktop}
 		}
 	`;
-
 	const wrapperStylesTab = `
 		.eb-duel-button-wrapper.${blockId}{
 			${wrapperMarginStylesTab}
 
 		}
 	`;
-
 	const wrapperStylesMobile = `
 		.eb-duel-button-wrapper.${blockId}{
 			${wrapperMarginStylesMobile}
@@ -243,6 +252,7 @@ export default function Edit(props) {
 			${buttonsTypoStylesDesktop}
 			${buttonsPaddingStylesDesktop}
 			${buttonWidthStyleDesktop}
+			${buttonGapDesktop}
 			text-align: center;
 			cursor: pointer;
 			buttonTextAlign: ${buttonTextAlign};
@@ -254,6 +264,7 @@ export default function Edit(props) {
 			${buttonsTypoStylesTab}
 			${buttonsPaddingStylesTab}
 			${buttonWidthStyleTab}
+			${buttonGapTab}
 		}
 	`;
 
@@ -262,6 +273,7 @@ export default function Edit(props) {
 			${buttonsTypoStylesMobile}
 			${buttonsPaddingStylesMobile}
 			${buttonWidthStyleMobile}
+			${buttonGapMobile}
 		}
 	`;
 
@@ -269,8 +281,7 @@ export default function Edit(props) {
 	const buttonOneStyleDesktop = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowDesktop}
-			${buttonGapStyleDesktop}
-			background-color: ${buttonOneColor};
+			background-color: ${attributes.buttonOneColor};
 		}
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverDesktop}
@@ -286,7 +297,6 @@ export default function Edit(props) {
 	const buttonOneStyleTab = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowTab}
-			${buttonGapStyleTab}
 		}
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverTab}
@@ -298,7 +308,6 @@ export default function Edit(props) {
 	const buttonOneStyleMobile = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowMobile}
-			${buttonGapStyleMobile}
 		}
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverMobile}
@@ -312,7 +321,7 @@ export default function Edit(props) {
 	const buttonTwoStyleDesktop = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowDesktop}
-			${buttonGapStyleDesktop}
+			${buttonGapDesktop}
 			background-color: ${buttonTwoColor};
 		}
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
@@ -329,7 +338,7 @@ export default function Edit(props) {
 	const buttonTwoStyleTab = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowTab}
-			${buttonGapStyleTab}
+			${buttonGapTab}
 		}
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverTab}
@@ -341,7 +350,7 @@ export default function Edit(props) {
 	const buttonTwoStyleMobile = `
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowMobile}
-			${buttonGapStyleMobile}
+			${buttonGapMobile}
 		}
 		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverMobile}
@@ -353,26 +362,31 @@ export default function Edit(props) {
 
 	// Connector styles css in strings ⬇
 	const connectorStylesDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner {
+		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
 			${connectorTypoStylesDesktop}
 			${buttonConnectorHeightDesktop}
 			${buttonConnectorWidthDesktop}
+			${buttonConnectorLineHeightDesktop}
 			background: ${innerButtonColor};
 			color: ${innerButtonTextColor};
 		}
 	`;
 
 	const connectorStylesTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner {
+		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
 			${connectorTypoStylesTab}
 			${buttonConnectorHeightTab}
+			${buttonConnectorWidthTab}
+			${buttonConnectorLineHeightTab}
 		}
 	`;
 
 	const connectorStylesMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner {
+		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
 			${connectorTypoStylesMobile}
 			${buttonConnectorHeightMobile}
+			${buttonConnectorWidthMobile}
+			${buttonConnectorLineHeightMobile}
 		}
 	`;
 
@@ -415,86 +429,6 @@ export default function Edit(props) {
 		}
 	}, [attributes]);
 
-	// const buttonStyles = {
-	// 	margin: `${marginTop || 0}${marginUnit} ${marginRight || 0}${marginUnit} ${marginBottom || 0
-	// 		}${marginUnit} ${marginLeft || 0}${marginUnit}`,
-	// 	padding: `${paddingTop || 0}${paddingUnit} ${paddingRight || 0
-	// 		}${paddingUnit} ${paddingBottom || 0}${paddingUnit} ${paddingLeft || 0
-	// 		}${paddingUnit}`,
-	// 	width: `${buttonWidth !== 0 && buttonWidth !== undefined
-	// 			? `${buttonWidth}${widthUnit}`
-	// 			: "auto"
-	// 		}`,
-	// 	font-family: buttonFontFamily ? buttonFontFamily : null,
-	// 	font-weight: buttonFontWeight ? buttonFontWeight : "normal",
-	// 	text-transform: buttonTextTransform ? buttonTextTransform : "none",
-	// 	display: "inline-block",
-	// 	border-width: `${borderWidth || 0}px`,
-	// 	border-style: borderStyle,
-	// 	font-size: `${buttonFontSize || 18}${buttonFontUnit}`,
-	// 	letter-spacing: buttonLetterSpacing ? buttonLetterSpacing : 0,
-	// 	text-align: "center",
-	// 	cursor: "pointer",
-	// };
-
-	// const buttonStyleOne = {
-	// 	...buttonStyles,
-	// 	borderRadius: `${borderRadiusTopLeft || 5
-	// 		}${borderRadiusUnit}  ${0}${borderRadiusUnit} ${0}${borderRadiusUnit} ${borderRadiusBottomLeft || 5
-	// 		}${borderRadiusUnit}`,
-	// 	borderColor:
-	// 		isHoverOne && hoverBorderOneColor
-	// 			? hoverBorderOneColor
-	// 			: borderOneColor || "#7967ff",
-	// 	background:
-	// 		isHoverOne && hoverButtonOneColor
-	// 			? hoverButtonOneColor
-	// 			: buttonOneColor || "#7967ff",
-	// 	color: textOneColor || "#fff",
-	// 	marginRight: `${seperateButtonsSpace || 0}${seperateButtonsSpaceUnit}`,
-	// };
-
-	// const buttonStyleTwo = {
-	// 	...buttonStyles,
-	// 	borderRadius: `${0}${borderRadiusUnit}  ${borderRadiusTopRight || 5
-	// 		}${borderRadiusUnit} ${borderRadiusBottomRight || 5
-	// 		}${borderRadiusUnit} ${0}${borderRadiusUnit}`,
-	// 	borderColor:
-	// 		isHoverTwo && hoverBorderTwoColor
-	// 			? hoverBorderTwoColor
-	// 			: borderTwoColor || "#309bff",
-	// 	background:
-	// 		isHoverTwo && hoverButtonTwoColor
-	// 			? hoverButtonTwoColor
-	// 			: buttonTwoColor || "#309bff",
-	// 	color: textTwoColor || "#fff",
-	// };
-
-	// const textStylesOne = {
-	// 	color:
-	// 		isHoverOne && hoverTextOneColor
-	// 			? hoverTextOneColor
-	// 			: textOneColor || "#ffffff",
-	// };
-	// const textStylesTwo = {
-	// 	color:
-	// 		isHoverTwo && hoverTextTwoColor
-	// 			? hoverTextTwoColor
-	// 			: textTwoColor || "#ffffff",
-	// };
-
-	// const buttonMiddleInnerStyles = {
-	// 	width: `${innerButtonSize || 30}px`,
-	// 	height: `${innerButtonSize || 30}px`,
-	// 	background: `${innerButtonColor ? innerButtonColor : "#fff"}`,
-	// 	color: `${innerButtonTextColor ? innerButtonTextColor : "#4a5059"}`,
-	// 	fontSize: `${innerButtonTextSize || 14}px`,
-	// 	textTransform: innerButtonTextTransform
-	// 		? innerButtonTextTransform
-	// 		: "uppercase",
-	// 	letterSpacing: innerButtonLetterSpacing ? innerButtonLetterSpacing : 0,
-	// };
-
 	return [
 		isSelected && <Inspector {...props} />,
 		//Edit view here
@@ -529,6 +463,7 @@ export default function Edit(props) {
 			</style>
 
 			<div className={`eb-duel-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
+				{/* Button One */}
 				<div
 					className={"eb-button-parent eb-button-one"}
 					// style={buttonStyleOne}
@@ -544,21 +479,9 @@ export default function Edit(props) {
 						allowedFormats={["bold", "italic", "strikethrough"]}
 					/>
 				</div>
-				<div
-					className={"eb-button-parent eb-button-two"}
-					// style={buttonStyleTwo}
-					onMouseEnter={() => setAttributes({ isHoverTwo: true })}
-					onMouseLeave={() => setAttributes({ isHoverTwo: false })}
-				>
-					<RichText
-						// style={textStylesTwo}
-						className={"eb-button-two-text"}
-						placeholder="Add Text.."
-						value={buttonTextTwo}
-						onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
-						allowedFormats={["bold", "italic", "strikethrough"]}
-					/>
-				</div>
+
+				{/* Connector */}
+
 				{showConnector && (
 					<div
 						className="eb-dual-button__midldeInner"
@@ -574,6 +497,23 @@ export default function Edit(props) {
 						{!isShowIcon && <span>{innerButtonText}</span>}
 					</div>
 				)}
+
+				{/* Button Two */}
+				<div
+					className={"eb-button-parent eb-button-two"}
+					// style={buttonStyleTwo}
+					onMouseEnter={() => setAttributes({ isHoverTwo: true })}
+					onMouseLeave={() => setAttributes({ isHoverTwo: false })}
+				>
+					<RichText
+						// style={textStylesTwo}
+						className={"eb-button-two-text"}
+						placeholder="Add Text.."
+						value={buttonTextTwo}
+						onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
+						allowedFormats={["bold", "italic", "strikethrough"]}
+					/>
+				</div>
 			</div>
 		</div>,
 	];

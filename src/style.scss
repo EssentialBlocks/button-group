@@ -7,14 +7,18 @@
 		position: relative;
 	}
 	&__midldeInner {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		border-radius: 50%;
+		align-self: center;
+		width: 0;
+		position: relative;
+		span {
+			position: absolute;
+			background-color: #fff;
+			border-radius: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
 	}
 }
 
@@ -46,4 +50,30 @@
 .eb-inspector-btn-group button {
 	flex: 1;
 	padding-left: 40px !important;
+}
+
+//Styles for Preset Designs
+.eb-duel-button-wrapper.button-4 {
+	flex-direction: column !important;
+	
+	.eb-button-parent.eb-button-one {
+		margin-top: 0 !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+	.eb-button-parent.eb-button-two {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		margin-bottom: 0 !important;
+	}
+}
+.eb-duel-button-wrapper:not(.button-4) .eb-button-parent.eb-button-one {
+	margin-top: 0 !important;
+	margin-left: 0 !important;
+	margin-bottom: 0 !important;
+}
+.eb-duel-button-wrapper:not(.button-4) .eb-button-parent.eb-button-two {
+	margin-top: 0 !important;
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
 }

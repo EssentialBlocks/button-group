@@ -3570,6 +3570,10 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "string",
     "default": "button-1"
   },
+  contentPosition: {
+    type: "string",
+    "default": "center"
+  },
   buttonWidth: {
     type: "number",
     "default": "auto"
@@ -3648,7 +3652,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
   },
   innerButtonText: {
     type: "string",
-    "default": "or"
+    "default": "OR"
   },
   innerButtonSize: {
     type: "string",
@@ -3744,7 +3748,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
 /*!************************************!*\
   !*** ./src/constants/constants.js ***!
   \************************************/
-/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_ONE_BORDER_SHADOW, BUTTON_TWO_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BUTTON_STYLES, UNIT_TYPES, NORMAL_HOVER, CONNECTOR_TYPE, PRESETS, TEXT_ALIGN */
+/*! exports provided: WRAPPER_MARGIN, BUTTONS_MARGIN, BUTTONS_PADDING, BUTTON_ONE_BORDER_SHADOW, BUTTON_TWO_BORDER_SHADOW, BUTTON_ONE_BG, BUTTON_TWO_BG, BUTTONS_WIDTH, BUTTONS_GAP, BUTTONS_CONNECTOR_SIZE, BUTTON_STYLES, UNIT_TYPES, NORMAL_HOVER, CONNECTOR_TYPE, PRESETS, TEXT_ALIGN, CONTENT_POSITION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3765,6 +3769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONNECTOR_TYPE", function() { return CONNECTOR_TYPE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRESETS", function() { return PRESETS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_ALIGN", function() { return TEXT_ALIGN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONTENT_POSITION", function() { return CONTENT_POSITION; });
 var __ = wp.i18n.__; // the consts defined here should be unique from one another
 
 var WRAPPER_MARGIN = "wrpMargin";
@@ -3820,6 +3825,9 @@ var PRESETS = [{
 }, {
   label: __("Button 3"),
   value: "button-3"
+}, {
+  label: __("Button 4"),
+  value: "button-4"
 }];
 var TEXT_ALIGN = [{
   label: __("Left"),
@@ -3830,6 +3838,16 @@ var TEXT_ALIGN = [{
 }, {
   label: __("Right"),
   value: "right"
+}];
+var CONTENT_POSITION = [{
+  label: __("Left"),
+  value: "flex-start"
+}, {
+  label: __("Center"),
+  value: "center"
+}, {
+  label: __("Right"),
+  value: "flex-end"
 }];
 
 /***/ }),
@@ -3896,6 +3914,7 @@ function Edit(props) {
       blockMeta = attributes.blockMeta,
       resOption = attributes.resOption,
       preset = attributes.preset,
+      contentPosition = attributes.contentPosition,
       buttonTextOne = attributes.buttonTextOne,
       buttonTextTwo = attributes.buttonTextTwo,
       buttonOneColor = attributes.buttonOneColor,
@@ -4017,12 +4036,12 @@ function Edit(props) {
 
   var _generateResponsiveRa2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_GAP"],
-    property: "margin-right",
+    property: "margin",
     attributes: attributes
   }),
-      buttonGapStyleDesktop = _generateResponsiveRa2.rangeStylesDesktop,
-      buttonGapStyleTab = _generateResponsiveRa2.rangeStylesTab,
-      buttonGapStyleMobile = _generateResponsiveRa2.rangeStylesMobile;
+      buttonGapDesktop = _generateResponsiveRa2.rangeStylesDesktop,
+      buttonGapTab = _generateResponsiveRa2.rangeStylesTab,
+      buttonGapMobile = _generateResponsiveRa2.rangeStylesMobile;
 
   var _generateResponsiveRa3 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_CONNECTOR_SIZE"],
@@ -4040,28 +4059,37 @@ function Edit(props) {
   }),
       buttonConnectorWidthDesktop = _generateResponsiveRa4.rangeStylesDesktop,
       buttonConnectorWidthTab = _generateResponsiveRa4.rangeStylesTab,
-      buttonConnectorWidthMobile = _generateResponsiveRa4.rangeStylesMobile; // wrapper styles css in strings ⬇
+      buttonConnectorWidthMobile = _generateResponsiveRa4.rangeStylesMobile;
+
+  var _generateResponsiveRa5 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["generateResponsiveRangeStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_2__["BUTTONS_CONNECTOR_SIZE"],
+    property: "line-height",
+    attributes: attributes
+  }),
+      buttonConnectorLineHeightDesktop = _generateResponsiveRa5.rangeStylesDesktop,
+      buttonConnectorLineHeightTab = _generateResponsiveRa5.rangeStylesTab,
+      buttonConnectorLineHeightMobile = _generateResponsiveRa5.rangeStylesMobile; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\tdisplay: flex;\n\t\t\tflex-direction: row;\n\t\t\talign-items: center;\n\t\t\tjustify-content: center;\n\t\t\tposition: relative;\n\t\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t}\n\t");
+  var wrapperStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\tdisplay: flex;\n\t\t\tflex-direction: row;\n\t\t\talign-items: ").concat(contentPosition, ";\n\t\t\tjustify-content: ").concat(contentPosition, ";\n\t\t\tposition: relative;\n\t\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t}\n\t");
   var wrapperStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesTab, "\n\n\t\t}\n\t");
   var wrapperStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesMobile, "\n\n\t\t}\n\t"); // Buttons Common styles css in strings ⬇
 
-  var buttonsCommonStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonWidthStyleDesktop, "\n\t\t\ttext-align: center;\n\t\t\tcursor: pointer;\n\t\t\tbuttonTextAlign: ").concat(buttonTextAlign, ";\n\t\t}\n\t");
-  var buttonsCommonStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t\t").concat(buttonsPaddingStylesTab, "\n\t\t\t").concat(buttonWidthStyleTab, "\n\t\t}\n\t");
-  var buttonsCommonStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t\t").concat(buttonsPaddingStylesMobile, "\n\t\t\t").concat(buttonWidthStyleMobile, "\n\t\t}\n\t"); // Buttons One styles css in strings ⬇
+  var buttonsCommonStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonWidthStyleDesktop, "\n\t\t\t").concat(buttonGapDesktop, "\n\t\t\ttext-align: center;\n\t\t\tcursor: pointer;\n\t\t\tbuttonTextAlign: ").concat(buttonTextAlign, ";\n\t\t}\n\t");
+  var buttonsCommonStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t\t").concat(buttonsPaddingStylesTab, "\n\t\t\t").concat(buttonWidthStyleTab, "\n\t\t\t").concat(buttonGapTab, "\n\t\t}\n\t");
+  var buttonsCommonStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t\t").concat(buttonsPaddingStylesMobile, "\n\t\t\t").concat(buttonWidthStyleMobile, "\n\t\t\t").concat(buttonGapMobile, "\n\t\t}\n\t"); // Buttons One styles css in strings ⬇
 
-  var buttonOneStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowDesktop, "\n\t\t\t").concat(buttonGapStyleDesktop, "\n\t\t\tbackground-color: ").concat(buttonOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\t\t\tcolor: ").concat(textOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover .eb-button-one-text {\n\t\t\tcolor: ").concat(hoverTextOneColor, ";\n\t\t}\n\t");
-  var buttonOneStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowTab, "\n\t\t\t").concat(buttonGapStyleTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t");
-  var buttonOneStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowMobile, "\n\t\t\t").concat(buttonGapStyleMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t"); // Buttons Two styles css in strings ⬇
+  var buttonOneStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowDesktop, "\n\t\t\tbackground-color: ").concat(attributes.buttonOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\t\t\tcolor: ").concat(textOneColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover .eb-button-one-text {\n\t\t\tcolor: ").concat(hoverTextOneColor, ";\n\t\t}\n\t");
+  var buttonOneStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t");
+  var buttonOneStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t"); // Buttons Two styles css in strings ⬇
 
-  var buttonTwoStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowDesktop, "\n\t\t\t").concat(buttonGapStyleDesktop, "\n\t\t\tbackground-color: ").concat(buttonTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\t\t\tcolor: ").concat(textTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover .eb-button-two-text {\n\t\t\tcolor: ").concat(hoverTextTwoColor, ";\n\t\t}\n\t");
-  var buttonTwoStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowTab, "\n\t\t\t").concat(buttonGapStyleTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t");
-  var buttonTwoStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowMobile, "\n\t\t\t").concat(buttonGapStyleMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"); // Connector styles css in strings ⬇
+  var buttonTwoStyleDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowDesktop, "\n\t\t\t").concat(buttonGapDesktop, "\n\t\t\tbackground-color: ").concat(buttonTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\t\t\tcolor: ").concat(textTwoColor, ";\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover .eb-button-two-text {\n\t\t\tcolor: ").concat(hoverTextTwoColor, ";\n\t\t}\n\t");
+  var buttonTwoStyleTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowTab, "\n\t\t\t").concat(buttonGapTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverTab, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t");
+  var buttonTwoStyleMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowMobile, "\n\t\t\t").concat(buttonGapMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-duel-button-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"); // Connector styles css in strings ⬇
 
-  var connectorStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesDesktop, "\n\t\t\t").concat(buttonConnectorHeightDesktop, "\n\t\t\t").concat(buttonConnectorWidthDesktop, "\n\t\t\tbackground: ").concat(innerButtonColor, ";\n\t\t\tcolor: ").concat(innerButtonTextColor, ";\n\t\t}\n\t");
-  var connectorStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesTab, "\n\t\t\t").concat(buttonConnectorHeightTab, "\n\t\t}\n\t");
-  var connectorStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner {\n\t\t\t").concat(connectorTypoStylesMobile, "\n\t\t\t").concat(buttonConnectorHeightMobile, "\n\t\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var connectorStylesDesktop = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner span {\n\t\t\t").concat(connectorTypoStylesDesktop, "\n\t\t\t").concat(buttonConnectorHeightDesktop, "\n\t\t\t").concat(buttonConnectorWidthDesktop, "\n\t\t\t").concat(buttonConnectorLineHeightDesktop, "\n\t\t\tbackground: ").concat(innerButtonColor, ";\n\t\t\tcolor: ").concat(innerButtonTextColor, ";\n\t\t}\n\t");
+  var connectorStylesTab = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner span {\n\t\t\t").concat(connectorTypoStylesTab, "\n\t\t\t").concat(buttonConnectorHeightTab, "\n\t\t\t").concat(buttonConnectorWidthTab, "\n\t\t\t").concat(buttonConnectorLineHeightTab, "\n\t\t}\n\t");
+  var connectorStylesMobile = "\n\t\t.eb-duel-button-wrapper.".concat(blockId, " .eb-dual-button__midldeInner span {\n\t\t\t").concat(connectorTypoStylesMobile, "\n\t\t\t").concat(buttonConnectorHeightMobile, "\n\t\t\t").concat(buttonConnectorWidthMobile, "\n\t\t\t").concat(buttonConnectorLineHeightMobile, "\n\t\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
   var desktopAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(connectorStylesDesktop) ? connectorStylesDesktop : " ", "\n\t\t")); // all css styles for Tab in strings ⬇
 
@@ -4081,82 +4109,7 @@ function Edit(props) {
         blockMeta: styleObject
       });
     }
-  }, [attributes]); // const buttonStyles = {
-  // 	margin: `${marginTop || 0}${marginUnit} ${marginRight || 0}${marginUnit} ${marginBottom || 0
-  // 		}${marginUnit} ${marginLeft || 0}${marginUnit}`,
-  // 	padding: `${paddingTop || 0}${paddingUnit} ${paddingRight || 0
-  // 		}${paddingUnit} ${paddingBottom || 0}${paddingUnit} ${paddingLeft || 0
-  // 		}${paddingUnit}`,
-  // 	width: `${buttonWidth !== 0 && buttonWidth !== undefined
-  // 			? `${buttonWidth}${widthUnit}`
-  // 			: "auto"
-  // 		}`,
-  // 	font-family: buttonFontFamily ? buttonFontFamily : null,
-  // 	font-weight: buttonFontWeight ? buttonFontWeight : "normal",
-  // 	text-transform: buttonTextTransform ? buttonTextTransform : "none",
-  // 	display: "inline-block",
-  // 	border-width: `${borderWidth || 0}px`,
-  // 	border-style: borderStyle,
-  // 	font-size: `${buttonFontSize || 18}${buttonFontUnit}`,
-  // 	letter-spacing: buttonLetterSpacing ? buttonLetterSpacing : 0,
-  // 	text-align: "center",
-  // 	cursor: "pointer",
-  // };
-  // const buttonStyleOne = {
-  // 	...buttonStyles,
-  // 	borderRadius: `${borderRadiusTopLeft || 5
-  // 		}${borderRadiusUnit}  ${0}${borderRadiusUnit} ${0}${borderRadiusUnit} ${borderRadiusBottomLeft || 5
-  // 		}${borderRadiusUnit}`,
-  // 	borderColor:
-  // 		isHoverOne && hoverBorderOneColor
-  // 			? hoverBorderOneColor
-  // 			: borderOneColor || "#7967ff",
-  // 	background:
-  // 		isHoverOne && hoverButtonOneColor
-  // 			? hoverButtonOneColor
-  // 			: buttonOneColor || "#7967ff",
-  // 	color: textOneColor || "#fff",
-  // 	marginRight: `${seperateButtonsSpace || 0}${seperateButtonsSpaceUnit}`,
-  // };
-  // const buttonStyleTwo = {
-  // 	...buttonStyles,
-  // 	borderRadius: `${0}${borderRadiusUnit}  ${borderRadiusTopRight || 5
-  // 		}${borderRadiusUnit} ${borderRadiusBottomRight || 5
-  // 		}${borderRadiusUnit} ${0}${borderRadiusUnit}`,
-  // 	borderColor:
-  // 		isHoverTwo && hoverBorderTwoColor
-  // 			? hoverBorderTwoColor
-  // 			: borderTwoColor || "#309bff",
-  // 	background:
-  // 		isHoverTwo && hoverButtonTwoColor
-  // 			? hoverButtonTwoColor
-  // 			: buttonTwoColor || "#309bff",
-  // 	color: textTwoColor || "#fff",
-  // };
-  // const textStylesOne = {
-  // 	color:
-  // 		isHoverOne && hoverTextOneColor
-  // 			? hoverTextOneColor
-  // 			: textOneColor || "#ffffff",
-  // };
-  // const textStylesTwo = {
-  // 	color:
-  // 		isHoverTwo && hoverTextTwoColor
-  // 			? hoverTextTwoColor
-  // 			: textTwoColor || "#ffffff",
-  // };
-  // const buttonMiddleInnerStyles = {
-  // 	width: `${innerButtonSize || 30}px`,
-  // 	height: `${innerButtonSize || 30}px`,
-  // 	background: `${innerButtonColor ? innerButtonColor : "#fff"}`,
-  // 	color: `${innerButtonTextColor ? innerButtonTextColor : "#4a5059"}`,
-  // 	fontSize: `${innerButtonTextSize || 14}px`,
-  // 	textTransform: innerButtonTextTransform
-  // 		? innerButtonTextTransform
-  // 		: "uppercase",
-  // 	letterSpacing: innerButtonLetterSpacing ? innerButtonLetterSpacing : 0,
-  // };
-
+  }, [attributes]);
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_0__["default"], props),
   /*#__PURE__*/
   //Edit view here
@@ -4187,7 +4140,12 @@ function Edit(props) {
       });
     },
     allowedFormats: ["bold", "italic", "strikethrough"]
-  })), /*#__PURE__*/React.createElement("div", {
+  })), showConnector && /*#__PURE__*/React.createElement("div", {
+    className: "eb-dual-button__midldeInner" // style={buttonMiddleInnerStyles}
+
+  }, isShowIcon && /*#__PURE__*/React.createElement("span", {
+    className: "".concat(innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h")
+  }), !isShowIcon && /*#__PURE__*/React.createElement("span", null, innerButtonText)), /*#__PURE__*/React.createElement("div", {
     className: "eb-button-parent eb-button-two" // style={buttonStyleTwo}
     ,
     onMouseEnter: function onMouseEnter() {
@@ -4211,12 +4169,7 @@ function Edit(props) {
       });
     },
     allowedFormats: ["bold", "italic", "strikethrough"]
-  })), showConnector && /*#__PURE__*/React.createElement("div", {
-    className: "eb-dual-button__midldeInner" // style={buttonMiddleInnerStyles}
-
-  }, isShowIcon && /*#__PURE__*/React.createElement("span", {
-    className: "".concat(innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h")
-  }), !isShowIcon && /*#__PURE__*/React.createElement("span", null, innerButtonText))))];
+  }))))];
 }
 ;
 
@@ -4373,6 +4326,7 @@ function Inspector(props) {
       setAttributes = props.setAttributes;
   var resOption = attributes.resOption,
       preset = attributes.preset,
+      contentPosition = attributes.contentPosition,
       buttonOneColor = attributes.buttonOneColor,
       textOneColor = attributes.textOneColor,
       hoverButtonOneColor = attributes.hoverButtonOneColor,
@@ -4388,7 +4342,6 @@ function Inspector(props) {
       buttonTextTwo = attributes.buttonTextTwo,
       buttonURLTwo = attributes.buttonURLTwo,
       innerButtonText = attributes.innerButtonText,
-      innerButtonSize = attributes.innerButtonSize,
       innerButtonColor = attributes.innerButtonColor,
       innerButtonTextColor = attributes.innerButtonTextColor,
       isShowIcon = attributes.isShowIcon,
@@ -4533,39 +4486,70 @@ function Inspector(props) {
       preset: selected
     });
 
-    if (selected === 'button-1') {
-      setAttributes({
-        showConnector: "true",
-        buttonOneBorderShadowRds_Top: 20,
-        buttonOneBorderShadowRds_Bottom: 0,
-        buttonOneBorderShadowRds_Left: 20,
-        buttonOneBorderShadowRds_Right: 0,
-        buttonTwoBorderShadowRds_Top: 0,
-        buttonTwoBorderShadowRds_Bottom: 20,
-        buttonTwoBorderShadowRds_Left: 0,
-        buttonTwoBorderShadowRds_Right: 20,
-        buttonsGapRange: 0,
-        buttonOneColor: "#000"
-      });
-    } else if (selected === 'button-2') {
-      setAttributes({
-        showConnector: false,
-        buttonOneBorderShadowRds_Top: 30,
-        buttonOneBorderShadowRds_Bottom: 30,
-        buttonOneBorderShadowRds_Left: 30,
-        buttonOneBorderShadowRds_Right: 30,
-        buttonTwoBorderShadowRds_Top: 30,
-        buttonTwoBorderShadowRds_Bottom: 30,
-        buttonTwoBorderShadowRds_Left: 30,
-        buttonTwoBorderShadowRds_Right: 30,
-        buttonsGapRange: 20
-      });
-    } else if (selected === 'button-3') {
-      setAttributes({
-        buttonOneColor: "#444",
-        buttonTwoColor: "#888"
-      });
-    } else {}
+    switch (selected) {
+      case 'button-1':
+        setAttributes({
+          showConnector: "true",
+          buttonOneBorderShadowRds_Top: 20,
+          buttonOneBorderShadowRds_Bottom: 0,
+          buttonOneBorderShadowRds_Left: 20,
+          buttonOneBorderShadowRds_Right: 0,
+          buttonTwoBorderShadowRds_Top: 0,
+          buttonTwoBorderShadowRds_Bottom: 20,
+          buttonTwoBorderShadowRds_Left: 0,
+          buttonTwoBorderShadowRds_Right: 20,
+          buttonsGapRange: 0
+        });
+        break;
+
+      case 'button-2':
+        setAttributes({
+          showConnector: false,
+          buttonOneBorderShadowRds_Top: 30,
+          buttonOneBorderShadowRds_Bottom: 30,
+          buttonOneBorderShadowRds_Left: 30,
+          buttonOneBorderShadowRds_Right: 30,
+          buttonTwoBorderShadowRds_Top: 30,
+          buttonTwoBorderShadowRds_Bottom: 30,
+          buttonTwoBorderShadowRds_Left: 30,
+          buttonTwoBorderShadowRds_Right: 30,
+          buttonsGapRange: 20
+        });
+        break;
+
+      case 'button-3':
+        setAttributes({
+          showConnector: false,
+          buttonOneBorderShadowRds_Top: 0,
+          buttonOneBorderShadowRds_Bottom: 0,
+          buttonOneBorderShadowRds_Left: 15,
+          buttonOneBorderShadowRds_Right: 15,
+          buttonTwoBorderShadowRds_Top: 15,
+          buttonTwoBorderShadowRds_Bottom: 15,
+          buttonTwoBorderShadowRds_Left: 0,
+          buttonTwoBorderShadowRds_Right: 0,
+          buttonsGapRange: 20
+        });
+        break;
+
+      case 'button-4':
+        setAttributes({
+          showConnector: false,
+          buttonOneBorderShadowRds_Top: 30,
+          buttonOneBorderShadowRds_Bottom: 30,
+          buttonOneBorderShadowRds_Left: 30,
+          buttonOneBorderShadowRds_Right: 30,
+          buttonTwoBorderShadowRds_Top: 30,
+          buttonTwoBorderShadowRds_Bottom: 30,
+          buttonTwoBorderShadowRds_Left: 30,
+          buttonTwoBorderShadowRds_Right: 30,
+          buttonsGapRange: 20
+        });
+        break;
+
+      default:
+        return false;
+    }
   };
 
   return /*#__PURE__*/React.createElement(InspectorControls, {
@@ -4582,7 +4566,23 @@ function Inspector(props) {
     onChange: function onChange(selected) {
       return changePreset(selected);
     }
-  }), /*#__PURE__*/React.createElement(TextControl, {
+  }), /*#__PURE__*/React.createElement(BaseControl, {
+    label: __("Alignment"),
+    id: "eb-duel-button-alignment"
+  }, /*#__PURE__*/React.createElement(ButtonGroup, {
+    id: "eb-duel-button-alignment"
+  }, _constants_constants__WEBPACK_IMPORTED_MODULE_0__["CONTENT_POSITION"].map(function (item) {
+    return /*#__PURE__*/React.createElement(Button, {
+      isLarge: true,
+      isPrimary: contentPosition === item.value,
+      isSecondary: contentPosition !== item.value,
+      onClick: function onClick() {
+        return setAttributes({
+          contentPosition: item.value
+        });
+      }
+    }, item.label);
+  }))), /*#__PURE__*/React.createElement(TextControl, {
     label: __("Button One Text"),
     value: buttonTextOne,
     onChange: function onChange(text) {

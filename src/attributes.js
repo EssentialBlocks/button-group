@@ -41,6 +41,10 @@ const attributes = {
 		type: "string",
 		default: "button-1"
 	},
+	contentPosition: {
+		type: "string",
+		default: "center"
+	},
 	buttonWidth: {
 		type: "number",
 		default: "auto",
@@ -119,7 +123,7 @@ const attributes = {
 	},
 	innerButtonText: {
 		type: "string",
-		default: "or",
+		default: "OR",
 	},
 	innerButtonSize: {
 		type: "string",

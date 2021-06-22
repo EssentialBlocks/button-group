@@ -37,11 +37,18 @@ export const CONNECTOR_TYPE = [
 export const PRESETS = [
 	{ label: __("Button 1"), value: "button-1" },
 	{ label: __("Button 2"), value: "button-2" },
-	{ label: __("Button 3"), value: "button-3" }
+	{ label: __("Button 3"), value: "button-3" },
+	{ label: __("Button 4"), value: "button-4" },
 ];
 
 export const TEXT_ALIGN = [
 	{ label: __("Left"), value: "left" },
 	{ label: __("Center"), value: "center" },
 	{ label: __("Right"), value: "right" }
+];
+
+export const CONTENT_POSITION = [
+	{ label: __("Left"), value: "flex-start" },
+	{ label: __("Center"), value: "center" },
+	{ label: __("Right"), value: "flex-end" }
 ];

@@ -33,6 +33,7 @@ import {
 	PRESETS,
 	BUTTONS_CONNECTOR_SIZE,
 	TEXT_ALIGN,
+	CONTENT_POSITION,
 } from "./constants/constants";
 import {
 	mimmikCssForResBtns,
@@ -52,6 +53,7 @@ function Inspector(props) {
 	const {
 		resOption,
 		preset,
+		contentPosition,
 		buttonOneColor,
 		textOneColor,
 		hoverButtonOneColor,
@@ -67,7 +69,6 @@ function Inspector(props) {
 		buttonTextTwo,
 		buttonURLTwo,
 		innerButtonText,
-		innerButtonSize,
 		innerButtonColor,
 		innerButtonTextColor,
 		isShowIcon,
@@ -206,45 +207,66 @@ function Inspector(props) {
 
 	const changePreset = (selected) => {
 		setAttributes({ preset: selected });
-		if (selected === 'button-1') {
-			setAttributes({
-				showConnector: "true",
-				buttonOneBorderShadowRds_Top: 20,
-				buttonOneBorderShadowRds_Bottom: 0,
-				buttonOneBorderShadowRds_Left: 20,
-				buttonOneBorderShadowRds_Right: 0,
-				buttonTwoBorderShadowRds_Top: 0,
-				buttonTwoBorderShadowRds_Bottom: 20,
-				buttonTwoBorderShadowRds_Left: 0,
-				buttonTwoBorderShadowRds_Right: 20,
-				buttonsGapRange: 0,
-				buttonOneColor: "#000",
-			});
+		switch(selected) {
+			case 'button-1':
+				setAttributes({
+					showConnector: "true",
+					buttonOneBorderShadowRds_Top: 20,
+					buttonOneBorderShadowRds_Bottom: 0,
+					buttonOneBorderShadowRds_Left: 20,
+					buttonOneBorderShadowRds_Right: 0,
+					buttonTwoBorderShadowRds_Top: 0,
+					buttonTwoBorderShadowRds_Bottom: 20,
+					buttonTwoBorderShadowRds_Left: 0,
+					buttonTwoBorderShadowRds_Right: 20,
+					buttonsGapRange: 0,
+				});
+				break;
+			case 'button-2':
+				setAttributes({
+					showConnector: false,
+					buttonOneBorderShadowRds_Top: 30,
+					buttonOneBorderShadowRds_Bottom: 30,
+					buttonOneBorderShadowRds_Left: 30,
+					buttonOneBorderShadowRds_Right: 30,
+					buttonTwoBorderShadowRds_Top: 30,
+					buttonTwoBorderShadowRds_Bottom: 30,
+					buttonTwoBorderShadowRds_Left: 30,
+					buttonTwoBorderShadowRds_Right: 30,
+					buttonsGapRange: 20,
+				});
+				break;
+			case 'button-3':
+				setAttributes({
+					showConnector: false,
+					buttonOneBorderShadowRds_Top: 0,
+					buttonOneBorderShadowRds_Bottom: 0,
+					buttonOneBorderShadowRds_Left: 15,
+					buttonOneBorderShadowRds_Right: 15,
+					buttonTwoBorderShadowRds_Top: 15,
+					buttonTwoBorderShadowRds_Bottom: 15,
+					buttonTwoBorderShadowRds_Left: 0,
+					buttonTwoBorderShadowRds_Right: 0,
+					buttonsGapRange: 20,
+				});
+				break;
+			case 'button-4':
+				setAttributes({
+					showConnector: false,
+					buttonOneBorderShadowRds_Top: 30,
+					buttonOneBorderShadowRds_Bottom: 30,
+					buttonOneBorderShadowRds_Left: 30,
+					buttonOneBorderShadowRds_Right: 30,
+					buttonTwoBorderShadowRds_Top: 30,
+					buttonTwoBorderShadowRds_Bottom: 30,
+					buttonTwoBorderShadowRds_Left: 30,
+					buttonTwoBorderShadowRds_Right: 30,
+					buttonsGapRange: 20,
+				});
+				break;
+			default:
+			  return false;
 		}
-		else if (selected === 'button-2') {
-			setAttributes({
-				showConnector: false,
-				buttonOneBorderShadowRds_Top: 30,
-				buttonOneBorderShadowRds_Bottom: 30,
-				buttonOneBorderShadowRds_Left: 30,
-				buttonOneBorderShadowRds_Right: 30,
-				buttonTwoBorderShadowRds_Top: 30,
-				buttonTwoBorderShadowRds_Bottom: 30,
-				buttonTwoBorderShadowRds_Left: 30,
-				buttonTwoBorderShadowRds_Right: 30,
-				buttonsGapRange: 20,
-			});
-		}
-		else if (selected === 'button-3') {
-			setAttributes({
-				buttonOneColor: "#444",
-				buttonTwoColor: "#888",
-			});
-		}
-		else {
-
-		}
-		
 	};
 
 	return (
@@ -257,6 +279,24 @@ function Inspector(props) {
 						options={PRESETS}
 						onChange={(selected) => changePreset(selected)}
 					/>
+					<BaseControl label={__("Alignment")} id="eb-duel-button-alignment">
+						<ButtonGroup id="eb-duel-button-alignment">
+							{CONTENT_POSITION.map((item) => (
+								<Button
+									isLarge
+									isPrimary={contentPosition === item.value}
+									isSecondary={contentPosition !== item.value}
+									onClick={() =>
+										setAttributes({
+											contentPosition: item.value,
+										})
+									}
+								>
+									{item.label}
+								</Button>
+							))}
+						</ButtonGroup>
+					</BaseControl>
 					<TextControl
 						label={__("Button One Text")}
 						value={buttonTextOne}
