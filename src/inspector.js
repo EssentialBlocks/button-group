@@ -269,8 +269,6 @@ function Inspector(props) {
 		}
 	};
 
-	console.log("Attributes", attributes);
-
 	return (
 		<InspectorControls key="controls">
 			<div className="eb-panel-control">
@@ -294,7 +292,7 @@ function Inspector(props) {
 										})
 									}
 								>
-									{item.label}
+									<span dangerouslySetInnerHTML={{ __html: item.label }} />
 								</Button>
 							))}
 						</ButtonGroup>
@@ -375,7 +373,7 @@ function Inspector(props) {
 										})
 									}
 								>
-									{item.label}
+									<span dangerouslySetInnerHTML={{ __html: item.label }} />
 								</Button>
 							))}
 						</ButtonGroup>

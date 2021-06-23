@@ -42,13 +42,13 @@ export const PRESETS = [
 ];
 
 export const TEXT_ALIGN = [
-	{ label: __("Left"), value: "left" },
-	{ label: __("Center"), value: "center" },
-	{ label: __("Right"), value: "right" }
+	{ label: __('<i class="fas fa-align-left"></i>'), value: "left" },
+	{ label: __('<i class="fas fa-align-center"></i>'), value: "center" },
+	{ label: __('<i class="fas fa-align-right"></i>'), value: "right" }
 ];
 
 export const CONTENT_POSITION = [
-	{ label: __("Left"), value: "flex-start" },
-	{ label: __("Center"), value: "center" },
-	{ label: __("Right"), value: "flex-end" }
+	{ label: __('<i class="fas fa-align-left"></i>'), value: "flex-start" },
+	{ label: __('<i class="fas fa-align-center"></i>'), value: "center" },
+	{ label: __('<i class="fas fa-align-right"></i>'), value: "flex-end" }
 ];
