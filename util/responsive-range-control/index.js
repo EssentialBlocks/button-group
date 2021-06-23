@@ -60,7 +60,7 @@ const ResponsiveRangeController = ({
                 }
                 step={step || 1}
                 min={min || 0}
-                max={max || 2000}
+                max={max || 100}
               />
             </WithResBtns>
           )}
@@ -79,7 +79,7 @@ const ResponsiveRangeController = ({
                 }
                 step={step || 1}
                 min={min || 0}
-                max={max || 2000}
+                max={max || 100}
               />
             </WithResBtns>
           )}
@@ -98,17 +98,13 @@ const ResponsiveRangeController = ({
                 }
                 step={step || 1}
                 min={min || 0}
-                max={max || 2000}
+                max={max || 100}
               />
             </WithResBtns>
           )}
         </>
       ) : (
         <>
-          {
-            //  {console.log("-- noUnits naai")}
-          }
-
           {resOption == "Desktop" && (
             <>
               <UnitControl
@@ -130,9 +126,9 @@ const ResponsiveRangeController = ({
                       [`${controlName}Range`]: desktopRange,
                     })
                   }
-                  step={step || (desktopSizeUnit !== "em" ? 1 : 0.1)}
-                  min={min || 0}
-                  max={max || (desktopSizeUnit === "px" ? 2000 : 100)}
+                  step={desktopSizeUnit === "em" ? 0.1 : step}
+                  min={desktopSizeUnit === "px" ? min : 0}
+                  max={desktopSizeUnit === "px" ? max : 100}
                 />
               </WithResBtns>
             </>
@@ -158,9 +154,9 @@ const ResponsiveRangeController = ({
                       [`TAB${controlName}Range`]: TABrange,
                     })
                   }
-                  step={step || (TABsizeUnit !== "em" ? 1 : 0.1)}
-                  min={min || 0}
-                  max={max || (TABsizeUnit === "px" ? 2000 : 100)}
+                  step={TABsizeUnit === "em" ? 0.1 : step}
+                  min={TABsizeUnit === "px" ? min : 0}
+                  max={TABsizeUnit === "px" ? max : 100}
                 />
               </WithResBtns>
             </>
@@ -186,9 +182,9 @@ const ResponsiveRangeController = ({
                       [`MOB${controlName}Range`]: MOBrange,
                     })
                   }
-                  step={step || (MOBsizeUnit !== "em" ? 1 : 0.1)}
-                  min={min || 0}
-                  max={max || (MOBsizeUnit === "px" ? 2000 : 100)}
+                  step={MOBsizeUnit === "em" ? 0.1 : step}
+                  min={MOBsizeUnit === "px" ? min : 0}
+                  max={MOBsizeUnit === "px" ? max : 100}
                 />
               </WithResBtns>
             </>

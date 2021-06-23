@@ -20,7 +20,6 @@ export const BUTTON_STYLES = [
 
 export const UNIT_TYPES = [
 	{ label: "px", value: "px" },
-	{ label: "%", value: "%" },
 	{ label: "em", value: "em" },
 ];
 
@@ -35,10 +34,10 @@ export const CONNECTOR_TYPE = [
 ];
 
 export const PRESETS = [
-	{ label: __("Button 1"), value: "button-1" },
-	{ label: __("Button 2"), value: "button-2" },
-	{ label: __("Button 3"), value: "button-3" },
-	{ label: __("Button 4"), value: "button-4" },
+	{ label: __("Preset 1"), value: "preset-1" },
+	{ label: __("Preset 2"), value: "preset-2" },
+	{ label: __("Preset 3"), value: "preset-3" },
+	{ label: __("Preset 4"), value: "preset-4" },
 ];
 
 export const TEXT_ALIGN = [

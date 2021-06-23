@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Duel_Button_Font_Loader
+class dual_Button_Font_Loader
 {
 
     private static $instance;
@@ -91,4 +91,4 @@ class Duel_Button_Font_Loader
         }
     }
 }
-Duel_Button_Font_Loader::register();
+dual_Button_Font_Loader::register();

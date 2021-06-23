@@ -16,7 +16,7 @@ const Save = ({ attributes }) => {
 
 	return (
 		<div {...useBlockProps.save()}>
-			<div className={`eb-duel-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
+			<div className={`eb-dual-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				<a className={"eb-button-parent eb-button-one"} href={buttonURLOne}>
 					<div className="eb-button-text eb-button-one-text">{buttonTextOne}</div>
 				</a>

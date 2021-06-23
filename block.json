@@ -1,10 +1,10 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/duel-button",
-	"title": "Duel Button",
+	"name": "create-block/dual-button",
+	"title": "Dual Button",
 	"category": "widgets",
-	"description": "Create A Series of Buttons To Be Stacked Together ",
-	"textdomain": "duel-button",
+	"description": "Create Two Buttons To Be Stacked Together",
+	"textdomain": "dual-button",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

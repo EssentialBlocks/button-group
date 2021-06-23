@@ -1,7 +1,7 @@
 {
-	"name": "duel-button",
+	"name": "dual-button",
 	"version": "0.1.0",
-	"description": "Create A Series of Buttons To Be Stacked Together",
+	"description": "Create Two Buttons To Be Stacked Together",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",

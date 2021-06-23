@@ -71,16 +71,12 @@ function Inspector(props) {
 		innerButtonText,
 		innerButtonColor,
 		innerButtonTextColor,
-		isShowIcon,
 		innerButtonIcon,
-		isShowText,
 		showConnector,
 		connectorType,
 		buttonsColorType,
 		buttonTextAlign,
 	} = attributes;
-
-	const hasConnector = isShowText || isShowIcon;
 
 	const handleButtonOneStyles = (style) => {
 		switch (style) {
@@ -208,7 +204,7 @@ function Inspector(props) {
 	const changePreset = (selected) => {
 		setAttributes({ preset: selected });
 		switch(selected) {
-			case 'button-1':
+			case 'preset-1':
 				setAttributes({
 					showConnector: "true",
 					buttonOneBorderShadowRds_Top: 20,
@@ -222,7 +218,7 @@ function Inspector(props) {
 					buttonsGapRange: 0,
 				});
 				break;
-			case 'button-2':
+			case 'preset-2':
 				setAttributes({
 					showConnector: false,
 					buttonOneBorderShadowRds_Top: "30",
@@ -236,7 +232,7 @@ function Inspector(props) {
 					buttonsGapRange: 20,
 				});
 				break;
-			case 'button-3':
+			case 'preset-3':
 				setAttributes({
 					showConnector: false,
 					buttonOneBorderShadowRds_Top: "0",
@@ -250,7 +246,7 @@ function Inspector(props) {
 					buttonsGapRange: 20,
 				});
 				break;
-			case 'button-4':
+			case 'preset-4':
 				setAttributes({
 					showConnector: false,
 					buttonOneBorderShadowRds_Top: "30",
@@ -279,8 +275,8 @@ function Inspector(props) {
 						options={PRESETS}
 						onChange={(selected) => changePreset(selected)}
 					/>
-					<BaseControl label={__("Alignment")} id="eb-duel-button-alignment">
-						<ButtonGroup id="eb-duel-button-alignment">
+					<BaseControl label={__("Alignment")} id="eb-dual-button-alignment">
+						<ButtonGroup id="eb-dual-button-alignment">
 							{CONTENT_POSITION.map((item) => (
 								<Button
 									isLarge
@@ -341,17 +337,17 @@ function Inspector(props) {
 					/>
 
 					<ResponsiveRangeController
-						baseLabel={__("Buttons Width", "duel-button")}
+						baseLabel={__("Buttons Width", "dual-button")}
 						controlName={BUTTONS_WIDTH}
 						resRequiredProps={resRequiredProps}
 						units={UNIT_TYPES}
-						min={50}
+						min={0}
 						max={500}
 						step={1}
 					/>
 
 					<ResponsiveRangeController
-						baseLabel={__("Buttons Gap", "duel-button")}
+						baseLabel={__("Buttons Gap", "dual-button")}
 						controlName={BUTTONS_GAP}
 						resRequiredProps={resRequiredProps}
 						units={UNIT_TYPES}
@@ -360,8 +356,8 @@ function Inspector(props) {
 						step={1}
 					/>
 
-					<BaseControl label={__("Text Align")} id="eb-duel-button-text-align">
-						<ButtonGroup id="eb-duel-button-text-align">
+					<BaseControl label={__("Text Align")} id="eb-dual-button-text-align">
+						<ButtonGroup id="eb-dual-button-text-align">
 							{TEXT_ALIGN.map((item) => (
 								<Button
 									isLarge
@@ -380,7 +376,7 @@ function Inspector(props) {
 					</BaseControl>
 
 					<TypographyDropdown
-						baseLabel={__("Typography", "duel-button")}
+						baseLabel={__("Typography", "dual-button")}
 						typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
 						resRequiredProps={resRequiredProps}
 					/>
@@ -507,7 +503,7 @@ function Inspector(props) {
 					{showConnector && (
 						<>
 							<BaseControl label={__("Connector Type")}>
-								<ButtonGroup id="eb-duel-button-connector-type">
+								<ButtonGroup id="eb-dual-button-connector-type">
 									{CONNECTOR_TYPE.map((item) => (
 										<Button
 											isLarge
@@ -546,45 +542,37 @@ function Inspector(props) {
 								/>
 							)}
 
-							{hasConnector && (
-								<ResponsiveRangeController
-									baseLabel={__("Connector Size", "duel-button")}
+							<ResponsiveRangeController
+									baseLabel={__("Connector Size", "dual-button")}
 									controlName={BUTTONS_CONNECTOR_SIZE}
 									resRequiredProps={resRequiredProps}
 									units={UNIT_TYPES}
 									min={0}
 									max={100}
 									step={1}
-								/>
-							)}
+							/>
 
-							{hasConnector && (
-								<TypographyDropdown
-									baseLabel={__("Typography", "duel-button")}
+							<TypographyDropdown
+									baseLabel={__("Typography", "dual-button")}
 									typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
 									resRequiredProps={resRequiredProps}
-								/>
-							)}
+							/>
 
-							{hasConnector && (
-								<>
-									<ColorControl
-										label={__("Background Color")}
-										color={innerButtonColor}
-										onChange={(innerButtonColor) =>
-											setAttributes({ innerButtonColor })
-										}
-									/>
+							<ColorControl
+								label={__("Background Color")}
+								color={innerButtonColor}
+								onChange={(innerButtonColor) =>
+									setAttributes({ innerButtonColor })
+								}
+							/>
 
-									<ColorControl
-										label={__("Text/ Icon Color")}
-										color={innerButtonTextColor}
-										onChange={(innerButtonTextColor) =>
-											setAttributes({ innerButtonTextColor })
-										}
-									/>
-								</>
-							)}
+							<ColorControl
+								label={__("Text/ Icon Color")}
+								color={innerButtonTextColor}
+								onChange={(innerButtonTextColor) =>
+									setAttributes({ innerButtonTextColor })
+								}
+							/>
 						</>
 					)}
 					

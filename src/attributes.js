@@ -49,10 +49,6 @@ const attributes = {
 		type: "number",
 		default: "auto",
 	},
-	widthUnit: {
-		type: "string",
-		default: "px",
-	},
 	buttonTextOne: {
 		type: "string",
 		default: "Button One",
@@ -105,10 +101,6 @@ const attributes = {
 		attribute: "href",
 		default: "#",
 	},
-	buttonAlign: {
-		type: "string",
-		default: "center",
-	},
 	buttonTextAlign: {
 		type: "string",
 		default: "center",
@@ -125,10 +117,6 @@ const attributes = {
 		type: "string",
 		default: "OR",
 	},
-	innerButtonSize: {
-		type: "string",
-		default: "30",
-	},
 	innerButtonColor: {
 		type: "string",
 		default: "#fff"
@@ -139,14 +127,6 @@ const attributes = {
 	},
 	innerButtonIcon: {
 		type: "string",
-	},
-	isShowText: {
-		type: "boolean",
-		default: true,
-	},
-	isShowIcon: {
-		type: "boolean",
-		default: false,
 	},
 	showConnector: {
 		type: "boolean",

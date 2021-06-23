@@ -1,17 +1,17 @@
-=== Duel Button ===
+=== Dual Button ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, alam789
-Tags: block, blocks, button, Duel Button, grouped button, dual button, buttons, gutenberg, gutenberg blocks
+Tags: block, blocks, button, Dual Button, grouped button, dual button, buttons, gutenberg, gutenberg blocks
 Requires at least: 5.0
 Tested up to: 5.5
 Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Create A Series of Buttons To Be Stacked Together 
+Create Two Buttons To Be Stacked Together 
 
 == Description ==
 
-**Duel Button** is a great way to create a series of buttons to be stacked together. Using this block plugin, you can create a Duel Button inside your WordPress block editor and improve your website design without spending much time or any coding.
+**Dual Button** is a great way to create two buttons to be stacked together. Using this block plugin, you can create a dual Button inside your WordPress block editor and improve your website design without spending much time or any coding.
 
 
 ⚙️ **Completely Customizable:** YYou can customize the content, colors etc. to make it suitable for your website design
@@ -28,8 +28,8 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 ## 👨‍💻 DOCUMENTATION AND SUPPORT ##
 
 - For documentation and tutorials go to our [documentation](https://essential-blocks.com/docs/)
-- To report issue and contribution visit [Github](https://github.com/EssentialBlocks/duel-button/).
-- If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/duel-button/).
+- To report issue and contribution visit [Github](https://github.com/EssentialBlocks/dual-button/).
+- If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/dual-button/).
 - For more information about features, FAQs and documentation, check out our website at [WPDeveloper](https://wpdeveloper.net/).
 
 ## 🙌 JOIN THE COMMUNITY ##
@@ -38,7 +38,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 
 🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
 
-🧡 LOVED Duel Button Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/duel-button/reviews/#new-post)
+🧡 LOVED Dual Button Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/dual-button/reviews/#new-post)
 
 🔥 GET FREEBIES FOR YOUR WORDPRESS SITE
 
@@ -66,7 +66,7 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 3. Install in 1-click
 
 = Old Way: =
-1. Upload `duel-button` to the `/wp-content/plugins/` directory
+1. Upload `dual-button` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Follow the [Documentation](https://essential-blocks.com/docs/)
 

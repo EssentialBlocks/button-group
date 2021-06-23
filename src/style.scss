@@ -50,10 +50,10 @@
 }
 
 //Styles for Preset Designs
-.eb-duel-button-wrapper .eb-button-parent .eb-button-text {
+.eb-dual-button-wrapper .eb-button-parent .eb-button-text {
 	line-height: 1.8;
 }
-.eb-duel-button-wrapper.button-4 {
+.eb-dual-button-wrapper.button-4 {
 	flex-direction: column !important;
 	
 	.eb-button-parent.eb-button-one {
@@ -67,12 +67,12 @@
 		margin-bottom: 0 !important;
 	}
 }
-.eb-duel-button-wrapper:not(.button-4) .eb-button-parent.eb-button-one {
+.eb-dual-button-wrapper:not(.button-4) .eb-button-parent.eb-button-one {
 	margin-top: 0 !important;
 	margin-left: 0 !important;
 	margin-bottom: 0 !important;
 }
-.eb-duel-button-wrapper:not(.button-4) .eb-button-parent.eb-button-two {
+.eb-dual-button-wrapper:not(.button-4) .eb-button-parent.eb-button-two {
 	margin-top: 0 !important;
 	margin-right: 0 !important;
 	margin-bottom: 0 !important;

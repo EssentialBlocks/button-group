@@ -77,7 +77,7 @@ export default function Edit(props) {
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
-		const BLOCK_PREFIX = "eb-duel-button";
+		const BLOCK_PREFIX = "eb-dual-button";
 		duplicateBlockIdFix({
 			BLOCK_PREFIX,
 			blockId,
@@ -221,7 +221,7 @@ export default function Edit(props) {
 
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
-		.eb-duel-button-wrapper.${blockId}{
+		.eb-dual-button-wrapper.${blockId}{
 			display: flex;
 			flex-direction: row;
 			align-items: ${contentPosition};
@@ -231,13 +231,13 @@ export default function Edit(props) {
 		}
 	`;
 	const wrapperStylesTab = `
-		.eb-duel-button-wrapper.${blockId}{
+		.eb-dual-button-wrapper.${blockId}{
 			${wrapperMarginStylesTab}
 
 		}
 	`;
 	const wrapperStylesMobile = `
-		.eb-duel-button-wrapper.${blockId}{
+		.eb-dual-button-wrapper.${blockId}{
 			${wrapperMarginStylesMobile}
 
 		}
@@ -245,138 +245,138 @@ export default function Edit(props) {
 
 	// Buttons Common styles css in strings ⬇
 	const buttonsCommonStyleDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesDesktop}
 			${buttonWidthStyleDesktop}
 			${buttonGapDesktop}
-			text-align: center;
+			text-align: ${buttonTextAlign};
 			cursor: pointer;
-			buttonTextAlign: ${buttonTextAlign};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesDesktop}
 		}
 	`;
 
 	const buttonsCommonStyleTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesTab}
 			${buttonWidthStyleTab}
 			${buttonGapTab}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesTab}
 		}
 	`;
 
 	const buttonsCommonStyleMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesMobile}
 			${buttonWidthStyleMobile}
 			${buttonGapMobile}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesMobile}
 		}
 	`;
 
 	// Buttons One styles css in strings ⬇
 	const buttonOneStyleDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowDesktop}
 			background-color: ${attributes.buttonOneColor};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverDesktop}
 			background-color: ${hoverButtonOneColor};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 			color: ${textOneColor};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
 			color: ${hoverTextOneColor};
 		}
 	`;
 	const buttonOneStyleTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowTab}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverTab}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 
 		}
 	`;
 	const buttonOneStyleMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowMobile}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverMobile}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 
 		}
 	`;
 
 	// Buttons Two styles css in strings ⬇
 	const buttonTwoStyleDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowDesktop}
 			${buttonGapDesktop}
 			background-color: ${buttonTwoColor};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverDesktop}
 			background-color: ${hoverButtonTwoColor};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 			color: ${textTwoColor};
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
 			color: ${hoverTextTwoColor};
 		}
 	`;
 	const buttonTwoStyleTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowTab}
 			${buttonGapTab}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverTab}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 
 		}
 	`;
 	const buttonTwoStyleMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowMobile}
 			${buttonGapMobile}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverMobile}
 		}
-		.eb-duel-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 
 		}
 	`;
 
 	// Connector styles css in strings ⬇
 	const connectorStylesDesktop = `
-		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
+		.eb-dual-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
 			${connectorTypoStylesDesktop}
 			${buttonConnectorHeightDesktop}
 			${buttonConnectorWidthDesktop}
 			${buttonConnectorLineHeightDesktop}
+			${connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : null};
 			background: ${innerButtonColor};
 			color: ${innerButtonTextColor};
 		}
 	`;
 
 	const connectorStylesTab = `
-		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
+		.eb-dual-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
 			${connectorTypoStylesTab}
 			${buttonConnectorHeightTab}
 			${buttonConnectorWidthTab}
@@ -385,7 +385,7 @@ export default function Edit(props) {
 	`;
 
 	const connectorStylesMobile = `
-		.eb-duel-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
+		.eb-dual-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
 			${connectorTypoStylesMobile}
 			${buttonConnectorHeightMobile}
 			${buttonConnectorWidthMobile}
@@ -465,7 +465,7 @@ export default function Edit(props) {
 				`}
 			</style>
 
-			<div className={`eb-duel-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
+			<div className={`eb-dual-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				{/* Button One */}
 				<a
 					className={"eb-button-parent eb-button-one"}
