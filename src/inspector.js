@@ -5,15 +5,17 @@ const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { 
 	PanelBody,
+	Panel,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
 	TextControl,
 	Button,
 	ButtonGroup,
-	BaseControl 
+	BaseControl,
+	TabPanel,
 } = wp.components;
-const { useEffect } = wp.element;
+const { useEffect, useState } = wp.element;
 const { select } = wp.data;
 
 /**
@@ -41,7 +43,7 @@ import {
 } from "../util/helpers";
 import {BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY} from "./constants/typographyPrefixConstants";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconList from "../util/faIcons";
+import faIcons from "../util/faIcons";
 import ColorControl from "../util/color-control";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
@@ -268,315 +270,363 @@ function Inspector(props) {
 	return (
 		<InspectorControls key="controls">
 			<div className="eb-panel-control">
-				<PanelBody title={__("General Settings")} initialOpen={true}>
-					<SelectControl
-						label={__("Preset Designs")}
-						value={preset}
-						options={PRESETS}
-						onChange={(selected) => changePreset(selected)}
-					/>
-					<BaseControl label={__("Alignment")} id="eb-dual-button-alignment">
-						<ButtonGroup id="eb-dual-button-alignment">
-							{CONTENT_POSITION.map((item) => (
-								<Button
-									isLarge
-									isPrimary={contentPosition === item.value}
-									isSecondary={contentPosition !== item.value}
-									onClick={() =>
-										setAttributes({
-											contentPosition: item.value,
-										})
-									}
-								>
-									<span dangerouslySetInnerHTML={{ __html: item.label }} />
-								</Button>
-							))}
-						</ButtonGroup>
-					</BaseControl>
-					<TextControl
-						label={__("Button One Text")}
-						value={buttonTextOne}
-						onChange={(text) => setAttributes({ buttonTextOne: text })}
-					/>
-					<TextControl
-						label={__("Button One Link")}
-						value={buttonURLOne}
-						onChange={(link) => setAttributes({ buttonURLOne: link })}
-					/>
-
-					<TextControl
-						label={__("Button Two Text")}
-						value={buttonTextTwo}
-						onChange={(text) => setAttributes({ buttonTextTwo: text })}
-					/>
-					<TextControl
-						label={__("Button Two Link")}
-						value={buttonURLTwo}
-						onChange={(link) => setAttributes({ buttonURLTwo: link })}
-					/>
-					<ResponsiveDimensionsControl
-						resRequiredProps={resRequiredProps}
-						controlName={WRAPPER_MARGIN}
-						baseLabel="Margin"
-					/>
-				</PanelBody>
-
-				<PanelBody title={__("Button Settings")} initialOpen={false}>
-					<SelectControl
-						label={__("Button One Styles")}
-						value={selectButtonStyleOne}
-						options={BUTTON_STYLES}
-						onChange={(style) => handleButtonOneStyles(style)}
-					/>
-
-					<SelectControl
-						label={__("Button Two Styles")}
-						value={selectButtonStyleTwo}
-						options={BUTTON_STYLES}
-						onChange={(style) => handleButtonTwoStyles(style)}
-					/>
-
-					<ResponsiveRangeController
-						baseLabel={__("Buttons Width", "dual-button")}
-						controlName={BUTTONS_WIDTH}
-						resRequiredProps={resRequiredProps}
-						units={UNIT_TYPES}
-						min={0}
-						max={500}
-						step={1}
-					/>
-
-					<ResponsiveRangeController
-						baseLabel={__("Buttons Gap", "dual-button")}
-						controlName={BUTTONS_GAP}
-						resRequiredProps={resRequiredProps}
-						units={UNIT_TYPES}
-						min={0}
-						max={100}
-						step={1}
-					/>
-
-					<BaseControl label={__("Text Align")} id="eb-dual-button-text-align">
-						<ButtonGroup id="eb-dual-button-text-align">
-							{TEXT_ALIGN.map((item) => (
-								<Button
-									isLarge
-									isPrimary={buttonTextAlign === item.value}
-									isSecondary={buttonTextAlign !== item.value}
-									onClick={() =>
-										setAttributes({
-											buttonTextAlign: item.value,
-										})
-									}
-								>
-									<span dangerouslySetInnerHTML={{ __html: item.label }} />
-								</Button>
-							))}
-						</ButtonGroup>
-					</BaseControl>
-
-					<TypographyDropdown
-						baseLabel={__("Typography", "dual-button")}
-						typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
-						resRequiredProps={resRequiredProps}
-					/>
-
-					<ButtonGroup className="eb-inspector-btn-group">
-						{NORMAL_HOVER.map((item) => (
-							<Button
-								isLarge
-								isPrimary={buttonsColorType === item.value}
-								isSecondary={buttonsColorType !== item.value}
-								onClick={() => setAttributes({ buttonsColorType: item.value })}
-							>
-								{item.label}
-							</Button>
-						))}
-					</ButtonGroup>
-
-					{buttonsColorType === "normal" && (
-						<PanelColorSettings
-							className={"eb-subpanel"}
-							title={__("Normal Colors")}
-							initialOpen={true}
-							colorSettings={[
-								{
-									value: buttonOneColor,
-									onChange: (newColor) =>
-										setAttributes({ buttonOneColor: newColor }),
-									label: __("Button One Color"),
-								},
-								{
-									value: textOneColor,
-									onChange: (newColor) => setAttributes({ textOneColor: newColor }),
-									label: __("Button One Text Color"),
-								},
-								{
-									value: buttonTwoColor,
-									onChange: (newColor) =>
-										setAttributes({
-											buttonTwoColor: newColor,
-										}),
-									label: __("Button Two Color"),
-								},
-								{
-									value: textTwoColor,
-									onChange: (newColor) =>
-										setAttributes({
-											textTwoColor: newColor,
-										}),
-									label: __("Button Two Text Color"),
-								},
-							]}
-						/>
-					)}
-
-					{buttonsColorType === "hover" && (
-						<PanelColorSettings
-							className={"eb-subpanel"}
-							title={__("Hover Colors")}
-							initialOpen={true}
-							colorSettings={[
-								{
-									value: hoverButtonOneColor,
-									onChange: (newColor) =>
-										setAttributes({ hoverButtonOneColor: newColor }),
-									label: __("Button One Color"),
-								},
-								{
-									value: hoverTextOneColor,
-									onChange: (newColor) => setAttributes({ hoverTextOneColor: newColor }),
-									label: __("Button One Text Color"),
-								},
-								{
-									value: hoverButtonTwoColor,
-									onChange: (newColor) =>
-										setAttributes({
-											hoverButtonTwoColor: newColor,
-										}),
-									label: __("Button Two Color"),
-								},
-								{
-									value: hoverTextTwoColor,
-									onChange: (newColor) =>
-										setAttributes({
-											hoverTextTwoColor: newColor,
-										}),
-									label: __("Button Two Text Color"),
-								},
-							]}
-						/>
-					)}
-
-					<PanelBody className={"eb-subpanel"} title={__("Button One Border")} initialOpen={true}>
-						<BorderShadowControl
-							controlName={BUTTON_ONE_BORDER_SHADOW}
-							resRequiredProps={resRequiredProps}
-							noShadow
-						/>
-					</PanelBody>
-
-					<PanelBody className={"eb-subpanel"} title={__("Button Two Border")} initialOpen={true}>
-						<BorderShadowControl
-							controlName={BUTTON_TWO_BORDER_SHADOW}
-							resRequiredProps={resRequiredProps}
-							noShadow
-						/>
-					</PanelBody>
-
-					<ResponsiveDimensionsControl
-						resRequiredProps={resRequiredProps}
-						controlName={BUTTONS_PADDING}
-						baseLabel="Padding"
-					/>
-					
-				</PanelBody>
-
-				<PanelBody title={__("Connector Settings")} initialOpen={false}>
-					<ToggleControl
-						label={__("Show Connector?")}
-						checked={showConnector}
-						onChange={() => {
-							setAttributes({ showConnector: !showConnector });
-						}}
-					/>
-					{showConnector && (
-						<>
-							<BaseControl label={__("Connector Type")}>
-								<ButtonGroup id="eb-dual-button-connector-type">
-									{CONNECTOR_TYPE.map((item) => (
-										<Button
-											isLarge
-											isPrimary={connectorType === item.value}
-											isSecondary={connectorType !== item.value}
-											onClick={() =>
-												setAttributes({
-													connectorType: item.value,
-												})
-											}
-										>
-											{item.label}
-										</Button>
-									))}
-								</ButtonGroup>
-							</BaseControl>
-
-							{connectorType === "icon" && (
-								<PanelBody title={__("Icon Settings")} initialOpen={true}>
-									<BaseControl label={__("Icon")}>
-										<FontIconPicker
-											icons={iconList}
-											value={innerButtonIcon}
-											onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
-											appendTo="body"
+			
+				<TabPanel
+					className="eb-parent-tab-panel"
+					activeClass="active-tab"
+					// onSelect={onSelect}
+					tabs={ [
+						{
+							name: 'general',
+							title: 'General',
+							className: 'eb-tab general',
+						},
+						{
+							name: 'styles',
+							title: 'Styles',
+							className: 'eb-tab styles',
+						},
+						{
+							name: 'advance',
+							title: 'Advance',
+							className: 'eb-tab advance',
+						},
+					] }
+				>
+					{(tab) =>
+						<div className={"eb-tab-controls" + tab.name}>
+							{tab.name === "general" && (
+								<>
+									<PanelBody 
+										// title={__("General Settings")} initialOpen={true}
+									>
+										<SelectControl
+											label={__("Preset Designs")}
+											value={preset}
+											options={PRESETS}
+											onChange={(selected) => changePreset(selected)}
 										/>
-									</BaseControl>
-								</PanelBody>
+										<BaseControl label={__("Alignment")} id="eb-dual-button-alignment">
+											<ButtonGroup id="eb-dual-button-alignment">
+												{CONTENT_POSITION.map((item) => (
+													<Button
+														isLarge
+														isPrimary={contentPosition === item.value}
+														isSecondary={contentPosition !== item.value}
+														onClick={() =>
+															setAttributes({
+																contentPosition: item.value,
+															})
+														}
+													>
+														{item.label}
+													</Button>
+												))}
+											</ButtonGroup>
+										</BaseControl>
+										<TextControl
+											label={__("Button One Text")}
+											value={buttonTextOne}
+											onChange={(text) => setAttributes({ buttonTextOne: text })}
+										/>
+										<TextControl
+											label={__("Button One Link")}
+											value={buttonURLOne}
+											onChange={(link) => setAttributes({ buttonURLOne: link })}
+										/>
+
+										<TextControl
+											label={__("Button Two Text")}
+											value={buttonTextTwo}
+											onChange={(text) => setAttributes({ buttonTextTwo: text })}
+										/>
+										<TextControl
+											label={__("Button Two Link")}
+											value={buttonURLTwo}
+											onChange={(link) => setAttributes({ buttonURLTwo: link })}
+										/>
+									</PanelBody>
+								</>
 							)}
 
-							{connectorType === "text" && (
-								<TextControl
-									label={__("Text")}
-									value={innerButtonText}
-									onChange={(text) => setAttributes({ innerButtonText: text })}
-								/>
+							{tab.name === "styles" && (
+								<>
+									<PanelBody title={__("Buttons")} initialOpen={true}>
+										<SelectControl
+											label={__("Button One Styles")}
+											value={selectButtonStyleOne}
+											options={BUTTON_STYLES}
+											onChange={(style) => handleButtonOneStyles(style)}
+										/>
+
+										<SelectControl
+											label={__("Button Two Styles")}
+											value={selectButtonStyleTwo}
+											options={BUTTON_STYLES}
+											onChange={(style) => handleButtonTwoStyles(style)}
+										/>
+
+										<ResponsiveRangeController
+											baseLabel={__("Buttons Width", "dual-button")}
+											controlName={BUTTONS_WIDTH}
+											resRequiredProps={resRequiredProps}
+											units={UNIT_TYPES}
+											min={0}
+											max={500}
+											step={1}
+										/>
+
+										<ResponsiveRangeController
+											baseLabel={__("Buttons Gap", "dual-button")}
+											controlName={BUTTONS_GAP}
+											resRequiredProps={resRequiredProps}
+											units={UNIT_TYPES}
+											min={0}
+											max={100}
+											step={1}
+										/>
+
+										<BaseControl label={__("Text Align")} id="eb-dual-button-text-align">
+											<ButtonGroup id="eb-dual-button-text-align">
+												{TEXT_ALIGN.map((item) => (
+													<Button
+														isLarge
+														isPrimary={buttonTextAlign === item.value}
+														isSecondary={buttonTextAlign !== item.value}
+														onClick={() =>
+															setAttributes({
+																buttonTextAlign: item.value,
+															})
+														}
+													>
+													{item.label}
+													</Button>
+												))}
+											</ButtonGroup>
+										</BaseControl>
+
+										<TypographyDropdown
+											baseLabel={__("Typography", "dual-button")}
+											typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
+											resRequiredProps={resRequiredProps}
+										/>
+
+										<ButtonGroup className="eb-inspector-btn-group">
+											{NORMAL_HOVER.map((item) => (
+												<Button
+													isLarge
+													isPrimary={buttonsColorType === item.value}
+													isSecondary={buttonsColorType !== item.value}
+													onClick={() => setAttributes({ buttonsColorType: item.value })}
+												>
+													{item.label}
+												</Button>
+											))}
+										</ButtonGroup>
+
+										{buttonsColorType === "normal" && (
+											<PanelColorSettings
+												className={"eb-subpanel"}
+												title={__("Normal Colors")}
+												initialOpen={true}
+												colorSettings={[
+													{
+														value: buttonOneColor,
+														onChange: (newColor) =>
+															setAttributes({ buttonOneColor: newColor }),
+														label: __("Button One Color"),
+													},
+													{
+														value: textOneColor,
+														onChange: (newColor) => setAttributes({ textOneColor: newColor }),
+														label: __("Button One Text Color"),
+													},
+													{
+														value: buttonTwoColor,
+														onChange: (newColor) =>
+															setAttributes({
+																buttonTwoColor: newColor,
+															}),
+														label: __("Button Two Color"),
+													},
+													{
+														value: textTwoColor,
+														onChange: (newColor) =>
+															setAttributes({
+																textTwoColor: newColor,
+															}),
+														label: __("Button Two Text Color"),
+													},
+												]}
+											/>
+										)}
+
+										{buttonsColorType === "hover" && (
+											<PanelColorSettings
+												className={"eb-subpanel"}
+												title={__("Hover Colors")}
+												initialOpen={true}
+												colorSettings={[
+													{
+														value: hoverButtonOneColor,
+														onChange: (newColor) =>
+															setAttributes({ hoverButtonOneColor: newColor }),
+														label: __("Button One Color"),
+													},
+													{
+														value: hoverTextOneColor,
+														onChange: (newColor) => setAttributes({ hoverTextOneColor: newColor }),
+														label: __("Button One Text Color"),
+													},
+													{
+														value: hoverButtonTwoColor,
+														onChange: (newColor) =>
+															setAttributes({
+																hoverButtonTwoColor: newColor,
+															}),
+														label: __("Button Two Color"),
+													},
+													{
+														value: hoverTextTwoColor,
+														onChange: (newColor) =>
+															setAttributes({
+																hoverTextTwoColor: newColor,
+															}),
+														label: __("Button Two Text Color"),
+													},
+												]}
+											/>
+										)}
+
+										<PanelBody className={"eb-subpanel"} title={__("Button One Border")} initialOpen={true}>
+											<BorderShadowControl
+												controlName={BUTTON_ONE_BORDER_SHADOW}
+												resRequiredProps={resRequiredProps}
+												noShadow
+											/>
+										</PanelBody>
+
+										<PanelBody className={"eb-subpanel"} title={__("Button Two Border")} initialOpen={true}>
+											<BorderShadowControl
+												controlName={BUTTON_TWO_BORDER_SHADOW}
+												resRequiredProps={resRequiredProps}
+												noShadow
+											/>
+										</PanelBody>
+
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={BUTTONS_PADDING}
+											baseLabel="Padding"
+										/>
+										
+									</PanelBody>
+
+									<PanelBody title={__("Connector")} initialOpen={false}>
+										<ToggleControl
+											label={__("Show Connector?")}
+											checked={showConnector}
+											onChange={() => {
+												setAttributes({ showConnector: !showConnector });
+											}}
+										/>
+										{showConnector && (
+											<>
+												<BaseControl label={__("Connector Type")}>
+													<ButtonGroup id="eb-dual-button-connector-type">
+														{CONNECTOR_TYPE.map((item) => (
+															<Button
+																isLarge
+																isPrimary={connectorType === item.value}
+																isSecondary={connectorType !== item.value}
+																onClick={() =>
+																	setAttributes({
+																		connectorType: item.value,
+																	})
+																}
+															>
+																{item.label}
+															</Button>
+														))}
+													</ButtonGroup>
+												</BaseControl>
+
+												{connectorType === "icon" && (
+													<PanelBody title={__("Icon Settings")} initialOpen={true}>
+														<BaseControl label={__("Icon")}>
+															<FontIconPicker
+																icons={faIcons}
+																value={innerButtonIcon}
+																onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
+																appendTo="body"
+															/>
+														</BaseControl>
+													</PanelBody>
+												)}
+
+												{connectorType === "text" && (
+													<TextControl
+														label={__("Text")}
+														value={innerButtonText}
+														onChange={(text) => setAttributes({ innerButtonText: text })}
+													/>
+												)}
+
+												<ResponsiveRangeController
+														baseLabel={__("Connector Size", "dual-button")}
+														controlName={BUTTONS_CONNECTOR_SIZE}
+														resRequiredProps={resRequiredProps}
+														units={UNIT_TYPES}
+														min={0}
+														max={100}
+														step={1}
+												/>
+
+												<TypographyDropdown
+														baseLabel={__("Typography", "dual-button")}
+														typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
+														resRequiredProps={resRequiredProps}
+												/>
+
+												<ColorControl
+													label={__("Background Color")}
+													color={innerButtonColor}
+													onChange={(innerButtonColor) =>
+														setAttributes({ innerButtonColor })
+													}
+												/>
+
+												<ColorControl
+													label={__("Text/ Icon Color")}
+													color={innerButtonTextColor}
+													onChange={(innerButtonTextColor) =>
+														setAttributes({ innerButtonTextColor })
+													}
+												/>
+											</>
+										)}
+										
+									</PanelBody>
+								</>
 							)}
 
-							<ResponsiveRangeController
-									baseLabel={__("Connector Size", "dual-button")}
-									controlName={BUTTONS_CONNECTOR_SIZE}
-									resRequiredProps={resRequiredProps}
-									units={UNIT_TYPES}
-									min={0}
-									max={100}
-									step={1}
-							/>
+							{tab.name === "advance" && (
+								<>
+									<PanelBody>
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={WRAPPER_MARGIN}
+											baseLabel="Margin"
+										/>
+									</PanelBody>
+								</>
+							)}
+							
+						</div>
+					}
 
-							<TypographyDropdown
-									baseLabel={__("Typography", "dual-button")}
-									typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
-									resRequiredProps={resRequiredProps}
-							/>
 
-							<ColorControl
-								label={__("Background Color")}
-								color={innerButtonColor}
-								onChange={(innerButtonColor) =>
-									setAttributes({ innerButtonColor })
-								}
-							/>
-
-							<ColorControl
-								label={__("Text/ Icon Color")}
-								color={innerButtonTextColor}
-								onChange={(innerButtonTextColor) =>
-									setAttributes({ innerButtonTextColor })
-								}
-							/>
-						</>
-					)}
-					
-				</PanelBody>
+				</TabPanel>
 			</div>
 		</InspectorControls>
 	);

@@ -1,4 +1,5 @@
 const { __ } = wp.i18n;
+const {Dashicon} = wp.components;
 
 // the consts defined here should be unique from one another
 export const WRAPPER_MARGIN = "wrpMargin";
@@ -41,13 +42,13 @@ export const PRESETS = [
 ];
 
 export const TEXT_ALIGN = [
-	{ label: __('<i class="fas fa-align-left"></i>'), value: "left" },
-	{ label: __('<i class="fas fa-align-center"></i>'), value: "center" },
-	{ label: __('<i class="fas fa-align-right"></i>'), value: "right" }
+	{ label: __(<Dashicon icon={"editor-alignleft"} />), value: "left" },
+	{ label: __(<Dashicon icon={"editor-aligncenter"} />), value: "center" },
+	{ label: __(<Dashicon icon={"editor-alignright"} />), value: "right" }
 ];
 
 export const CONTENT_POSITION = [
-	{ label: __('<i class="fas fa-align-left"></i>'), value: "flex-start" },
-	{ label: __('<i class="fas fa-align-center"></i>'), value: "center" },
-	{ label: __('<i class="fas fa-align-right"></i>'), value: "flex-end" }
+	{ label: __(<Dashicon icon={"editor-alignleft"} />), value: "flex-start" },
+	{ label: __(<Dashicon icon={"editor-aligncenter"} />), value: "center" },
+	{ label: __(<Dashicon icon={"editor-alignright"} />), value: "flex-end" }
 ];

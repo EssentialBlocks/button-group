@@ -491,10 +491,9 @@ export default function Edit(props) {
 						// style={buttonMiddleInnerStyles}
 					>
 						{connectorType === 'icon' && (
-							<span
-								className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"
-									}`}
-							/>
+							<span>
+								<i className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"}`}></i>
+							</span>
 						)}
 
 						{connectorType === 'text' && <span>{innerButtonText}</span>}
