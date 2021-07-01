@@ -5,9 +5,7 @@ const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { 
 	PanelBody,
-	Panel,
 	SelectControl,
-	RangeControl,
 	ToggleControl,
 	TextControl,
 	Button,
@@ -79,96 +77,6 @@ function Inspector(props) {
 		buttonsColorType,
 		buttonTextAlign,
 	} = attributes;
-
-	const handleButtonOneStyles = (style) => {
-		switch (style) {
-			case "fill":
-				setAttributes({
-					buttonOneColor: "#2196f3",
-					textOneColor: "white",
-					hoverButtonOneColor: "#1976d2",
-					hoverTextOneColor: "white",
-					borderOneColor: "#0f94f6",
-					borderWidth: 2,
-					borderStyle: "solid",
-					borderRightWidth: "0px",
-				});
-				break;
-			case "outline":
-				setAttributes({
-					buttonOneColor: "transparent",
-					textOneColor: "#0f94f6",
-					hoverButtonOneColor: "#e10050",
-					hoverTextOneColor: "white",
-					borderOneColor: "#0f94f6",
-					borderWidth: 2,
-					borderStyle: "solid",
-				});
-				break;
-
-			case "text":
-				setAttributes({
-					buttonOneColor: "white",
-					textOneColor: "#0f94f6",
-					hoverButtonOneColor: "#4CAF50",
-					hoverTextOneColor: "white",
-					borderOneColor: "transparent",
-					borderWidth: 0,
-					borderStyle: "none",
-				});
-				break;
-		}
-		setAttributes({ selectButtonStyleOne: style });
-	};
-
-	const handleButtonTwoStyles = (style) => {
-		switch (style) {
-			case "fill":
-				setAttributes({
-					buttonTwoColor: "#2196f3",
-					textTwoColor: "white",
-					hoverButtonTwoColor: "#1976d2",
-					hoverTextTwoColor: "white",
-					borderTwoColor: "#0f94f6",
-					borderWidth: 2,
-					borderStyle: "solid",
-				});
-				break;
-			case "outline":
-				setAttributes({
-					buttonTwoColor: "transparent",
-					textTwoColor: "#0f94f6",
-					hoverButtonTwoColor: "#e10050",
-					hoverTextTwoColor: "white",
-					borderTwoColor: "#0f94f6",
-					borderWidth: 2,
-					borderStyle: "solid",
-				});
-				break;
-
-			case "text":
-				setAttributes({
-					buttonTwoColor: "white",
-					textTwoColor: "#0f94f6",
-					hoverButtonTwoColor: "#4CAF50",
-					hoverTextTwoColor: "white",
-					borderTwoColor: "transparent",
-					borderWidth: 0,
-					borderStyle: "none",
-				});
-				break;
-		}
-		setAttributes({ selectButtonStyleTwo: style });
-	};
-
-	const changeAllBorderRadius = (newValue) => {
-		setAttributes({
-			borderRadiusTopLeft: newValue,
-			borderRadiusTopRight: newValue,
-			borderRadiusBottomRight: newValue,
-			borderRadiusBottomLeft: newValue,
-		});
-	}
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
@@ -298,7 +206,8 @@ function Inspector(props) {
 							{tab.name === "general" && (
 								<>
 									<PanelBody 
-										// title={__("General Settings")} initialOpen={true}
+										title={__("General")} 
+										initialOpen={true}
 									>
 										<SelectControl
 											label={__("Preset Designs")}
@@ -346,26 +255,7 @@ function Inspector(props) {
 											onChange={(link) => setAttributes({ buttonURLTwo: link })}
 										/>
 									</PanelBody>
-								</>
-							)}
-
-							{tab.name === "styles" && (
-								<>
 									<PanelBody title={__("Buttons")} initialOpen={true}>
-										<SelectControl
-											label={__("Button One Styles")}
-											value={selectButtonStyleOne}
-											options={BUTTON_STYLES}
-											onChange={(style) => handleButtonOneStyles(style)}
-										/>
-
-										<SelectControl
-											label={__("Button Two Styles")}
-											value={selectButtonStyleTwo}
-											options={BUTTON_STYLES}
-											onChange={(style) => handleButtonTwoStyles(style)}
-										/>
-
 										<ResponsiveRangeController
 											baseLabel={__("Buttons Width", "dual-button")}
 											controlName={BUTTONS_WIDTH}
@@ -404,7 +294,75 @@ function Inspector(props) {
 												))}
 											</ButtonGroup>
 										</BaseControl>
+									</PanelBody>
+									<PanelBody title={__("Connector")} initialOpen={true}>
+										<ToggleControl
+											label={__("Show Connector?")}
+											checked={showConnector}
+											onChange={() => {
+												setAttributes({ showConnector: !showConnector });
+											}}
+										/>
+										{showConnector && (
+											<>
+												<BaseControl label={__("Connector Type")}>
+													<ButtonGroup id="eb-dual-button-connector-type">
+														{CONNECTOR_TYPE.map((item) => (
+															<Button
+																isLarge
+																isPrimary={connectorType === item.value}
+																isSecondary={connectorType !== item.value}
+																onClick={() =>
+																	setAttributes({
+																		connectorType: item.value,
+																	})
+																}
+															>
+																{item.label}
+															</Button>
+														))}
+													</ButtonGroup>
+												</BaseControl>
 
+												{connectorType === "icon" && (
+													<PanelBody title={__("Icon Settings")} initialOpen={true}>
+														<BaseControl label={__("Icon")}>
+															<FontIconPicker
+																icons={faIcons}
+																value={innerButtonIcon}
+																onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
+																appendTo="body"
+															/>
+														</BaseControl>
+													</PanelBody>
+												)}
+
+												{connectorType === "text" && (
+													<TextControl
+														label={__("Text")}
+														value={innerButtonText}
+														onChange={(text) => setAttributes({ innerButtonText: text })}
+													/>
+												)}
+
+												<ResponsiveRangeController
+														baseLabel={__("Connector Size", "dual-button")}
+														controlName={BUTTONS_CONNECTOR_SIZE}
+														resRequiredProps={resRequiredProps}
+														units={UNIT_TYPES}
+														min={0}
+														max={100}
+														step={1}
+												/>
+											</>
+										)}
+									</PanelBody>
+								</>
+							)}
+
+							{tab.name === "styles" && (
+								<>
+									<PanelBody title={__("Buttons")} initialOpen={true}>
 										<TypographyDropdown
 											baseLabel={__("Typography", "dual-button")}
 											typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
@@ -523,89 +481,27 @@ function Inspector(props) {
 									</PanelBody>
 
 									<PanelBody title={__("Connector")} initialOpen={false}>
-										<ToggleControl
-											label={__("Show Connector?")}
-											checked={showConnector}
-											onChange={() => {
-												setAttributes({ showConnector: !showConnector });
-											}}
+										<TypographyDropdown
+												baseLabel={__("Typography", "dual-button")}
+												typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
+												resRequiredProps={resRequiredProps}
 										/>
-										{showConnector && (
-											<>
-												<BaseControl label={__("Connector Type")}>
-													<ButtonGroup id="eb-dual-button-connector-type">
-														{CONNECTOR_TYPE.map((item) => (
-															<Button
-																isLarge
-																isPrimary={connectorType === item.value}
-																isSecondary={connectorType !== item.value}
-																onClick={() =>
-																	setAttributes({
-																		connectorType: item.value,
-																	})
-																}
-															>
-																{item.label}
-															</Button>
-														))}
-													</ButtonGroup>
-												</BaseControl>
 
-												{connectorType === "icon" && (
-													<PanelBody title={__("Icon Settings")} initialOpen={true}>
-														<BaseControl label={__("Icon")}>
-															<FontIconPicker
-																icons={faIcons}
-																value={innerButtonIcon}
-																onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
-																appendTo="body"
-															/>
-														</BaseControl>
-													</PanelBody>
-												)}
+										<ColorControl
+											label={__("Background Color")}
+											color={innerButtonColor}
+											onChange={(innerButtonColor) =>
+												setAttributes({ innerButtonColor })
+											}
+										/>
 
-												{connectorType === "text" && (
-													<TextControl
-														label={__("Text")}
-														value={innerButtonText}
-														onChange={(text) => setAttributes({ innerButtonText: text })}
-													/>
-												)}
-
-												<ResponsiveRangeController
-														baseLabel={__("Connector Size", "dual-button")}
-														controlName={BUTTONS_CONNECTOR_SIZE}
-														resRequiredProps={resRequiredProps}
-														units={UNIT_TYPES}
-														min={0}
-														max={100}
-														step={1}
-												/>
-
-												<TypographyDropdown
-														baseLabel={__("Typography", "dual-button")}
-														typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
-														resRequiredProps={resRequiredProps}
-												/>
-
-												<ColorControl
-													label={__("Background Color")}
-													color={innerButtonColor}
-													onChange={(innerButtonColor) =>
-														setAttributes({ innerButtonColor })
-													}
-												/>
-
-												<ColorControl
-													label={__("Text/ Icon Color")}
-													color={innerButtonTextColor}
-													onChange={(innerButtonTextColor) =>
-														setAttributes({ innerButtonTextColor })
-													}
-												/>
-											</>
-										)}
-										
+										<ColorControl
+											label={__("Text/ Icon Color")}
+											color={innerButtonTextColor}
+											onChange={(innerButtonTextColor) =>
+												setAttributes({ innerButtonTextColor })
+											}
+										/>
 									</PanelBody>
 								</>
 							)}

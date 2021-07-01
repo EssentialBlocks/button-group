@@ -344,10 +344,14 @@
   outline: none;
 }
 .eb-panel-control .components-range-control__slider + span {
-  background-color: #f8f8f8;
+  background-color: #e5e5ed;
   border: none;
   outline: none;
   box-shadow: none;
+}
+.eb-panel-control .components-range-control__track {
+  margin-left: -8px;
+  background-color: #b4b4cb;
 }
 .eb-panel-control .components-range-control__track + span {
   margin-top: 9px;
@@ -362,7 +366,7 @@
 }
 .eb-panel-control .components-range-control__root .components-input-control {
   margin-left: 8px !important;
-  width: 50px !important;
+  width: 70px !important;
 }
 .eb-panel-control .components-input-control__input {
   color: #1e1e1e !important;
@@ -381,6 +385,7 @@
   text-align: center !important;
   padding: 0 10px !important;
   width: auto !important;
+  max-width: 100%;
 }
 /* Color undo button style */
 .eb-panel-control .components-button.eb-color-undo .dashicon {
@@ -432,10 +437,6 @@
   border-radius: 20px !important;
   height: 25px !important;
   width: 25px !important;
-}
-
-.eb-panel-control .components-range-control__track {
-  margin-left: -8px;
 }
 
 .eb-userinfo-container > p {
@@ -1032,6 +1033,21 @@ unit-control submodule's css end
           box-shadow: unset;
         }
       }
+    }
+
+    .components-panel__body.eb-subpanel {
+      border: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .components-panel__body-title {
+      background-color: #e8e8e8;
+    }
+
+    .eb-subpanel .components-panel__body-title {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 }

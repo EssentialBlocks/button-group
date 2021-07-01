@@ -12,17 +12,12 @@ const { select } = wp.data;
 import Inspector from "./inspector";
 import "./editor.scss";
 import {
-	BUTTON_STYLES,
-	NORMAL_HOVER,
-	UNIT_TYPES,
 	BUTTON_ONE_BORDER_SHADOW,
 	BUTTON_TWO_BORDER_SHADOW,
 	WRAPPER_MARGIN,
 	BUTTONS_PADDING,
 	BUTTONS_WIDTH,
 	BUTTONS_GAP,
-	CONNECTOR_TYPE,
-	PRESETS,
 	BUTTONS_CONNECTOR_SIZE,
 } from "./constants/constants";
 import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
@@ -31,7 +26,6 @@ import {
 	isCssExists,
 	generateTypographyStyles,
 	generateDimensionsControlStyles,
-	generateBackgroundControlStyles,
 	generateBorderShadowStyles,
 	generateResponsiveRangeStyles,
 	mimmikCssForPreviewBtnClick,
