@@ -12,6 +12,7 @@ export const BUTTON_TWO_BG = "button2Bg";
 export const BUTTONS_WIDTH = "buttonsWidth";
 export const BUTTONS_GAP = "buttonsGap";
 export const BUTTONS_CONNECTOR_SIZE = "buttonsConnectorSize";
+export const BUTTONS_CONNECTOR_ICON_SIZE = "buttonsConnectorIconSize";
 
 export const BUTTON_STYLES = [
 	{ label: __("Fill"), value: "fill" },

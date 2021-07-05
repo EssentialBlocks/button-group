@@ -34,6 +34,7 @@ import {
 	BUTTONS_CONNECTOR_SIZE,
 	TEXT_ALIGN,
 	CONTENT_POSITION,
+	BUTTONS_CONNECTOR_ICON_SIZE,
 } from "./constants/constants";
 import {
 	mimmikCssForResBtns,
@@ -41,6 +42,8 @@ import {
 } from "../util/helpers";
 import {BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY} from "./constants/typographyPrefixConstants";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css';
+import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.material-theme.react.css';
 import faIcons from "../util/faIcons";
 import ColorControl from "../util/color-control";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
@@ -215,8 +218,8 @@ function Inspector(props) {
 											options={PRESETS}
 											onChange={(selected) => changePreset(selected)}
 										/>
-										<BaseControl label={__("Alignment")} id="eb-dual-button-alignment">
-											<ButtonGroup id="eb-dual-button-alignment">
+										<BaseControl label={__("Alignment")} id="eb-button-group-alignment">
+											<ButtonGroup id="eb-button-group-alignment">
 												{CONTENT_POSITION.map((item) => (
 													<Button
 														isLarge
@@ -257,7 +260,7 @@ function Inspector(props) {
 									</PanelBody>
 									<PanelBody title={__("Buttons")} initialOpen={true}>
 										<ResponsiveRangeController
-											baseLabel={__("Buttons Width", "dual-button")}
+											baseLabel={__("Buttons Width", "button-group")}
 											controlName={BUTTONS_WIDTH}
 											resRequiredProps={resRequiredProps}
 											units={UNIT_TYPES}
@@ -267,7 +270,7 @@ function Inspector(props) {
 										/>
 
 										<ResponsiveRangeController
-											baseLabel={__("Buttons Gap", "dual-button")}
+											baseLabel={__("Buttons Gap", "button-group")}
 											controlName={BUTTONS_GAP}
 											resRequiredProps={resRequiredProps}
 											units={UNIT_TYPES}
@@ -276,8 +279,8 @@ function Inspector(props) {
 											step={1}
 										/>
 
-										<BaseControl label={__("Text Align")} id="eb-dual-button-text-align">
-											<ButtonGroup id="eb-dual-button-text-align">
+										<BaseControl label={__("Text Align")} id="eb-button-group-text-align">
+											<ButtonGroup id="eb-button-group-text-align">
 												{TEXT_ALIGN.map((item) => (
 													<Button
 														isLarge
@@ -306,7 +309,7 @@ function Inspector(props) {
 										{showConnector && (
 											<>
 												<BaseControl label={__("Connector Type")}>
-													<ButtonGroup id="eb-dual-button-connector-type">
+													<ButtonGroup id="eb-button-group-connector-type">
 														{CONNECTOR_TYPE.map((item) => (
 															<Button
 																isLarge
@@ -334,6 +337,16 @@ function Inspector(props) {
 																appendTo="body"
 															/>
 														</BaseControl>
+
+														<ResponsiveRangeController
+															baseLabel={__("Icon Size", "button-group")}
+															controlName={BUTTONS_CONNECTOR_ICON_SIZE}
+															resRequiredProps={resRequiredProps}
+															units={UNIT_TYPES}
+															min={0}
+															max={100}
+															step={1}
+														/>
 													</PanelBody>
 												)}
 
@@ -346,7 +359,7 @@ function Inspector(props) {
 												)}
 
 												<ResponsiveRangeController
-														baseLabel={__("Connector Size", "dual-button")}
+														baseLabel={__("Connector Size", "button-group")}
 														controlName={BUTTONS_CONNECTOR_SIZE}
 														resRequiredProps={resRequiredProps}
 														units={UNIT_TYPES}
@@ -364,7 +377,7 @@ function Inspector(props) {
 								<>
 									<PanelBody title={__("Buttons")} initialOpen={true}>
 										<TypographyDropdown
-											baseLabel={__("Typography", "dual-button")}
+											baseLabel={__("Typography", "button-group")}
 											typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
 											resRequiredProps={resRequiredProps}
 										/>
@@ -482,7 +495,7 @@ function Inspector(props) {
 
 									<PanelBody title={__("Connector")} initialOpen={false}>
 										<TypographyDropdown
-												baseLabel={__("Typography", "dual-button")}
+												baseLabel={__("Typography", "button-group")}
 												typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
 												resRequiredProps={resRequiredProps}
 										/>

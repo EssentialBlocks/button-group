@@ -1,10 +1,10 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/dual-button",
-	"title": "Dual Button",
+	"name": "button-group/button-group",
+	"title": "Button Group",
 	"category": "widgets",
 	"description": "Create Two Buttons To Be Stacked Together",
-	"textdomain": "dual-button",
+	"textdomain": "button-group",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

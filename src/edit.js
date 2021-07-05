@@ -19,6 +19,7 @@ import {
 	BUTTONS_WIDTH,
 	BUTTONS_GAP,
 	BUTTONS_CONNECTOR_SIZE,
+	BUTTONS_CONNECTOR_ICON_SIZE,
 } from "./constants/constants";
 import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
@@ -71,7 +72,7 @@ export default function Edit(props) {
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
-		const BLOCK_PREFIX = "eb-dual-button";
+		const BLOCK_PREFIX = "eb-button-group";
 		duplicateBlockIdFix({
 			BLOCK_PREFIX,
 			blockId,
@@ -213,9 +214,19 @@ export default function Edit(props) {
 		attributes,
 	});
 
+	const {
+		rangeStylesDesktop: buttonConnectorIconSizeDesktop,
+		rangeStylesTab: buttonConnectorIconSizeTab,
+		rangeStylesMobile: buttonConnectorIconSizeMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: BUTTONS_CONNECTOR_ICON_SIZE,
+		property: "font-size",
+		attributes,
+	});
+
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
-		.eb-dual-button-wrapper.${blockId}{
+		.eb-button-group-wrapper.${blockId}{
 			display: flex;
 			flex-direction: row;
 			align-items: ${contentPosition};
@@ -225,13 +236,13 @@ export default function Edit(props) {
 		}
 	`;
 	const wrapperStylesTab = `
-		.eb-dual-button-wrapper.${blockId}{
+		.eb-button-group-wrapper.${blockId}{
 			${wrapperMarginStylesTab}
 
 		}
 	`;
 	const wrapperStylesMobile = `
-		.eb-dual-button-wrapper.${blockId}{
+		.eb-button-group-wrapper.${blockId}{
 			${wrapperMarginStylesMobile}
 
 		}
@@ -239,127 +250,127 @@ export default function Edit(props) {
 
 	// Buttons Common styles css in strings ⬇
 	const buttonsCommonStyleDesktop = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesDesktop}
 			${buttonWidthStyleDesktop}
 			${buttonGapDesktop}
 			text-align: ${buttonTextAlign};
 			cursor: pointer;
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesDesktop}
 		}
 	`;
 
 	const buttonsCommonStyleTab = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesTab}
 			${buttonWidthStyleTab}
 			${buttonGapTab}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesTab}
 		}
 	`;
 
 	const buttonsCommonStyleMobile = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesMobile}
 			${buttonWidthStyleMobile}
 			${buttonGapMobile}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent .eb-button-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesMobile}
 		}
 	`;
 
 	// Buttons One styles css in strings ⬇
 	const buttonOneStyleDesktop = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowDesktop}
 			background-color: ${attributes.buttonOneColor};
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverDesktop}
 			background-color: ${hoverButtonOneColor};
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 			color: ${textOneColor};
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
 			color: ${hoverTextOneColor};
 		}
 	`;
 	const buttonOneStyleTab = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowTab}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverTab}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 
 		}
 	`;
 	const buttonOneStyleMobile = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowMobile}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
 			${buttonOneBDShadowHoverMobile}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 
 		}
 	`;
 
 	// Buttons Two styles css in strings ⬇
 	const buttonTwoStyleDesktop = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowDesktop}
 			${buttonGapDesktop}
 			background-color: ${buttonTwoColor};
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverDesktop}
 			background-color: ${hoverButtonTwoColor};
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 			color: ${textTwoColor};
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
 			color: ${hoverTextTwoColor};
 		}
 	`;
 	const buttonTwoStyleTab = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowTab}
 			${buttonGapTab}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverTab}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 
 		}
 	`;
 	const buttonTwoStyleMobile = `
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two {
 			${buttonTwoBDShadowMobile}
 			${buttonGapMobile}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
 			${buttonTwoBDShadowHoverMobile}
 		}
-		.eb-dual-button-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 
 		}
 	`;
 
 	// Connector styles css in strings ⬇
 	const connectorStylesDesktop = `
-		.eb-dual-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
-			${connectorTypoStylesDesktop}
+		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
+			${connectorType === "text"? connectorTypoStylesDesktop : buttonConnectorIconSizeDesktop}
 			${buttonConnectorHeightDesktop}
 			${buttonConnectorWidthDesktop}
 			${buttonConnectorLineHeightDesktop}
@@ -370,8 +381,8 @@ export default function Edit(props) {
 	`;
 
 	const connectorStylesTab = `
-		.eb-dual-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
-			${connectorTypoStylesTab}
+		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
+			${connectorType === "text"? connectorTypoStylesTab : buttonConnectorIconSizeTab}
 			${buttonConnectorHeightTab}
 			${buttonConnectorWidthTab}
 			${buttonConnectorLineHeightTab}
@@ -379,8 +390,8 @@ export default function Edit(props) {
 	`;
 
 	const connectorStylesMobile = `
-		.eb-dual-button-wrapper.${blockId} .eb-dual-button__midldeInner span {
-			${connectorTypoStylesMobile}
+		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
+			${connectorType === "text"? connectorTypoStylesMobile : buttonConnectorIconSizeMobile}
 			${buttonConnectorHeightMobile}
 			${buttonConnectorWidthMobile}
 			${buttonConnectorLineHeightMobile}
@@ -459,7 +470,7 @@ export default function Edit(props) {
 				`}
 			</style>
 
-			<div className={`eb-dual-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
+			<div className={`eb-button-group-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				{/* Button One */}
 				<a
 					className={"eb-button-parent eb-button-one"}
@@ -481,7 +492,7 @@ export default function Edit(props) {
 
 				{showConnector && (
 					<div
-						className="eb-dual-button__midldeInner"
+						className="eb-button-group__midldeInner"
 						// style={buttonMiddleInnerStyles}
 					>
 						{connectorType === 'icon' && (

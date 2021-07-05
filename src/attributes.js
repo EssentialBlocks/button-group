@@ -9,6 +9,7 @@ import {
 	BUTTONS_WIDTH,
 	BUTTONS_GAP,
 	BUTTONS_CONNECTOR_SIZE,
+	BUTTONS_CONNECTOR_ICON_SIZE,
 } from "./constants/constants";
 import {
 	generateDimensionsAttributes,
@@ -34,6 +35,7 @@ const attributes = {
 		default: "essential_block",
 	},
 	blockMeta: {
+		source: '',
 		type: "object",
 	},
 
@@ -89,14 +91,14 @@ const attributes = {
 	},
 	buttonURLOne: {
 		type: "string",
-		selector: ".eb-dual-button-link",
+		selector: ".eb-button-group-link",
 		source: "attribute",
 		attribute: "href",
 		default: "#",
 	},
 	buttonURLTwo: {
 		type: "string",
-		selector: ".eb-dual-button-link-two",
+		selector: ".eb-button-group-link-two",
 		source: "attribute",
 		attribute: "href",
 		default: "#",
@@ -209,6 +211,9 @@ const attributes = {
 	}),
 	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_SIZE, {
 		defaultRange: 30,
+	}),
+	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_ICON_SIZE, {
+		defaultRange: 16,
 	}),
 };
 

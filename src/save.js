@@ -16,20 +16,19 @@ const Save = ({ attributes }) => {
 
 	return (
 		<div {...useBlockProps.save()}>
-			<div className={`eb-dual-button-wrapper ${blockId} ${preset}`} data-id={blockId}>
+			<div className={`eb-button-group-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				<a className={"eb-button-parent eb-button-one"} href={buttonURLOne}>
 					<div className="eb-button-text eb-button-one-text">{buttonTextOne}</div>
 				</a>
 
 				{showConnector && (
 					<div
-						className="eb-dual-button__midldeInner"
+						className="eb-button-group__midldeInner"
 					>
 						{connectorType === 'icon' && (
-							<span
-								className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"
-									}`}
-							/>
+							<span>
+								<i className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"}`}></i>
+							</span>
 						)}
 
 						{connectorType === 'text' && <span>{innerButtonText}</span>}
