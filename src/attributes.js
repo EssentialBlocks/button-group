@@ -158,6 +158,7 @@ const attributes = {
 		bottom: 10,
 		right: 25,
 		left: 25,
+		isLinked: false,
 	}),
 
 	// border shadow attributes ⬇
@@ -173,6 +174,7 @@ const attributes = {
 			bottom: 0,
 			right: 0,
 			left: 20,
+			isLinked: false,
 		},
 		noShadow: true,
 		// noBorder: true,
@@ -189,6 +191,7 @@ const attributes = {
 			bottom: 20,
 			right: 20,
 			left: 0,
+			isLinked: false,
 		},
 		noShadow: true,
 		// noBorder: true,
