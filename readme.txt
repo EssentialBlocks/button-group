@@ -82,6 +82,15 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
+= 1.1.0 =
+* Added: 4 Preset Layouts
+* Added: Responsive Controls
+* Added: Margin Option in Wrapper
+* Added: Buttons Alignment
+* Added: Responsive Connector Size option
+* Added: Advance and Responsive Typography option
+* Added: Advanced and Responsive Border Radius Option
+
 = 1.0.1 =
 * Added: Keywords
 * Fixed: Missing css, js files
