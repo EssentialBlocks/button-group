@@ -1,5 +1,5 @@
 === Button Group ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, alam789
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07
 Tags: block, blocks, button, Button Group, grouped button, Button Group, buttons, gutenberg, gutenberg blocks
 Requires at least: 5.0
 Tested up to: 5.5
@@ -82,7 +82,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.1.0 =
+= 1.1.0 - 12/07/2021 =
 * Added: 4 Preset Layouts
 * Added: Responsive Controls
 * Added: Margin Option in Wrapper
