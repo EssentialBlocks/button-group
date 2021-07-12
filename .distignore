@@ -50,4 +50,4 @@ dist/**/*.*
 src
 util
 .wordpress-org
-changes.txt
+.idea
