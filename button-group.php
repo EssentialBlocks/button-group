@@ -54,20 +54,20 @@ function create_block_dual_button_block_init() {
 		filemtime("$dir/$editor_css")
 	);
 
-	$style_css = 'build/style-index.css';
-	wp_register_style(
-		'button-group-button-group-block',
-		plugins_url( $style_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$style_css" )
-	);
-
 	$fontawesome_css = 'lib/resources/css/font-awesome5.css';
-	wp_enqueue_style(
+	wp_register_style(
 		'fontawesome-frontend-css',
 		plugins_url( $fontawesome_css, __FILE__),
 		array(),
 		filemtime( "$dir/$fontawesome_css" )
+	);
+
+	$style_css = 'build/style-index.css';
+	wp_register_style(
+		'button-group-button-group-block',
+		plugins_url( $style_css, __FILE__ ),
+		array('fontawesome-frontend-css'),
+		filemtime( "$dir/$style_css" )
 	);
 
 	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/button-group' ) ) {
