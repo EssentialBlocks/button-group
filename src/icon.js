@@ -1,6 +1,6 @@
 export default function () {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 70" {...props}>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 70">
 			<linearGradient
 				id="prefix__a"
 				gradientUnits="userSpaceOnUse"
