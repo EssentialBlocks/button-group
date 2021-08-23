@@ -2,8 +2,8 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07
 Tags: block, blocks, button, Button Group, grouped button, Button Group, buttons, gutenberg, gutenberg blocks
 Requires at least: 5.0
-Tested up to: 5.5
-Stable tag: 1.1.0
+Tested up to: 5.8
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -82,6 +82,10 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
+= 1.1.1 - 23/08/2021 =
+* Improved: Security for asset generation
+* Fixed: Warning in controls
+
 = 1.1.0 - 12/07/2021 =
 * Added: 4 Preset Layouts
 * Added: Responsive Controls
@@ -99,3 +103,4 @@ Yes, it will work with any standard WordPress theme.
 * Initial Release
 
 == Upgrade Notice ==
+[Minor update] Bugfix and stability

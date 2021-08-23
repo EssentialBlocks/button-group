@@ -2,7 +2,7 @@
  * WordPress dependencies
 */
 const { __ } = wp.i18n;
-const { InspectorControls, PanelColorSettings, RichText, useBlockProps } = wp.blockEditor;
+const { RichText, useBlockProps } = wp.blockEditor;
 const { useEffect } = wp.element;
 const { select } = wp.data;
 
