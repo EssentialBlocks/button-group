@@ -290,7 +290,8 @@ export default function Edit(props) {
 			${buttonOneBDShadowDesktop}
 			background-color: ${attributes.buttonOneColor};
 		}
-		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover,
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:focus {
 			${buttonOneBDShadowHoverDesktop}
 			background-color: ${hoverButtonOneColor};
 		}
@@ -331,7 +332,8 @@ export default function Edit(props) {
 			${buttonGapDesktop}
 			background-color: ${buttonTwoColor};
 		}
-		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover,
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:focus {
 			${buttonTwoBDShadowHoverDesktop}
 			background-color: ${hoverButtonTwoColor};
 		}
