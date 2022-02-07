@@ -1,10 +1,12 @@
-const { __ } = wp.i18n;
-const {Dashicon} = wp.components;
+import { __ } from "@wordpress/i18n";
+import { Dashicon } from "@wordpress/components";
 
 // the consts defined here should be unique from one another
 export const WRAPPER_MARGIN = "wrpMargin";
 export const BUTTONS_MARGIN = "buttonsMargin";
 export const BUTTONS_PADDING = "buttonsPadding";
+export const BUTTON_ONE_BACKGROUND = "Btn1Bg";
+export const BUTTON_TWO_BACKGROUND = "Btn2Bg";
 export const BUTTON_ONE_BORDER_SHADOW = "buttonOneBorderShadow";
 export const BUTTON_TWO_BORDER_SHADOW = "buttonTwoBorderShadow";
 export const BUTTON_ONE_BG = "button1Bg";
@@ -15,9 +17,9 @@ export const BUTTONS_CONNECTOR_SIZE = "buttonsConnectorSize";
 export const BUTTONS_CONNECTOR_ICON_SIZE = "buttonsConnectorIconSize";
 
 export const BUTTON_STYLES = [
-	{ label: __("Fill"), value: "fill" },
-	{ label: __("Outline"), value: "outline" },
-	{ label: __("Text"), value: "text" },
+	{ label: __("Fill", "essential-blocks"), value: "fill" },
+	{ label: __("Outline", "essential-blocks"), value: "outline" },
+	{ label: __("Text", "essential-blocks"), value: "text" },
 ];
 
 export const UNIT_TYPES = [
@@ -31,15 +33,15 @@ export const NORMAL_HOVER = [
 ];
 
 export const CONNECTOR_TYPE = [
-	{ label: __("Text"), value: "text" },
-	{ label: __("Icon"), value: "icon" },
+	{ label: __("Text", "essential-blocks"), value: "text" },
+	{ label: __("Icon", "essential-blocks"), value: "icon" },
 ];
 
 export const PRESETS = [
-	{ label: __("Preset 1"), value: "preset-1" },
-	{ label: __("Preset 2"), value: "preset-2" },
-	{ label: __("Preset 3"), value: "preset-3" },
-	{ label: __("Preset 4"), value: "preset-4" },
+	{ label: __("Preset 1", "essential-blocks"), value: "preset-1" },
+	{ label: __("Preset 2", "essential-blocks"), value: "preset-2" },
+	{ label: __("Preset 3", "essential-blocks"), value: "preset-3" },
+	{ label: __("Preset 4", "essential-blocks"), value: "preset-4" },
 ];
 
 export const TEXT_ALIGN = [
