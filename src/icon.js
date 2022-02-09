@@ -1,6 +1,11 @@
-export default function () {
+export const DualButtonIcon = () => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 70">
+		<svg
+			width="256"
+			height="156"
+			viewBox="0 0 66 70"
+			xmlns="http://www.w3.org/2000/svg"
+		>
 			<linearGradient
 				id="prefix__a"
 				gradientUnits="userSpaceOnUse"
@@ -63,4 +68,4 @@ export default function () {
 			/>
 		</svg>
 	);
-}
+};

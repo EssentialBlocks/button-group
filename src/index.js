@@ -1,24 +1,30 @@
-const { registerBlockType } = wp.blocks;
-const { __ } = wp.i18n;
+/**
+ * WordPress dependeincies
+ */
+import { __ } from "@wordpress/i18n";
 
-import "./style.scss";
+/**
+ * Internal dependencies
+ */
+import Save from "./save";
 import Edit from "./edit";
-import save from "./save";
-import icon from "./icon";
 import attributes from "./attributes";
+import metadata from "../block.json";
 import Example from "./example";
+import { DualButtonIcon } from "./icon";
+import "./style.scss";
+const { ebConditionalRegisterBlockType } = EBButtonGroup;
 
-registerBlockType("button-group/button-group", {
-	title: __("Button Group", "button-group"),
-	description: __(
-		"Create Two Buttons To Be Stacked Together",
-		"button-group"
-	),
-	keywords: [__("buttons", "grouped button", "Button Group")],
-	icon,
+ebConditionalRegisterBlockType(metadata, {
+	keywords: [
+		__("buttons", "essential-blocks"),
+		__("grouped button", "essential-blocks"),
+		__("Button Group", "essential-blocks"),
+		__("dual", "essential-blocks"),
+	],
 	attributes,
-	category: "widgets",
+	icon: DualButtonIcon,
 	edit: Edit,
-	save,
+	save: Save,
 	example: Example,
 });

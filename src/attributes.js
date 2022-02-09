@@ -1,4 +1,6 @@
 import {
+	BUTTON_ONE_BACKGROUND,
+	BUTTON_TWO_BACKGROUND,
 	BUTTON_ONE_BORDER_SHADOW,
 	BUTTON_TWO_BORDER_SHADOW,
 	BUTTON_ONE_BG,
@@ -11,19 +13,21 @@ import {
 	BUTTONS_CONNECTOR_SIZE,
 	BUTTONS_CONNECTOR_ICON_SIZE,
 } from "./constants/constants";
-import {
+
+const {
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
 	generateResponsiveRangeAttributes
-} from "../util/helpers";
+} = window.EBButtonGroup;
+
 import * as typographyObjs from "./constants/typographyPrefixConstants";
 
 const attributes = {
 	resOption: {
 		type: "string",
-		default: "desktop",
+		default: "Desktop",
 	},
 
 	// blockId attribute for making unique className and other uniqueness
@@ -193,7 +197,6 @@ const attributes = {
 			isLinked: false,
 		},
 		noShadow: true,
-		// noBorder: true,
 	}),
 
 	// background attributes ⬇
@@ -216,6 +219,16 @@ const attributes = {
 	}),
 	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_ICON_SIZE, {
 		defaultRange: 16,
+	}),
+
+	// background Attributes
+	...generateBackgroundAttributes(BUTTON_ONE_BACKGROUND, {
+		noOverlay: true,
+		noMainBgi: true,
+	}),
+	...generateBackgroundAttributes(BUTTON_TWO_BACKGROUND, {
+		noOverlay: true,
+		noMainBgi: true,
 	}),
 };
 

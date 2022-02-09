@@ -50,6 +50,10 @@
 }
 
 //Styles for Preset Designs
+.eb-button-group-wrapper .eb-button-parent,
+.eb-button-group-wrapper .eb-button-parent:focus {
+	text-decoration: none !important;
+}
 .eb-button-group-wrapper .eb-button-parent .eb-button-text {
 	line-height: 1.8;
 }
