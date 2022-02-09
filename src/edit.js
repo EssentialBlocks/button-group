@@ -1,17 +1,20 @@
 /**
  * WordPress dependencies
 */
-const { __ } = wp.i18n;
-const { RichText, useBlockProps } = wp.blockEditor;
-const { useEffect } = wp.element;
-const { select } = wp.data;
+import { __ } from "@wordpress/i18n";
+import {  RichText, useBlockProps } from "@wordpress/block-editor";
+import { useEffect } from "@wordpress/element";
+import { select } from "@wordpress/data";
 
 /**
   * Internal depencencies
 */
+ import classnames from "classnames";
+
 import Inspector from "./inspector";
-import "./editor.scss";
 import {
+	BUTTON_ONE_BACKGROUND,
+	BUTTON_TWO_BACKGROUND,
 	BUTTON_ONE_BORDER_SHADOW,
 	BUTTON_TWO_BORDER_SHADOW,
 	WRAPPER_MARGIN,
@@ -20,21 +23,39 @@ import {
 	BUTTONS_GAP,
 	BUTTONS_CONNECTOR_SIZE,
 	BUTTONS_CONNECTOR_ICON_SIZE,
-} from "./constants/constants";
+} from "./constants/constants"; 
 import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
-import {
+
+// import {
+// 	softMinifyCssStrings,
+// 	generateTypographyStyles,
+// 	generateDimensionsControlStyles,
+// 	generateBorderShadowStyles,
+// 	generateResponsiveRangeStyles,
+// 	generateBackgroundControlStyles,
+// 	mimmikCssForPreviewBtnClick,
+// 	duplicateBlockIdFix,
+// } from "../../../util/helpers";
+
+const {
 	softMinifyCssStrings,
-	isCssExists,
 	generateTypographyStyles,
 	generateDimensionsControlStyles,
 	generateBorderShadowStyles,
 	generateResponsiveRangeStyles,
-	mimmikCssForPreviewBtnClick,
+	generateBackgroundControlStyles,
+	// mimmikCssForPreviewBtnClick,
 	duplicateBlockIdFix,
-} from "../util/helpers";
+} = window.EBButtonGroup;
+
+const editorStoreForGettingPreivew =
+	eb_style_handler.editor_type === "edit-site"
+		? "core/edit-site"
+		: "core/edit-post";
+
 
 export default function Edit(props) {
-	const { attributes, setAttributes, clientId, isSelected } = props;
+	const { attributes, setAttributes, className, clientId, isSelected } = props;
 	const {
 		blockId,
 		blockMeta,
@@ -44,6 +65,7 @@ export default function Edit(props) {
 		contentPosition,
 		buttonTextOne,
 		buttonTextTwo,
+		buttonOneColor,
 		hoverButtonOneColor,
 		textOneColor,
 		hoverTextOneColor,
@@ -65,7 +87,7 @@ export default function Edit(props) {
 		const bodyClasses = document.body.className;
 
 		setAttributes({
-			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
 		});
 
 	}, []);
@@ -82,16 +104,16 @@ export default function Edit(props) {
 		});
 	}, []);
 
-	// this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
-	useEffect(() => {
-		mimmikCssForPreviewBtnClick({
-			domObj: document,
-			select,
-		});
-	}, []);
+	// // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
+	// useEffect(() => {
+	// 	mimmikCssForPreviewBtnClick({
+	// 		domObj: document,
+	// 		select,
+	// 	});
+	// }, []);
 
 	const blockProps = useBlockProps({
-		className: `eb-guten-block-main-parent-wrapper`,
+		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
 	});
 
 	//
@@ -144,6 +166,7 @@ export default function Edit(props) {
 		stylesHoverDesktop: buttonOneBDShadowHoverDesktop,
 		stylesHoverTab: buttonOneBDShadowHoverTab,
 		stylesHoverMobile: buttonOneBDShadowHoverMobile,
+		transitionStyle: buttonOneBDShadowtransitionStyle,
 	} = generateBorderShadowStyles({
 		controlName: BUTTON_ONE_BORDER_SHADOW,
 		attributes,
@@ -157,6 +180,7 @@ export default function Edit(props) {
 		stylesHoverDesktop: buttonTwoBDShadowHoverDesktop,
 		stylesHoverTab: buttonTwoBDShadowHoverTab,
 		stylesHoverMobile: buttonTwoBDShadowHoverMobile,
+		transitionStyle: buttonTwoBDShadowtransitionStyle,
 	} = generateBorderShadowStyles({
 		controlName: BUTTON_TWO_BORDER_SHADOW,
 		attributes,
@@ -223,6 +247,24 @@ export default function Edit(props) {
 		property: "font-size",
 		attributes,
 	});
+	
+	// button background styles
+	const {
+		backgroundStylesDesktop: btnOneBg,
+		hoverBackgroundStylesDesktop: btnOneHoverBg,
+		bgTransitionStyle: btnOneBgTransition,
+	} = generateBackgroundControlStyles({
+		attributes,
+		controlName: BUTTON_ONE_BACKGROUND,
+	});
+	const {
+		backgroundStylesDesktop: btnTwoBg,
+		hoverBackgroundStylesDesktop: btnTwoHoverBg,
+		bgTransitionStyle: btnTwoBgTransition,
+	} = generateBackgroundControlStyles({
+		attributes,
+		controlName: BUTTON_TWO_BACKGROUND,
+	});
 
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
@@ -288,11 +330,16 @@ export default function Edit(props) {
 	const buttonOneStyleDesktop = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one {
 			${buttonOneBDShadowDesktop}
-			background-color: ${attributes.buttonOneColor};
+			background-color: ${buttonOneColor};
+			transition:${buttonOneBDShadowtransitionStyle};
+			${btnOneBg}
+			transition: ${btnOneBgTransition.replace(/[^0-9.]/g, '')}s;
 		}
-		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover,
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:focus {
 			${buttonOneBDShadowHoverDesktop}
 			background-color: ${hoverButtonOneColor};
+			${btnOneHoverBg}
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
 			color: ${textOneColor};
@@ -330,10 +377,15 @@ export default function Edit(props) {
 			${buttonTwoBDShadowDesktop}
 			${buttonGapDesktop}
 			background-color: ${buttonTwoColor};
+			transition:${buttonTwoBDShadowtransitionStyle};
+			${btnTwoBg}
+			transition: ${btnOneBgTransition.replace(/[^0-9.]/g, '')}s;
 		}
-		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover,
+		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:focus {
 			${buttonTwoBDShadowHoverDesktop}
 			background-color: ${hoverButtonTwoColor};
+			${btnTwoHoverBg}
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
 			color: ${textTwoColor};
@@ -374,7 +426,7 @@ export default function Edit(props) {
 			${buttonConnectorHeightDesktop}
 			${buttonConnectorWidthDesktop}
 			${buttonConnectorLineHeightDesktop}
-			${connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : null};
+			${connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : " "};
 			background: ${innerButtonColor};
 			color: ${innerButtonTextColor};
 		}
@@ -400,29 +452,29 @@ export default function Edit(props) {
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
-			${isCssExists(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " "}
-			${isCssExists(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " "}
-			${isCssExists(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " "}
-			${isCssExists(connectorStylesDesktop) ? connectorStylesDesktop : " "}
+			${wrapperStylesDesktop}
+			${buttonsCommonStyleDesktop}
+			${buttonOneStyleDesktop}
+			${buttonTwoStyleDesktop}
+			${connectorStylesDesktop}
 		`);
 
 	// all css styles for Tab in strings ⬇
 	const tabAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
-			${isCssExists(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " "}
-			${isCssExists(buttonOneStyleTab) ? buttonOneStyleTab : " "}
-			${isCssExists(buttonTwoStyleTab) ? buttonTwoStyleTab : " "}
-			${isCssExists(connectorStylesTab) ? connectorStylesTab : " "}
+			${wrapperStylesTab}
+			${buttonsCommonStyleTab}
+			${buttonOneStyleTab}
+			${buttonTwoStyleTab}
+			${connectorStylesTab}
 		`);
 
 	// all css styles for Mobile in strings ⬇
 	const mobileAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
-			${isCssExists(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " "}
-			${isCssExists(buttonOneStyleMobile) ? buttonOneStyleMobile : " "}
-			${isCssExists(buttonTwoStyleMobile) ? buttonTwoStyleMobile : " "}
-			${isCssExists(connectorStylesMobile) ? connectorStylesMobile : " "}
+			${wrapperStylesMobile}
+			${buttonsCommonStyleMobile}
+			${buttonOneStyleMobile}
+			${buttonTwoStyleMobile}
+			${connectorStylesMobile}
 		`);
 
 	// Set All Style in "blockMeta" Attribute
@@ -447,8 +499,8 @@ export default function Edit(props) {
 
 				/* mimmikcssStart */
 
-				${resOption === "tab" ? tabAllStyles : " "}
-				${resOption === "mobile" ? tabAllStyles + mobileAllStyles : " "}
+				${resOption === "Tablet" ? tabAllStyles : " "}
+				${resOption === "Mobile" ? tabAllStyles + mobileAllStyles : " "}
 
 				/* mimmikcssEnd */
 
