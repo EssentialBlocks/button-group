@@ -1,15 +1,15 @@
 /**
  * WordPress dependencies
-*/
+ */
 import { __ } from "@wordpress/i18n";
-import {  RichText, useBlockProps } from "@wordpress/block-editor";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 import { useEffect } from "@wordpress/element";
 import { select } from "@wordpress/data";
 
 /**
-  * Internal depencencies
-*/
- import classnames from "classnames";
+ * Internal depencencies
+ */
+import classnames from "classnames";
 
 import Inspector from "./inspector";
 import {
@@ -23,19 +23,11 @@ import {
 	BUTTONS_GAP,
 	BUTTONS_CONNECTOR_SIZE,
 	BUTTONS_CONNECTOR_ICON_SIZE,
-} from "./constants/constants"; 
-import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
-
-// import {
-// 	softMinifyCssStrings,
-// 	generateTypographyStyles,
-// 	generateDimensionsControlStyles,
-// 	generateBorderShadowStyles,
-// 	generateResponsiveRangeStyles,
-// 	generateBackgroundControlStyles,
-// 	mimmikCssForPreviewBtnClick,
-// 	duplicateBlockIdFix,
-// } from "../../../util/helpers";
+} from "./constants/constants";
+import {
+	BUTTONS_TYPOGRAPHY,
+	BUTTONS_CONNECTOR_TYPOGRAPHY,
+} from "./constants/typographyPrefixConstants";
 
 const {
 	softMinifyCssStrings,
@@ -49,10 +41,9 @@ const {
 } = window.EBButtonGroup;
 
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
-
 
 export default function Edit(props) {
 	const { attributes, setAttributes, className, clientId, isSelected } = props;
@@ -80,6 +71,8 @@ export default function Edit(props) {
 		showConnector,
 		connectorType,
 		buttonTextAlign,
+		classHook,
+		buttonsWidthType,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
@@ -87,9 +80,10 @@ export default function Edit(props) {
 		const bodyClasses = document.body.className;
 
 		setAttributes({
-			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
+			resOption: select(
+				editorStoreForGettingPreivew
+			).__experimentalGetPreviewDeviceType(),
 		});
-
 	}, []);
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
@@ -103,14 +97,6 @@ export default function Edit(props) {
 			clientId,
 		});
 	}, []);
-
-	// // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
-	// useEffect(() => {
-	// 	mimmikCssForPreviewBtnClick({
-	// 		domObj: document,
-	// 		select,
-	// 	});
-	// }, []);
 
 	const blockProps = useBlockProps({
 		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
@@ -247,7 +233,7 @@ export default function Edit(props) {
 		property: "font-size",
 		attributes,
 	});
-	
+
 	// button background styles
 	const {
 		backgroundStylesDesktop: btnOneBg,
@@ -294,7 +280,7 @@ export default function Edit(props) {
 	const buttonsCommonStyleDesktop = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesDesktop}
-			${buttonWidthStyleDesktop}
+			${buttonsWidthType === 'custom' ? buttonWidthStyleDesktop : 'width: auto;'}
 			${buttonGapDesktop}
 			text-align: ${buttonTextAlign};
 			cursor: pointer;
@@ -307,7 +293,7 @@ export default function Edit(props) {
 	const buttonsCommonStyleTab = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesTab}
-			${buttonWidthStyleTab}
+			${buttonsWidthType === 'custom' ? buttonWidthStyleTab : 'width: auto;'}
 			${buttonGapTab}
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
@@ -318,7 +304,7 @@ export default function Edit(props) {
 	const buttonsCommonStyleMobile = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesMobile}
-			${buttonWidthStyleMobile}
+			${buttonsWidthType === 'custom' ? buttonWidthStyleMobile : 'width: auto;'}
 			${buttonGapMobile}
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
@@ -333,7 +319,7 @@ export default function Edit(props) {
 			background-color: ${buttonOneColor};
 			transition:${buttonOneBDShadowtransitionStyle};
 			${btnOneBg}
-			transition: ${btnOneBgTransition.replace(/[^0-9.]/g, '')}s;
+			transition: ${btnOneBgTransition.replace(/[^0-9.]/g, "")}s;
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:hover,
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-one:focus {
@@ -379,7 +365,7 @@ export default function Edit(props) {
 			background-color: ${buttonTwoColor};
 			transition:${buttonTwoBDShadowtransitionStyle};
 			${btnTwoBg}
-			transition: ${btnOneBgTransition.replace(/[^0-9.]/g, '')}s;
+			transition: ${btnOneBgTransition.replace(/[^0-9.]/g, "")}s;
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:hover,
 		.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-two:focus {
@@ -422,11 +408,17 @@ export default function Edit(props) {
 	// Connector styles css in strings ⬇
 	const connectorStylesDesktop = `
 		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
-			${connectorType === "text"? connectorTypoStylesDesktop : buttonConnectorIconSizeDesktop}
+			${connectorType === "text"
+			? connectorTypoStylesDesktop
+			: buttonConnectorIconSizeDesktop
+		}
 			${buttonConnectorHeightDesktop}
 			${buttonConnectorWidthDesktop}
 			${buttonConnectorLineHeightDesktop}
-			${connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : " "};
+			${connectorType === "icon"
+			? 'font-family: "Font Awesome 5 Brands" !important'
+			: " "
+		};
 			background: ${innerButtonColor};
 			color: ${innerButtonTextColor};
 		}
@@ -434,7 +426,10 @@ export default function Edit(props) {
 
 	const connectorStylesTab = `
 		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
-			${connectorType === "text"? connectorTypoStylesTab : buttonConnectorIconSizeTab}
+			${connectorType === "text"
+			? connectorTypoStylesTab
+			: buttonConnectorIconSizeTab
+		}
 			${buttonConnectorHeightTab}
 			${buttonConnectorWidthTab}
 			${buttonConnectorLineHeightTab}
@@ -443,7 +438,10 @@ export default function Edit(props) {
 
 	const connectorStylesMobile = `
 		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
-			${connectorType === "text"? connectorTypoStylesMobile : buttonConnectorIconSizeMobile}
+			${connectorType === "text"
+			? connectorTypoStylesMobile
+			: buttonConnectorIconSizeMobile
+		}
 			${buttonConnectorHeightMobile}
 			${buttonConnectorWidthMobile}
 			${buttonConnectorLineHeightMobile}
@@ -489,12 +487,12 @@ export default function Edit(props) {
 		}
 	}, [attributes]);
 
-	return [
-		isSelected && <Inspector {...props} />,
-		//Edit view here
-		<div {...blockProps}>
-			<style>
-				{`
+	return (
+		<>
+			{isSelected && <Inspector {...props} />}
+			<div {...blockProps}>
+				<style>
+					{`
 				${desktopAllStyles}
 
 				/* mimmikcssStart */
@@ -520,60 +518,69 @@ export default function Edit(props) {
 				
 				}
 				`}
-			</style>
+				</style>
 
-			<div className={`eb-button-group-wrapper ${blockId} ${preset}`} data-id={blockId}>
-				{/* Button One */}
-				<a
-					className={"eb-button-parent eb-button-one"}
-					// style={buttonStyleOne}
-					onMouseEnter={() => setAttributes({ isHoverOne: true })}
-					onMouseLeave={() => setAttributes({ isHoverOne: false })}
-				>
-					<RichText
-						// style={textStylesOne}
-						className={"eb-button-text eb-button-one-text"}
-						placeholder="Add Text.."
-						value={buttonTextOne}
-						onChange={(newText) => setAttributes({ buttonTextOne: newText })}
-						allowedFormats={["bold", "italic", "strikethrough"]}
-					/>
-				</a>
-
-				{/* Connector */}
-
-				{showConnector && (
+				<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
 					<div
-						className="eb-button-group__midldeInner"
-						// style={buttonMiddleInnerStyles}
+						className={`eb-button-group-wrapper ${blockId} ${preset}`}
+						data-id={blockId}
 					>
-						{connectorType === 'icon' && (
-							<span>
-								<i className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"}`}></i>
-							</span>
+						{/* Button One */}
+						<a
+							className={"eb-button-parent eb-button-one"}
+							// style={buttonStyleOne}
+							onMouseEnter={() => setAttributes({ isHoverOne: true })}
+							onMouseLeave={() => setAttributes({ isHoverOne: false })}
+						>
+							<RichText
+								// style={textStylesOne}
+								className={"eb-button-text eb-button-one-text"}
+								placeholder="Add Text.."
+								value={buttonTextOne}
+								onChange={(newText) => setAttributes({ buttonTextOne: newText })}
+								allowedFormats={["bold", "italic", "strikethrough"]}
+							/>
+						</a>
+
+						{/* Connector */}
+
+						{showConnector && (
+							<div
+								className="eb-button-group__midldeInner"
+							// style={buttonMiddleInnerStyles}
+							>
+								{connectorType === "icon" && (
+									<span>
+										<i
+											className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"
+												}`}
+										></i>
+									</span>
+								)}
+
+								{connectorType === "text" && <span>{innerButtonText}</span>}
+							</div>
 						)}
 
-						{connectorType === 'text' && <span>{innerButtonText}</span>}
+						{/* Button Two */}
+						<a
+							className={"eb-button-parent eb-button-two"}
+							// style={buttonStyleTwo}
+							onMouseEnter={() => setAttributes({ isHoverTwo: true })}
+							onMouseLeave={() => setAttributes({ isHoverTwo: false })}
+						>
+							<RichText
+								// style={textStylesTwo}
+								className={"eb-button-text eb-button-two-text"}
+								placeholder="Add Text.."
+								value={buttonTextTwo}
+								onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
+								allowedFormats={["bold", "italic", "strikethrough"]}
+							/>
+						</a>
 					</div>
-				)}
-
-				{/* Button Two */}
-				<a
-					className={"eb-button-parent eb-button-two"}
-					// style={buttonStyleTwo}
-					onMouseEnter={() => setAttributes({ isHoverTwo: true })}
-					onMouseLeave={() => setAttributes({ isHoverTwo: false })}
-				>
-					<RichText
-						// style={textStylesTwo}
-						className={"eb-button-text eb-button-two-text"}
-						placeholder="Add Text.."
-						value={buttonTextTwo}
-						onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
-						allowedFormats={["bold", "italic", "strikethrough"]}
-					/>
-				</a>
+				</div>
 			</div>
-		</div>,
-	];
-};
+		</>
+	);
+}
