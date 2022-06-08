@@ -32,6 +32,11 @@ export const NORMAL_HOVER = [
 	{ label: "Hover", value: "hover" },
 ];
 
+export const BUTTON_WIDTH_TYPE = [
+	{ label: "Custom Width", value: "custom" },
+	{ label: "Auto", value: "auto" },
+];
+
 export const CONNECTOR_TYPE = [
 	{ label: __("Text", "essential-blocks"), value: "text" },
 	{ label: __("Icon", "essential-blocks"), value: "icon" },

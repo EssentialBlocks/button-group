@@ -14,6 +14,14 @@ import {
 	BUTTONS_CONNECTOR_ICON_SIZE,
 } from "./constants/constants";
 
+// import {
+// 	generateDimensionsAttributes,
+// 	generateTypographyAttributes,
+// 	generateBackgroundAttributes,
+// 	generateBorderShadowAttributes,
+// 	generateResponsiveRangeAttributes
+// } from "../../../util/helpers";
+
 const {
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
@@ -94,16 +102,10 @@ const attributes = {
 	},
 	buttonURLOne: {
 		type: "string",
-		selector: ".eb-button-group-link",
-		source: "attribute",
-		attribute: "href",
 		default: "#",
 	},
 	buttonURLTwo: {
 		type: "string",
-		selector: ".eb-button-group-link-two",
-		source: "attribute",
-		attribute: "href",
 		default: "#",
 	},
 	buttonTextAlign: {
@@ -148,6 +150,10 @@ const attributes = {
 	buttonsColorType: {
 		type: "string",
 		default: "normal",
+	},
+	buttonsWidthType: {
+		type: "string",
+		default: "custom",
 	},
 
 	// typography attributes ⬇

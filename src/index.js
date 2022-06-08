@@ -11,6 +11,7 @@ import Edit from "./edit";
 import attributes from "./attributes";
 import metadata from "../block.json";
 import Example from "./example";
+import deprecated from "./deprecated";
 import { DualButtonIcon } from "./icon";
 import "./style.scss";
 const { ebConditionalRegisterBlockType } = EBButtonGroup;
@@ -27,4 +28,5 @@ ebConditionalRegisterBlockType(metadata, {
 	edit: Edit,
 	save: Save,
 	example: Example,
+	deprecated,
 });

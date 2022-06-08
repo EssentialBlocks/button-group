@@ -19,7 +19,7 @@ import { select } from "@wordpress/data";
 /**
  * External depencencies
  */
- import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 
 /**
  * Internal depencencies
@@ -45,8 +45,12 @@ import {
 	TEXT_ALIGN,
 	CONTENT_POSITION,
 	BUTTONS_CONNECTOR_ICON_SIZE,
+	BUTTON_WIDTH_TYPE,
 } from "./constants/constants";
-import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
+import {
+	BUTTONS_TYPOGRAPHY,
+	BUTTONS_CONNECTOR_TYPOGRAPHY,
+} from "./constants/typographyPrefixConstants";
 
 const {
 	faIcons,
@@ -56,11 +60,11 @@ const {
 	BorderShadowControl,
 	ResponsiveRangeController,
 	BackgroundControl,
+	AdvancedControls,
 } = window.EBButtonGroup;
 
-
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
 
@@ -86,12 +90,15 @@ function Inspector(props) {
 		connectorType,
 		buttonsColorType,
 		buttonTextAlign,
+		buttonsWidthType,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
 		setAttributes({
-			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
+			resOption: select(
+				editorStoreForGettingPreivew
+			).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
 
@@ -119,13 +126,13 @@ function Inspector(props) {
 		setAttributes,
 		resOption,
 		attributes,
-		objAttributes
+		objAttributes,
 	};
 
 	const changePreset = (selected) => {
 		setAttributes({ preset: selected });
 		switch (selected) {
-			case 'preset-1':
+			case "preset-1":
 				setAttributes({
 					showConnector: true,
 					buttonOneBorderShadowRds_Top: "20",
@@ -139,7 +146,7 @@ function Inspector(props) {
 					buttonsGapRange: 0,
 				});
 				break;
-			case 'preset-2':
+			case "preset-2":
 				setAttributes({
 					showConnector: false,
 					buttonOneBorderShadowRds_Top: "30",
@@ -153,7 +160,7 @@ function Inspector(props) {
 					buttonsGapRange: 20,
 				});
 				break;
-			case 'preset-3':
+			case "preset-3":
 				setAttributes({
 					showConnector: false,
 					buttonOneBorderShadowRds_Top: "0",
@@ -167,7 +174,7 @@ function Inspector(props) {
 					buttonsGapRange: 20,
 				});
 				break;
-			case 'preset-4':
+			case "preset-4":
 				setAttributes({
 					showConnector: false,
 					buttonOneBorderShadowRds_Top: "30",
@@ -189,30 +196,29 @@ function Inspector(props) {
 	return (
 		<InspectorControls key="controls">
 			<div className="eb-panel-control">
-
 				<TabPanel
 					className="eb-parent-tab-panel"
 					activeClass="active-tab"
 					// onSelect={onSelect}
 					tabs={[
 						{
-							name: 'general',
-							title: 'General',
-							className: 'eb-tab general',
+							name: "general",
+							title: "General",
+							className: "eb-tab general",
 						},
 						{
-							name: 'styles',
-							title: 'Style',
-							className: 'eb-tab styles',
+							name: "styles",
+							title: "Style",
+							className: "eb-tab styles",
 						},
 						{
-							name: 'advance',
-							title: 'Advanced',
-							className: 'eb-tab advance',
+							name: "advance",
+							title: "Advanced",
+							className: "eb-tab advance",
 						},
 					]}
 				>
-					{(tab) =>
+					{(tab) => (
 						<div className={"eb-tab-controls" + tab.name}>
 							{tab.name === "general" && (
 								<>
@@ -227,11 +233,14 @@ function Inspector(props) {
 											onChange={(selected) => changePreset(selected)}
 										/>
 
-										<BaseControl label={__("Alignment", "essential-blocks")} id="eb-button-group-alignment">
+										<BaseControl
+											label={__("Alignment", "essential-blocks")}
+											id="eb-button-group-alignment"
+										>
 											<ButtonGroup id="eb-button-group-alignment">
-												{CONTENT_POSITION.map((item) => (
+												{CONTENT_POSITION.map((item, index) => (
 													<Button
-														// isLarge
+														key={index}
 														isPrimary={contentPosition === item.value}
 														isSecondary={contentPosition !== item.value}
 														onClick={() =>
@@ -248,7 +257,9 @@ function Inspector(props) {
 										<TextControl
 											label={__("Button One Text", "essential-blocks")}
 											value={buttonTextOne}
-											onChange={(text) => setAttributes({ buttonTextOne: text })}
+											onChange={(text) =>
+												setAttributes({ buttonTextOne: text })
+											}
 										/>
 										<TextControl
 											label={__("Button One Link", "essential-blocks")}
@@ -259,7 +270,9 @@ function Inspector(props) {
 										<TextControl
 											label={__("Button Two Text", "essential-blocks")}
 											value={buttonTextTwo}
-											onChange={(text) => setAttributes({ buttonTextTwo: text })}
+											onChange={(text) =>
+												setAttributes({ buttonTextTwo: text })
+											}
 										/>
 										<TextControl
 											label={__("Button Two Link", "essential-blocks")}
@@ -267,16 +280,32 @@ function Inspector(props) {
 											onChange={(link) => setAttributes({ buttonURLTwo: link })}
 										/>
 									</PanelBody>
-									<PanelBody title={__("Buttons", "essential-blocks")} initialOpen={true}>
-										<ResponsiveRangeController
-											baseLabel={__("Buttons Width", "essential-blocks")}
-											controlName={BUTTONS_WIDTH}
-											resRequiredProps={resRequiredProps}
-											units={UNIT_TYPES}
-											min={0}
-											max={500}
-											step={1}
-										/>
+									<PanelBody
+										title={__("Buttons", "essential-blocks")}
+										initialOpen={true}
+									>
+										<BaseControl
+											label={__("Button Width Type", "essential-blocks")}
+										>
+											<SelectControl
+												value={buttonsWidthType}
+												options={BUTTON_WIDTH_TYPE}
+												onChange={(value) => {
+													setAttributes({ buttonsWidthType: value });
+												}}
+											/>
+										</BaseControl>
+										{buttonsWidthType === 'custom' && (
+											<ResponsiveRangeController
+												baseLabel={__("Buttons Width", "essential-blocks")}
+												controlName={BUTTONS_WIDTH}
+												resRequiredProps={resRequiredProps}
+												units={UNIT_TYPES}
+												min={0}
+												max={500}
+												step={1}
+											/>
+										)}
 
 										<ResponsiveRangeController
 											baseLabel={__("Buttons Gap", "essential-blocks")}
@@ -288,11 +317,14 @@ function Inspector(props) {
 											step={1}
 										/>
 
-										<BaseControl label={__("Text Align", "essential-blocks")} id="eb-button-group-text-align">
+										<BaseControl
+											label={__("Text Align", "essential-blocks")}
+											id="eb-button-group-text-align"
+										>
 											<ButtonGroup id="eb-button-group-text-align">
-												{TEXT_ALIGN.map((item) => (
+												{TEXT_ALIGN.map((item, index) => (
 													<Button
-														// isLarge
+														key={index}
 														isPrimary={buttonTextAlign === item.value}
 														isSecondary={buttonTextAlign !== item.value}
 														onClick={() =>
@@ -307,7 +339,10 @@ function Inspector(props) {
 											</ButtonGroup>
 										</BaseControl>
 									</PanelBody>
-									<PanelBody title={__("Connector", "essential-blocks")} initialOpen={true}>
+									<PanelBody
+										title={__("Connector", "essential-blocks")}
+										initialOpen={true}
+									>
 										<ToggleControl
 											label={__("Show Connector?")}
 											checked={showConnector}
@@ -317,11 +352,13 @@ function Inspector(props) {
 										/>
 										{showConnector && (
 											<>
-												<BaseControl label={__("Connector Type", "essential-blocks")}>
+												<BaseControl
+													label={__("Connector Type", "essential-blocks")}
+												>
 													<ButtonGroup id="eb-button-group-connector-type">
-														{CONNECTOR_TYPE.map((item) => (
+														{CONNECTOR_TYPE.map((item, index) => (
 															<Button
-																// isLarge
+																key={index}
 																isPrimary={connectorType === item.value}
 																isSecondary={connectorType !== item.value}
 																onClick={() =>
@@ -337,12 +374,17 @@ function Inspector(props) {
 												</BaseControl>
 
 												{connectorType === "icon" && (
-													<PanelBody title={__("Icon Settings", "essential-blocks")} initialOpen={true}>
+													<PanelBody
+														title={__("Icon Settings", "essential-blocks")}
+														initialOpen={true}
+													>
 														<BaseControl label={__("Icon", "essential-blocks")}>
 															<FontIconPicker
 																icons={faIcons}
 																value={innerButtonIcon}
-																onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
+																onChange={(icon) =>
+																	setAttributes({ innerButtonIcon: icon })
+																}
 																appendTo="body"
 															/>
 														</BaseControl>
@@ -363,7 +405,9 @@ function Inspector(props) {
 													<TextControl
 														label={__("Text", "essential-blocks")}
 														value={innerButtonText}
-														onChange={(text) => setAttributes({ innerButtonText: text })}
+														onChange={(text) =>
+															setAttributes({ innerButtonText: text })
+														}
 													/>
 												)}
 
@@ -384,7 +428,10 @@ function Inspector(props) {
 
 							{tab.name === "styles" && (
 								<>
-									<PanelBody title={__("Buttons", "essential-blocks")} initialOpen={true}>
+									<PanelBody
+										title={__("Buttons", "essential-blocks")}
+										initialOpen={true}
+									>
 										<TypographyDropdown
 											baseLabel={__("Typography", "essential-blocks")}
 											typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
@@ -422,12 +469,14 @@ function Inspector(props) {
 										</BaseControl>
 
 										<ButtonGroup className="eb-inspector-btn-group">
-											{NORMAL_HOVER.map((item) => (
+											{NORMAL_HOVER.map((item, index) => (
 												<Button
-													// isLarge
+													key={index}
 													isPrimary={buttonsColorType === item.value}
 													isSecondary={buttonsColorType !== item.value}
-													onClick={() => setAttributes({ buttonsColorType: item.value })}
+													onClick={() =>
+														setAttributes({ buttonsColorType: item.value })
+													}
 												>
 													{item.label}
 												</Button>
@@ -442,7 +491,8 @@ function Inspector(props) {
 												colorSettings={[
 													{
 														value: textOneColor,
-														onChange: (newColor) => setAttributes({ textOneColor: newColor }),
+														onChange: (newColor) =>
+															setAttributes({ textOneColor: newColor }),
 														label: __("Button One", "essential-blocks"),
 													},
 													{
@@ -465,7 +515,8 @@ function Inspector(props) {
 												colorSettings={[
 													{
 														value: hoverTextOneColor,
-														onChange: (newColor) => setAttributes({ hoverTextOneColor: newColor }),
+														onChange: (newColor) =>
+															setAttributes({ hoverTextOneColor: newColor }),
 														label: __("Button One Hover", "essential-blocks"),
 													},
 													{
@@ -480,7 +531,11 @@ function Inspector(props) {
 											/>
 										)}
 
-										<PanelBody className={"eb-subpanel"} title={__("Button One Border", "essential-blocks")} initialOpen={true}>
+										<PanelBody
+											className={"eb-subpanel"}
+											title={__("Button One Border", "essential-blocks")}
+											initialOpen={true}
+										>
 											<BorderShadowControl
 												controlName={BUTTON_ONE_BORDER_SHADOW}
 												resRequiredProps={resRequiredProps}
@@ -488,7 +543,11 @@ function Inspector(props) {
 											/>
 										</PanelBody>
 
-										<PanelBody className={"eb-subpanel"} title={__("Button Two Border", "essential-blocks")} initialOpen={true}>
+										<PanelBody
+											className={"eb-subpanel"}
+											title={__("Button Two Border", "essential-blocks")}
+											initialOpen={true}
+										>
 											<BorderShadowControl
 												controlName={BUTTON_TWO_BORDER_SHADOW}
 												resRequiredProps={resRequiredProps}
@@ -501,10 +560,12 @@ function Inspector(props) {
 											controlName={BUTTONS_PADDING}
 											baseLabel="Padding"
 										/>
-
 									</PanelBody>
 
-									<PanelBody title={__("Connector", "essential-blocks")} initialOpen={false}>
+									<PanelBody
+										title={__("Connector", "essential-blocks")}
+										initialOpen={false}
+									>
 										<TypographyDropdown
 											baseLabel={__("Typography", "essential-blocks")}
 											typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
@@ -539,13 +600,12 @@ function Inspector(props) {
 											baseLabel="Margin"
 										/>
 									</PanelBody>
+
+									<AdvancedControls attributes={attributes} setAttributes={setAttributes} />
 								</>
 							)}
-
 						</div>
-					}
-
-
+					)}
 				</TabPanel>
 			</div>
 		</InspectorControls>
