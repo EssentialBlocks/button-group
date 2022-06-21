@@ -51,7 +51,7 @@ class Button_Group_Helper
             wp_register_script(
                 "buttongroup-block-controls-util",
                 BUTTONGROUP_BLOCK_ADMIN_URL . '/dist/controls.js',
-                array_merge($controls_dependencies['dependencies'], array("essential-blocks-edit-post")),
+                array_merge($controls_dependencies['dependencies']),
                 $controls_dependencies['version'],
                 true
             );
