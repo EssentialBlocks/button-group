@@ -62,7 +62,7 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 
 = Modern Way: =
 1. Go to the WordPress Block/Gutenberg Editor
-2. Search For "Image Comparison".
+2. Search For "Button Group".
 3. Install in 1-click
 
 = Old Way: =
