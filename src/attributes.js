@@ -27,7 +27,7 @@ const {
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
-	generateResponsiveRangeAttributes
+	generateResponsiveRangeAttributes,
 } = window.EBButtonGroup;
 
 import * as typographyObjs from "./constants/typographyPrefixConstants";
@@ -52,11 +52,11 @@ const attributes = {
 
 	preset: {
 		type: "string",
-		default: "button-1"
+		default: "button-1",
 	},
 	contentPosition: {
 		type: "string",
-		default: "center"
+		default: "center",
 	},
 	buttonWidth: {
 		type: "number",
@@ -72,7 +72,7 @@ const attributes = {
 	},
 	buttonOneColor: {
 		type: "string",
-		default: "#7967ff"
+		default: "#7967ff",
 	},
 	hoverButtonOneColor: {
 		type: "string",
@@ -80,14 +80,14 @@ const attributes = {
 	},
 	textOneColor: {
 		type: "string",
-		default: "#fff"
+		default: "#fff",
 	},
 	hoverTextOneColor: {
 		type: "string",
 	},
 	buttonTwoColor: {
 		type: "string",
-		default: "#309bff"
+		default: "#309bff",
 	},
 	hoverButtonTwoColor: {
 		type: "string",
@@ -95,7 +95,7 @@ const attributes = {
 	},
 	textTwoColor: {
 		type: "string",
-		default: "#fff"
+		default: "#fff",
 	},
 	hoverTextTwoColor: {
 		type: "string",
@@ -126,22 +126,22 @@ const attributes = {
 	},
 	innerButtonColor: {
 		type: "string",
-		default: "#fff"
+		default: "#fff",
 	},
 	innerButtonTextColor: {
 		type: "string",
-		default: "#000"
+		default: "#000",
 	},
 	innerButtonIcon: {
 		type: "string",
 	},
 	showConnector: {
 		type: "boolean",
-		default: true
+		default: true,
 	},
 	connectorType: {
 		type: "string",
-		default: "text"
+		default: "text",
 	},
 	borderType: {
 		type: "string",
@@ -154,6 +154,14 @@ const attributes = {
 	buttonsWidthType: {
 		type: "string",
 		default: "custom",
+	},
+	buttonOneNewWindow: {
+		type: "boolean",
+		default: false,
+	},
+	buttonTwoNewWindow: {
+		type: "boolean",
+		default: false,
 	},
 
 	// typography attributes ⬇
@@ -208,6 +216,8 @@ const attributes = {
 	// background attributes ⬇
 	...generateBackgroundAttributes(BUTTON_ONE_BG, {
 		defaultFillColor: "#3074ff",
+		defaultBgGradient:
+			"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
 	}),
 	...generateBackgroundAttributes(BUTTON_TWO_BG, {
 		defaultFillColor: "#3074ff",
@@ -231,10 +241,18 @@ const attributes = {
 	...generateBackgroundAttributes(BUTTON_ONE_BACKGROUND, {
 		noOverlay: true,
 		noMainBgi: true,
+		defaultBgGradient:
+			"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
+		defaultHovBgGradient:
+			"linear-gradient(45deg, rgba(48,155,255,1) 0% , rgba(33,135,255,1) 100%)",
 	}),
 	...generateBackgroundAttributes(BUTTON_TWO_BACKGROUND, {
 		noOverlay: true,
 		noMainBgi: true,
+		defaultBgGradient:
+			"linear-gradient(45deg, rgba(48,155,255,1) 0% , rgba(33,135,255,1) 100%)",
+		defaultHovBgGradient:
+			"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
 	}),
 };
 

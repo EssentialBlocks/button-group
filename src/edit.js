@@ -40,11 +40,6 @@ const {
 	duplicateBlockIdFix,
 } = window.EBButtonGroup;
 
-const editorStoreForGettingPreivew =
-	eb_conditional_localize.editor_type === "edit-site"
-		? "core/edit-site"
-		: "core/edit-post";
-
 export default function Edit(props) {
 	const { attributes, setAttributes, className, clientId, isSelected } = props;
 	const {
@@ -74,17 +69,6 @@ export default function Edit(props) {
 		classHook,
 		buttonsWidthType,
 	} = attributes;
-
-	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
-	useEffect(() => {
-		const bodyClasses = document.body.className;
-
-		setAttributes({
-			resOption: select(
-				editorStoreForGettingPreivew
-			).__experimentalGetPreviewDeviceType(),
-		});
-	}, []);
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
@@ -280,7 +264,7 @@ export default function Edit(props) {
 	const buttonsCommonStyleDesktop = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesDesktop}
-			${buttonsWidthType === 'custom' ? buttonWidthStyleDesktop : 'width: auto;'}
+			${buttonsWidthType === "custom" ? buttonWidthStyleDesktop : "width: auto;"}
 			${buttonGapDesktop}
 			text-align: ${buttonTextAlign};
 			cursor: pointer;
@@ -293,7 +277,7 @@ export default function Edit(props) {
 	const buttonsCommonStyleTab = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesTab}
-			${buttonsWidthType === 'custom' ? buttonWidthStyleTab : 'width: auto;'}
+			${buttonsWidthType === "custom" ? buttonWidthStyleTab : "width: auto;"}
 			${buttonGapTab}
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
@@ -304,7 +288,7 @@ export default function Edit(props) {
 	const buttonsCommonStyleMobile = `
 		.eb-button-group-wrapper.${blockId} .eb-button-parent {
 			${buttonsPaddingStylesMobile}
-			${buttonsWidthType === 'custom' ? buttonWidthStyleMobile : 'width: auto;'}
+			${buttonsWidthType === "custom" ? buttonWidthStyleMobile : "width: auto;"}
 			${buttonGapMobile}
 		}
 		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
@@ -408,17 +392,19 @@ export default function Edit(props) {
 	// Connector styles css in strings ⬇
 	const connectorStylesDesktop = `
 		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
-			${connectorType === "text"
-			? connectorTypoStylesDesktop
-			: buttonConnectorIconSizeDesktop
-		}
+			${
+				connectorType === "text"
+					? connectorTypoStylesDesktop
+					: buttonConnectorIconSizeDesktop
+			}
 			${buttonConnectorHeightDesktop}
 			${buttonConnectorWidthDesktop}
 			${buttonConnectorLineHeightDesktop}
-			${connectorType === "icon"
-			? 'font-family: "Font Awesome 5 Brands" !important'
-			: " "
-		};
+			${
+				connectorType === "icon"
+					? 'font-family: "Font Awesome 5 Brands" !important'
+					: " "
+			};
 			background: ${innerButtonColor};
 			color: ${innerButtonTextColor};
 		}
@@ -426,10 +412,11 @@ export default function Edit(props) {
 
 	const connectorStylesTab = `
 		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
-			${connectorType === "text"
-			? connectorTypoStylesTab
-			: buttonConnectorIconSizeTab
-		}
+			${
+				connectorType === "text"
+					? connectorTypoStylesTab
+					: buttonConnectorIconSizeTab
+			}
 			${buttonConnectorHeightTab}
 			${buttonConnectorWidthTab}
 			${buttonConnectorLineHeightTab}
@@ -438,10 +425,11 @@ export default function Edit(props) {
 
 	const connectorStylesMobile = `
 		.eb-button-group-wrapper.${blockId} .eb-button-group__midldeInner span {
-			${connectorType === "text"
-			? connectorTypoStylesMobile
-			: buttonConnectorIconSizeMobile
-		}
+			${
+				connectorType === "text"
+					? connectorTypoStylesMobile
+					: buttonConnectorIconSizeMobile
+			}
 			${buttonConnectorHeightMobile}
 			${buttonConnectorWidthMobile}
 			${buttonConnectorLineHeightMobile}
@@ -537,7 +525,9 @@ export default function Edit(props) {
 								className={"eb-button-text eb-button-one-text"}
 								placeholder="Add Text.."
 								value={buttonTextOne}
-								onChange={(newText) => setAttributes({ buttonTextOne: newText })}
+								onChange={(newText) =>
+									setAttributes({ buttonTextOne: newText })
+								}
 								allowedFormats={["bold", "italic", "strikethrough"]}
 							/>
 						</a>
@@ -547,13 +537,16 @@ export default function Edit(props) {
 						{showConnector && (
 							<div
 								className="eb-button-group__midldeInner"
-							// style={buttonMiddleInnerStyles}
+								// style={buttonMiddleInnerStyles}
 							>
 								{connectorType === "icon" && (
 									<span>
 										<i
-											className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"
-												}`}
+											className={`${
+												innerButtonIcon
+													? innerButtonIcon
+													: "fas fa-arrows-alt-h"
+											}`}
 										></i>
 									</span>
 								)}
@@ -574,7 +567,9 @@ export default function Edit(props) {
 								className={"eb-button-text eb-button-two-text"}
 								placeholder="Add Text.."
 								value={buttonTextTwo}
-								onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
+								onChange={(newText) =>
+									setAttributes({ buttonTextTwo: newText })
+								}
 								allowedFormats={["bold", "italic", "strikethrough"]}
 							/>
 						</a>
