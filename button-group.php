@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create Two Buttons To Be Stacked Together
- * Version:         1.2.2
+ * Version:         1.2.3
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -28,7 +28,7 @@ require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_button_group_block_init()
 {
-	define('BUTTONGROUP_BLOCK_VERSION', "1.2.2");
+	define('BUTTONGROUP_BLOCK_VERSION', "1.2.3");
 	define('BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url(__FILE__));
 	define('BUTTONGROUP_BLOCK_ADMIN_PATH', dirname(__FILE__));
 
