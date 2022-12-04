@@ -2,7 +2,7 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07, fencermonir
 Tags: block, blocks, button, Button Group, grouped button, Button Group, buttons, gutenberg, gutenberg blocks
 Requires at least: 5.6
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -30,7 +30,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.com), the team
 - For documentation and tutorials go to our [documentation](https://essential-blocks.com/docs/)
 - To report issue and contribution visit [Github](https://github.com/EssentialBlocks/button-group/).
 - If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/button-group/).
-- For more information about features, FAQs and documentation, check out our website at [WPDeveloper](https://wpdeveloper.net/).
+- For more information about features, FAQs and documentation, check out our website at [WPDeveloper](https://wpdeveloper.com/).
 
 ## 🙌 JOIN THE COMMUNITY ##
 
@@ -82,7 +82,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.2.4 - dev =
+= 1.2.4 - 4/12/2022 =
 * Improved: update controls and structure
 * Fixed: minor bugs
 
