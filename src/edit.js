@@ -272,6 +272,17 @@ export default function Edit(props) {
 		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesDesktop}
 		}
+
+		.eb-button-group-wrapper.${blockId}.preset-4 {
+			width: fit-content;
+			margin: ${
+				contentPosition === "center"
+					? "0 auto;"
+					: contentPosition === "flex-end"
+					? "0 0 0 auto;"
+					: "auto 0;"
+			}
+		}
 	`;
 
 	const buttonsCommonStyleTab = `
@@ -490,20 +501,20 @@ export default function Edit(props) {
 
 				/* mimmikcssEnd */
 
-				@media all and (max-width: 1024px) {	
+				@media all and (max-width: 1024px) {
 
-					/* tabcssStart */			
+					/* tabcssStart */
 					${softMinifyCssStrings(tabAllStyles)}
-					/* tabcssEnd */			
-				
+					/* tabcssEnd */
+
 				}
-				
+
 				@media all and (max-width: 767px) {
-					
-					/* mobcssStart */			
+
+					/* mobcssStart */
 					${softMinifyCssStrings(mobileAllStyles)}
-					/* mobcssEnd */			
-				
+					/* mobcssEnd */
+
 				}
 				`}
 				</style>

@@ -1288,8 +1288,8 @@
 
 "@nodelib/fs.walk@^1.2.3":
   "integrity" "sha512-1V9XOY4rDW0rehzbrcqAmHnz8e7SKvX27gh8Gt2WgB0+pdzdiLV83p72kZPU+jvMbS1qU5mauP2iOvO8rhmurQ=="
-  "resolved" "https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.4.tgz"
-  "version" "1.2.4"
+  "resolved" "https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.5.tgz"
+  "version" "1.2.5"
   dependencies:
     "@nodelib/fs.scandir" "2.1.3"
     "fastq" "^1.6.0"
@@ -2355,19 +2355,19 @@
     "define-properties" "^1.1.3"
     "es-abstract" "^1.17.4"
 
-"array.prototype.flat@^1.2.3", "array.prototype.flat@^1.2.4":
+"array.prototype.flat@^1.2.3", "array.prototype.flat@^1.2.5":
   "integrity" "sha512-4470Xi3GAPAjZqFcljX2xzckv1qeKPizoNkiS0+O4IoPR2ZNpcjE0pkhdihlDouK+x6QOast26B4Q/O9DJnwSg=="
-  "resolved" "https://registry.npmjs.org/array.prototype.flat/-/array.prototype.flat-1.2.4.tgz"
-  "version" "1.2.4"
+  "resolved" "https://registry.npmjs.org/array.prototype.flat/-/array.prototype.flat-1.2.5.tgz"
+  "version" "1.2.5"
   dependencies:
     "call-bind" "^1.0.0"
     "define-properties" "^1.1.3"
     "es-abstract" "^1.18.0-next.1"
 
-"array.prototype.flatmap@^1.2.4":
+"array.prototype.flatmap@^1.2.5":
   "integrity" "sha512-r9Z0zYoxqHz60vvQbWEdXIEtCwHF0yxaWfno9qzXeNHvfyl3BZqygmGzb84dsubyaXLH4husF+NFgMSdpZhk2Q=="
-  "resolved" "https://registry.npmjs.org/array.prototype.flatmap/-/array.prototype.flatmap-1.2.4.tgz"
-  "version" "1.2.4"
+  "resolved" "https://registry.npmjs.org/array.prototype.flatmap/-/array.prototype.flatmap-1.2.5.tgz"
+  "version" "1.2.5"
   dependencies:
     "call-bind" "^1.0.0"
     "define-properties" "^1.1.3"
@@ -3068,8 +3068,8 @@
 
 "character-entities@^1.0.0":
   "integrity" "sha512-iBMyeEHxfVnIakwOuDXpVkc54HijNgCyQB2w0VfGQThle6NXn50zU6V/u+LDhxHcDUPojn6Kpga3PTAD8W1bQw=="
-  "resolved" "https://registry.npmjs.org/character-entities/-/character-entities-1.2.4.tgz"
-  "version" "1.2.4"
+  "resolved" "https://registry.npmjs.org/character-entities/-/character-entities-1.2.5.tgz"
+  "version" "1.2.5"
 
 "character-reference-invalid@^1.0.0":
   "integrity" "sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg=="
@@ -4303,7 +4303,7 @@
   "version" "2.23.4"
   dependencies:
     "array-includes" "^3.1.3"
-    "array.prototype.flat" "^1.2.4"
+    "array.prototype.flat" "^1.2.5"
     "debug" "^2.6.9"
     "doctrine" "^2.1.0"
     "eslint-import-resolver-node" "^0.3.4"
@@ -4382,7 +4382,7 @@
   "version" "7.24.0"
   dependencies:
     "array-includes" "^3.1.3"
-    "array.prototype.flatmap" "^1.2.4"
+    "array.prototype.flatmap" "^1.2.5"
     "doctrine" "^2.1.0"
     "has" "^1.0.3"
     "jsx-ast-utils" "^2.4.1 || ^3.0.0"
@@ -7429,7 +7429,7 @@
     "os-browserify" "^0.3.0"
     "path-browserify" "0.0.1"
     "process" "^0.11.10"
-    "punycode" "^1.2.4"
+    "punycode" "^1.2.5"
     "querystring-es3" "^0.2.0"
     "readable-stream" "^2.3.3"
     "stream-browserify" "^2.0.1"
@@ -8381,7 +8381,7 @@
     "inherits" "^2.0.3"
     "pump" "^2.0.0"
 
-"punycode@^1.2.4":
+"punycode@^1.2.5":
   "integrity" "sha1-wNWmOycYgArY4esPpSachN1BhF4="
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-1.4.1.tgz"
   "version" "1.4.1"
@@ -9057,10 +9057,10 @@
   dependencies:
     "chokidar" ">=3.0.0 <4.0.0"
 
-"sax@~1.2.4":
+"sax@~1.2.5":
   "integrity" "sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw=="
-  "resolved" "https://registry.npmjs.org/sax/-/sax-1.2.4.tgz"
-  "version" "1.2.4"
+  "resolved" "https://registry.npmjs.org/sax/-/sax-1.2.5.tgz"
+  "version" "1.2.5"
 
 "saxes@^5.0.1":
   "integrity" "sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw=="
@@ -9641,8 +9641,8 @@
 
 "string.prototype.trim@^1.2.1":
   "integrity" "sha512-hWCk/iqf7lp0/AgTF7/ddO1IWtSNPASjlzCicV5irAVdE1grjsneK26YG6xACMBEdCvO8fUST0UzDMh/2Qy+9Q=="
-  "resolved" "https://registry.npmjs.org/string.prototype.trim/-/string.prototype.trim-1.2.4.tgz"
-  "version" "1.2.4"
+  "resolved" "https://registry.npmjs.org/string.prototype.trim/-/string.prototype.trim-1.2.5.tgz"
+  "version" "1.2.5"
   dependencies:
     "call-bind" "^1.0.2"
     "define-properties" "^1.1.3"
@@ -9871,7 +9871,7 @@
     "js-yaml" "^3.13.1"
     "mkdirp" "~0.5.1"
     "object.values" "^1.1.0"
-    "sax" "~1.2.4"
+    "sax" "~1.2.5"
     "stable" "^0.1.8"
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"

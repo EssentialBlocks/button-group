@@ -46,7 +46,7 @@ gulpfile.js
 .git
 node_modules/**/*.*
 src
-controls
+/controls/
 config
 lib/style-handler/style-handler.js
 lib/style-handler/helpers.js
