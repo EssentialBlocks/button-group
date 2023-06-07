@@ -38,7 +38,10 @@ const {
 	generateBackgroundControlStyles,
 	// mimmikCssForPreviewBtnClick,
 	duplicateBlockIdFix,
+	DynamicInputValueHandler,
 } = window.EBButtonGroup;
+
+console.log("DynamicInputValueHandler", EBButtonGroup);
 
 export default function Edit(props) {
 	const { attributes, setAttributes, className, clientId, isSelected } = props;
@@ -272,6 +275,17 @@ export default function Edit(props) {
 		.eb-button-group-wrapper.${blockId} .eb-button-parent .eb-button-text {
 			${buttonsTypoStylesDesktop}
 		}
+
+		.eb-button-group-wrapper.${blockId}.preset-4 {
+			width: fit-content;
+			margin: ${
+				contentPosition === "center"
+					? "0 auto;"
+					: contentPosition === "flex-end"
+					? "0 0 0 auto;"
+					: "auto 0;"
+			}
+		}
 	`;
 
 	const buttonsCommonStyleTab = `
@@ -490,20 +504,20 @@ export default function Edit(props) {
 
 				/* mimmikcssEnd */
 
-				@media all and (max-width: 1024px) {	
+				@media all and (max-width: 1024px) {
 
-					/* tabcssStart */			
+					/* tabcssStart */
 					${softMinifyCssStrings(tabAllStyles)}
-					/* tabcssEnd */			
-				
+					/* tabcssEnd */
+
 				}
-				
+
 				@media all and (max-width: 767px) {
-					
-					/* mobcssStart */			
+
+					/* mobcssStart */
 					${softMinifyCssStrings(mobileAllStyles)}
-					/* mobcssEnd */			
-				
+					/* mobcssEnd */
+
 				}
 				`}
 				</style>
@@ -520,7 +534,7 @@ export default function Edit(props) {
 							onMouseEnter={() => setAttributes({ isHoverOne: true })}
 							onMouseLeave={() => setAttributes({ isHoverOne: false })}
 						>
-							<RichText
+							<DynamicInputValueHandler
 								// style={textStylesOne}
 								className={"eb-button-text eb-button-one-text"}
 								placeholder="Add Text.."
@@ -528,7 +542,14 @@ export default function Edit(props) {
 								onChange={(newText) =>
 									setAttributes({ buttonTextOne: newText })
 								}
-								allowedFormats={["bold", "italic", "strikethrough"]}
+								allowedFormats={[
+									"core/bold",
+									"core/italic",
+									"core/link",
+									"core/strikethrough",
+									"core/underline",
+									"core/text-color",
+								]}
 							/>
 						</a>
 
@@ -562,7 +583,7 @@ export default function Edit(props) {
 							onMouseEnter={() => setAttributes({ isHoverTwo: true })}
 							onMouseLeave={() => setAttributes({ isHoverTwo: false })}
 						>
-							<RichText
+							<DynamicInputValueHandler
 								// style={textStylesTwo}
 								className={"eb-button-text eb-button-two-text"}
 								placeholder="Add Text.."
@@ -570,7 +591,14 @@ export default function Edit(props) {
 								onChange={(newText) =>
 									setAttributes({ buttonTextTwo: newText })
 								}
-								allowedFormats={["bold", "italic", "strikethrough"]}
+								allowedFormats={[
+									"core/bold",
+									"core/italic",
+									"core/link",
+									"core/strikethrough",
+									"core/underline",
+									"core/text-color",
+								]}
 							/>
 						</a>
 					</div>
