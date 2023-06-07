@@ -61,7 +61,9 @@ const {
 	ResponsiveRangeController,
 	BackgroundControl,
 	AdvancedControls,
+	DynamicInputControl,
 } = window.EBButtonGroup;
+console.log("DynamicInputControl", DynamicInputControl);
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -222,7 +224,7 @@ function Inspector(props) {
 												))}
 											</ButtonGroup>
 										</BaseControl>
-										<TextControl
+										{/* <TextControl
 											label={__("Button One Text", "essential-blocks")}
 											value={buttonTextOne}
 											onChange={(text) =>
@@ -233,6 +235,22 @@ function Inspector(props) {
 											label={__("Button One Link", "essential-blocks")}
 											value={buttonURLOne}
 											onChange={(link) => setAttributes({ buttonURLOne: link })}
+										/> */}
+										<DynamicInputControl
+											label="Button One Text"
+											attrName="buttonTextOne"
+											inputValue={buttonTextOne}
+											setAttributes={setAttributes}
+											onChange={(text) =>
+												setAttributes({ buttonTextOne: text })
+											}
+										/>
+										<DynamicInputControl
+											label="Button One Link"
+											attrName="buttonURLOne"
+											inputValue={buttonURLOne}
+											setAttributes={setAttributes}
+											onChange={(text) => setAttributes({ buttonURLOne: text })}
 										/>
 
 										{buttonURLOne && (
@@ -247,7 +265,7 @@ function Inspector(props) {
 											/>
 										)}
 
-										<TextControl
+										{/* <TextControl
 											label={__("Button Two Text", "essential-blocks")}
 											value={buttonTextTwo}
 											onChange={(text) =>
@@ -258,6 +276,22 @@ function Inspector(props) {
 											label={__("Button Two Link", "essential-blocks")}
 											value={buttonURLTwo}
 											onChange={(link) => setAttributes({ buttonURLTwo: link })}
+										/> */}
+										<DynamicInputControl
+											label="Button Two Text"
+											attrName="buttonTextTwo"
+											inputValue={buttonTextTwo}
+											setAttributes={setAttributes}
+											onChange={(text) =>
+												setAttributes({ buttonTextTwo: text })
+											}
+										/>
+										<DynamicInputControl
+											label="Button Two Link"
+											attrName="buttonURLTwo"
+											inputValue={buttonURLTwo}
+											setAttributes={setAttributes}
+											onChange={(text) => setAttributes({ buttonURLTwo: text })}
 										/>
 										{buttonURLTwo && (
 											<ToggleControl
