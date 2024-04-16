@@ -1,1 +1,1886 @@
-(()=>{var e,t={862:(e,t,n)=>{var r,o,a,i,c;window,e.exports=(r=n(697),o=n(196),a=n(184),i=n(279),c=n(850),function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=7)}([function(e,t){e.exports=r},function(e,t){e.exports=o},function(e,t){e.exports=a},function(e,t){e.exports=i},function(e,t){e.exports=c},,,function(e,t,n){"use strict";n.r(t);var r=n(1),o=n.n(r),a=n(0),i=n.n(a),c=n(2),s=n.n(c),l=n(3);function u(e){return(u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function p(){return(p=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function d(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function b(e){return(b=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function h(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var y=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(n,o.a.PureComponent);var t=function(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=b(e);if(t){var o=b(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return function(e,t){if(t&&("object"===u(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return d(e)}(this,n)}}(n);function n(){var e;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n);for(var r=arguments.length,a=new Array(r),i=0;i<r;i++)a[i]=arguments[i];return h(d(e=t.call.apply(t,[this].concat(a))),"handleClick",(function(){e.props.onClick()})),h(d(e),"handleKeyDown",(function(t){32!==t.keyCode&&13!==t.keyCode||e.props.onClick()})),h(d(e),"handleDelete",(function(t,n){t.stopPropagation(),e.props.handleDeleteValue(n)})),h(d(e),"handleDeleteKeyboard",(function(t,n){32!==t.keyCode&&13!==t.keyCode||e.props.handleDeleteValue(n)})),h(d(e),"renderEmptyIcon",(function(){return o.a.createElement("span",{className:"rfipbtn__icon--empty"},e.props.noSelectedPlaceholder)})),e}return function(e,t,n){t&&function(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}(e.prototype,t)}(n,[{key:"renderIcon",value:function(e){var t=this;return""===e||null==e?this.renderEmptyIcon():o.a.createElement("span",{className:"rfipbtn__icon",key:e},o.a.createElement("span",{className:"rfipbtn__elm"},this.props.renderIcon(e)),o.a.createElement("span",{className:"rfipbtn__del",onClick:function(n){return t.handleDelete(n,e)},onKeyDown:function(n){return t.handleDeleteKeyboard(n,e)},tabIndex:0,role:"button"},"×"))}},{key:"renderCurrentIcons",value:function(){var e=this;return this.props.isMulti?this.props.value.length?this.props.value.map((function(t){return e.renderIcon(t)})):this.renderEmptyIcon():this.renderIcon(this.props.value)}},{key:"render",value:function(){var e={onClick:this.handleClick,onKeyDown:this.handleKeyDown,onFocus:this.handleFocus,onBlur:this.handleBlur,tabIndex:0},t=s()("rfipbtn__button","rfipbtn__button--".concat(this.props.isOpen?"open":"close")),n=s()(this.props.className);return o.a.createElement("div",p({className:n,ref:this.props.domRef},e),o.a.createElement("div",{className:"rfipbtn__current"},this.renderCurrentIcons()),o.a.createElement("div",{className:t},o.a.createElement("i",{className:"fipicon-angle-down",role:"presentation","aria-label":"Open"})))}}]),n}();h(y,"propTypes",{className:i.a.string.isRequired,isOpen:i.a.bool.isRequired,onClick:i.a.func.isRequired,domRef:i.a.object.isRequired,isMulti:i.a.bool.isRequired,value:i.a.oneOfType([i.a.number,i.a.string,i.a.arrayOf(i.a.oneOfType([i.a.number,i.a.string]))]).isRequired,renderIcon:i.a.func.isRequired,handleDeleteValue:i.a.func.isRequired,noSelectedPlaceholder:i.a.string.isRequired});var m=y;function g(e){return(g="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function v(e,t){return(v=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function w(e){return(w=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var E=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&v(e,t)}(n,o.a.PureComponent);var t=function(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=w(e);if(t){var o=w(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return function(e,t){if(t&&("object"===g(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e)}(this,n)}}(n);function n(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),t.apply(this,arguments)}return function(e,t,n){t&&function(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}(e.prototype,t)}(n,[{key:"render",value:function(){return o.a.createElement("div",{className:"rfipcategory"},o.a.createElement("select",{className:"rfipcategory__select",onChange:this.props.handleCategory,value:this.props.value},this.props.categories.map((function(e,t){return o.a.createElement("option",{className:"rfipcategory__select__option",key:e,value:t},e)}))),o.a.createElement("i",{className:"fipicon-angle-down",role:"presentation","aria-label":"Open"}))}}]),n}();!function(e,t,n){t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n}(E,"propTypes",{handleCategory:i.a.func.isRequired,value:i.a.number.isRequired,categories:i.a.arrayOf(i.a.string).isRequired});var R=E,O=function(e){return o.a.createElement("div",{className:"rfipsearch"},o.a.createElement("input",{type:"text",className:"rfipsearch__input",value:e.value,onChange:e.handleSearch,placeholder:e.placeholder}))};O.propTypes={handleSearch:i.a.func.isRequired,value:i.a.string.isRequired,placeholder:i.a.string.isRequired};var C=O;function S(e){return(S="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function x(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function _(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function P(e){return function(e){if(Array.isArray(e))return T(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return T(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?T(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function T(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function k(e){var t=e.getBoundingClientRect(),n=window.pageXOffset||document.documentElement.scrollLeft,r=window.pageYOffset||document.documentElement.scrollTop;return{top:t.top+r,left:t.left+n}}function B(e,t){this.givenType=e,this.requiredType=t,this.message="Expected of type: ".concat(this.requiredType,", found: ").concat(this.givenType),this.toString=function(){return"Invalid Source Exception: ".concat(this.message)}}function N(e){return(N="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function j(e){return function(e){if(Array.isArray(e))return D(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return D(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?D(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function D(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function A(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function I(e,t){return(I=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function M(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function L(e){return(L=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function q(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var V=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&I(e,t)}(n,o.a.PureComponent);var t=function(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=L(e);if(t){var o=L(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return function(e,t){if(t&&("object"===N(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return M(e)}(this,n)}}(n);function n(e){var r;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),q(M(r=t.call(this,e)),"handleChangePage",(function(e){var t,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,o=r.props.currentPage,a=r.state.totalPage;null!==n?"next"===n?o+=1:o-=1:o=parseInt(e.target.value,10)-1,o<0&&(o=0),o>a-1&&(o=a-1),t=o+1,null===n&&Number.isNaN(o)&&(o=0,t=""),r.setState({viewPage:t}),r.props.handleChangePage(o)})),q(M(r),"handlePageKeyBoard",(function(e,t){13!==e.keyCode&&32!==e.keyCode||r.handleChangePage({},t)})),q(M(r),"handleChangeValue",(function(e){r.props.handleChangeValue(e)})),q(M(r),"handleValueKeyboard",(function(e,t){13!==e.keyCode&&32!==e.keyCode||r.handleChangeValue(t)})),r.state={viewPage:r.props.currentPage+1},r}return function(e,t,n){t&&A(e.prototype,t),n&&A(e,n)}(n,[{key:"renderPager",value:function(){var e=this;if(this.state.totalPage<1)return null;var t=this.props.currentPage>0?o.a.createElement("span",{className:"rfipicons__left",role:"button",tabIndex:0,onKeyDown:function(t){return e.handlePageKeyBoard(t,"prev")},onClick:function(t){return e.handleChangePage(t,"prev")}},o.a.createElement("span",{role:"presentation",className:"rfipicons__label","aria-label":"Left"},o.a.createElement("i",{className:"fipicon-angle-left"}))):null,n=this.props.currentPage<this.state.totalPage-1?o.a.createElement("span",{className:"rfipicons__right",role:"button",tabIndex:0,onKeyDown:function(t){return e.handlePageKeyBoard(t,"next")},onClick:function(t){return e.handleChangePage(t,"next")}},o.a.createElement("span",{role:"presentation",className:"rfipicons__label","aria-label":"Right"},o.a.createElement("i",{className:"fipicon-angle-right"}))):null;return o.a.createElement("div",{className:"rfipicons__pager"},o.a.createElement("div",{className:"rfipicons__num"},o.a.createElement("input",{value:this.state.viewPage,onChange:this.handleChangePage,className:"rfipicons__cp",type:"tel",min:1}),o.a.createElement("span",{className:"rfipicons__sp"},"/"),o.a.createElement("span",{className:"rfipicons__tp"},this.state.totalPage)),o.a.createElement("div",{className:"rfipicons__arrow"},t,n))}},{key:"renderIconView",value:function(){var e=this;return this.state.totalPage>0?this.state.iconView.map((function(t,n){var r=s()("rfipicons__icon",{"rfipicons__icon--selected":e.props.value===t||Array.isArray(e.props.value)&&e.props.value.includes(t)});return o.a.createElement("span",{className:r,key:t,title:e.state.titleView[n]},o.a.createElement("span",{className:"rfipicons__ibox",tabIndex:0,role:"button",onClick:function(){return e.handleChangeValue(t)},onKeyDown:function(n){return e.handleValueKeyboard(n,t)}},e.props.renderIcon(t)))})):o.a.createElement("span",{className:"rfipicons__icon--error"},o.a.createElement("span",{className:"rfipicons__ibox--error"},this.props.noIconPlaceholder))}},{key:"render",value:function(){return o.a.createElement("div",{className:"rfipicons"},this.renderPager(),o.a.createElement("div",{className:"rfipicons__selector"},this.renderIconView()))}}],[{key:"getDerivedStateFromProps",value:function(e,t){var r=n.getCategoryFilteredState(e.currentCategory,e.categories,e.icons),o=n.getCategoryFilteredState(e.currentCategory,e.categories,null===e.search?e.icons:e.search),a=n.getActiveIcons(r,o,e.currentSearch),i=a.activeIcons,c=a.activeTitles,s=e.currentPage,l=e.iconsPerPage,u={iconView:n.getCurrentViewIcons(i,l,s),titleView:n.getCurrentViewIcons(c,l,s),totalPage:Math.ceil(i.length/l)};return""!==t.viewPage&&(u.viewPage=e.currentPage+1),u}},{key:"getActiveIcons",value:function(e,t,n){var r=j(e),o=j(t);if(""===n||null===n)return{activeIcons:r,activeTitles:o};var a=[],i=[];return r.forEach((function(e,r){(function(e,t){e=e.toLowerCase();var n=(t=t.toLowerCase()).length,r=e.length;if(r>n)return!1;if(r===n)return e===t;e:for(var o=0,a=0;o<r;o++){for(var i=e.codePointAt(o);a<n;)if(t.codePointAt(a++)===i)continue e;return!1}return!0})(n,t[r])&&(a.includes(e)||a.push(e),i.includes(t[r])||i.push(t[r]))})),{activeIcons:a,activeTitles:i}}},{key:"getCategoryFilteredState",value:function(e,t,n){var r=null,o=function(e){return null===e?"null":"object"!==S(e)||Array.isArray(e)?Array.isArray(e)?"array":S(e):"object"}(n);if(Array.isArray(t)){if("object"!==o)throw new B(o,"object")}else if("array"!==o)throw new B(o,"array");return 0!==e&&Array.isArray(t)&&(r=t[e]||null),function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(Array.isArray(e))return P(e);if(null!==t)return void 0!==e[t]?P(e[t]):[];var n=[],r=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?x(Object(n),!0).forEach((function(t){_(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):x(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},e);return Object.keys(r).forEach((function(e){n=[].concat(P(n),P(r[e]))})),n}(n,r)}},{key:"getCurrentViewIcons",value:function(e,t,n){var r=n*t,o=(n+1)*t;return e.slice(r,o)}}]),n}();q(V,"propTypes",{categories:i.a.arrayOf(i.a.string),currentCategory:i.a.number,isMulti:i.a.bool.isRequired,icons:i.a.oneOfType([i.a.arrayOf(i.a.string),i.a.arrayOf(i.a.number),i.a.objectOf(i.a.oneOfType([i.a.arrayOf(i.a.number),i.a.arrayOf(i.a.string)]))]).isRequired,search:i.a.oneOfType([i.a.objectOf(i.a.arrayOf(i.a.string)),i.a.arrayOf(i.a.string)]),value:i.a.oneOfType([i.a.number,i.a.string,i.a.arrayOf(i.a.oneOfType([i.a.number,i.a.string]))]).isRequired,currentSearch:i.a.string.isRequired,handleChangeValue:i.a.func.isRequired,currentPage:i.a.number.isRequired,iconsPerPage:i.a.number.isRequired,handleChangePage:i.a.func.isRequired,renderIcon:i.a.func.isRequired,noIconPlaceholder:i.a.string.isRequired}),q(V,"defaultProps",{categories:null,currentCategory:null,search:null});var H=V;function U(e){return(U="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function F(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function G(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function W(e,t){return(W=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function K(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function z(e){return(z=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function Y(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var $=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&W(e,t)}(n,o.a.PureComponent);var t=function(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=z(e);if(t){var o=z(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return function(e,t){if(t&&("object"===U(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return K(e)}(this,n)}}(n);function n(e){var r;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),Y(K(r=t.call(this,e)),"handleCategory",(function(e){var t=parseInt(e.target.value,10);Number.isNaN(t)&&(t=0),r.props.handleChangeCategory(t),r.props.handleChangePage(0)})),Y(K(r),"handleSearch",(function(e){var t=e.target.value;r.props.handleChangeSearch(t)})),r.state={},r}return function(e,t,n){t&&G(e.prototype,t),n&&G(e,n)}(n,[{key:"render",value:function(){return o.a.createElement("div",{className:"rfipdropdown__selector"},this.props.showSearch?o.a.createElement(C,{handleSearch:this.handleSearch,value:this.state.searchString,placeholder:this.props.searchPlaceholder}):null,this.props.showCategory&&this.state.categories&&this.state.categories.length?o.a.createElement(R,{handleCategory:this.handleCategory,value:this.props.currentCategory,categories:this.state.categories}):null,o.a.createElement(H,{categories:this.state.categories,currentCategory:this.props.currentCategory,isMulti:this.props.isMulti,icons:this.props.icons,search:this.props.search,value:this.props.value,currentSearch:this.props.currentSearch,handleChangeValue:this.props.handleChangeValue,currentPage:this.props.currentPage,iconsPerPage:this.props.iconsPerPage,handleChangePage:this.props.handleChangePage,renderIcon:this.props.renderIcon,noIconPlaceholder:this.props.noIconPlaceholder}))}}],[{key:"getDerivedStateFromProps",value:function(e){var t=function(e){return Array.isArray(e)?null:Object.keys(e)}(e.icons);return null!==t&&(t=[e.allCatPlaceholder].concat(function(e){return function(e){if(Array.isArray(e))return F(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return F(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?F(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}(t))),{categories:t,searchString:e.currentSearch}}}]),n}();Y($,"propTypes",{isMulti:i.a.bool.isRequired,value:i.a.oneOfType([i.a.number,i.a.string,i.a.arrayOf(i.a.any)]).isRequired,currentCategory:i.a.number.isRequired,currentPage:i.a.number.isRequired,currentSearch:i.a.string.isRequired,icons:i.a.oneOfType([i.a.arrayOf(i.a.number),i.a.arrayOf(i.a.string),i.a.objectOf(i.a.oneOfType([i.a.arrayOf(i.a.number),i.a.arrayOf(i.a.string)]))]).isRequired,search:i.a.oneOfType([i.a.object,i.a.arrayOf(i.a.string)]),showCategory:i.a.bool.isRequired,showSearch:i.a.bool.isRequired,iconsPerPage:i.a.number.isRequired,allCatPlaceholder:i.a.string.isRequired,searchPlaceholder:i.a.string.isRequired,noIconPlaceholder:i.a.string.isRequired,renderIcon:i.a.func.isRequired,handleChangeValue:i.a.func.isRequired,handleChangeCategory:i.a.func.isRequired,handleChangePage:i.a.func.isRequired,handleChangeSearch:i.a.func.isRequired}),Y($,"defaultProps",{search:null});var X=$,J=n(4);function Q(e){return(Q="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function Z(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function ee(e,t){return(ee=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function te(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function ne(e){return(ne=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function re(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var oe=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&ee(e,t)}(n,o.a.PureComponent);var t=function(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=ne(e);if(t){var o=ne(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return function(e,t){if(t&&("object"===Q(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return te(e)}(this,n)}}(n);function n(e){var r;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),re(te(r=t.call(this,e)),"syncPortalPosition",(function(){r.resetPortalPosition(),r.fixWindowOverflow()})),re(te(r),"fixWindowOverflow",(function(){var e=r.props.domRef.current.offsetWidth,t=r.props.domRef.current.offsetHeight,n=window,o=n.innerWidth,a=n.pageYOffset,i=document.documentElement.clientHeight,c=k(r.props.domRef.current),s=c.left,l=c.top,u=k("self"===r.state.appendRoot?r.props.domRef.current:r.state.appendRoot),p=r.props.btnRef.current,f=r.props.domRef.current,d=k(p),b=getComputedStyle(p),h=(parseInt(b.borderTop,10)||0)+(parseInt(b.borderBottom,10)||0);if(s+e>o-20){var y=d.left+r.props.btnRef.current.offsetWidth-(e+u.left);y+u.left<0&&(y=10-u.left),f.style.left="".concat(y,"px")}t+l-a>i&&d.top-t>0&&("self"===r.state.appendRoot?f.style.top="-".concat(t-h,"px"):f.style.top="".concat(d.top+h-t,"px"))})),r.state={},r.debouncedSyncPortalPosition=function(e,t){var n;return function(){var t=this,r=arguments;clearTimeout(n),n=setTimeout((function(){return e.apply(t,r)}),250)}}(r.syncPortalPosition),r}return function(e,t,n){t&&Z(e.prototype,t),n&&Z(e,n)}(n,[{key:"componentDidMount",value:function(){window.addEventListener("resize",this.debouncedSyncPortalPosition),window.addEventListener("scroll",this.debouncedSyncPortalPosition),this.syncPortalPosition()}},{key:"componentDidUpdate",value:function(){this.syncPortalPosition()}},{key:"componentWillUnmount",value:function(){window.removeEventListener("resize",this.debouncedSyncPortalPosition),window.removeEventListener("scroll",this.debouncedSyncPortalPosition)}},{key:"positionPortal",value:function(){var e=this.props.domRef.current.style.display;this.props.domRef.current.style.display="none";var t=this.props.btnRef.current,n=k(t),r=k(this.state.appendRoot),o=t.offsetHeight;this.props.domRef.current.style.left="".concat(n.left-r.left,"px"),this.props.domRef.current.style.top="".concat(n.top+o,"px"),this.props.domRef.current.style.display=e}},{key:"resetPortalPosition",value:function(){var e=this.props.domRef.current;"self"===this.state.appendRoot?e.style.top="":this.positionPortal()}},{key:"render",value:function(){var e=s()(this.props.className,this.state.portalClasses),t=o.a.createElement("div",{className:e,ref:this.props.domRef},this.props.children);return"self"===this.state.appendRoot?t:Object(J.createPortal)(t,this.state.appendRoot)}}],[{key:"getDerivedStateFromProps",value:function(e){var t=n.calculateAppendAndClass(e.appendRoot);return{appendRoot:t.appendRoot,portalClasses:t.portalClasses}}},{key:"calculateAppendAndClass",value:function(e){var t="self",n=s()({"rfipdropdown--portal":!1!==e});return!1!==e&&(t=document.querySelector(e)),{portalClasses:n,appendRoot:t}}}]),n}();re(oe,"propTypes",{appendRoot:i.a.oneOfType([i.a.bool,i.a.string]),children:i.a.node.isRequired,domRef:i.a.object.isRequired,btnRef:i.a.object.isRequired,className:i.a.string.isRequired}),re(oe,"defaultProps",{appendRoot:!1});var ae=oe;function ie(e){return(ie="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function ce(e){return function(e){if(Array.isArray(e))return se(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return se(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?se(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function se(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function le(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function ue(e,t){return(ue=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function pe(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function fe(e){return(fe=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function de(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var be=[],he=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&ue(e,t)}(n,o.a.PureComponent);var t=function(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=fe(e);if(t){var o=fe(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return function(e,t){if(t&&("object"===ie(t)||"function"==typeof t))return t;if(void 0!==t)throw new TypeError("Derived constructors may only return object or undefined");return pe(e)}(this,n)}}(n);function n(e){var r;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),de(pe(r=t.call(this,e)),"handleOuterClick",(function(e){var t=e.target;r.isClickWithin(t)||r.closeDropdown()})),de(pe(r),"handleEscapeKeyboard",(function(e){27===e.keyCode&&r.closeDropdown()})),de(pe(r),"isClickWithin",(function(e){return"fipicon-angle-left"===e.className||"fipicon-angle-right"===e.className||"rfipicons__label"===e.className||r.fipButtonRef.current.contains(e)||r.fipDropDownRef.current&&r.fipDropDownRef.current.contains(e)})),de(pe(r),"handleToggle",(function(){r.setState((function(e){return r.handleDropDown(!e.isOpen,!1)}))})),de(pe(r),"closeDropdown",(function(){r.handleDropDown(!1)})),de(pe(r),"handleDropDown",(function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],o={isOpen:e};return o.elemClass=n.getDerivedClassName("rfip",r.props.theme,r.props.isMulti,e),o.btnClass=n.getDerivedClassName("rfipbtn",r.props.theme,r.props.isMulti,e),o.ddClass=n.getDerivedClassName("rfipdropdown",r.props.theme,r.props.isMulti,e),t&&r.setState(o),o})),de(pe(r),"handleChangeValue",(function(e){var t;r.props.isMulti?(t=ce(r.state.value)).includes(e)?(t=t.filter((function(t){return t!==e}))).length||(t=be):t.push(e):t=e===r.state.value?"":e,r.setState({value:t,isOpen:!r.props.closeOnSelect}),r.props.onChange(t)})),de(pe(r),"handleDeleteValue",(function(e){var t;t=r.props.isMulti?r.state.value.filter((function(t){return t!==e})):n.getDerivedValue(t,r.props.isMulti),r.setState({value:t}),r.props.onChange(t)})),de(pe(r),"handleChangePage",(function(e){r.setState({currentPage:e})})),de(pe(r),"handleChangeCategory",(function(e){r.setState({currentCategory:e,currentPage:0})})),de(pe(r),"handleChangeSearch",(function(e){r.setState({currentSearch:e,currentPage:0})})),de(pe(r),"resetPortalStyle",(function(e){["maxHeight","paddingTop","paddingBottom"].forEach((function(t){e.style[t]=null}))})),de(pe(r),"handlePortalEnter",(function(e){var t=e.childNodes[0];r.resetPortalStyle(t);var n=getComputedStyle(t);r.fipPortalComputedStyle={height:n.height,paddingTop:n.paddingTop,paddingBottom:n.paddingBottom},["maxHeight","paddingTop","paddingBottom"].forEach((function(e){t.style[e]="0px"}))})),de(pe(r),"handlePortalEntering",(function(e){var t=e.childNodes[0];t.style.maxHeight=r.fipPortalComputedStyle.height,t.style.paddingTop=r.fipPortalComputedStyle.paddingTop,t.style.paddingBottom=r.fipPortalComputedStyle.paddingBottom})),de(pe(r),"handlePortalEntered",(function(e){var t=e.childNodes[0];r.resetPortalStyle(t),r.props.showSearch&&void 0===window.orientation&&-1===navigator.userAgent.indexOf("IEMobile")&&t.querySelector(".rfipsearch__input").focus()})),de(pe(r),"handlePortalExit",(function(e){var t=e.childNodes[0];r.resetPortalStyle(t);var n=getComputedStyle(t).height;t.style.maxHeight=n})),de(pe(r),"handlePortalExiting",(function(e){var t=e.childNodes[0];t.style.maxHeight="0px",t.style.paddingTop="0px",t.style.paddingBottom="0px"})),de(pe(r),"renderIcon",(function(e){if("function"==typeof r.props.renderFunc)return r.props.renderFunc(e);if("class"===r.props.renderUsing)return o.a.createElement("i",{className:e});var t=de({},r.props.renderUsing,r.props.convertHex?function(e){return String.fromCodePoint(parseInt(e,10))}(e):e);return o.a.createElement("i",t)})),r.fipButtonRef=o.a.createRef(),r.fipDropDownRef=o.a.createRef(),r.state={currentCategory:0,currentPage:0,isOpen:!1,currentSearch:""},r.fipPortalComputedStyle=null,r}return function(e,t,n){t&&le(e.prototype,t),n&&le(e,n)}(n,[{key:"componentDidMount",value:function(){var e=this;["click"].forEach((function(t){document.addEventListener(t,e.handleOuterClick,!1)})),document.addEventListener("keydown",this.handleEscapeKeyboard,!1),this.props.onChange(this.state.value)}},{key:"componentWillUnmount",value:function(){var e=this;["click"].forEach((function(t){document.removeEventListener(t,e.handleOuterClick,!1)})),document.removeEventListener("keydown",this.handleEscapeKeyboard,!1)}},{key:"render",value:function(){var e={currentCategory:this.state.currentCategory,currentPage:this.state.currentPage,currentSearch:this.state.currentSearch,value:this.state.value,isMulti:this.props.isMulti,icons:this.props.icons,search:this.props.search,showCategory:this.props.showCategory,showSearch:this.props.showSearch,iconsPerPage:this.props.iconsPerPage,allCatPlaceholder:this.props.allCatPlaceholder,searchPlaceholder:this.props.searchPlaceholder,noIconPlaceholder:this.props.noIconPlaceholder,renderIcon:this.renderIcon,handleChangeValue:this.handleChangeValue,handleChangeCategory:this.handleChangeCategory,handleChangePage:this.handleChangePage,handleChangeSearch:this.handleChangeSearch};return o.a.createElement("div",{className:this.state.elemClass,ref:this.fipRef},o.a.createElement(m,{className:this.state.btnClass,isOpen:this.state.isOpen,onClick:this.handleToggle,domRef:this.fipButtonRef,isMulti:this.props.isMulti,value:this.state.value,renderIcon:this.renderIcon,handleDeleteValue:this.handleDeleteValue,noSelectedPlaceholder:this.props.noSelectedPlaceholder}),o.a.createElement(l.CSSTransition,{classNames:"fipappear",timeout:300,in:this.state.isOpen,unmountOnExit:!0,onEnter:this.handlePortalEnter,onEntering:this.handlePortalEntering,onEntered:this.handlePortalEntered,onExit:this.handlePortalExit,onExiting:this.handlePortalExiting},o.a.createElement(ae,{appendRoot:this.props.appendTo,domRef:this.fipDropDownRef,btnRef:this.fipButtonRef,className:this.state.ddClass},o.a.createElement(X,e))))}}],[{key:"getDerivedStateFromProps",value:function(e,t){var r={};return r.elemClass=n.getDerivedClassName("rfip",e.theme,e.isMulti,t.isOpen),r.btnClass=n.getDerivedClassName("rfipbtn",e.theme,e.isMulti,t.isOpen),r.ddClass=n.getDerivedClassName("rfipdropdown",e.theme,e.isMulti,t.isOpen),r.value=n.getDerivedValue(e.value,e.isMulti),e.showCategory||0===t.currentCategory||(r.currentCategory=0,r.currentPage=0),e.showSearch||""===t.currentSearch||(r.currentSearch="",r.currentPage=0),r}},{key:"getDerivedClassName",value:function(e,t,n,r){return s()(e,"".concat(e,"--").concat(t),de({},"".concat(e,"--multi"),n),"".concat(e,"--").concat(r?"open":"close"))}},{key:"getDerivedValue",value:function(e,t){var n=e;return t?n=Array.isArray(e)?ce(e):be:"number"!=typeof e&&"string"!=typeof e&&(n=""),n}}]),n}();de(he,"propTypes",{icons:i.a.oneOfType([i.a.arrayOf(i.a.string),i.a.arrayOf(i.a.number),i.a.objectOf(i.a.oneOfType([i.a.arrayOf(i.a.number),i.a.arrayOf(i.a.string)]))]).isRequired,search:i.a.oneOfType([i.a.objectOf(i.a.arrayOf(i.a.string)),i.a.arrayOf(i.a.string)]),iconsPerPage:i.a.number,theme:i.a.string,onChange:i.a.func.isRequired,showCategory:i.a.bool,showSearch:i.a.bool,value:i.a.oneOfType([i.a.arrayOf(i.a.string),i.a.arrayOf(i.a.number),i.a.number,i.a.string]),isMulti:i.a.bool,renderUsing:i.a.string,convertHex:i.a.bool,renderFunc:i.a.func,appendTo:i.a.oneOfType([i.a.bool,i.a.string]),allCatPlaceholder:i.a.string,searchPlaceholder:i.a.string,noIconPlaceholder:i.a.string,noSelectedPlaceholder:i.a.string,closeOnSelect:i.a.bool}),de(he,"defaultProps",{search:null,iconsPerPage:20,theme:"default",showCategory:!0,showSearch:!0,value:null,isMulti:!1,renderUsing:"class",convertHex:!0,renderFunc:null,appendTo:!1,allCatPlaceholder:"Show from all",searchPlaceholder:"Search Icons",noIconPlaceholder:"No icons found",noSelectedPlaceholder:"Select icon",closeOnSelect:!1}),de(he,"displayName","FontIconPicker");var ye=he;t.default=ye}]).default)},322:(e,t,n)=>{"use strict";var r={};n.r(r),n.d(r,{BUTTONS_CONNECTOR_TYPOGRAPHY:()=>N,BUTTONS_TYPOGRAPHY:()=>B});const o=window.wp.i18n,a=window.wp.blockEditor;function i(){return i=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},i.apply(this,arguments)}const c=window.wp.element,s=window.wp.data;var l=n(184),u=n.n(l);const p=window.wp.components;var f=n(862),d=n.n(f),b="wrpMargin",h="buttonsPadding",y="Btn1Bg",m="Btn2Bg",g="buttonOneBorderShadow",v="buttonTwoBorderShadow",w="buttonsWidth",E="buttonsGap",R="buttonsConnectorSize",O="buttonsConnectorIconSize",C=((0,o.__)("Fill","essential-blocks"),(0,o.__)("Outline","essential-blocks"),(0,o.__)("Text","essential-blocks"),[{label:"px",value:"px"},{label:"em",value:"em"}]),S=[{label:"Normal",value:"normal"},{label:"Hover",value:"hover"}],x=[{label:"Custom Width",value:"custom"},{label:"Auto",value:"auto"}],_=[{label:(0,o.__)("Text","essential-blocks"),value:"text"},{label:(0,o.__)("Icon","essential-blocks"),value:"icon"}],P=[{label:(0,o.__)("Preset 1","essential-blocks"),value:"preset-1"},{label:(0,o.__)("Preset 2","essential-blocks"),value:"preset-2"},{label:(0,o.__)("Preset 3","essential-blocks"),value:"preset-3"},{label:(0,o.__)("Preset 4","essential-blocks"),value:"preset-4"}],T=[{label:(0,o.__)(React.createElement(p.Dashicon,{icon:"editor-alignleft"})),value:"left"},{label:(0,o.__)(React.createElement(p.Dashicon,{icon:"editor-aligncenter"})),value:"center"},{label:(0,o.__)(React.createElement(p.Dashicon,{icon:"editor-alignright"})),value:"right"}],k=[{label:(0,o.__)(React.createElement(p.Dashicon,{icon:"editor-alignleft"})),value:"flex-start"},{label:(0,o.__)(React.createElement(p.Dashicon,{icon:"editor-aligncenter"})),value:"center"},{label:(0,o.__)(React.createElement(p.Dashicon,{icon:"editor-alignright"})),value:"flex-end"}],B="button",N="button_connector";function j(e){return j="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},j(e)}function D(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function A(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?D(Object(n),!0).forEach((function(t){I(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):D(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function I(e,t,n){return(t=function(e){var t=function(e,t){if("object"!==j(e)||null===e)return e;var n=e[Symbol.toPrimitive];if(void 0!==n){var r=n.call(e,"string");if("object"!==j(r))return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return String(e)}(e);return"symbol"===j(t)?t:String(t)}(t))in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var M=window.EBButtonGroup,L=M.generateDimensionsAttributes,q=M.generateTypographyAttributes,V=M.generateBackgroundAttributes,H=M.generateBorderShadowAttributes,U=M.generateResponsiveRangeAttributes;const F=A(A(A(A(A(A(A(A(A(A(A(A(A(A({resOption:{type:"string",default:"Desktop"},blockId:{type:"string"},blockRoot:{type:"string",default:"essential_block"},blockMeta:{type:"object"},preset:{type:"string",default:"button-1"},contentPosition:{type:"string",default:"center"},buttonWidth:{type:"number",default:"auto"},buttonTextOne:{type:"string",default:"Button One"},buttonTextTwo:{type:"string",default:"Button Two"},buttonOneColor:{type:"string",default:"#7967ff"},hoverButtonOneColor:{type:"string",default:"#513fd4"},textOneColor:{type:"string",default:"#fff"},hoverTextOneColor:{type:"string"},buttonTwoColor:{type:"string",default:"#309bff"},hoverButtonTwoColor:{type:"string",default:"#2587e2"},textTwoColor:{type:"string",default:"#fff"},hoverTextTwoColor:{type:"string"},buttonURLOne:{type:"string",default:"#"},buttonURLTwo:{type:"string",default:"#"},buttonTextAlign:{type:"string",default:"center"},isHoverOne:{type:"boolean",default:!1},isHoverTwo:{type:"boolean",default:!1},innerButtonText:{type:"string",default:"OR"},innerButtonColor:{type:"string",default:"#fff"},innerButtonTextColor:{type:"string",default:"#000"},innerButtonIcon:{type:"string"},showConnector:{type:"boolean",default:!0},connectorType:{type:"string",default:"text"},borderType:{type:"string",default:"normal"},buttonsColorType:{type:"string",default:"normal"},buttonsWidthType:{type:"string",default:"custom"},buttonOneNewWindow:{type:"boolean",default:!1},buttonTwoNewWindow:{type:"boolean",default:!1}},q(Object.values(r))),L(b)),L("buttonsMargin")),L(h,{top:10,bottom:10,right:25,left:25,isLinked:!1})),H(g,{bdrDefaults:{top:2,bottom:2,right:2,left:2},rdsDefaults:{top:20,bottom:0,right:0,left:20,isLinked:!1},noShadow:!0})),H(v,{bdrDefaults:{top:2,bottom:2,right:2,left:2},rdsDefaults:{top:0,bottom:20,right:20,left:0,isLinked:!1},noShadow:!0})),V("button1Bg",{defaultFillColor:"#3074ff",defaultBgGradient:"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)"})),V("button2Bg",{defaultFillColor:"#3074ff"})),U(w,{defaultRange:200})),U(E,{defaultRange:0})),U(R,{defaultRange:30})),U(O,{defaultRange:16})),V(y,{noOverlay:!0,noMainBgi:!0,defaultBgGradient:"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",defaultHovBgGradient:"linear-gradient(45deg, rgba(48,155,255,1) 0% , rgba(33,135,255,1) 100%)"})),V(m,{noOverlay:!0,noMainBgi:!0,defaultBgGradient:"linear-gradient(45deg, rgba(48,155,255,1) 0% , rgba(33,135,255,1) 100%)",defaultHovBgGradient:"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)"}));var G=window.EBButtonGroup,W=G.faIcons,K=G.ColorControl,z=G.ResponsiveDimensionsControl,Y=G.TypographyDropdown,$=G.BorderShadowControl,X=G.ResponsiveRangeController,J=G.BackgroundControl,Q=G.AdvancedControls,Z=G.DynamicInputControl;console.log("DynamicInputControl",Z);const ee=function(e){var t=e.attributes,n=e.setAttributes,r=t.resOption,i=t.preset,c=t.contentPosition,s=t.textOneColor,l=t.hoverTextOneColor,u=t.textTwoColor,f=t.hoverTextTwoColor,j=t.buttonTextOne,D=t.buttonURLOne,A=t.buttonTextTwo,I=t.buttonURLTwo,M=t.innerButtonText,L=t.innerButtonColor,q=t.innerButtonTextColor,V=t.innerButtonIcon,H=t.showConnector,U=t.connectorType,G=t.buttonsColorType,ee=t.buttonTextAlign,te=t.buttonsWidthType,ne=t.buttonOneNewWindow,re=t.buttonTwoNewWindow,oe={setAttributes:n,resOption:r,attributes:t,objAttributes:F};return React.createElement(a.InspectorControls,{key:"controls"},React.createElement("div",{className:"eb-panel-control"},React.createElement(p.TabPanel,{className:"eb-parent-tab-panel",activeClass:"active-tab",tabs:[{name:"general",title:"General",className:"eb-tab general"},{name:"styles",title:"Style",className:"eb-tab styles"},{name:"advance",title:"Advanced",className:"eb-tab advance"}]},(function(e){return React.createElement("div",{className:"eb-tab-controls"+e.name},"general"===e.name&&React.createElement(React.Fragment,null,React.createElement(p.PanelBody,{title:(0,o.__)("General","essential-blocks"),initialOpen:!0},React.createElement(p.SelectControl,{label:(0,o.__)("Preset Designs","essential-blocks"),value:i,options:P,onChange:function(e){return function(e){switch(n({preset:e}),e){case"preset-1":n({showConnector:!0,buttonOneBorderShadowRds_Top:"20",buttonOneBorderShadowRds_Bottom:"0",buttonOneBorderShadowRds_Left:"20",buttonOneBorderShadowRds_Right:"0",buttonTwoBorderShadowRds_Top:"0",buttonTwoBorderShadowRds_Bottom:"20",buttonTwoBorderShadowRds_Left:"0",buttonTwoBorderShadowRds_Right:"20",buttonsGapRange:0});break;case"preset-2":n({showConnector:!1,buttonOneBorderShadowRds_Top:"30",buttonOneBorderShadowRds_Bottom:"30",buttonOneBorderShadowRds_Left:"30",buttonOneBorderShadowRds_Right:"30",buttonTwoBorderShadowRds_Top:"30",buttonTwoBorderShadowRds_Bottom:"30",buttonTwoBorderShadowRds_Left:"30",buttonTwoBorderShadowRds_Right:"30",buttonsGapRange:20});break;case"preset-3":n({showConnector:!1,buttonOneBorderShadowRds_Top:"0",buttonOneBorderShadowRds_Bottom:"0",buttonOneBorderShadowRds_Left:"15",buttonOneBorderShadowRds_Right:"15",buttonTwoBorderShadowRds_Top:"15",buttonTwoBorderShadowRds_Bottom:"15",buttonTwoBorderShadowRds_Left:"0",buttonTwoBorderShadowRds_Right:"0",buttonsGapRange:20});break;case"preset-4":n({showConnector:!1,buttonOneBorderShadowRds_Top:"30",buttonOneBorderShadowRds_Bottom:"30",buttonOneBorderShadowRds_Left:"30",buttonOneBorderShadowRds_Right:"30",buttonTwoBorderShadowRds_Top:"30",buttonTwoBorderShadowRds_Bottom:"30",buttonTwoBorderShadowRds_Left:"30",buttonTwoBorderShadowRds_Right:"30",buttonsGapRange:10});break;default:return!1}}(e)}}),React.createElement(p.BaseControl,{label:(0,o.__)("Alignment","essential-blocks"),id:"eb-button-group-alignment"},React.createElement(p.ButtonGroup,{id:"eb-button-group-alignment"},k.map((function(e,t){return React.createElement(p.Button,{key:t,isPrimary:c===e.value,isSecondary:c!==e.value,onClick:function(){return n({contentPosition:e.value})}},e.label)})))),React.createElement(Z,{label:"Button One Text",attrName:"buttonTextOne",inputValue:j,setAttributes:n,onChange:function(e){return n({buttonTextOne:e})}}),React.createElement(Z,{label:"Button One Link",attrName:"buttonURLOne",inputValue:D,setAttributes:n,onChange:function(e){return n({buttonURLOne:e})}}),D&&React.createElement(p.ToggleControl,{label:(0,o.__)("Open in New Tab","essential-blocks"),checked:ne,onChange:function(){return n({buttonOneNewWindow:!ne})}}),React.createElement(Z,{label:"Button Two Text",attrName:"buttonTextTwo",inputValue:A,setAttributes:n,onChange:function(e){return n({buttonTextTwo:e})}}),React.createElement(Z,{label:"Button Two Link",attrName:"buttonURLTwo",inputValue:I,setAttributes:n,onChange:function(e){return n({buttonURLTwo:e})}}),I&&React.createElement(p.ToggleControl,{label:(0,o.__)("Open in New Tab","essential-blocks"),checked:re,onChange:function(){return n({buttonTwoNewWindow:!re})}})),React.createElement(p.PanelBody,{title:(0,o.__)("Buttons","essential-blocks"),initialOpen:!0},React.createElement(p.BaseControl,{label:(0,o.__)("Button Width Type","essential-blocks")},React.createElement(p.SelectControl,{value:te,options:x,onChange:function(e){n({buttonsWidthType:e})}})),"custom"===te&&React.createElement(X,{baseLabel:(0,o.__)("Buttons Width","essential-blocks"),controlName:w,resRequiredProps:oe,units:C,min:0,max:500,step:1}),React.createElement(X,{baseLabel:(0,o.__)("Buttons Gap","essential-blocks"),controlName:E,resRequiredProps:oe,units:C,min:0,max:100,step:1}),React.createElement(p.BaseControl,{label:(0,o.__)("Text Align","essential-blocks"),id:"eb-button-group-text-align"},React.createElement(p.ButtonGroup,{id:"eb-button-group-text-align"},T.map((function(e,t){return React.createElement(p.Button,{key:t,isPrimary:ee===e.value,isSecondary:ee!==e.value,onClick:function(){return n({buttonTextAlign:e.value})}},e.label)}))))),React.createElement(p.PanelBody,{title:(0,o.__)("Connector","essential-blocks"),initialOpen:!0},React.createElement(p.ToggleControl,{label:(0,o.__)("Show Connector?"),checked:H,onChange:function(){n({showConnector:!H})}}),H&&React.createElement(React.Fragment,null,React.createElement(p.BaseControl,{label:(0,o.__)("Connector Type","essential-blocks")},React.createElement(p.ButtonGroup,{id:"eb-button-group-connector-type"},_.map((function(e,t){return React.createElement(p.Button,{key:t,isPrimary:U===e.value,isSecondary:U!==e.value,onClick:function(){return n({connectorType:e.value})}},e.label)})))),"icon"===U&&React.createElement(p.PanelBody,{title:(0,o.__)("Icon Settings","essential-blocks"),initialOpen:!0},React.createElement(p.BaseControl,{label:(0,o.__)("Icon","essential-blocks")},React.createElement(d(),{icons:W,value:V,onChange:function(e){return n({innerButtonIcon:e})},appendTo:"body"})),React.createElement(X,{baseLabel:(0,o.__)("Icon Size","essential-blocks"),controlName:O,resRequiredProps:oe,units:C,min:0,max:100,step:1})),"text"===U&&React.createElement(p.TextControl,{label:(0,o.__)("Text","essential-blocks"),value:M,onChange:function(e){return n({innerButtonText:e})}}),React.createElement(X,{baseLabel:(0,o.__)("Connector Size","essential-blocks"),controlName:R,resRequiredProps:oe,units:C,min:0,max:100,step:1})))),"styles"===e.name&&React.createElement(React.Fragment,null,React.createElement(p.PanelBody,{title:(0,o.__)("Buttons","essential-blocks"),initialOpen:!0},React.createElement(Y,{baseLabel:(0,o.__)("Typography","essential-blocks"),typographyPrefixConstant:B,resRequiredProps:oe}),React.createElement(p.BaseControl,null,React.createElement("h3",{className:"eb-control-title"},(0,o.__)("Button One Background","essential-blocks"))),React.createElement(J,{controlName:y,resRequiredProps:oe,noOverlay:!0,noMainBgi:!0}),React.createElement(p.BaseControl,null,React.createElement("h3",{className:"eb-control-title"},(0,o.__)("Button Two Background","essential-blocks"))),React.createElement(J,{controlName:m,resRequiredProps:oe,noOverlay:!0,noMainBgi:!0}),React.createElement(p.BaseControl,null,React.createElement("h3",{className:"eb-control-title"},(0,o.__)("Text Color","essential-blocks"))),React.createElement(p.ButtonGroup,{className:"eb-inspector-btn-group"},S.map((function(e,t){return React.createElement(p.Button,{key:t,isPrimary:G===e.value,isSecondary:G!==e.value,onClick:function(){return n({buttonsColorType:e.value})}},e.label)}))),"normal"===G&&React.createElement(a.PanelColorSettings,{className:"eb-subpanel",title:(0,o.__)("Normal Colors","essential-blocks"),initialOpen:!0,colorSettings:[{value:s,onChange:function(e){return n({textOneColor:e})},label:(0,o.__)("Button One","essential-blocks")},{value:u,onChange:function(e){return n({textTwoColor:e})},label:(0,o.__)("Button Two","essential-blocks")}]}),"hover"===G&&React.createElement(a.PanelColorSettings,{className:"eb-subpanel",title:(0,o.__)("Hover Colors","essential-blocks"),initialOpen:!0,colorSettings:[{value:l,onChange:function(e){return n({hoverTextOneColor:e})},label:(0,o.__)("Button One Hover","essential-blocks")},{value:f,onChange:function(e){return n({hoverTextTwoColor:e})},label:(0,o.__)("Button Two Hover","essential-blocks")}]}),React.createElement(p.PanelBody,{className:"eb-subpanel",title:(0,o.__)("Button One Border","essential-blocks"),initialOpen:!0},React.createElement($,{controlName:g,resRequiredProps:oe,noShadow:!0})),React.createElement(p.PanelBody,{className:"eb-subpanel",title:(0,o.__)("Button Two Border","essential-blocks"),initialOpen:!0},React.createElement($,{controlName:v,resRequiredProps:oe,noShadow:!0})),React.createElement(z,{resRequiredProps:oe,controlName:h,baseLabel:"Padding"})),React.createElement(p.PanelBody,{title:(0,o.__)("Connector","essential-blocks"),initialOpen:!1},React.createElement(Y,{baseLabel:(0,o.__)("Typography","essential-blocks"),typographyPrefixConstant:N,resRequiredProps:oe}),React.createElement(K,{label:(0,o.__)("Background Color","essential-blocks"),color:L,onChange:function(e){return n({innerButtonColor:e})}}),React.createElement(K,{label:(0,o.__)("Text/ Icon Color"),color:q,onChange:function(e){return n({innerButtonTextColor:e})}}))),"advance"===e.name&&React.createElement(React.Fragment,null,React.createElement(p.PanelBody,null,React.createElement(z,{resRequiredProps:oe,controlName:b,baseLabel:"Margin"})),React.createElement(Q,{attributes:t,setAttributes:n})))}))))};var te=window.EBButtonGroup,ne=te.softMinifyCssStrings,re=te.generateTypographyStyles,oe=te.generateDimensionsControlStyles,ae=te.generateBorderShadowStyles,ie=te.generateResponsiveRangeStyles,ce=te.generateBackgroundControlStyles,se=te.duplicateBlockIdFix,le=te.DynamicInputValueHandler;console.log("DynamicInputValueHandler",EBButtonGroup);const ue=JSON.parse('{"apiVersion":2,"name":"button-group/button-group","title":"Button Group","category":"widgets","description":"Create Two Buttons To Be Stacked Together","textdomain":"button-group","editorScript":"file:./dist/index.js"}');function pe(e){return pe="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},pe(e)}function fe(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function de(e,t,n){return(t=function(e){var t=function(e,t){if("object"!==pe(e)||null===e)return e;var n=e[Symbol.toPrimitive];if(void 0!==n){var r=n.call(e,"string");if("object"!==pe(r))return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return String(e)}(e);return"symbol"===pe(t)?t:String(t)}(t))in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}const be=[{attributes:function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?fe(Object(n),!0).forEach((function(t){de(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):fe(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},F),save:function(e){var t=e.attributes,n=t.blockId,r=t.preset,o=t.buttonTextOne,i=t.buttonTextTwo,c=t.buttonURLOne,s=t.buttonURLTwo,l=t.innerButtonText,u=t.innerButtonIcon,p=t.showConnector,f=t.connectorType;return React.createElement("div",a.useBlockProps.save(),React.createElement("div",{className:"eb-button-group-wrapper ".concat(n," ").concat(r),"data-id":n},React.createElement("a",{className:"eb-button-parent eb-button-one",href:c},React.createElement("div",{className:"eb-button-text eb-button-one-text"},o)),p&&React.createElement("div",{className:"eb-button-group__midldeInner"},"icon"===f&&React.createElement("span",null,React.createElement("i",{className:"".concat(u||"fas fa-arrows-alt-h")})),"text"===f&&React.createElement("span",null,l)),React.createElement("a",{className:"eb-button-parent eb-button-two",href:s},React.createElement("div",{className:"eb-button-text eb-button-two-text"},i))))}}];(0,EBButtonGroup.ebConditionalRegisterBlockType)(ue,{keywords:[(0,o.__)("buttons","essential-blocks"),(0,o.__)("grouped button","essential-blocks"),(0,o.__)("Button Group","essential-blocks"),(0,o.__)("dual","essential-blocks")],attributes:F,icon:function(){return React.createElement("svg",{width:"256",height:"156",viewBox:"0 0 66 70",xmlns:"http://www.w3.org/2000/svg"},React.createElement("linearGradient",{id:"prefix__a",gradientUnits:"userSpaceOnUse",x1:.952,y1:36.707,x2:70.364,y2:26.707},React.createElement("stop",{offset:0,stopColor:"#1a6dff"}),React.createElement("stop",{offset:1,stopColor:"#c822ff"})),React.createElement("path",{d:"M33.3 22.4H4.7C2.1 22.4 0 24.6 0 27v14.3c0 2.6 2.2 4.6 4.6 4.6H33c2.6 0 4.6-2.2 4.6-4.6V27c.3-2.6-1.9-4.6-4.3-4.6zm1.8 18.9c0 1.2-1 2-2 2H4.7c-1.2 0-2-1-2-2V27c0-1.2 1-2 2-2h28.4c1.2 0 2 1 2 2v14.3z",fill:"url(#prefix__a)"}),React.createElement("linearGradient",{id:"prefix__b",gradientUnits:"userSpaceOnUse",x1:-3.791,y1:41.962,x2:71.357,y2:31.136},React.createElement("stop",{offset:0,stopColor:"#1a6dff"}),React.createElement("stop",{offset:1,stopColor:"#c822ff"})),React.createElement("path",{d:"M61.7 22.4H39.8c-2.6 0-4.7 2.2-4.7 4.6v14.3c0 2.6 2.2 4.6 4.6 4.6h21.7c2.6 0 4.6-2.2 4.6-4.6V27c.3-2.6-1.9-4.6-4.3-4.6zm1.8 18.9c0 1.2-1 2-2 2H39.8c-1.2 0-2-1-2-2V27c0-1.2 1-2 2-2h21.7c1.2 0 2 1 2 2v14.3z",fill:"url(#prefix__b)"}),React.createElement("linearGradient",{id:"prefix__c",gradientUnits:"userSpaceOnUse",x1:.989,y1:36.964,x2:70.401,y2:26.964},React.createElement("stop",{offset:0,stopColor:"#1a6dff"}),React.createElement("stop",{offset:1,stopColor:"#c822ff"})),React.createElement("path",{d:"M25.6 35.8H11.8c-.7 0-1.4-.6-1.4-1.4 0-.7.6-1.4 1.4-1.4h13.8c.7 0 1.4.6 1.4 1.4-.1.8-.7 1.4-1.4 1.4z",fill:"url(#prefix__c)"}),React.createElement("linearGradient",{id:"prefix__d",gradientUnits:"userSpaceOnUse",x1:-.903,y1:41.371,x2:68.508,y2:31.371},React.createElement("stop",{offset:0,stopColor:"#1a6dff"}),React.createElement("stop",{offset:1,stopColor:"#c822ff"})),React.createElement("path",{d:"M54.5 35.5H44.3c-.7 0-1.4-.6-1.4-1.4 0-.7.6-1.4 1.4-1.4h10.2c.7 0 1.4.6 1.4 1.4-.1.8-.7 1.4-1.4 1.4z",fill:"url(#prefix__d)"}))},edit:function(e){var t=e.attributes,n=e.setAttributes,r=e.className,o=e.clientId,i=e.isSelected,l=t.blockId,p=t.blockMeta,f=t.resOption,d=t.preset,C=t.contentPosition,S=t.buttonTextOne,x=t.buttonTextTwo,_=t.buttonOneColor,P=t.hoverButtonOneColor,T=t.textOneColor,k=t.hoverTextOneColor,j=t.buttonTwoColor,D=t.hoverButtonTwoColor,A=t.textTwoColor,I=t.hoverTextTwoColor,M=t.innerButtonText,L=t.innerButtonColor,q=t.innerButtonTextColor,V=t.innerButtonIcon,H=t.showConnector,U=t.connectorType,F=t.buttonTextAlign,G=t.classHook,W=t.buttonsWidthType;(0,c.useEffect)((function(){se({BLOCK_PREFIX:"eb-button-group",blockId:l,setAttributes:n,select:s.select,clientId:o})}),[]);var K=(0,a.useBlockProps)({className:u()(r,"eb-guten-block-main-parent-wrapper")}),z=re({attributes:t,prefixConstant:B,defaultFontSize:16}),Y=z.typoStylesDesktop,$=z.typoStylesTab,X=z.typoStylesMobile,J=re({attributes:t,prefixConstant:N,defaultFontSize:14}),Q=J.typoStylesDesktop,Z=J.typoStylesTab,te=J.typoStylesMobile,ue=oe({controlName:b,styleFor:"margin",attributes:t}),pe=ue.dimensionStylesDesktop,fe=ue.dimensionStylesTab,de=ue.dimensionStylesMobile,be=oe({controlName:h,styleFor:"padding",attributes:t}),he=be.dimensionStylesDesktop,ye=be.dimensionStylesTab,me=be.dimensionStylesMobile,ge=ae({controlName:g,attributes:t,noShadow:!0}),ve=ge.styesDesktop,we=ge.styesTab,Ee=ge.styesMobile,Re=ge.stylesHoverDesktop,Oe=ge.stylesHoverTab,Ce=ge.stylesHoverMobile,Se=ge.transitionStyle,xe=ae({controlName:v,attributes:t,noShadow:!0}),_e=xe.styesDesktop,Pe=xe.styesTab,Te=xe.styesMobile,ke=xe.stylesHoverDesktop,Be=xe.stylesHoverTab,Ne=xe.stylesHoverMobile,je=xe.transitionStyle,De=ie({controlName:w,property:"width",attributes:t}),Ae=De.rangeStylesDesktop,Ie=De.rangeStylesTab,Me=De.rangeStylesMobile,Le=ie({controlName:E,property:"margin",attributes:t}),qe=Le.rangeStylesDesktop,Ve=Le.rangeStylesTab,He=Le.rangeStylesMobile,Ue=ie({controlName:R,property:"height",attributes:t}),Fe=Ue.rangeStylesDesktop,Ge=Ue.rangeStylesTab,We=Ue.rangeStylesMobile,Ke=ie({controlName:R,property:"width",attributes:t}),ze=Ke.rangeStylesDesktop,Ye=Ke.rangeStylesTab,$e=Ke.rangeStylesMobile,Xe=ie({controlName:R,property:"line-height",attributes:t}),Je=Xe.rangeStylesDesktop,Qe=Xe.rangeStylesTab,Ze=Xe.rangeStylesMobile,et=ie({controlName:O,property:"font-size",attributes:t}),tt=et.rangeStylesDesktop,nt=et.rangeStylesTab,rt=et.rangeStylesMobile,ot=ce({attributes:t,controlName:y}),at=ot.backgroundStylesDesktop,it=ot.hoverBackgroundStylesDesktop,ct=ot.bgTransitionStyle,st=ce({attributes:t,controlName:m}),lt=st.backgroundStylesDesktop,ut=st.hoverBackgroundStylesDesktop,pt=(st.bgTransitionStyle,"\n\t\t.eb-button-group-wrapper.".concat(l,"{\n\t\t\tdisplay: flex;\n\t\t\tflex-direction: row;\n\t\t\talign-items: ").concat(C,";\n\t\t\tjustify-content: ").concat(C,";\n\t\t\tposition: relative;\n\t\t\t").concat(pe,"\n\t\t}\n\t")),ft="\n\t\t.eb-button-group-wrapper.".concat(l,"{\n\t\t\t").concat(fe,"\n\n\t\t}\n\t"),dt="\n\t\t.eb-button-group-wrapper.".concat(l,"{\n\t\t\t").concat(de,"\n\n\t\t}\n\t"),bt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent {\n\t\t\t").concat(he,"\n\t\t\t").concat("custom"===W?Ae:"width: auto;","\n\t\t\t").concat(qe,"\n\t\t\ttext-align: ").concat(F,";\n\t\t\tcursor: pointer;\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent .eb-button-text {\n\t\t\t").concat(Y,"\n\t\t}\n\n\t\t.eb-button-group-wrapper.").concat(l,".preset-4 {\n\t\t\twidth: fit-content;\n\t\t\tmargin: ").concat("center"===C?"0 auto;":"flex-end"===C?"0 0 0 auto;":"auto 0;","\n\t\t}\n\t"),ht="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent {\n\t\t\t").concat(ye,"\n\t\t\t").concat("custom"===W?Ie:"width: auto;","\n\t\t\t").concat(Ve,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent .eb-button-text {\n\t\t\t").concat($,"\n\t\t}\n\t"),yt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent {\n\t\t\t").concat(me,"\n\t\t\t").concat("custom"===W?Me:"width: auto;","\n\t\t\t").concat(He,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent .eb-button-text {\n\t\t\t").concat(X,"\n\t\t}\n\t"),mt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent.eb-button-one {\n\t\t\t").concat(ve,"\n\t\t\tbackground-color: ").concat(_,";\n\t\t\ttransition:").concat(Se,";\n\t\t\t").concat(at,"\n\t\t\ttransition: ").concat(ct.replace(/[^0-9.]/g,""),"s;\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one:hover,\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one:focus {\n\t\t\t").concat(Re,"\n\t\t\tbackground-color: ").concat(P,";\n\t\t\t").concat(it,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one .eb-button-one-text {\n\t\t\tcolor: ").concat(T,";\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one:hover .eb-button-one-text {\n\t\t\tcolor: ").concat(k,";\n\t\t}\n\t"),gt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent.eb-button-one {\n\t\t\t").concat(we,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(Oe,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t"),vt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent.eb-button-one {\n\t\t\t").concat(Ee,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(Ce,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t"),wt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent.eb-button-two {\n\t\t\t").concat(_e,"\n\t\t\t").concat(qe,"\n\t\t\tbackground-color: ").concat(j,";\n\t\t\ttransition:").concat(je,";\n\t\t\t").concat(lt,"\n\t\t\ttransition: ").concat(ct.replace(/[^0-9.]/g,""),"s;\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two:hover,\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two:focus {\n\t\t\t").concat(ke,"\n\t\t\tbackground-color: ").concat(D,";\n\t\t\t").concat(ut,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two .eb-button-two-text {\n\t\t\tcolor: ").concat(A,";\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two:hover .eb-button-two-text {\n\t\t\tcolor: ").concat(I,";\n\t\t}\n\t"),Et="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent.eb-button-two {\n\t\t\t").concat(Pe,"\n\t\t\t").concat(Ve,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(Be,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"),Rt="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-parent.eb-button-two {\n\t\t\t").concat(Te,"\n\t\t\t").concat(He,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(Ne,"\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(l," .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"),Ot="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-group__midldeInner span {\n\t\t\t").concat("text"===U?Q:tt,"\n\t\t\t").concat(Fe,"\n\t\t\t").concat(ze,"\n\t\t\t").concat(Je,"\n\t\t\t").concat("icon"===U?'font-family: "Font Awesome 5 Brands" !important':" ",";\n\t\t\tbackground: ").concat(L,";\n\t\t\tcolor: ").concat(q,";\n\t\t}\n\t"),Ct="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-group__midldeInner span {\n\t\t\t").concat("text"===U?Z:nt,"\n\t\t\t").concat(Ge,"\n\t\t\t").concat(Ye,"\n\t\t\t").concat(Qe,"\n\t\t}\n\t"),St="\n\t\t.eb-button-group-wrapper.".concat(l," .eb-button-group__midldeInner span {\n\t\t\t").concat("text"===U?te:rt,"\n\t\t\t").concat(We,"\n\t\t\t").concat($e,"\n\t\t\t").concat(Ze,"\n\t\t}\n\t"),xt=ne("\n\t\t\t".concat(pt,"\n\t\t\t").concat(bt,"\n\t\t\t").concat(mt,"\n\t\t\t").concat(wt,"\n\t\t\t").concat(Ot,"\n\t\t")),_t=ne("\n\t\t\t".concat(ft,"\n\t\t\t").concat(ht,"\n\t\t\t").concat(gt,"\n\t\t\t").concat(Et,"\n\t\t\t").concat(Ct,"\n\t\t")),Pt=ne("\n\t\t\t".concat(dt,"\n\t\t\t").concat(yt,"\n\t\t\t").concat(vt,"\n\t\t\t").concat(Rt,"\n\t\t\t").concat(St,"\n\t\t"));return(0,c.useEffect)((function(){var e={desktop:xt,tab:_t,mobile:Pt};JSON.stringify(p)!=JSON.stringify(e)&&n({blockMeta:e})}),[t]),React.createElement(React.Fragment,null,i&&React.createElement(ee,e),React.createElement("div",K,React.createElement("style",null,"\n\t\t\t\t".concat(xt,"\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat("Tablet"===f?_t:" ","\n\t\t\t\t").concat("Mobile"===f?_t+Pt:" ","\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\n\n\t\t\t\t\t/* tabcssStart */\n\t\t\t\t\t").concat(ne(_t),"\n\t\t\t\t\t/* tabcssEnd */\n\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 767px) {\n\n\t\t\t\t\t/* mobcssStart */\n\t\t\t\t\t").concat(ne(Pt),"\n\t\t\t\t\t/* mobcssEnd */\n\n\t\t\t\t}\n\t\t\t\t")),React.createElement("div",{className:"eb-parent-wrapper eb-parent-".concat(l," ").concat(G)},React.createElement("div",{className:"eb-button-group-wrapper ".concat(l," ").concat(d),"data-id":l},React.createElement("a",{className:"eb-button-parent eb-button-one",onMouseEnter:function(){return n({isHoverOne:!0})},onMouseLeave:function(){return n({isHoverOne:!1})}},React.createElement(le,{className:"eb-button-text eb-button-one-text",placeholder:"Add Text..",value:S,onChange:function(e){return n({buttonTextOne:e})},allowedFormats:["core/bold","core/italic","core/link","core/strikethrough","core/underline","core/text-color"]})),H&&React.createElement("div",{className:"eb-button-group__midldeInner"},"icon"===U&&React.createElement("span",null,React.createElement("i",{className:"".concat(V||"fas fa-arrows-alt-h")})),"text"===U&&React.createElement("span",null,M)),React.createElement("a",{className:"eb-button-parent eb-button-two",onMouseEnter:function(){return n({isHoverTwo:!0})},onMouseLeave:function(){return n({isHoverTwo:!1})}},React.createElement(le,{className:"eb-button-text eb-button-two-text",placeholder:"Add Text..",value:x,onChange:function(e){return n({buttonTextTwo:e})},allowedFormats:["core/bold","core/italic","core/link","core/strikethrough","core/underline","core/text-color"]}))))))},save:function(e){var t=e.attributes,n=t.blockId,r=t.preset,o=t.buttonTextOne,c=t.buttonTextTwo,s=t.buttonURLOne,l=t.buttonURLTwo,u=t.innerButtonText,p=t.innerButtonIcon,f=t.showConnector,d=t.connectorType,b=t.classHook,h=t.buttonOneNewWindow,y=t.buttonTwoNewWindow;return React.createElement("div",a.useBlockProps.save(),React.createElement("div",{className:"eb-parent-wrapper eb-parent-".concat(n," ").concat(b)},React.createElement("div",{className:"eb-button-group-wrapper ".concat(n," ").concat(r),"data-id":n},React.createElement("a",i({className:"eb-button-parent eb-button-one",href:s},h&&{target:"_blank"},{rel:"noopener"}),React.createElement("div",{className:"eb-button-text eb-button-one-text"},o)),f&&React.createElement("div",{className:"eb-button-group__midldeInner"},"icon"===d&&React.createElement("span",null,React.createElement("i",{className:"".concat(p||"fas fa-arrows-alt-h")})),"text"===d&&React.createElement("span",null,u)),React.createElement("a",i({className:"eb-button-parent eb-button-two",href:l},y&&{target:"_blank"},{rel:"noopener"}),React.createElement("div",{className:"eb-button-text eb-button-two-text"},c)))))},example:{attributes:{showConnector:"true",buttonOneBorderShadowRds_Top:20,buttonOneBorderShadowRds_Bottom:0,buttonOneBorderShadowRds_Left:20,buttonOneBorderShadowRds_Right:0,buttonTwoBorderShadowRds_Top:0,buttonTwoBorderShadowRds_Bottom:20,buttonTwoBorderShadowRds_Left:0,buttonTwoBorderShadowRds_Right:20,buttonsGapRange:0}},deprecated:be})},184:(e,t)=>{var n;!function(){"use strict";var r={}.hasOwnProperty;function o(){for(var e=[],t=0;t<arguments.length;t++){var n=arguments[t];if(n){var a=typeof n;if("string"===a||"number"===a)e.push(n);else if(Array.isArray(n)){if(n.length){var i=o.apply(null,n);i&&e.push(i)}}else if("object"===a){if(n.toString!==Object.prototype.toString&&!n.toString.toString().includes("[native code]")){e.push(n.toString());continue}for(var c in n)r.call(n,c)&&n[c]&&e.push(c)}}}return e.join(" ")}e.exports?(o.default=o,e.exports=o):void 0===(n=function(){return o}.apply(t,[]))||(e.exports=n)}()},703:(e,t,n)=>{"use strict";var r=n(414);function o(){}function a(){}a.resetWarningCache=o,e.exports=function(){function e(e,t,n,o,a,i){if(i!==r){var c=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw c.name="Invariant Violation",c}}function t(){return e}e.isRequired=e;var n={array:e,bigint:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:a,resetWarningCache:o};return n.PropTypes=n,n}},697:(e,t,n)=>{e.exports=n(703)()},414:e=>{"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},279:(e,t,n)=>{"use strict";function r(){return r=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},r.apply(this,arguments)}function o(e,t){if(null==e)return{};var n,r,o={},a=Object.keys(e);for(r=0;r<a.length;r++)n=a[r],t.indexOf(n)>=0||(o[n]=e[n]);return o}function a(e,t){return a=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(e,t){return e.__proto__=t,e},a(e,t)}function i(e,t){e.prototype=Object.create(t.prototype),e.prototype.constructor=e,a(e,t)}function c(e,t){return e.replace(new RegExp("(^|\\s)"+t+"(?:\\s|$)","g"),"$1").replace(/\s+/g," ").replace(/^\s*|\s*$/g,"")}n.r(t),n.d(t,{CSSTransition:()=>S,ReplaceTransition:()=>j,SwitchTransition:()=>U,Transition:()=>R,TransitionGroup:()=>B,config:()=>f});var s=n(196),l=n.n(s),u=n(850),p=n.n(u);const f={disabled:!1},d=l().createContext(null);var b=function(e){return e.scrollTop},h="unmounted",y="exited",m="entering",g="entered",v="exiting",w=function(e){function t(t,n){var r;r=e.call(this,t,n)||this;var o,a=n&&!n.isMounting?t.enter:t.appear;return r.appearStatus=null,t.in?a?(o=y,r.appearStatus=m):o=g:o=t.unmountOnExit||t.mountOnEnter?h:y,r.state={status:o},r.nextCallback=null,r}i(t,e),t.getDerivedStateFromProps=function(e,t){return e.in&&t.status===h?{status:y}:null};var n=t.prototype;return n.componentDidMount=function(){this.updateStatus(!0,this.appearStatus)},n.componentDidUpdate=function(e){var t=null;if(e!==this.props){var n=this.state.status;this.props.in?n!==m&&n!==g&&(t=m):n!==m&&n!==g||(t=v)}this.updateStatus(!1,t)},n.componentWillUnmount=function(){this.cancelNextCallback()},n.getTimeouts=function(){var e,t,n,r=this.props.timeout;return e=t=n=r,null!=r&&"number"!=typeof r&&(e=r.exit,t=r.enter,n=void 0!==r.appear?r.appear:t),{exit:e,enter:t,appear:n}},n.updateStatus=function(e,t){if(void 0===e&&(e=!1),null!==t)if(this.cancelNextCallback(),t===m){if(this.props.unmountOnExit||this.props.mountOnEnter){var n=this.props.nodeRef?this.props.nodeRef.current:p().findDOMNode(this);n&&b(n)}this.performEnter(e)}else this.performExit();else this.props.unmountOnExit&&this.state.status===y&&this.setState({status:h})},n.performEnter=function(e){var t=this,n=this.props.enter,r=this.context?this.context.isMounting:e,o=this.props.nodeRef?[r]:[p().findDOMNode(this),r],a=o[0],i=o[1],c=this.getTimeouts(),s=r?c.appear:c.enter;!e&&!n||f.disabled?this.safeSetState({status:g},(function(){t.props.onEntered(a)})):(this.props.onEnter(a,i),this.safeSetState({status:m},(function(){t.props.onEntering(a,i),t.onTransitionEnd(s,(function(){t.safeSetState({status:g},(function(){t.props.onEntered(a,i)}))}))})))},n.performExit=function(){var e=this,t=this.props.exit,n=this.getTimeouts(),r=this.props.nodeRef?void 0:p().findDOMNode(this);t&&!f.disabled?(this.props.onExit(r),this.safeSetState({status:v},(function(){e.props.onExiting(r),e.onTransitionEnd(n.exit,(function(){e.safeSetState({status:y},(function(){e.props.onExited(r)}))}))}))):this.safeSetState({status:y},(function(){e.props.onExited(r)}))},n.cancelNextCallback=function(){null!==this.nextCallback&&(this.nextCallback.cancel(),this.nextCallback=null)},n.safeSetState=function(e,t){t=this.setNextCallback(t),this.setState(e,t)},n.setNextCallback=function(e){var t=this,n=!0;return this.nextCallback=function(r){n&&(n=!1,t.nextCallback=null,e(r))},this.nextCallback.cancel=function(){n=!1},this.nextCallback},n.onTransitionEnd=function(e,t){this.setNextCallback(t);var n=this.props.nodeRef?this.props.nodeRef.current:p().findDOMNode(this),r=null==e&&!this.props.addEndListener;if(n&&!r){if(this.props.addEndListener){var o=this.props.nodeRef?[this.nextCallback]:[n,this.nextCallback],a=o[0],i=o[1];this.props.addEndListener(a,i)}null!=e&&setTimeout(this.nextCallback,e)}else setTimeout(this.nextCallback,0)},n.render=function(){var e=this.state.status;if(e===h)return null;var t=this.props,n=t.children,r=(t.in,t.mountOnEnter,t.unmountOnExit,t.appear,t.enter,t.exit,t.timeout,t.addEndListener,t.onEnter,t.onEntering,t.onEntered,t.onExit,t.onExiting,t.onExited,t.nodeRef,o(t,["children","in","mountOnEnter","unmountOnExit","appear","enter","exit","timeout","addEndListener","onEnter","onEntering","onEntered","onExit","onExiting","onExited","nodeRef"]));return l().createElement(d.Provider,{value:null},"function"==typeof n?n(e,r):l().cloneElement(l().Children.only(n),r))},t}(l().Component);function E(){}w.contextType=d,w.propTypes={},w.defaultProps={in:!1,mountOnEnter:!1,unmountOnExit:!1,appear:!1,enter:!0,exit:!0,onEnter:E,onEntering:E,onEntered:E,onExit:E,onExiting:E,onExited:E},w.UNMOUNTED=h,w.EXITED=y,w.ENTERING=m,w.ENTERED=g,w.EXITING=v;const R=w;var O=function(e,t){return e&&t&&t.split(" ").forEach((function(t){return r=t,void((n=e).classList?n.classList.remove(r):"string"==typeof n.className?n.className=c(n.className,r):n.setAttribute("class",c(n.className&&n.className.baseVal||"",r)));var n,r}))},C=function(e){function t(){for(var t,n=arguments.length,r=new Array(n),o=0;o<n;o++)r[o]=arguments[o];return(t=e.call.apply(e,[this].concat(r))||this).appliedClasses={appear:{},enter:{},exit:{}},t.onEnter=function(e,n){var r=t.resolveArguments(e,n),o=r[0],a=r[1];t.removeClasses(o,"exit"),t.addClass(o,a?"appear":"enter","base"),t.props.onEnter&&t.props.onEnter(e,n)},t.onEntering=function(e,n){var r=t.resolveArguments(e,n),o=r[0],a=r[1]?"appear":"enter";t.addClass(o,a,"active"),t.props.onEntering&&t.props.onEntering(e,n)},t.onEntered=function(e,n){var r=t.resolveArguments(e,n),o=r[0],a=r[1]?"appear":"enter";t.removeClasses(o,a),t.addClass(o,a,"done"),t.props.onEntered&&t.props.onEntered(e,n)},t.onExit=function(e){var n=t.resolveArguments(e)[0];t.removeClasses(n,"appear"),t.removeClasses(n,"enter"),t.addClass(n,"exit","base"),t.props.onExit&&t.props.onExit(e)},t.onExiting=function(e){var n=t.resolveArguments(e)[0];t.addClass(n,"exit","active"),t.props.onExiting&&t.props.onExiting(e)},t.onExited=function(e){var n=t.resolveArguments(e)[0];t.removeClasses(n,"exit"),t.addClass(n,"exit","done"),t.props.onExited&&t.props.onExited(e)},t.resolveArguments=function(e,n){return t.props.nodeRef?[t.props.nodeRef.current,e]:[e,n]},t.getClassNames=function(e){var n=t.props.classNames,r="string"==typeof n,o=r?(r&&n?n+"-":"")+e:n[e];return{baseClassName:o,activeClassName:r?o+"-active":n[e+"Active"],doneClassName:r?o+"-done":n[e+"Done"]}},t}i(t,e);var n=t.prototype;return n.addClass=function(e,t,n){var r=this.getClassNames(t)[n+"ClassName"],o=this.getClassNames("enter").doneClassName;"appear"===t&&"done"===n&&o&&(r+=" "+o),"active"===n&&e&&b(e),r&&(this.appliedClasses[t][n]=r,function(e,t){e&&t&&t.split(" ").forEach((function(t){return r=t,void((n=e).classList?n.classList.add(r):function(e,t){return e.classList?!!t&&e.classList.contains(t):-1!==(" "+(e.className.baseVal||e.className)+" ").indexOf(" "+t+" ")}(n,r)||("string"==typeof n.className?n.className=n.className+" "+r:n.setAttribute("class",(n.className&&n.className.baseVal||"")+" "+r)));var n,r}))}(e,r))},n.removeClasses=function(e,t){var n=this.appliedClasses[t],r=n.base,o=n.active,a=n.done;this.appliedClasses[t]={},r&&O(e,r),o&&O(e,o),a&&O(e,a)},n.render=function(){var e=this.props,t=(e.classNames,o(e,["classNames"]));return l().createElement(R,r({},t,{onEnter:this.onEnter,onEntered:this.onEntered,onEntering:this.onEntering,onExit:this.onExit,onExiting:this.onExiting,onExited:this.onExited}))},t}(l().Component);C.defaultProps={classNames:""},C.propTypes={};const S=C;function x(e,t){var n=Object.create(null);return e&&s.Children.map(e,(function(e){return e})).forEach((function(e){n[e.key]=function(e){return t&&(0,s.isValidElement)(e)?t(e):e}(e)})),n}function _(e,t,n){return null!=n[t]?n[t]:e.props[t]}function P(e,t,n){var r=x(e.children),o=function(e,t){function n(n){return n in t?t[n]:e[n]}e=e||{},t=t||{};var r,o=Object.create(null),a=[];for(var i in e)i in t?a.length&&(o[i]=a,a=[]):a.push(i);var c={};for(var s in t){if(o[s])for(r=0;r<o[s].length;r++){var l=o[s][r];c[o[s][r]]=n(l)}c[s]=n(s)}for(r=0;r<a.length;r++)c[a[r]]=n(a[r]);return c}(t,r);return Object.keys(o).forEach((function(a){var i=o[a];if((0,s.isValidElement)(i)){var c=a in t,l=a in r,u=t[a],p=(0,s.isValidElement)(u)&&!u.props.in;!l||c&&!p?l||!c||p?l&&c&&(0,s.isValidElement)(u)&&(o[a]=(0,s.cloneElement)(i,{onExited:n.bind(null,i),in:u.props.in,exit:_(i,"exit",e),enter:_(i,"enter",e)})):o[a]=(0,s.cloneElement)(i,{in:!1}):o[a]=(0,s.cloneElement)(i,{onExited:n.bind(null,i),in:!0,exit:_(i,"exit",e),enter:_(i,"enter",e)})}})),o}var T=Object.values||function(e){return Object.keys(e).map((function(t){return e[t]}))},k=function(e){function t(t,n){var r,o=(r=e.call(this,t,n)||this).handleExited.bind(function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(r));return r.state={contextValue:{isMounting:!0},handleExited:o,firstRender:!0},r}i(t,e);var n=t.prototype;return n.componentDidMount=function(){this.mounted=!0,this.setState({contextValue:{isMounting:!1}})},n.componentWillUnmount=function(){this.mounted=!1},t.getDerivedStateFromProps=function(e,t){var n,r,o=t.children,a=t.handleExited;return{children:t.firstRender?(n=e,r=a,x(n.children,(function(e){return(0,s.cloneElement)(e,{onExited:r.bind(null,e),in:!0,appear:_(e,"appear",n),enter:_(e,"enter",n),exit:_(e,"exit",n)})}))):P(e,o,a),firstRender:!1}},n.handleExited=function(e,t){var n=x(this.props.children);e.key in n||(e.props.onExited&&e.props.onExited(t),this.mounted&&this.setState((function(t){var n=r({},t.children);return delete n[e.key],{children:n}})))},n.render=function(){var e=this.props,t=e.component,n=e.childFactory,r=o(e,["component","childFactory"]),a=this.state.contextValue,i=T(this.state.children).map(n);return delete r.appear,delete r.enter,delete r.exit,null===t?l().createElement(d.Provider,{value:a},i):l().createElement(d.Provider,{value:a},l().createElement(t,r,i))},t}(l().Component);k.propTypes={},k.defaultProps={component:"div",childFactory:function(e){return e}};const B=k;var N=function(e){function t(){for(var t,n=arguments.length,r=new Array(n),o=0;o<n;o++)r[o]=arguments[o];return(t=e.call.apply(e,[this].concat(r))||this).handleEnter=function(){for(var e=arguments.length,n=new Array(e),r=0;r<e;r++)n[r]=arguments[r];return t.handleLifecycle("onEnter",0,n)},t.handleEntering=function(){for(var e=arguments.length,n=new Array(e),r=0;r<e;r++)n[r]=arguments[r];return t.handleLifecycle("onEntering",0,n)},t.handleEntered=function(){for(var e=arguments.length,n=new Array(e),r=0;r<e;r++)n[r]=arguments[r];return t.handleLifecycle("onEntered",0,n)},t.handleExit=function(){for(var e=arguments.length,n=new Array(e),r=0;r<e;r++)n[r]=arguments[r];return t.handleLifecycle("onExit",1,n)},t.handleExiting=function(){for(var e=arguments.length,n=new Array(e),r=0;r<e;r++)n[r]=arguments[r];return t.handleLifecycle("onExiting",1,n)},t.handleExited=function(){for(var e=arguments.length,n=new Array(e),r=0;r<e;r++)n[r]=arguments[r];return t.handleLifecycle("onExited",1,n)},t}i(t,e);var n=t.prototype;return n.handleLifecycle=function(e,t,n){var r,o=this.props.children,a=l().Children.toArray(o)[t];if(a.props[e]&&(r=a.props)[e].apply(r,n),this.props[e]){var i=a.props.nodeRef?void 0:p().findDOMNode(this);this.props[e](i)}},n.render=function(){var e=this.props,t=e.children,n=e.in,r=o(e,["children","in"]),a=l().Children.toArray(t),i=a[0],c=a[1];return delete r.onEnter,delete r.onEntering,delete r.onEntered,delete r.onExit,delete r.onExiting,delete r.onExited,l().createElement(B,r,n?l().cloneElement(i,{key:"first",onEnter:this.handleEnter,onEntering:this.handleEntering,onEntered:this.handleEntered}):l().cloneElement(c,{key:"second",onEnter:this.handleExit,onEntering:this.handleExiting,onEntered:this.handleExited}))},t}(l().Component);N.propTypes={};const j=N;var D,A,I="out-in",M="in-out",L=function(e,t,n){return function(){var r;e.props[t]&&(r=e.props)[t].apply(r,arguments),n()}},q=((D={})[I]=function(e){var t=e.current,n=e.changeState;return l().cloneElement(t,{in:!1,onExited:L(t,"onExited",(function(){n(m,null)}))})},D[M]=function(e){var t=e.current,n=e.changeState,r=e.children;return[t,l().cloneElement(r,{in:!0,onEntered:L(r,"onEntered",(function(){n(m)}))})]},D),V=((A={})[I]=function(e){var t=e.children,n=e.changeState;return l().cloneElement(t,{in:!0,onEntered:L(t,"onEntered",(function(){n(g,l().cloneElement(t,{in:!0}))}))})},A[M]=function(e){var t=e.current,n=e.children,r=e.changeState;return[l().cloneElement(t,{in:!1,onExited:L(t,"onExited",(function(){r(g,l().cloneElement(n,{in:!0}))}))}),l().cloneElement(n,{in:!0})]},A),H=function(e){function t(){for(var t,n=arguments.length,r=new Array(n),o=0;o<n;o++)r[o]=arguments[o];return(t=e.call.apply(e,[this].concat(r))||this).state={status:g,current:null},t.appeared=!1,t.changeState=function(e,n){void 0===n&&(n=t.state.current),t.setState({status:e,current:n})},t}i(t,e);var n=t.prototype;return n.componentDidMount=function(){this.appeared=!0},t.getDerivedStateFromProps=function(e,t){return null==e.children?{current:null}:t.status===m&&e.mode===M?{status:m}:!t.current||((n=t.current)===(r=e.children)||l().isValidElement(n)&&l().isValidElement(r)&&null!=n.key&&n.key===r.key)?{current:l().cloneElement(e.children,{in:!0})}:{status:v};var n,r},n.render=function(){var e,t=this.props,n=t.children,r=t.mode,o=this.state,a=o.status,i=o.current,c={children:n,current:i,changeState:this.changeState,status:a};switch(a){case m:e=V[r](c);break;case v:e=q[r](c);break;case g:e=i}return l().createElement(d.Provider,{value:{isMounting:!this.appeared}},e)},t}(l().Component);H.propTypes={},H.defaultProps={mode:I};const U=H},196:e=>{"use strict";e.exports=window.React},850:e=>{"use strict";e.exports=window.ReactDOM}},n={};function r(e){var o=n[e];if(void 0!==o)return o.exports;var a=n[e]={exports:{}};return t[e](a,a.exports,r),a.exports}r.m=t,e=[],r.O=(t,n,o,a)=>{if(!n){var i=1/0;for(u=0;u<e.length;u++){for(var[n,o,a]=e[u],c=!0,s=0;s<n.length;s++)(!1&a||i>=a)&&Object.keys(r.O).every((e=>r.O[e](n[s])))?n.splice(s--,1):(c=!1,a<i&&(i=a));if(c){e.splice(u--,1);var l=o();void 0!==l&&(t=l)}}return t}a=a||0;for(var u=e.length;u>0&&e[u-1][2]>a;u--)e[u]=e[u-1];e[u]=[n,o,a]},r.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return r.d(t,{a:t}),t},r.d=(e,t)=>{for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},(()=>{var e={117:0,848:0};r.O.j=t=>0===e[t];var t=(t,n)=>{var o,a,[i,c,s]=n,l=0;if(i.some((t=>0!==e[t]))){for(o in c)r.o(c,o)&&(r.m[o]=c[o]);if(s)var u=s(r)}for(t&&t(n);l<i.length;l++)a=i[l],r.o(e,a)&&e[a]&&e[a][0](),e[a]=0;return r.O(u)},n=globalThis.webpackChunkbutton_group=globalThis.webpackChunkbutton_group||[];n.forEach(t.bind(null,0)),n.push=t.bind(null,n.push.bind(n))})();var o=r.O(void 0,[848],(()=>r(322)));o=r.O(o)})();
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/attributes.js":
+/*!***************************!*\
+  !*** ./src/attributes.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/constants */ "./src/constants/constants.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+
+// import {
+// 	generateDimensionsAttributes,
+// 	generateTypographyAttributes,
+// 	generateBackgroundAttributes,
+// 	generateBorderShadowAttributes,
+// 	generateResponsiveRangeAttributes
+// } from "../../../util/helpers";
+
+var _window$EBButtonGroup = window.EBButtonGroup,
+  generateDimensionsAttributes = _window$EBButtonGroup.generateDimensionsAttributes,
+  generateTypographyAttributes = _window$EBButtonGroup.generateTypographyAttributes,
+  generateBackgroundAttributes = _window$EBButtonGroup.generateBackgroundAttributes,
+  generateBorderShadowAttributes = _window$EBButtonGroup.generateBorderShadowAttributes,
+  generateResponsiveRangeAttributes = _window$EBButtonGroup.generateResponsiveRangeAttributes;
+
+var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({
+  resOption: {
+    type: "string",
+    "default": "Desktop"
+  },
+  // blockId attribute for making unique className and other uniqueness
+  blockId: {
+    type: "string"
+  },
+  blockRoot: {
+    type: "string",
+    "default": "essential_block"
+  },
+  blockMeta: {
+    type: "object"
+  },
+  preset: {
+    type: "string",
+    "default": "button-1"
+  },
+  contentPosition: {
+    type: "string",
+    "default": "center"
+  },
+  buttonWidth: {
+    type: "number",
+    "default": "auto"
+  },
+  buttonTextOne: {
+    type: "string",
+    "default": "Button One"
+  },
+  buttonTextTwo: {
+    type: "string",
+    "default": "Button Two"
+  },
+  textOneColor: {
+    type: "string",
+    "default": "#fff"
+  },
+  hoverTextOneColor: {
+    type: "string"
+  },
+  buttonTwoColor: {
+    type: "string",
+    "default": "#309bff"
+  },
+  hoverButtonTwoColor: {
+    type: "string",
+    "default": "#2587e2"
+  },
+  textTwoColor: {
+    type: "string",
+    "default": "#fff"
+  },
+  hoverTextTwoColor: {
+    type: "string"
+  },
+  buttonURLOne: {
+    type: "string",
+    "default": "#"
+  },
+  buttonURLTwo: {
+    type: "string",
+    "default": "#"
+  },
+  buttonTextAlign: {
+    type: "string",
+    "default": "center"
+  },
+  isHoverOne: {
+    type: "boolean",
+    "default": false
+  },
+  isHoverTwo: {
+    type: "boolean",
+    "default": false
+  },
+  innerButtonText: {
+    type: "string",
+    "default": "OR"
+  },
+  innerButtonColor: {
+    type: "string",
+    "default": "#fff"
+  },
+  innerButtonTextColor: {
+    type: "string",
+    "default": "#000"
+  },
+  innerButtonIcon: {
+    type: "string",
+    "default": "fas fa-arrows-alt-h"
+  },
+  showConnector: {
+    type: "boolean",
+    "default": true
+  },
+  connectorType: {
+    type: "string",
+    "default": "text"
+  },
+  borderType: {
+    type: "string",
+    "default": "normal"
+  },
+  buttonsColorType: {
+    type: "string",
+    "default": "normal"
+  },
+  buttonsWidthType: {
+    type: "string",
+    "default": "custom"
+  },
+  buttonOneNewWindow: {
+    type: "boolean",
+    "default": false
+  },
+  buttonTwoNewWindow: {
+    type: "boolean",
+    "default": false
+  }
+}, generateTypographyAttributes(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__))), generateDimensionsAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.WRAPPER_MARGIN)), generateDimensionsAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_MARGIN)), generateDimensionsAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_PADDING, {
+  top: 10,
+  bottom: 10,
+  right: 25,
+  left: 25,
+  isLinked: false
+})), generateBorderShadowAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_ONE_BORDER_SHADOW, {
+  bdrDefaults: {
+    top: 2,
+    bottom: 2,
+    right: 2,
+    left: 2
+  },
+  rdsDefaults: {
+    top: 20,
+    bottom: 0,
+    right: 0,
+    left: 20,
+    isLinked: false
+  }
+  // noShadow: true,
+  // noBorder: true,
+})), generateBorderShadowAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_TWO_BORDER_SHADOW, {
+  bdrDefaults: {
+    top: 2,
+    bottom: 2,
+    right: 2,
+    left: 2
+  },
+  rdsDefaults: {
+    top: 0,
+    bottom: 20,
+    right: 20,
+    left: 0,
+    isLinked: false
+  }
+  // noShadow: true,
+})), generateBackgroundAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_ONE_BG, {
+  defaultFillColor: "#3074ff",
+  defaultBgGradient: "linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)"
+})), generateBackgroundAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_TWO_BG, {
+  defaultFillColor: "#3074ff"
+})), generateResponsiveRangeAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_WIDTH, {
+  defaultRange: 200
+})), generateResponsiveRangeAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_GAP, {
+  defaultRange: 0
+})), generateResponsiveRangeAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_CONNECTOR_SIZE, {
+  defaultRange: 30
+})), generateResponsiveRangeAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_CONNECTOR_ICON_SIZE, {
+  defaultRange: 16
+})), generateBackgroundAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_ONE_BACKGROUND, {
+  noOverlay: true,
+  noMainBgi: true,
+  defaultFillColor: "#475467",
+  defaultHovFillColor: "#101828",
+  defaultBgGradient: "linear-gradient(90deg, rgb(250, 250, 250) 0%, rgb(233, 233, 233) 49%, rgb(244, 243, 243) 100%)"
+})), generateBackgroundAttributes(_constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_TWO_BACKGROUND, {
+  noOverlay: true,
+  noMainBgi: true,
+  defaultFillColor: "#98A2B3",
+  defaultHovFillColor: "#101828",
+  defaultBgGradient: "linear-gradient(90deg, rgb(250, 250, 250) 0%, rgb(233, 233, 233) 49%, rgb(244, 243, 243) 100%)"
+}));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
+
+/***/ }),
+
+/***/ "./src/constants/constants.js":
+/*!************************************!*\
+  !*** ./src/constants/constants.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BUTTONS_CONNECTOR_ICON_SIZE: () => (/* binding */ BUTTONS_CONNECTOR_ICON_SIZE),
+/* harmony export */   BUTTONS_CONNECTOR_SIZE: () => (/* binding */ BUTTONS_CONNECTOR_SIZE),
+/* harmony export */   BUTTONS_GAP: () => (/* binding */ BUTTONS_GAP),
+/* harmony export */   BUTTONS_MARGIN: () => (/* binding */ BUTTONS_MARGIN),
+/* harmony export */   BUTTONS_PADDING: () => (/* binding */ BUTTONS_PADDING),
+/* harmony export */   BUTTONS_WIDTH: () => (/* binding */ BUTTONS_WIDTH),
+/* harmony export */   BUTTON_ONE_BACKGROUND: () => (/* binding */ BUTTON_ONE_BACKGROUND),
+/* harmony export */   BUTTON_ONE_BG: () => (/* binding */ BUTTON_ONE_BG),
+/* harmony export */   BUTTON_ONE_BORDER_SHADOW: () => (/* binding */ BUTTON_ONE_BORDER_SHADOW),
+/* harmony export */   BUTTON_STYLES: () => (/* binding */ BUTTON_STYLES),
+/* harmony export */   BUTTON_TWO_BACKGROUND: () => (/* binding */ BUTTON_TWO_BACKGROUND),
+/* harmony export */   BUTTON_TWO_BG: () => (/* binding */ BUTTON_TWO_BG),
+/* harmony export */   BUTTON_TWO_BORDER_SHADOW: () => (/* binding */ BUTTON_TWO_BORDER_SHADOW),
+/* harmony export */   BUTTON_WIDTH_TYPE: () => (/* binding */ BUTTON_WIDTH_TYPE),
+/* harmony export */   CONNECTOR_TYPE: () => (/* binding */ CONNECTOR_TYPE),
+/* harmony export */   CONTENT_POSITION: () => (/* binding */ CONTENT_POSITION),
+/* harmony export */   NORMAL_HOVER: () => (/* binding */ NORMAL_HOVER),
+/* harmony export */   PRESETS: () => (/* binding */ PRESETS),
+/* harmony export */   TEXT_ALIGN: () => (/* binding */ TEXT_ALIGN),
+/* harmony export */   UNIT_TYPES: () => (/* binding */ UNIT_TYPES),
+/* harmony export */   WRAPPER_MARGIN: () => (/* binding */ WRAPPER_MARGIN)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+// the consts defined here should be unique from one another
+var WRAPPER_MARGIN = "wrpMargin";
+var BUTTONS_MARGIN = "buttonsMargin";
+var BUTTONS_PADDING = "buttonsPadding";
+var BUTTON_ONE_BACKGROUND = "Btn1Bg";
+var BUTTON_TWO_BACKGROUND = "Btn2Bg";
+var BUTTON_ONE_BORDER_SHADOW = "buttonOneBorderShadow";
+var BUTTON_TWO_BORDER_SHADOW = "buttonTwoBorderShadow";
+var BUTTON_ONE_BG = "button1Bg";
+var BUTTON_TWO_BG = "button2Bg";
+var BUTTONS_WIDTH = "buttonsWidth";
+var BUTTONS_GAP = "buttonsGap";
+var BUTTONS_CONNECTOR_SIZE = "buttonsConnectorSize";
+var BUTTONS_CONNECTOR_ICON_SIZE = "buttonsConnectorIconSize";
+var BUTTON_STYLES = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Fill", "essential-blocks"),
+  value: "fill"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Outline", "essential-blocks"),
+  value: "outline"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text", "essential-blocks"),
+  value: "text"
+}];
+var UNIT_TYPES = [{
+  label: "px",
+  value: "px"
+}, {
+  label: "em",
+  value: "em"
+}];
+var NORMAL_HOVER = [{
+  label: "Normal",
+  value: "normal"
+}, {
+  label: "Hover",
+  value: "hover"
+}];
+var BUTTON_WIDTH_TYPE = [{
+  label: "Custom Width",
+  value: "custom"
+}, {
+  label: "Auto",
+  value: "auto"
+}];
+var CONNECTOR_TYPE = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text", "essential-blocks"),
+  value: "text"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Icon", "essential-blocks"),
+  value: "icon"
+}];
+var PRESETS = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Preset 1", "essential-blocks"),
+  value: "preset-1"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Preset 2", "essential-blocks"),
+  value: "preset-2"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Preset 3", "essential-blocks"),
+  value: "preset-3"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Preset 4", "essential-blocks"),
+  value: "preset-4"
+}];
+var TEXT_ALIGN = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)( /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+    icon: "editor-alignleft"
+  })),
+  value: "left"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)( /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+    icon: "editor-aligncenter"
+  })),
+  value: "center"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)( /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+    icon: "editor-alignright"
+  })),
+  value: "right"
+}];
+var CONTENT_POSITION = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)( /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+    icon: "editor-alignleft"
+  })),
+  value: "flex-start"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)( /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+    icon: "editor-aligncenter"
+  })),
+  value: "center"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)( /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+    icon: "editor-alignright"
+  })),
+  value: "flex-end"
+}];
+
+/***/ }),
+
+/***/ "./src/constants/typographyPrefixConstants.js":
+/*!****************************************************!*\
+  !*** ./src/constants/typographyPrefixConstants.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BUTTONS_CONNECTOR_TYPOGRAPHY: () => (/* binding */ BUTTONS_CONNECTOR_TYPOGRAPHY),
+/* harmony export */   BUTTONS_TYPOGRAPHY: () => (/* binding */ BUTTONS_TYPOGRAPHY)
+/* harmony export */ });
+// the consts defined here should be unique from one another
+var BUTTONS_TYPOGRAPHY = "button";
+var BUTTONS_CONNECTOR_TYPOGRAPHY = "button_connector";
+
+/***/ }),
+
+/***/ "./src/deprecated.js":
+/*!***************************!*\
+  !*** ./src/deprecated.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/**
+ * WordPress dependencies
+ */
+
+
+var deprecated = [{
+  attributes: _objectSpread({}, _attributes__WEBPACK_IMPORTED_MODULE_1__["default"]),
+  save: function save(_ref) {
+    var attributes = _ref.attributes;
+    var blockId = attributes.blockId,
+      preset = attributes.preset,
+      buttonTextOne = attributes.buttonTextOne,
+      buttonTextTwo = attributes.buttonTextTwo,
+      buttonURLOne = attributes.buttonURLOne,
+      buttonURLTwo = attributes.buttonURLTwo,
+      innerButtonText = attributes.innerButtonText,
+      innerButtonIcon = attributes.innerButtonIcon,
+      showConnector = attributes.showConnector,
+      connectorType = attributes.connectorType,
+      classHook = attributes.classHook,
+      buttonOneNewWindow = attributes.buttonOneNewWindow,
+      buttonTwoNewWindow = attributes.buttonTwoNewWindow;
+    return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(), /*#__PURE__*/React.createElement("div", {
+      className: "eb-parent-wrapper eb-parent-".concat(blockId, " ").concat(classHook)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-group-wrapper ".concat(blockId, " ").concat(preset),
+      "data-id": blockId
+    }, /*#__PURE__*/React.createElement("a", _extends({
+      className: "eb-button-parent eb-button-one",
+      href: buttonURLOne
+    }, buttonOneNewWindow && {
+      target: "_blank"
+    }, {
+      rel: "noopener"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-text eb-button-one-text"
+    }, buttonTextOne)), showConnector && /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-group__midldeInner"
+    }, connectorType === "icon" && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(EBDisplayIcon, {
+      icon: innerButtonIcon
+    })), connectorType === "text" && /*#__PURE__*/React.createElement("span", null, innerButtonText)), /*#__PURE__*/React.createElement("a", _extends({
+      className: "eb-button-parent eb-button-two",
+      href: buttonURLTwo
+    }, buttonTwoNewWindow && {
+      target: "_blank"
+    }, {
+      rel: "noopener"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-text eb-button-two-text"
+    }, buttonTextTwo)))));
+  }
+}, {
+  attributes: _objectSpread({}, _attributes__WEBPACK_IMPORTED_MODULE_1__["default"]),
+  save: function save(_ref2) {
+    var attributes = _ref2.attributes;
+    var blockId = attributes.blockId,
+      preset = attributes.preset,
+      buttonTextOne = attributes.buttonTextOne,
+      buttonTextTwo = attributes.buttonTextTwo,
+      buttonURLOne = attributes.buttonURLOne,
+      buttonURLTwo = attributes.buttonURLTwo,
+      innerButtonText = attributes.innerButtonText,
+      innerButtonIcon = attributes.innerButtonIcon,
+      showConnector = attributes.showConnector,
+      connectorType = attributes.connectorType,
+      classHook = attributes.classHook,
+      buttonOneNewWindow = attributes.buttonOneNewWindow,
+      buttonTwoNewWindow = attributes.buttonTwoNewWindow;
+    return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(), /*#__PURE__*/React.createElement("div", {
+      className: "eb-parent-wrapper eb-parent-".concat(blockId, " ").concat(classHook)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-group-wrapper ".concat(blockId, " ").concat(preset),
+      "data-id": blockId
+    }, /*#__PURE__*/React.createElement("a", _extends({
+      className: "eb-button-parent eb-button-one",
+      href: buttonURLOne
+    }, buttonOneNewWindow && {
+      target: "_blank"
+    }, {
+      rel: "noopener"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-text eb-button-one-text"
+    }, buttonTextOne)), showConnector && /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-group__midldeInner"
+    }, connectorType === "icon" && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
+      className: "".concat(innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h")
+    })), connectorType === "text" && /*#__PURE__*/React.createElement("span", null, innerButtonText)), /*#__PURE__*/React.createElement("a", _extends({
+      className: "eb-button-parent eb-button-two",
+      href: buttonURLTwo
+    }, buttonTwoNewWindow && {
+      target: "_blank"
+    }, {
+      rel: "noopener"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-text eb-button-two-text"
+    }, buttonTextTwo)))));
+  }
+}, {
+  attributes: _objectSpread({}, _attributes__WEBPACK_IMPORTED_MODULE_1__["default"]),
+  save: function save(_ref3) {
+    var attributes = _ref3.attributes;
+    var blockId = attributes.blockId,
+      preset = attributes.preset,
+      buttonTextOne = attributes.buttonTextOne,
+      buttonTextTwo = attributes.buttonTextTwo,
+      buttonURLOne = attributes.buttonURLOne,
+      buttonURLTwo = attributes.buttonURLTwo,
+      innerButtonText = attributes.innerButtonText,
+      innerButtonIcon = attributes.innerButtonIcon,
+      showConnector = attributes.showConnector,
+      connectorType = attributes.connectorType;
+    return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(), /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-group-wrapper ".concat(blockId, " ").concat(preset),
+      "data-id": blockId
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "eb-button-parent eb-button-one",
+      href: buttonURLOne
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-text eb-button-one-text"
+    }, buttonTextOne)), showConnector && /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-group__midldeInner"
+    }, connectorType === 'icon' && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
+      className: "".concat(innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h")
+    })), connectorType === 'text' && /*#__PURE__*/React.createElement("span", null, innerButtonText)), /*#__PURE__*/React.createElement("a", {
+      className: "eb-button-parent eb-button-two",
+      href: buttonURLTwo
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "eb-button-text eb-button-two-text"
+    }, buttonTextTwo))));
+  }
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
+
+/***/ }),
+
+/***/ "./src/edit.js":
+/*!*********************!*\
+  !*** ./src/edit.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style */ "./src/style.js");
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+
+/**
+ * Internal depencencies
+ */
+
+
+
+var _window$EBButtonGroup = window.EBButtonGroup,
+  duplicateBlockIdFix = _window$EBButtonGroup.duplicateBlockIdFix,
+  DynamicInputValueHandler = _window$EBButtonGroup.DynamicInputValueHandler,
+  EBDisplayIcon = _window$EBButtonGroup.EBDisplayIcon;
+function Edit(props) {
+  var attributes = props.attributes,
+    setAttributes = props.setAttributes,
+    className = props.className,
+    clientId = props.clientId,
+    isSelected = props.isSelected,
+    name = props.name;
+  var blockId = attributes.blockId,
+    preset = attributes.preset,
+    buttonTextOne = attributes.buttonTextOne,
+    buttonTextTwo = attributes.buttonTextTwo,
+    innerButtonText = attributes.innerButtonText,
+    innerButtonIcon = attributes.innerButtonIcon,
+    showConnector = attributes.showConnector,
+    connectorType = attributes.connectorType,
+    classHook = attributes.classHook;
+
+  // this useEffect is for creating a unique id for each block's unique className by a random unique number
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var BLOCK_PREFIX = "eb-button-group";
+    duplicateBlockIdFix({
+      BLOCK_PREFIX: BLOCK_PREFIX,
+      blockId: blockId,
+      setAttributes: setAttributes,
+      select: _wordpress_data__WEBPACK_IMPORTED_MODULE_3__.select,
+      clientId: clientId
+    });
+  }, []);
+  var blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+    className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "eb-guten-block-main-parent-wrapper")
+  });
+  return /*#__PURE__*/React.createElement(React.Fragment, null, isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_5__["default"], props), /*#__PURE__*/React.createElement("div", blockProps, /*#__PURE__*/React.createElement(_style__WEBPACK_IMPORTED_MODULE_6__["default"], props), /*#__PURE__*/React.createElement("div", {
+    className: "eb-parent-wrapper eb-parent-".concat(blockId, " ").concat(classHook)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eb-button-group-wrapper ".concat(blockId, " ").concat(preset),
+    "data-id": blockId
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "eb-button-parent eb-button-one"
+    // style={buttonStyleOne}
+    ,
+    onMouseEnter: function onMouseEnter() {
+      return setAttributes({
+        isHoverOne: true
+      });
+    },
+    onMouseLeave: function onMouseLeave() {
+      return setAttributes({
+        isHoverOne: false
+      });
+    }
+  }, /*#__PURE__*/React.createElement(DynamicInputValueHandler
+  // style={textStylesOne}
+  , {
+    className: "eb-button-text eb-button-one-text",
+    placeholder: "Add Text..",
+    value: buttonTextOne,
+    onChange: function onChange(newText) {
+      return setAttributes({
+        buttonTextOne: newText
+      });
+    },
+    allowedFormats: ["core/bold", "core/italic", "core/link", "core/strikethrough", "core/underline", "core/text-color"]
+  })), showConnector && /*#__PURE__*/React.createElement("div", {
+    className: "eb-button-group__midldeInner"
+    // style={buttonMiddleInnerStyles}
+  }, connectorType === "icon" && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(EBDisplayIcon, {
+    icon: innerButtonIcon
+  })), connectorType === "text" && /*#__PURE__*/React.createElement("span", null, innerButtonText)), /*#__PURE__*/React.createElement("a", {
+    className: "eb-button-parent eb-button-two"
+    // style={buttonStyleTwo}
+    ,
+    onMouseEnter: function onMouseEnter() {
+      return setAttributes({
+        isHoverTwo: true
+      });
+    },
+    onMouseLeave: function onMouseLeave() {
+      return setAttributes({
+        isHoverTwo: false
+      });
+    }
+  }, /*#__PURE__*/React.createElement(DynamicInputValueHandler
+  // style={textStylesTwo}
+  , {
+    className: "eb-button-text eb-button-two-text",
+    placeholder: "Add Text..",
+    value: buttonTextTwo,
+    onChange: function onChange(newText) {
+      return setAttributes({
+        buttonTextTwo: newText
+      });
+    },
+    allowedFormats: ["core/bold", "core/italic", "core/link", "core/strikethrough", "core/underline", "core/text-color"]
+  }))))));
+}
+
+/***/ }),
+
+/***/ "./src/example.js":
+/*!************************!*\
+  !*** ./src/example.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var Example = {
+  attributes: {
+    showConnector: "true",
+    buttonOneBorderShadowRds_Top: 20,
+    buttonOneBorderShadowRds_Bottom: 0,
+    buttonOneBorderShadowRds_Left: 20,
+    buttonOneBorderShadowRds_Right: 0,
+    buttonTwoBorderShadowRds_Top: 0,
+    buttonTwoBorderShadowRds_Bottom: 20,
+    buttonTwoBorderShadowRds_Left: 0,
+    buttonTwoBorderShadowRds_Right: 20,
+    buttonsGapRange: 0
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
+
+/***/ }),
+
+/***/ "./src/icon.js":
+/*!*********************!*\
+  !*** ./src/icon.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DualButtonIcon: () => (/* binding */ DualButtonIcon)
+/* harmony export */ });
+var DualButtonIcon = function DualButtonIcon() {
+  return /*#__PURE__*/React.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "66",
+    height: "70",
+    fill: "none",
+    viewBox: "0 0 66 70"
+  }, /*#__PURE__*/React.createElement("g", {
+    fill: "#6C3BFF",
+    clipPath: "url(#clip0_2_22640)"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M33.3 22.4H4.7C2.1 22.4 0 24.6 0 27v14.3c0 2.6 2.2 4.6 4.6 4.6H33c2.6 0 4.6-2.2 4.6-4.6V27c.3-2.6-1.9-4.6-4.3-4.6zm1.8 18.9c0 1.2-1 2-2 2H4.7c-1.2 0-2-1-2-2V27c0-1.2 1-2 2-2h28.4c1.2 0 2 1 2 2v14.3z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M61.7 22.4H39.8c-2.6 0-4.7 2.2-4.7 4.6v14.3c0 2.6 2.2 4.6 4.6 4.6h21.7c2.6 0 4.6-2.2 4.6-4.6V27c.3-2.6-1.9-4.6-4.3-4.6zm1.8 18.9c0 1.2-1 2-2 2H39.8c-1.2 0-2-1-2-2V27c0-1.2 1-2 2-2h21.7c1.2 0 2 1 2 2v14.3zM25.6 35.8H11.8c-.7 0-1.4-.6-1.4-1.4 0-.7.6-1.4 1.4-1.4h13.8c.7 0 1.4.6 1.4 1.4-.1.8-.7 1.4-1.4 1.4z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M54.5 35.5H44.3c-.7 0-1.4-.6-1.4-1.4 0-.7.6-1.4 1.4-1.4h10.2c.7 0 1.4.6 1.4 1.4-.1.8-.7 1.4-1.4 1.4z"
+  })), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
+    id: "clip0_2_22640"
+  }, /*#__PURE__*/React.createElement("path", {
+    fill: "#fff",
+    d: "M0 0H66V70H0z"
+  }))));
+};
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../block.json */ "./block.json");
+/* harmony import */ var _example__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./example */ "./src/example.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./deprecated */ "./src/deprecated.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./icon */ "./src/icon.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/**
+ * WordPress dependeincies
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+
+
+
+var _EBButtonGroup = EBButtonGroup,
+  ebConditionalRegisterBlockType = _EBButtonGroup.ebConditionalRegisterBlockType;
+ebConditionalRegisterBlockType(_block_json__WEBPACK_IMPORTED_MODULE_4__, {
+  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("buttons", "essential-blocks"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("grouped button", "essential-blocks"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Group", "essential-blocks"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("dual", "essential-blocks")],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
+  icon: _icon__WEBPACK_IMPORTED_MODULE_7__.DualButtonIcon,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_1__["default"],
+  example: _example__WEBPACK_IMPORTED_MODULE_5__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_6__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/inspector.js":
+/*!**************************!*\
+  !*** ./src/inspector.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
+/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants/constants */ "./src/constants/constants.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+/**
+ * Internal depencencies
+ */
+
+
+
+
+var _window$EBButtonGroup = window.EBButtonGroup,
+  ColorControl = _window$EBButtonGroup.ColorControl,
+  ResponsiveDimensionsControl = _window$EBButtonGroup.ResponsiveDimensionsControl,
+  TypographyDropdown = _window$EBButtonGroup.TypographyDropdown,
+  BorderShadowControl = _window$EBButtonGroup.BorderShadowControl,
+  ResponsiveRangeController = _window$EBButtonGroup.ResponsiveRangeController,
+  BackgroundControl = _window$EBButtonGroup.BackgroundControl,
+  AdvancedControls = _window$EBButtonGroup.AdvancedControls,
+  DynamicInputControl = _window$EBButtonGroup.DynamicInputControl,
+  EBIconPicker = _window$EBButtonGroup.EBIconPicker;
+function Inspector(props) {
+  var attributes = props.attributes,
+    setAttributes = props.setAttributes;
+  var resOption = attributes.resOption,
+    preset = attributes.preset,
+    contentPosition = attributes.contentPosition,
+    textOneColor = attributes.textOneColor,
+    hoverTextOneColor = attributes.hoverTextOneColor,
+    textTwoColor = attributes.textTwoColor,
+    hoverTextTwoColor = attributes.hoverTextTwoColor,
+    buttonTextOne = attributes.buttonTextOne,
+    buttonURLOne = attributes.buttonURLOne,
+    buttonTextTwo = attributes.buttonTextTwo,
+    buttonURLTwo = attributes.buttonURLTwo,
+    innerButtonText = attributes.innerButtonText,
+    innerButtonColor = attributes.innerButtonColor,
+    innerButtonTextColor = attributes.innerButtonTextColor,
+    innerButtonIcon = attributes.innerButtonIcon,
+    showConnector = attributes.showConnector,
+    connectorType = attributes.connectorType,
+    buttonsColorType = attributes.buttonsColorType,
+    buttonTextAlign = attributes.buttonTextAlign,
+    buttonsWidthType = attributes.buttonsWidthType,
+    buttonOneNewWindow = attributes.buttonOneNewWindow,
+    buttonTwoNewWindow = attributes.buttonTwoNewWindow;
+  var resRequiredProps = {
+    setAttributes: setAttributes,
+    resOption: resOption,
+    attributes: attributes,
+    objAttributes: _attributes__WEBPACK_IMPORTED_MODULE_3__["default"]
+  };
+  var changePreset = function changePreset(selected) {
+    setAttributes({
+      preset: selected
+    });
+    switch (selected) {
+      case "preset-1":
+        setAttributes({
+          showConnector: true,
+          buttonOneBorderShadowRds_Top: "20",
+          buttonOneBorderShadowRds_Bottom: "0",
+          buttonOneBorderShadowRds_Left: "20",
+          buttonOneBorderShadowRds_Right: "0",
+          buttonTwoBorderShadowRds_Top: "0",
+          buttonTwoBorderShadowRds_Bottom: "20",
+          buttonTwoBorderShadowRds_Left: "0",
+          buttonTwoBorderShadowRds_Right: "20",
+          buttonsGapRange: 0
+        });
+        break;
+      case "preset-2":
+        setAttributes({
+          showConnector: false,
+          buttonOneBorderShadowRds_Top: "30",
+          buttonOneBorderShadowRds_Bottom: "30",
+          buttonOneBorderShadowRds_Left: "30",
+          buttonOneBorderShadowRds_Right: "30",
+          buttonTwoBorderShadowRds_Top: "30",
+          buttonTwoBorderShadowRds_Bottom: "30",
+          buttonTwoBorderShadowRds_Left: "30",
+          buttonTwoBorderShadowRds_Right: "30",
+          buttonsGapRange: 20
+        });
+        break;
+      case "preset-3":
+        setAttributes({
+          showConnector: false,
+          buttonOneBorderShadowRds_Top: "0",
+          buttonOneBorderShadowRds_Bottom: "0",
+          buttonOneBorderShadowRds_Left: "15",
+          buttonOneBorderShadowRds_Right: "15",
+          buttonTwoBorderShadowRds_Top: "15",
+          buttonTwoBorderShadowRds_Bottom: "15",
+          buttonTwoBorderShadowRds_Left: "0",
+          buttonTwoBorderShadowRds_Right: "0",
+          buttonsGapRange: 20
+        });
+        break;
+      case "preset-4":
+        setAttributes({
+          showConnector: false,
+          buttonOneBorderShadowRds_Top: "30",
+          buttonOneBorderShadowRds_Bottom: "30",
+          buttonOneBorderShadowRds_Left: "30",
+          buttonOneBorderShadowRds_Right: "30",
+          buttonTwoBorderShadowRds_Top: "30",
+          buttonTwoBorderShadowRds_Bottom: "30",
+          buttonTwoBorderShadowRds_Left: "30",
+          buttonTwoBorderShadowRds_Right: "30",
+          buttonsGapRange: 10
+        });
+        break;
+      default:
+        return false;
+    }
+  };
+  return /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+    key: "controls"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eb-panel-control"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
+    className: "eb-parent-tab-panel",
+    activeClass: "active-tab"
+    // onSelect={onSelect}
+    ,
+    tabs: [{
+      name: "general",
+      title: "General",
+      className: "eb-tab general"
+    }, {
+      name: "styles",
+      title: "Style",
+      className: "eb-tab styles"
+    }, {
+      name: "advance",
+      title: "Advanced",
+      className: "eb-tab advance"
+    }]
+  }, function (tab) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "eb-tab-controls" + tab.name
+    }, tab.name === "general" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("General", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Preset Designs", "essential-blocks"),
+      value: preset,
+      options: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.PRESETS,
+      onChange: function onChange(selected) {
+        return changePreset(selected);
+      }
+    }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Alignment", "essential-blocks"),
+      id: "eb-button-group-alignment"
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ButtonGroup, {
+      id: "eb-button-group-alignment"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_4__.CONTENT_POSITION.map(function (item, index) {
+      return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        key: index,
+        isPrimary: contentPosition === item.value,
+        isSecondary: contentPosition !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            contentPosition: item.value
+          });
+        }
+      }, item.label);
+    }))), /*#__PURE__*/React.createElement(DynamicInputControl, {
+      label: "Button One Text",
+      attrName: "buttonTextOne",
+      inputValue: buttonTextOne,
+      setAttributes: setAttributes,
+      onChange: function onChange(text) {
+        return setAttributes({
+          buttonTextOne: text
+        });
+      }
+    }), /*#__PURE__*/React.createElement(DynamicInputControl, {
+      label: "Button One Link",
+      attrName: "buttonURLOne",
+      inputValue: buttonURLOne,
+      setAttributes: setAttributes,
+      onChange: function onChange(text) {
+        return setAttributes({
+          buttonURLOne: text
+        });
+      }
+    }), buttonURLOne && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Open in New Tab", "essential-blocks"),
+      checked: buttonOneNewWindow,
+      onChange: function onChange() {
+        return setAttributes({
+          buttonOneNewWindow: !buttonOneNewWindow
+        });
+      }
+    }), /*#__PURE__*/React.createElement(DynamicInputControl, {
+      label: "Button Two Text",
+      attrName: "buttonTextTwo",
+      inputValue: buttonTextTwo,
+      setAttributes: setAttributes,
+      onChange: function onChange(text) {
+        return setAttributes({
+          buttonTextTwo: text
+        });
+      }
+    }), /*#__PURE__*/React.createElement(DynamicInputControl, {
+      label: "Button Two Link",
+      attrName: "buttonURLTwo",
+      inputValue: buttonURLTwo,
+      setAttributes: setAttributes,
+      onChange: function onChange(text) {
+        return setAttributes({
+          buttonURLTwo: text
+        });
+      }
+    }), buttonURLTwo && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Open in New Tab", "essential-blocks"),
+      checked: buttonTwoNewWindow,
+      onChange: function onChange() {
+        return setAttributes({
+          buttonTwoNewWindow: !buttonTwoNewWindow
+        });
+      }
+    })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Buttons", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Width Type", "essential-blocks")
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      value: buttonsWidthType,
+      options: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTON_WIDTH_TYPE,
+      onChange: function onChange(value) {
+        setAttributes({
+          buttonsWidthType: value
+        });
+      }
+    })), buttonsWidthType === "custom" && /*#__PURE__*/React.createElement(ResponsiveRangeController, {
+      baseLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Buttons Width", "essential-blocks"),
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTONS_WIDTH,
+      resRequiredProps: resRequiredProps,
+      units: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.UNIT_TYPES,
+      min: 0,
+      max: 500,
+      step: 1
+    }), /*#__PURE__*/React.createElement(ResponsiveRangeController, {
+      baseLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Buttons Gap", "essential-blocks"),
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTONS_GAP,
+      resRequiredProps: resRequiredProps,
+      units: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.UNIT_TYPES,
+      min: 0,
+      max: 100,
+      step: 1
+    }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Align", "essential-blocks"),
+      id: "eb-button-group-text-align"
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ButtonGroup, {
+      id: "eb-button-group-text-align"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_4__.TEXT_ALIGN.map(function (item, index) {
+      return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        key: index,
+        isPrimary: buttonTextAlign === item.value,
+        isSecondary: buttonTextAlign !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            buttonTextAlign: item.value
+          });
+        }
+      }, item.label);
+    })))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Connector", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Show Connector?"),
+      checked: showConnector,
+      onChange: function onChange() {
+        setAttributes({
+          showConnector: !showConnector
+        });
+      }
+    }), showConnector && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Connector Type", "essential-blocks")
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ButtonGroup, {
+      id: "eb-button-group-connector-type"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_4__.CONNECTOR_TYPE.map(function (item, index) {
+      return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        key: index,
+        isPrimary: connectorType === item.value,
+        isSecondary: connectorType !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            connectorType: item.value
+          });
+        }
+      }, item.label);
+    }))), connectorType === "icon" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Icon Settings", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(EBIconPicker, {
+      value: innerButtonIcon,
+      onChange: function onChange(innerButtonIcon) {
+        return setAttributes({
+          innerButtonIcon: innerButtonIcon
+        });
+      },
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Icon", "essential-blocks")
+    }), /*#__PURE__*/React.createElement(ResponsiveRangeController, {
+      baseLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Icon Size", "essential-blocks"),
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTONS_CONNECTOR_ICON_SIZE,
+      resRequiredProps: resRequiredProps,
+      units: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.UNIT_TYPES,
+      min: 0,
+      max: 100,
+      step: 1
+    })), connectorType === "text" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text", "essential-blocks"),
+      value: innerButtonText,
+      onChange: function onChange(text) {
+        return setAttributes({
+          innerButtonText: text
+        });
+      }
+    }), /*#__PURE__*/React.createElement(ResponsiveRangeController, {
+      baseLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Connector Size", "essential-blocks"),
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTONS_CONNECTOR_SIZE,
+      resRequiredProps: resRequiredProps,
+      units: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.UNIT_TYPES,
+      min: 0,
+      max: 100,
+      step: 1
+    })))), tab.name === "styles" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Buttons", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(TypographyDropdown, {
+      baseLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Typography", "essential-blocks"),
+      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__.BUTTONS_TYPOGRAPHY,
+      resRequiredProps: resRequiredProps
+    }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, null, /*#__PURE__*/React.createElement("h3", {
+      className: "eb-control-title"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button One Background", "essential-blocks"))), /*#__PURE__*/React.createElement(BackgroundControl, {
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTON_ONE_BACKGROUND,
+      resRequiredProps: resRequiredProps,
+      noOverlay: true,
+      noMainBgi: true
+    }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, null, /*#__PURE__*/React.createElement("h3", {
+      className: "eb-control-title"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Two Background", "essential-blocks"))), /*#__PURE__*/React.createElement(BackgroundControl, {
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTON_TWO_BACKGROUND,
+      resRequiredProps: resRequiredProps,
+      noOverlay: true,
+      noMainBgi: true
+    }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.BaseControl, null, /*#__PURE__*/React.createElement("h3", {
+      className: "eb-control-title"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "essential-blocks"))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ButtonGroup, {
+      className: "eb-inspector-btn-group"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_4__.NORMAL_HOVER.map(function (item, index) {
+      return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        key: index,
+        isPrimary: buttonsColorType === item.value,
+        isSecondary: buttonsColorType !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            buttonsColorType: item.value
+          });
+        }
+      }, item.label);
+    })), buttonsColorType === "normal" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ColorControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button One", "essential-blocks"),
+      color: textOneColor,
+      onChange: function onChange(textOneColor) {
+        return setAttributes({
+          textOneColor: textOneColor
+        });
+      }
+    }), /*#__PURE__*/React.createElement(ColorControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Two", "essential-blocks"),
+      color: textTwoColor,
+      onChange: function onChange(textTwoColor) {
+        return setAttributes({
+          textTwoColor: textTwoColor
+        });
+      }
+    })), buttonsColorType === "hover" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ColorControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button One Hover", "essential-blocks"),
+      color: hoverTextOneColor,
+      onChange: function onChange(hoverTextOneColor) {
+        return setAttributes({
+          hoverTextOneColor: hoverTextOneColor
+        });
+      }
+    }), /*#__PURE__*/React.createElement(ColorControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Two Hover", "essential-blocks"),
+      color: hoverTextTwoColor,
+      onChange: function onChange(hoverTextTwoColor) {
+        return setAttributes({
+          hoverTextTwoColor: hoverTextTwoColor
+        });
+      }
+    })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      className: "eb-subpanel",
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button One Border", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(BorderShadowControl, {
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTON_ONE_BORDER_SHADOW,
+      resRequiredProps: resRequiredProps,
+      noShadow: true
+    })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      className: "eb-subpanel",
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Two Border", "essential-blocks"),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(BorderShadowControl, {
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTON_TWO_BORDER_SHADOW,
+      resRequiredProps: resRequiredProps,
+      noShadow: true
+    })), /*#__PURE__*/React.createElement(ResponsiveDimensionsControl, {
+      resRequiredProps: resRequiredProps,
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.BUTTONS_PADDING,
+      baseLabel: "Padding"
+    })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Connector", "essential-blocks"),
+      initialOpen: false
+    }, /*#__PURE__*/React.createElement(TypographyDropdown, {
+      baseLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Typography", "essential-blocks"),
+      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__.BUTTONS_CONNECTOR_TYPOGRAPHY,
+      resRequiredProps: resRequiredProps
+    }), /*#__PURE__*/React.createElement(ColorControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "essential-blocks"),
+      color: innerButtonColor,
+      onChange: function onChange(innerButtonColor) {
+        return setAttributes({
+          innerButtonColor: innerButtonColor
+        });
+      }
+    }), /*#__PURE__*/React.createElement(ColorControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text/ Icon Color"),
+      color: innerButtonTextColor,
+      onChange: function onChange(innerButtonTextColor) {
+        return setAttributes({
+          innerButtonTextColor: innerButtonTextColor
+        });
+      }
+    }))), tab.name === "advance" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, null, /*#__PURE__*/React.createElement(ResponsiveDimensionsControl, {
+      resRequiredProps: resRequiredProps,
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_4__.WRAPPER_MARGIN,
+      baseLabel: "Margin"
+    })), /*#__PURE__*/React.createElement(AdvancedControls, {
+      attributes: attributes,
+      setAttributes: setAttributes
+    })));
+  })));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Inspector);
+
+/***/ }),
+
+/***/ "./src/save.js":
+/*!*********************!*\
+  !*** ./src/save.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var EBDisplayIcon = window.EBButtonGroup.EBDisplayIcon;
+var Save = function Save(_ref) {
+  var attributes = _ref.attributes;
+  var blockId = attributes.blockId,
+    preset = attributes.preset,
+    buttonTextOne = attributes.buttonTextOne,
+    buttonTextTwo = attributes.buttonTextTwo,
+    buttonURLOne = attributes.buttonURLOne,
+    buttonURLTwo = attributes.buttonURLTwo,
+    innerButtonText = attributes.innerButtonText,
+    innerButtonIcon = attributes.innerButtonIcon,
+    showConnector = attributes.showConnector,
+    connectorType = attributes.connectorType,
+    classHook = attributes.classHook,
+    buttonOneNewWindow = attributes.buttonOneNewWindow,
+    buttonTwoNewWindow = attributes.buttonTwoNewWindow;
+  return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(), /*#__PURE__*/React.createElement("div", {
+    className: "eb-parent-wrapper eb-parent-".concat(blockId, " ").concat(classHook)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eb-button-group-wrapper ".concat(blockId, " ").concat(preset),
+    "data-id": blockId
+  }, /*#__PURE__*/React.createElement("a", _extends({
+    className: "eb-button-parent eb-button-one",
+    href: buttonURLOne === '#' ? '' : buttonURLOne
+  }, buttonOneNewWindow && {
+    target: "_blank"
+  }, {
+    rel: "noopener"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "eb-button-text eb-button-one-text"
+  }, buttonTextOne)), showConnector && /*#__PURE__*/React.createElement("div", {
+    className: "eb-button-group__midldeInner"
+  }, connectorType === "icon" && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(EBDisplayIcon, {
+    icon: innerButtonIcon
+  })), connectorType === "text" && /*#__PURE__*/React.createElement("span", null, innerButtonText)), /*#__PURE__*/React.createElement("a", _extends({
+    className: "eb-button-parent eb-button-two",
+    href: buttonURLTwo === '#' ? '' : buttonURLTwo
+  }, buttonTwoNewWindow && {
+    target: "_blank"
+  }, {
+    rel: "noopener"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "eb-button-text eb-button-two-text"
+  }, buttonTextTwo)))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
+
+/***/ }),
+
+/***/ "./src/style.js":
+/*!**********************!*\
+  !*** ./src/style.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Style)
+/* harmony export */ });
+/* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/constants */ "./src/constants/constants.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+
+
+var _window$EBButtonGroup = window.EBButtonGroup,
+  softMinifyCssStrings = _window$EBButtonGroup.softMinifyCssStrings,
+  generateTypographyStyles = _window$EBButtonGroup.generateTypographyStyles,
+  generateDimensionsControlStyles = _window$EBButtonGroup.generateDimensionsControlStyles,
+  generateBorderShadowStyles = _window$EBButtonGroup.generateBorderShadowStyles,
+  generateResponsiveRangeStyles = _window$EBButtonGroup.generateResponsiveRangeStyles,
+  generateBackgroundControlStyles = _window$EBButtonGroup.generateBackgroundControlStyles,
+  StyleComponent = _window$EBButtonGroup.StyleComponent;
+function Style(props) {
+  var attributes = props.attributes,
+    setAttributes = props.setAttributes,
+    name = props.name;
+  var blockId = attributes.blockId,
+    blockMeta = attributes.blockMeta,
+    resOption = attributes.resOption,
+    preset = attributes.preset,
+    contentPosition = attributes.contentPosition,
+    buttonTextOne = attributes.buttonTextOne,
+    buttonTextTwo = attributes.buttonTextTwo,
+    textOneColor = attributes.textOneColor,
+    hoverTextOneColor = attributes.hoverTextOneColor,
+    textTwoColor = attributes.textTwoColor,
+    hoverTextTwoColor = attributes.hoverTextTwoColor,
+    innerButtonText = attributes.innerButtonText,
+    innerButtonColor = attributes.innerButtonColor,
+    innerButtonTextColor = attributes.innerButtonTextColor,
+    innerButtonIcon = attributes.innerButtonIcon,
+    showConnector = attributes.showConnector,
+    connectorType = attributes.connectorType,
+    buttonTextAlign = attributes.buttonTextAlign,
+    classHook = attributes.classHook,
+    buttonsWidthType = attributes.buttonsWidthType;
+
+  //
+  // CSS/styling Codes Starts from Here
+
+  var _generateTypographySt = generateTypographyStyles({
+      attributes: attributes,
+      prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__.BUTTONS_TYPOGRAPHY,
+      defaultFontSize: 16
+    }),
+    buttonsTypoStylesDesktop = _generateTypographySt.typoStylesDesktop,
+    buttonsTypoStylesTab = _generateTypographySt.typoStylesTab,
+    buttonsTypoStylesMobile = _generateTypographySt.typoStylesMobile;
+  var _generateTypographySt2 = generateTypographyStyles({
+      attributes: attributes,
+      prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__.BUTTONS_CONNECTOR_TYPOGRAPHY,
+      defaultFontSize: 14
+    }),
+    connectorTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
+    connectorTypoStylesTab = _generateTypographySt2.typoStylesTab,
+    connectorTypoStylesMobile = _generateTypographySt2.typoStylesMobile;
+  var _generateDimensionsCo = generateDimensionsControlStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.WRAPPER_MARGIN,
+      styleFor: "margin",
+      attributes: attributes
+    }),
+    wrapperMarginStylesDesktop = _generateDimensionsCo.dimensionStylesDesktop,
+    wrapperMarginStylesTab = _generateDimensionsCo.dimensionStylesTab,
+    wrapperMarginStylesMobile = _generateDimensionsCo.dimensionStylesMobile;
+  var _generateDimensionsCo2 = generateDimensionsControlStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_PADDING,
+      styleFor: "padding",
+      attributes: attributes
+    }),
+    buttonsPaddingStylesDesktop = _generateDimensionsCo2.dimensionStylesDesktop,
+    buttonsPaddingStylesTab = _generateDimensionsCo2.dimensionStylesTab,
+    buttonsPaddingStylesMobile = _generateDimensionsCo2.dimensionStylesMobile;
+  var _generateBorderShadow = generateBorderShadowStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_ONE_BORDER_SHADOW,
+      attributes: attributes,
+      noShadow: true
+    }),
+    buttonOneBDShadowDesktop = _generateBorderShadow.styesDesktop,
+    buttonOneBDShadowTab = _generateBorderShadow.styesTab,
+    buttonOneBDShadowMobile = _generateBorderShadow.styesMobile,
+    buttonOneBDShadowHoverDesktop = _generateBorderShadow.stylesHoverDesktop,
+    buttonOneBDShadowHoverTab = _generateBorderShadow.stylesHoverTab,
+    buttonOneBDShadowHoverMobile = _generateBorderShadow.stylesHoverMobile,
+    buttonOneBDShadowtransitionStyle = _generateBorderShadow.transitionStyle;
+  var _generateBorderShadow2 = generateBorderShadowStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_TWO_BORDER_SHADOW,
+      attributes: attributes,
+      noShadow: true
+    }),
+    buttonTwoBDShadowDesktop = _generateBorderShadow2.styesDesktop,
+    buttonTwoBDShadowTab = _generateBorderShadow2.styesTab,
+    buttonTwoBDShadowMobile = _generateBorderShadow2.styesMobile,
+    buttonTwoBDShadowHoverDesktop = _generateBorderShadow2.stylesHoverDesktop,
+    buttonTwoBDShadowHoverTab = _generateBorderShadow2.stylesHoverTab,
+    buttonTwoBDShadowHoverMobile = _generateBorderShadow2.stylesHoverMobile,
+    buttonTwoBDShadowtransitionStyle = _generateBorderShadow2.transitionStyle;
+
+  // responsive range controller
+  var _generateResponsiveRa = generateResponsiveRangeStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_WIDTH,
+      property: "width",
+      attributes: attributes
+    }),
+    buttonWidthStyleDesktop = _generateResponsiveRa.rangeStylesDesktop,
+    buttonWidthStyleTab = _generateResponsiveRa.rangeStylesTab,
+    buttonWidthStyleMobile = _generateResponsiveRa.rangeStylesMobile;
+  var _generateResponsiveRa2 = generateResponsiveRangeStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_GAP,
+      property: "margin",
+      attributes: attributes
+    }),
+    buttonGapDesktop = _generateResponsiveRa2.rangeStylesDesktop,
+    buttonGapTab = _generateResponsiveRa2.rangeStylesTab,
+    buttonGapMobile = _generateResponsiveRa2.rangeStylesMobile;
+  var _generateResponsiveRa3 = generateResponsiveRangeStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_CONNECTOR_SIZE,
+      property: "height",
+      attributes: attributes
+    }),
+    buttonConnectorHeightDesktop = _generateResponsiveRa3.rangeStylesDesktop,
+    buttonConnectorHeightTab = _generateResponsiveRa3.rangeStylesTab,
+    buttonConnectorHeightMobile = _generateResponsiveRa3.rangeStylesMobile;
+  var _generateResponsiveRa4 = generateResponsiveRangeStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_CONNECTOR_SIZE,
+      property: "width",
+      attributes: attributes
+    }),
+    buttonConnectorWidthDesktop = _generateResponsiveRa4.rangeStylesDesktop,
+    buttonConnectorWidthTab = _generateResponsiveRa4.rangeStylesTab,
+    buttonConnectorWidthMobile = _generateResponsiveRa4.rangeStylesMobile;
+  var _generateResponsiveRa5 = generateResponsiveRangeStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_CONNECTOR_SIZE,
+      property: "line-height",
+      attributes: attributes
+    }),
+    buttonConnectorLineHeightDesktop = _generateResponsiveRa5.rangeStylesDesktop,
+    buttonConnectorLineHeightTab = _generateResponsiveRa5.rangeStylesTab,
+    buttonConnectorLineHeightMobile = _generateResponsiveRa5.rangeStylesMobile;
+  var _generateResponsiveRa6 = generateResponsiveRangeStyles({
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTONS_CONNECTOR_ICON_SIZE,
+      property: "font-size",
+      attributes: attributes
+    }),
+    buttonConnectorIconSizeDesktop = _generateResponsiveRa6.rangeStylesDesktop,
+    buttonConnectorIconSizeTab = _generateResponsiveRa6.rangeStylesTab,
+    buttonConnectorIconSizeMobile = _generateResponsiveRa6.rangeStylesMobile;
+
+  // button background styles
+  var _generateBackgroundCo = generateBackgroundControlStyles({
+      attributes: attributes,
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_ONE_BACKGROUND
+    }),
+    btnOneBg = _generateBackgroundCo.backgroundStylesDesktop,
+    btnOneHoverBg = _generateBackgroundCo.hoverBackgroundStylesDesktop,
+    btnOneBgTransition = _generateBackgroundCo.bgTransitionStyle;
+  var _generateBackgroundCo2 = generateBackgroundControlStyles({
+      attributes: attributes,
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_0__.BUTTON_TWO_BACKGROUND
+    }),
+    btnTwoBg = _generateBackgroundCo2.backgroundStylesDesktop,
+    btnTwoHoverBg = _generateBackgroundCo2.hoverBackgroundStylesDesktop,
+    btnTwoBgTransition = _generateBackgroundCo2.bgTransitionStyle;
+
+  // wrapper styles css in strings ⬇
+  var wrapperStylesDesktop = "\n\t\t.eb-button-group-wrapper.".concat(blockId, "{\n\t\t\tdisplay: flex;\n\t\t\tflex-direction: row;\n\t\t\talign-items: ").concat(contentPosition, ";\n\t\t\tjustify-content: ").concat(contentPosition, ";\n\t\t\tposition: relative;\n\t\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t}\n\t");
+  var wrapperStylesTab = "\n\t\t.eb-button-group-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesTab, "\n\n\t\t}\n\t");
+  var wrapperStylesMobile = "\n\t\t.eb-button-group-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesMobile, "\n\n\t\t}\n\t");
+
+  // Buttons Common styles css in strings ⬇
+  var buttonsCommonStyleDesktop = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonsWidthType === "custom" ? buttonWidthStyleDesktop : "width: auto;", "\n\t\t\t").concat(buttonGapDesktop, "\n\t\t\ttext-align: ").concat(buttonTextAlign, ";\n\t\t\tcursor: pointer;\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent .eb-button-text {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t}\n\n\t\t.eb-button-group-wrapper.").concat(blockId, ".preset-4 {\n\t\t\twidth: fit-content;\n\t\t\tmargin: ").concat(contentPosition === "center" ? "0 auto;" : contentPosition === "flex-end" ? "0 0 0 auto;" : "auto 0;", "\n\t\t}\n\t");
+  var buttonsCommonStyleTab = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsPaddingStylesTab, "\n\t\t\t").concat(buttonsWidthType === "custom" ? buttonWidthStyleTab : "width: auto;", "\n\t\t\t").concat(buttonGapTab, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent .eb-button-text {\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t}\n\t");
+  var buttonsCommonStyleMobile = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsPaddingStylesMobile, "\n\t\t\t").concat(buttonsWidthType === "custom" ? buttonWidthStyleMobile : "width: auto;", "\n\t\t\t").concat(buttonGapMobile, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent .eb-button-text {\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t}\n\t");
+
+  // Buttons One styles css in strings ⬇
+  var buttonOneStyleDesktop = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowDesktop, "\n\t\t\ttransition:").concat(buttonOneBDShadowtransitionStyle, ";\n\t\t\t").concat(btnOneBg, "\n\t\t\ttransition: ").concat(btnOneBgTransition.replace(/[^0-9.]/g, ""), "s;\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover,\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:focus {\n\t\t\t").concat(buttonOneBDShadowHoverDesktop, "\n\t\t\t").concat(btnOneHoverBg, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\t\t\tcolor: ").concat(textOneColor, ";\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover .eb-button-one-text {\n\t\t\tcolor: ").concat(hoverTextOneColor, ";\n\t\t}\n\t");
+  var buttonOneStyleTab = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowTab, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverTab, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t");
+  var buttonOneStyleMobile = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowMobile, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t");
+
+  // Buttons Two styles css in strings ⬇
+  var buttonTwoStyleDesktop = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowDesktop, "\n\t\t\t").concat(buttonGapDesktop, "\n\t\t\ttransition:").concat(buttonTwoBDShadowtransitionStyle, ";\n\t\t\t").concat(btnTwoBg, "\n\t\t\ttransition: ").concat(btnOneBgTransition.replace(/[^0-9.]/g, ""), "s;\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover,\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:focus {\n\t\t\t").concat(buttonTwoBDShadowHoverDesktop, "\n\t\t\t").concat(btnTwoHoverBg, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\t\t\tcolor: ").concat(textTwoColor, ";\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover .eb-button-two-text {\n\t\t\tcolor: ").concat(hoverTextTwoColor, ";\n\t\t}\n\t");
+  var buttonTwoStyleTab = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowTab, "\n\t\t\t").concat(buttonGapTab, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverTab, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t");
+  var buttonTwoStyleMobile = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowMobile, "\n\t\t\t").concat(buttonGapMobile, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-button-group-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t");
+
+  // Connector styles css in strings ⬇
+  var connectorStylesDesktop = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-group__midldeInner span {\n\t\t\t").concat(connectorType === "text" ? connectorTypoStylesDesktop : buttonConnectorIconSizeDesktop, "\n\t\t\t").concat(buttonConnectorHeightDesktop, "\n\t\t\t").concat(buttonConnectorWidthDesktop, "\n\t\t\t").concat(buttonConnectorLineHeightDesktop, "\n\t\t\tbackground: ").concat(innerButtonColor, ";\n\t\t\tcolor: ").concat(innerButtonTextColor, ";\n\t\t}\n\t");
+  var connectorStylesTab = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-group__midldeInner span {\n\t\t\t").concat(connectorType === "text" ? connectorTypoStylesTab : buttonConnectorIconSizeTab, "\n\t\t\t").concat(buttonConnectorHeightTab, "\n\t\t\t").concat(buttonConnectorWidthTab, "\n\t\t\t").concat(buttonConnectorLineHeightTab, "\n\t\t}\n\t");
+  var connectorStylesMobile = "\n\t\t.eb-button-group-wrapper.".concat(blockId, " .eb-button-group__midldeInner span {\n\t\t\t").concat(connectorType === "text" ? connectorTypoStylesMobile : buttonConnectorIconSizeMobile, "\n\t\t\t").concat(buttonConnectorHeightMobile, "\n\t\t\t").concat(buttonConnectorWidthMobile, "\n\t\t\t").concat(buttonConnectorLineHeightMobile, "\n\t\t}\n\t");
+
+  // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var desktopAllStyles = softMinifyCssStrings("\n\t\t\t".concat(wrapperStylesDesktop, "\n\t\t\t").concat(buttonsCommonStyleDesktop, "\n\t\t\t").concat(buttonOneStyleDesktop, "\n\t\t\t").concat(buttonTwoStyleDesktop, "\n\t\t\t").concat(connectorStylesDesktop, "\n\t\t"));
+
+  // all css styles for Tab in strings ⬇
+  var tabAllStyles = softMinifyCssStrings("\n\t\t\t".concat(wrapperStylesTab, "\n\t\t\t").concat(buttonsCommonStyleTab, "\n\t\t\t").concat(buttonOneStyleTab, "\n\t\t\t").concat(buttonTwoStyleTab, "\n\t\t\t").concat(connectorStylesTab, "\n\t\t"));
+
+  // all css styles for Mobile in strings ⬇
+  var mobileAllStyles = softMinifyCssStrings("\n\t\t\t".concat(wrapperStylesMobile, "\n\t\t\t").concat(buttonsCommonStyleMobile, "\n\t\t\t").concat(buttonOneStyleMobile, "\n\t\t\t").concat(buttonTwoStyleMobile, "\n\t\t\t").concat(connectorStylesMobile, "\n\t\t"));
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyleComponent, {
+    attributes: attributes,
+    setAttributes: setAttributes,
+    desktopAllStyles: desktopAllStyles,
+    tabAllStyles: tabAllStyles,
+    mobileAllStyles: mobileAllStyles,
+    blockName: name
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/style.scss":
+/*!************************!*\
+  !*** ./src/style.scss ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ ((module, exports) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = '';
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (arg) {
+				classes = appendClass(classes, parseValue(arg));
+			}
+		}
+
+		return classes;
+	}
+
+	function parseValue (arg) {
+		if (typeof arg === 'string' || typeof arg === 'number') {
+			return arg;
+		}
+
+		if (typeof arg !== 'object') {
+			return '';
+		}
+
+		if (Array.isArray(arg)) {
+			return classNames.apply(null, arg);
+		}
+
+		if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+			return arg.toString();
+		}
+
+		var classes = '';
+
+		for (var key in arg) {
+			if (hasOwn.call(arg, key) && arg[key]) {
+				classes = appendClass(classes, key);
+			}
+		}
+
+		return classes;
+	}
+
+	function appendClass (value, newClass) {
+		if (!newClass) {
+			return value;
+		}
+	
+		if (value) {
+			return value + ' ' + newClass;
+		}
+	
+		return value + newClass;
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
+/***/ "./block.json":
+/*!********************!*\
+  !*** ./block.json ***!
+  \********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"button-group/button-group","title":"Button Group","category":"widgets","description":"Create Two Buttons To Be Stacked Together","textdomain":"button-group"}');
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"dist": 0,
+/******/ 			"style-dist": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkbutton_group"] = globalThis["webpackChunkbutton_group"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["style-dist"], () => (__webpack_require__("./src/index.js")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=index.js.map

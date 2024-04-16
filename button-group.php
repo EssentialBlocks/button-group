@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create Two Buttons To Be Stacked Together
- * Version:         1.2.5
+ * Version:         1.2.6
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -26,14 +26,14 @@ require_once __DIR__ . '/includes/helpers.php';
 require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_button_group_block_init() {
-    define( 'BUTTONGROUP_BLOCK_VERSION', "1.2.5" );
+    define( 'BUTTONGROUP_BLOCK_VERSION', "1.2.6" );
     define( 'BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url( __FILE__ ) );
     define( 'BUTTONGROUP_BLOCK_ADMIN_PATH', dirname( __FILE__ ) );
 
     $script_asset_path = BUTTONGROUP_BLOCK_ADMIN_PATH . "/dist/index.asset.php";
     if ( ! file_exists( $script_asset_path ) ) {
         throw new Error(
-            'You need to run `npm start` or `npm run build` for the "block/testimonial" block first.'
+            'You need to run `npm start` or `npm run build` for the "button-group/button-group" block first.'
         );
     }
     $index_js         = BUTTONGROUP_BLOCK_ADMIN_URL . 'dist/index.js';

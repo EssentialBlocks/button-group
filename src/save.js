@@ -1,5 +1,5 @@
 import { useBlockProps } from "@wordpress/block-editor";
-
+const { EBDisplayIcon } = window.EBButtonGroup;
 const Save = ({ attributes }) => {
     const {
         blockId,
@@ -28,7 +28,7 @@ const Save = ({ attributes }) => {
                 >
                     <a
                         className={"eb-button-parent eb-button-one"}
-                        href={buttonURLOne}
+                        href={buttonURLOne === '#' ? '' : buttonURLOne}
                         {...(buttonOneNewWindow && { target: "_blank" })}
                         rel="noopener"
                     >
@@ -41,13 +41,7 @@ const Save = ({ attributes }) => {
                         <div className="eb-button-group__midldeInner">
                             {connectorType === "icon" && (
                                 <span>
-                                    <i
-                                        className={`${
-                                            innerButtonIcon
-                                                ? innerButtonIcon
-                                                : "fas fa-arrows-alt-h"
-                                        }`}
-                                    ></i>
+                                    <EBDisplayIcon icon={innerButtonIcon} />
                                 </span>
                             )}
 
@@ -59,7 +53,7 @@ const Save = ({ attributes }) => {
 
                     <a
                         className={"eb-button-parent eb-button-two"}
-                        href={buttonURLTwo}
+                        href={buttonURLTwo === '#' ? '' : buttonURLTwo}
                         {...(buttonTwoNewWindow && { target: "_blank" })}
                         rel="noopener"
                     >
