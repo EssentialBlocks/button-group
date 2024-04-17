@@ -43,15 +43,15 @@ class Button_Group_Helper
         global $pagenow;
 
         /**
-         * Only for Admin Add/Edit Pages 
+         * Only for Admin Add/Edit Pages
          */
         if ($pagenow == 'post-new.php' || $pagenow == 'post.php' || $pagenow == 'site-editor.php' || ($pagenow == 'themes.php' && !empty($_SERVER['QUERY_STRING']) && str_contains($_SERVER['QUERY_STRING'], 'gutenberg-edit-site'))) {
 
-            $controls_dependencies = include_once BUTTONGROUP_BLOCK_ADMIN_PATH . '/dist/controls.asset.php';
+            $controls_dependencies = include_once BUTTONGROUP_BLOCK_ADMIN_PATH . '/dist/modules.asset.php';
             wp_register_script(
                 "buttongroup-block-controls-util",
-                BUTTONGROUP_BLOCK_ADMIN_URL . '/dist/controls.js',
-                array_merge($controls_dependencies['dependencies']),
+                BUTTONGROUP_BLOCK_ADMIN_URL . '/dist/modules.js',
+                array_merge($controls_dependencies['dependencies'],['lodash']),
                 $controls_dependencies['version'],
                 true
             );
@@ -73,7 +73,7 @@ class Button_Group_Helper
 
             wp_enqueue_style(
                 'essential-blocks-editor-css',
-                BUTTONGROUP_BLOCK_ADMIN_URL . '/dist/controls.css',
+                BUTTONGROUP_BLOCK_ADMIN_URL . '/dist/modules.css',
                 array(),
                 $controls_dependencies['version'],
                 'all'

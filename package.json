@@ -1,6 +1,6 @@
 {
 	"name": "button-group",
-	"version": "1.2.5",
+	"version": "1.2.6",
 	"description": "Create Two Buttons To Be Stacked Together",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
@@ -29,7 +29,6 @@
 		"react-dom": "^17.0.2"
 	},
 	"dependencies": {
-		"@fonticonpicker/react-fonticonpicker": "hz-tyfoon/react-fonticonpicker#c5914813163490f98e1a1756a6e5a4479e777c34",
 		"classnames": "^2.3.1",
 		"react-transition-group": "^4.3.0"
 	}
