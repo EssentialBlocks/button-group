@@ -3,15 +3,23 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create Two Buttons To Be Stacked Together
- * Version:         1.2.6
+ * Version:         1.5.0
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:     button-group
+ * Requires at least: 6.0
+ * Requires PHP:   7.4
+ * Tested up to:   7.0
  *
  * @package         button-group
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 /**
  * Registers all block assets so that they can be enqueued through the block editor
@@ -20,24 +28,45 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
 
+if ( ! defined( 'BUTTONGROUP_BLOCK_VERSION' ) ) {
+    define( 'BUTTONGROUP_BLOCK_VERSION', '1.5.0' );
+}
+if ( ! defined( 'BUTTONGROUP_BLOCK_ADMIN_URL' ) ) {
+    define( 'BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'BUTTONGROUP_BLOCK_ADMIN_PATH' ) ) {
+    define( 'BUTTONGROUP_BLOCK_ADMIN_PATH', dirname( __FILE__ ) );
+}
+
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
 require_once __DIR__ . '/includes/helpers.php';
-require_once __DIR__ . '/lib/style-handler/style-handler.php';
+
+/*
+ * `lib/style-handler` ships as a git submodule. It is present in every packaged
+ * release, but an un-initialised submodule in a fresh clone would otherwise
+ * fatal the whole site on load.
+ */
+if ( file_exists( __DIR__ . '/lib/style-handler/style-handler.php' ) ) {
+    require_once __DIR__ . '/lib/style-handler/style-handler.php';
+}
 
 function create_block_button_group_block_init() {
-    define( 'BUTTONGROUP_BLOCK_VERSION', "1.2.6" );
-    define( 'BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url( __FILE__ ) );
-    define( 'BUTTONGROUP_BLOCK_ADMIN_PATH', dirname( __FILE__ ) );
-
     $script_asset_path = BUTTONGROUP_BLOCK_ADMIN_PATH . "/dist/index.asset.php";
     if ( ! file_exists( $script_asset_path ) ) {
-        throw new Error(
-            'You need to run `npm start` or `npm run build` for the "button-group/button-group" block first.'
-        );
+        /*
+         * The build output is missing. Bail out instead of throwing: an
+         * uncaught throw on `init` takes down the entire site, and on PHP 5.x
+         * the `Error` class does not exist at all.
+         */
+        return;
     }
-    $index_js         = BUTTONGROUP_BLOCK_ADMIN_URL . 'dist/index.js';
-    $script_asset     = require $script_asset_path;
+    $index_js     = BUTTONGROUP_BLOCK_ADMIN_URL . 'dist/index.js';
+    $script_asset = require $script_asset_path;
+    if ( ! is_array( $script_asset ) || ! isset( $script_asset['dependencies'] ) || ! is_array( $script_asset['dependencies'] ) ) {
+        return;
+    }
+    $asset_version    = isset( $script_asset['version'] ) ? $script_asset['version'] : BUTTONGROUP_BLOCK_VERSION;
     $all_dependencies = array_merge( $script_asset['dependencies'], [
         'wp-blocks',
         'wp-i18n',
@@ -51,7 +80,7 @@ function create_block_button_group_block_init() {
         'create-block-buttongroup-block-editor-script',
         $index_js,
         $all_dependencies,
-        $script_asset['version'],
+        $asset_version,
         true
     );
 

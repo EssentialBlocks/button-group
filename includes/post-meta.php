@@ -9,7 +9,8 @@ class Dual_Button_Post_Meta
 {
     public function __construct()
     {
-        add_filter('init', array($this, 'register_meta'));
+        // `init` is an action, not a filter.
+        add_action('init', array($this, 'register_meta'));
     }
 
     /**
