@@ -47,7 +47,8 @@ class dual_Button_Font_Loader
 
             $fonts = get_post_meta($post->ID, '_eb_attr', true);
 
-            if (!empty($fonts)) {
+            // Post meta is untyped; explode() on a non-string is a TypeError on PHP 8.
+            if (!empty($fonts) && is_string($fonts)) {
 
                 $fonts = array_unique(explode(',', $fonts));
 
@@ -79,7 +80,8 @@ class dual_Button_Font_Loader
                     wp_register_style(
                         'eb-block-fonts',
                         add_query_arg($query_args, '//fonts.googleapis.com/css'),
-                        array()
+                        array(),
+                        defined('BUTTONGROUP_BLOCK_VERSION') ? BUTTONGROUP_BLOCK_VERSION : null
                     );
 
                     wp_enqueue_style('eb-block-fonts');

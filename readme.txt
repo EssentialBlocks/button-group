@@ -1,9 +1,10 @@
 === Button Group ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07, fencermonir
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07, fencermonir, RahatSheikhLeon
 Tags: block, blocks, button, Button Group, grouped button, Button Group, buttons, gutenberg, gutenberg blocks
-Requires at least: 5.6
-Tested up to: 6.5
-Stable tag: 1.2.6
+Requires at least: 6.0
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 1.5.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,6 +82,13 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.5.0 - 09/08/2026 =
+* Changed: Minimum requirements are now WordPress 6.0 and PHP 7.4
+* Fixed: Fatal error on PHP 7.x and older caused by a PHP 8-only function
+* Fixed: Fatal error when the plugin's build output or bundled library was missing
+* Fixed: Block registration on WordPress 5.7
+* Improved: Compatibility support with WordPress 7.0 and PHP 8.5
 
 = 1.2.6 - 17/04/2024 =
 * Fixed: compatibility support with WordPress 6.5 version
