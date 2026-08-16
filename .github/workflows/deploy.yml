@@ -17,26 +17,37 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
         with:
             submodules: recursive
             token: ${{ secrets.EB_PAT }}
       # node version
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7
         with:
-          node-version: '14'
+          node-version: '22'
       # Runs a single command using the runners shell
       # - name: Git Submodule Cloning
       #   run: git submodule update --init --recursive
         # env:
         #   GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      # `npm ci` installs strictly from the committed lockfileVersion 3
+      # package-lock.json, so CI resolves the same tree every run. It requires
+      # the lockfile to be present and in sync with package.json.
+      #
+      # NOTE: this builds the root project only, which emits dist/index.js.
+      # dist/modules.js, dist/frontend.js and dist/modules.css come from the
+      # `controls` submodule and are shipped as committed artifacts — they are
+      # deliberately NOT rebuilt here. See README.md for the two-build layout.
       - name: Running NPM Install & Build
         run: |
-          npm install
+          npm ci
           npm run build
       - name: WordPress Plugin Deploy
         id: deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
+        # Pinned to 2.3.0 (54bd289) — identical to what the floating @stable
+        # branch resolved to, so behaviour is unchanged; the pin just makes it
+        # deterministic.
+        uses: 10up/action-wordpress-plugin-deploy@2.3.0
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}

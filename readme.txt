@@ -1,5 +1,5 @@
 === Button Group ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07, fencermonir
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07, fencermonir, RahatSheikhLeon
 Tags: block, blocks, button, Button Group, grouped button, Button Group, buttons, gutenberg, gutenberg blocks
 Requires at least: 6.0
 Tested up to: 7.0
