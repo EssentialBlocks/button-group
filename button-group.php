@@ -156,6 +156,9 @@ function create_block_button_group_block_init() {
                     if ( ! is_admin() ) {
                         wp_enqueue_style( 'create-block-buttongroup-block-frontend-style' );
                         wp_enqueue_script( 'essential-blocks-eb-animation' );
+                        // Google fonts are derived from this block's own typography
+                        // attributes, so published posts work without a re-save.
+                        Button_Group_Font_Loader::enqueue_for_attributes( $attributes );
                     }
                     return $content;
                 }
