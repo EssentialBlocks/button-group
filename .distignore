@@ -1,29 +1,75 @@
 # A set of files you probably don't want in your WordPress.org distribution
-.babelrc
+
+# Version control
+# `.git` alone only matches the repo root; submodules carry their own nested
+# .git gitlink file, which would otherwise ship.
+.git
+**/.git
+lib/style-handler/.git
+controls/.git
+.gitignore
+.gitattributes
+.gitmodules
+.github
+.gitlab-ci.yml
 .deployignore
 .distignore
+
+# Editor / OS cruft
 .editorconfig
-.eslintignore
-.eslintrc
-.gitmodules
-.git
-.gitignore
-.github
-.gitattributes
-.gitlab-ci.yml
-.travis.yml
+.idea
+.vscode
 .DS_Store
 Thumbs.db
-behat.yml
-bitbucket-pipelines.yml
-bin
-.circleci/config.yml
+
+# Babel
+.babelrc
+.babelrc.js
+.babelrc.json
+babel.config.js
+babel.config.json
+babel.config.cjs
+
+# Build tooling
+webpack.config.js
+Gruntfile.js
+gulpfile.js
+postcss.config.js
+.browserslistrc
+.nvmrc
+
+# Linters / formatters
+.eslintignore
+.eslintrc
+.eslintrc.js
+.eslintrc.json
+.eslintcache
+.prettierrc
+.prettierignore
+.stylelintrc
+
+# Package managers
+package.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 composer.json
 composer.lock
 dependencies.yml
-Gruntfile.js
-package.json
-package-lock.json
+node_modules
+node_modules/**/*.*
+vendor
+
+# CI
+.circleci/config.yml
+.travis.yml
+bitbucket-pipelines.yml
+behat.yml
+wp-cli.local.yml
+bin
+
+# Tests / QA
+tests
 phpunit.xml
 phpunit.xml.dist
 multisite.xml
@@ -32,23 +78,62 @@ multisite.xml.dist
 phpcs.xml
 .phpcs.xml.dist
 phpcs.xml.dist
+
+# Sources compiled into dist/ — never shipped
+src
+config
+controls
+.wordpress-org
+
+# Source maps: development only, ~3.6 MB of the build output
+dist/*.*.map
+*.map
+
+# style-handler submodule: ship the PHP, not the JS sources
+lib/style-handler/style-handler.js
+lib/style-handler/helpers.js
+lib/style-handler/gitignore
+lib/style-handler/README.md
+lib/style-handler/dist/index.js.map
+
+# Docs / internal notes — readme.txt is the only doc users get
+*.md
 README.md
-webpack.config.js
-wp-cli.local.yml
-yarn.lock
-tests
-vendor
-node_modules
+compatibility-report.md
+
+# Archives, dumps, logs
 *.sql
 *.tar.gz
 *.zip
-gulpfile.js
-.git
-node_modules/**/*.*
-src
-controls
-config
-lib/style-handler/style-handler.js
-lib/style-handler/helpers.js
-.wordpress-org
-.idea
+**/*.zip
+*.log
+
+# ---------------------------------------------------------------------------
+# Font payload trimming
+#
+# The enqueued stylesheet is lib/resources/css/font-awesome5.css, which
+# references only the FontAwesome 5 faces (fa-solid-900, fa-brands-400,
+# fa-regular-400) plus fontIconPicker. Everything below is either unreferenced
+# or serves browsers that no longer exist.
+#
+# Shipped: .woff2 / .woff / .ttf — covers every browser back to IE9 / Android 4.4.
+# ---------------------------------------------------------------------------
+
+# FontAwesome 4 leftovers — referenced by nothing in this plugin (1.06 MB)
+lib/resources/fonts/FontAwesome.otf
+lib/resources/fonts/fontawesome-webfont.eot
+lib/resources/fonts/fontawesome-webfont.svg
+lib/resources/fonts/fontawesome-webfont.ttf
+lib/resources/fonts/fontawesome-webfont.woff
+lib/resources/fonts/fontawesome-webfont.woff2
+
+# SVG fonts — removed from Chrome 38+, never supported by Firefox or IE (1.77 MB)
+lib/resources/fonts/fa-brands-400.svg
+lib/resources/fonts/fa-regular-400.svg
+lib/resources/fonts/fa-solid-900.svg
+lib/resources/fonts/fontIconPicker.svg
+
+# EOT fonts — Internet Explorer only; IE reached end of life June 2022 (367 KB)
+lib/resources/fonts/fa-brands-400.eot
+lib/resources/fonts/fa-regular-400.eot
+lib/resources/fonts/fa-solid-900.eot

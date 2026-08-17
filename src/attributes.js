@@ -70,14 +70,6 @@ const attributes = {
 		type: "string",
 		default: "Button Two",
 	},
-	buttonOneColor: {
-		type: "string",
-		default: "#7967ff",
-	},
-	hoverButtonOneColor: {
-		type: "string",
-		default: "#513fd4",
-	},
 	textOneColor: {
 		type: "string",
 		default: "#fff",
@@ -134,6 +126,7 @@ const attributes = {
 	},
 	innerButtonIcon: {
 		type: "string",
+		default: "fas fa-arrows-alt-h",
 	},
 	showConnector: {
 		type: "boolean",
@@ -193,7 +186,7 @@ const attributes = {
 			left: 20,
 			isLinked: false,
 		},
-		noShadow: true,
+		// noShadow: true,
 		// noBorder: true,
 	}),
 	...generateBorderShadowAttributes(BUTTON_TWO_BORDER_SHADOW, {
@@ -210,14 +203,13 @@ const attributes = {
 			left: 0,
 			isLinked: false,
 		},
-		noShadow: true,
+		// noShadow: true,
 	}),
 
 	// background attributes ⬇
 	...generateBackgroundAttributes(BUTTON_ONE_BG, {
 		defaultFillColor: "#3074ff",
-		defaultBgGradient:
-			"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
+		defaultBgGradient: "linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
 	}),
 	...generateBackgroundAttributes(BUTTON_TWO_BG, {
 		defaultFillColor: "#3074ff",
@@ -241,18 +233,16 @@ const attributes = {
 	...generateBackgroundAttributes(BUTTON_ONE_BACKGROUND, {
 		noOverlay: true,
 		noMainBgi: true,
-		defaultBgGradient:
-			"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
-		defaultHovBgGradient:
-			"linear-gradient(45deg, rgba(48,155,255,1) 0% , rgba(33,135,255,1) 100%)",
+		defaultFillColor: "#475467",
+		defaultHovFillColor: "#101828",
+		defaultBgGradient: "linear-gradient(90deg, rgb(250, 250, 250) 0%, rgb(233, 233, 233) 49%, rgb(244, 243, 243) 100%)",
 	}),
 	...generateBackgroundAttributes(BUTTON_TWO_BACKGROUND, {
 		noOverlay: true,
 		noMainBgi: true,
-		defaultBgGradient:
-			"linear-gradient(45deg, rgba(48,155,255,1) 0% , rgba(33,135,255,1) 100%)",
-		defaultHovBgGradient:
-			"linear-gradient(45deg, rgba(120,102,255,0.8) 0% , rgba(195,120,242,0.4) 100%)",
+		defaultFillColor: "#98A2B3",
+		defaultHovFillColor: "#101828",
+		defaultBgGradient: "linear-gradient(90deg, rgb(250, 250, 250) 0%, rgb(233, 233, 233) 49%, rgb(244, 243, 243) 100%)",
 	}),
 };
 
