@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create Two Buttons To Be Stacked Together
- * Version:         1.3.0
+ * Version:         1.3.1
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 if ( ! defined( 'BUTTONGROUP_BLOCK_VERSION' ) ) {
-    define( 'BUTTONGROUP_BLOCK_VERSION', '1.3.0' );
+    define( 'BUTTONGROUP_BLOCK_VERSION', '1.3.1' );
 }
 if ( ! defined( 'BUTTONGROUP_BLOCK_ADMIN_URL' ) ) {
     define( 'BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url( __FILE__ ) );
@@ -39,7 +39,6 @@ if ( ! defined( 'BUTTONGROUP_BLOCK_ADMIN_PATH' ) ) {
 }
 
 require_once __DIR__ . '/includes/font-loader.php';
-require_once __DIR__ . '/includes/post-meta.php';
 require_once __DIR__ . '/includes/helpers.php';
 
 /*
