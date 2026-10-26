@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create Two Buttons To Be Stacked Together
- * Version:         1.5.0
+ * Version:         1.3.0
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 if ( ! defined( 'BUTTONGROUP_BLOCK_VERSION' ) ) {
-    define( 'BUTTONGROUP_BLOCK_VERSION', '1.5.0' );
+    define( 'BUTTONGROUP_BLOCK_VERSION', '1.3.0' );
 }
 if ( ! defined( 'BUTTONGROUP_BLOCK_ADMIN_URL' ) ) {
     define( 'BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url( __FILE__ ) );
@@ -156,6 +156,9 @@ function create_block_button_group_block_init() {
                     if ( ! is_admin() ) {
                         wp_enqueue_style( 'create-block-buttongroup-block-frontend-style' );
                         wp_enqueue_script( 'essential-blocks-eb-animation' );
+                        // Google fonts are derived from this block's own typography
+                        // attributes, so published posts work without a re-save.
+                        Button_Group_Font_Loader::enqueue_for_attributes( $attributes );
                     }
                     return $content;
                 }
