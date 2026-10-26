@@ -85,6 +85,11 @@ config
 controls
 .wordpress-org
 
+# Controls' eb_frontend helper bundle: built by webpack but never registered or
+# enqueued by this plugin
+dist/frontend.js
+dist/frontend.asset.php
+
 # Source maps: development only, ~3.6 MB of the build output
 dist/*.*.map
 *.map

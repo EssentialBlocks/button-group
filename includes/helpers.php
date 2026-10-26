@@ -100,8 +100,17 @@ class Button_Group_Helper
                 ));
             }
 
+            /**
+             * This handle must stay plugin-specific. `dist/modules.css` is built from
+             * this plugin's own `controls` submodule pin, so it differs between the
+             * Essential Blocks single-block plugins. Registering it under a shared
+             * name (it used to be `essential-blocks-editor-css`) meant that whichever
+             * plugin loaded first won the handle outright — WP_Dependencies::add()
+             * returns false for an already-registered handle — and every later
+             * plugin's stylesheet and its dependencies were silently dropped.
+             */
             wp_enqueue_style(
-                'essential-blocks-editor-css',
+                'buttongroup-block-editor-css',
                 BUTTONGROUP_BLOCK_ADMIN_URL . 'dist/modules.css',
                 array(),
                 $controls_version,
