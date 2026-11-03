@@ -87,6 +87,8 @@ class Button_Group_Helper
              */
             wp_localize_script('buttongroup-block-controls-util', 'EssentialBlocksLocalize', array(
                 'eb_wp_version' => (float) get_bloginfo('version'),
+                // Lossless version for new code: (float) '6.10' is 6.1.
+                'eb_wp_version_string' => get_bloginfo('version'),
                 'rest_rootURL' => get_rest_url(),
             ));
 
