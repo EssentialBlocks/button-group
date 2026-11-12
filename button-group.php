@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Button Group
  * Description:     Create Two Buttons To Be Stacked Together
- * Version:         1.3.1
+ * Version:         1.3.2
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 if ( ! defined( 'BUTTONGROUP_BLOCK_VERSION' ) ) {
-    define( 'BUTTONGROUP_BLOCK_VERSION', '1.3.1' );
+    define( 'BUTTONGROUP_BLOCK_VERSION', '1.3.2' );
 }
 if ( ! defined( 'BUTTONGROUP_BLOCK_ADMIN_URL' ) ) {
     define( 'BUTTONGROUP_BLOCK_ADMIN_URL', plugin_dir_url( __FILE__ ) );
@@ -166,3 +166,35 @@ function create_block_button_group_block_init() {
     }
 }
 add_action( 'init', 'create_block_button_group_block_init' );
+
+/**
+ * Block icons are filled #6C3BFF, which almost disappears on the highlighted row of
+ * the "/" inserter, a selected List View row and the drag chip. Recolour them there,
+ * as Essential Blocks does. The handle is shared, so the stylesheet prints once when
+ * several of these plugins are active.
+ */
+function button_group_block_icon_selected_style() {
+    wp_enqueue_style(
+        'eb-block-icon-selected',
+        plugins_url( 'assets/css/block-icon-selected.css', __FILE__ ),
+        [],
+        BUTTONGROUP_BLOCK_VERSION
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'button_group_block_icon_selected_style' );
+
+/**
+ * Let Essential Blocks' animation assets win on the front end when it is active.
+ *
+ * Both plugins register these handles and the first registration wins. This
+ * plugin's loader doesn't set `window.ebAnimationLoaded`, so Essential Blocks'
+ * failsafe would reveal every animated block without playing it. Essential Blocks
+ * registers its own at priority 20 and handles the same `.eb___animated` classes.
+ */
+function button_group_use_essential_blocks_animation() {
+    if ( defined( 'ESSENTIAL_BLOCKS_VERSION' ) ) {
+        wp_deregister_script( 'essential-blocks-eb-animation' );
+        wp_deregister_style( 'essential-blocks-animation' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'button_group_use_essential_blocks_animation', 19 );
