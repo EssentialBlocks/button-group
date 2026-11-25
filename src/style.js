@@ -55,6 +55,8 @@ export default function Style(props) {
         buttonsWidthType,
         showButtonOneIcon,
         showButtonTwoIcon,
+        buttonOneStyle = "fill",
+        buttonTwoStyle = "fill",
         buttonOneIconColor,
         buttonOneIconHoverColor,
         buttonTwoIconColor,
@@ -193,6 +195,78 @@ export default function Style(props) {
         attributes,
     });
 
+    // button style (Outline / Text) ⬇
+    // Outline and Text reuse the button's background colour as the accent colour
+    // for the border and text. Nothing is emitted for "fill", so existing blocks
+    // keep exactly the same CSS.
+    const styleColors = (bgControl, textColor, hoverTextColor) => {
+        const accent = attributes[`${bgControl}backgroundColor`] || textColor;
+        const hoverAccent = attributes[`hov_${bgControl}backgroundColor`] || accent;
+        return { accent, hoverAccent, textColor, hoverTextColor };
+    };
+    const btnOneColors = styleColors(BUTTON_ONE_BACKGROUND, textOneColor, hoverTextOneColor);
+    const btnTwoColors = styleColors(BUTTON_TWO_BACKGROUND, textTwoColor, hoverTextTwoColor);
+
+    // The colour the button text actually ends up with, used as the icon fallback.
+    const effectiveText = (style, c) => (style === "fill" ? c.textColor : c.accent);
+    const effectiveHoverText = (style, c) => {
+        if (style === "outline") {
+            return c.hoverTextColor || c.textColor;
+        }
+        if (style === "text") {
+            return c.hoverTextColor || c.hoverAccent;
+        }
+        return c.hoverTextColor;
+    };
+
+    const buttonStyleCss = (key, style, c) => {
+        if (style !== "outline" && style !== "text") {
+            return "";
+        }
+        const sel = `.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-${key}`;
+        const common = `
+		${sel},
+		${sel}:focus {
+			background: transparent;
+			background-image: none;
+		}
+		${sel} .eb-button-${key}-text {
+			color: ${c.accent};
+		}
+		${sel}:hover .eb-button-${key}-text {
+			color: ${effectiveHoverText(style, c)};
+		}
+	`;
+        if (style === "outline") {
+            return `${common}
+		${sel} {
+			border-style: solid;
+			border-width: 2px;
+			border-color: ${c.accent};
+		}
+		${sel}:hover {
+			background: ${c.hoverAccent};
+			border-color: ${c.hoverAccent};
+		}
+	`;
+        }
+        return `${common}
+		${sel},
+		${sel}:hover,
+		${sel}:focus {
+			border-color: transparent;
+			box-shadow: none;
+		}
+		${sel}:hover {
+			background: transparent;
+		}
+	`;
+    };
+    const buttonStylesCss = `
+		${buttonStyleCss("one", buttonOneStyle, btnOneColors)}
+		${buttonStyleCss("two", buttonTwoStyle, btnTwoColors)}
+	`;
+
     // per-button icon size and gap ⬇
     const iconRange = (controlName, property) => {
         const {
@@ -254,8 +328,8 @@ export default function Style(props) {
 	`;
     };
     const buttonIconsCss = (device) => `
-		${buttonIconStyles("one", showButtonOneIcon, btnOneIconSize, btnOneIconGap, buttonOneIconColor || textOneColor, buttonOneIconHoverColor || hoverTextOneColor, device)}
-		${buttonIconStyles("two", showButtonTwoIcon, btnTwoIconSize, btnTwoIconGap, buttonTwoIconColor || textTwoColor, buttonTwoIconHoverColor || hoverTextTwoColor, device)}
+		${buttonIconStyles("one", showButtonOneIcon, btnOneIconSize, btnOneIconGap, buttonOneIconColor || effectiveText(buttonOneStyle, btnOneColors), buttonOneIconHoverColor || effectiveHoverText(buttonOneStyle, btnOneColors), device)}
+		${buttonIconStyles("two", showButtonTwoIcon, btnTwoIconSize, btnTwoIconGap, buttonTwoIconColor || effectiveText(buttonTwoStyle, btnTwoColors), buttonTwoIconHoverColor || effectiveHoverText(buttonTwoStyle, btnTwoColors), device)}
 	`;
 
     // button background styles
@@ -481,6 +555,7 @@ export default function Style(props) {
 			${buttonOneStyleDesktop}
 			${buttonTwoStyleDesktop}
 			${connectorStylesDesktop}
+			${buttonStylesCss}
 			${buttonIconsCss("desktop")}
 		`);
 

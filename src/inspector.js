@@ -22,7 +22,7 @@ import {
 import objAttributes from "./attributes";
 
 import {
-    //  BUTTON_STYLES,
+    BUTTON_STYLES,
     NORMAL_HOVER,
     UNIT_TYPES,
     BUTTON_ONE_BACKGROUND,
@@ -87,6 +87,8 @@ function Inspector(props) {
         buttonTwoNewWindow,
         showButtonOneIcon,
         showButtonTwoIcon,
+        buttonOneStyle,
+        buttonTwoStyle,
         buttonOneIconColor,
         buttonOneIconHoverColor,
         buttonTwoIconColor,
@@ -502,6 +504,24 @@ function Inspector(props) {
                                             baseLabel={__("Typography", "essential-blocks")}
                                             typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
                                             resRequiredProps={resRequiredProps}
+                                        />
+
+                                        <SelectControl
+                                            label={__("Button One Style", "essential-blocks")}
+                                            value={buttonOneStyle}
+                                            options={BUTTON_STYLES}
+                                            onChange={(value) => setAttributes({ buttonOneStyle: value })}
+                                        />
+                                        <SelectControl
+                                            label={__("Button Two Style", "essential-blocks")}
+                                            value={buttonTwoStyle}
+                                            options={BUTTON_STYLES}
+                                            onChange={(value) => setAttributes({ buttonTwoStyle: value })}
+                                            help={
+                                                buttonOneStyle !== "fill" || buttonTwoStyle !== "fill"
+                                                    ? __("Outline and Text use the button's background colour for the border and text.", "essential-blocks")
+                                                    : undefined
+                                            }
                                         />
 
                                         <BaseControl>
