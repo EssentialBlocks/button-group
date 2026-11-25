@@ -133,7 +133,10 @@ function create_block_button_group_block_init() {
             'fontawesome-frontend-css',
             'fontpicker-default-theme',
             'fontpicker-material-theme',
-            'essential-blocks-animation'
+            'essential-blocks-animation',
+            // The editor canvas is an iframe that only gets the block's own styles
+            // and their dependencies, so Dashicons must be pulled in from here.
+            'dashicons'
         ],
         BUTTONGROUP_BLOCK_VERSION
     );
@@ -155,6 +158,11 @@ function create_block_button_group_block_init() {
                     if ( ! is_admin() ) {
                         wp_enqueue_style( 'create-block-buttongroup-block-frontend-style' );
                         wp_enqueue_script( 'essential-blocks-eb-animation' );
+                        // Dashicons only load on the front end for the admin bar, so
+                        // enqueue them when this block actually uses one.
+                        if ( button_group_uses_dashicons( $attributes ) ) {
+                            wp_enqueue_style( 'dashicons' );
+                        }
                         // Google fonts are derived from this block's own typography
                         // attributes, so published posts work without a re-save.
                         Button_Group_Font_Loader::enqueue_for_attributes( $attributes );
@@ -166,6 +174,32 @@ function create_block_button_group_block_init() {
     }
 }
 add_action( 'init', 'create_block_button_group_block_init' );
+
+/**
+ * Whether a Button Group block shows any Dashicon (button icons or connector icon).
+ *
+ * @param array $attributes Block attributes.
+ * @return bool
+ */
+function button_group_uses_dashicons( $attributes ) {
+    $icons = [];
+    if ( ! empty( $attributes['showButtonOneIcon'] ) ) {
+        $icons[] = isset( $attributes['buttonOneIcon'] ) ? $attributes['buttonOneIcon'] : '';
+    }
+    if ( ! empty( $attributes['showButtonTwoIcon'] ) ) {
+        $icons[] = isset( $attributes['buttonTwoIcon'] ) ? $attributes['buttonTwoIcon'] : '';
+    }
+    $show_connector = ! isset( $attributes['showConnector'] ) || $attributes['showConnector'];
+    if ( $show_connector && isset( $attributes['connectorType'] ) && 'icon' === $attributes['connectorType'] ) {
+        $icons[] = isset( $attributes['innerButtonIcon'] ) ? $attributes['innerButtonIcon'] : '';
+    }
+    foreach ( $icons as $icon ) {
+        if ( is_string( $icon ) && false !== strpos( $icon, 'dashicons' ) ) {
+            return true;
+        }
+    }
+    return false;
+}
 
 /**
  * Block icons are filled #6C3BFF, which almost disappears on the highlighted row of

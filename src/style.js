@@ -9,6 +9,10 @@ import {
     BUTTONS_GAP,
     BUTTONS_CONNECTOR_SIZE,
     BUTTONS_CONNECTOR_ICON_SIZE,
+    BUTTON_ONE_ICON_SIZE,
+    BUTTON_TWO_ICON_SIZE,
+    BUTTON_ONE_ICON_GAP,
+    BUTTON_TWO_ICON_GAP,
 } from "./constants/constants";
 import {
     BUTTONS_TYPOGRAPHY,
@@ -49,6 +53,12 @@ export default function Style(props) {
         buttonTextAlign,
         classHook,
         buttonsWidthType,
+        showButtonOneIcon,
+        showButtonTwoIcon,
+        buttonOneIconColor,
+        buttonOneIconHoverColor,
+        buttonTwoIconColor,
+        buttonTwoIconHoverColor,
     } = attributes;
 
     //
@@ -182,6 +192,71 @@ export default function Style(props) {
         property: "font-size",
         attributes,
     });
+
+    // per-button icon size and gap ⬇
+    const iconRange = (controlName, property) => {
+        const {
+            rangeStylesDesktop: desktop,
+            rangeStylesTab: tab,
+            rangeStylesMobile: mobile,
+        } = generateResponsiveRangeStyles({ controlName, property, attributes });
+        return { desktop, tab, mobile };
+    };
+    const btnOneIconSize = iconRange(BUTTON_ONE_ICON_SIZE, "font-size");
+    const btnTwoIconSize = iconRange(BUTTON_TWO_ICON_SIZE, "font-size");
+    const btnOneIconGap = iconRange(BUTTON_ONE_ICON_GAP, "gap");
+    const btnTwoIconGap = iconRange(BUTTON_TWO_ICON_GAP, "gap");
+
+    const iconJustify =
+        buttonTextAlign === "left"
+            ? "flex-start"
+            : buttonTextAlign === "right"
+                ? "flex-end"
+                : "center";
+
+    // Only emitted when the icon is on, so the CSS of existing blocks is unchanged.
+    const buttonIconStyles = (key, show, size, gap, color, hoverColor, device) => {
+        if (!show) {
+            return "";
+        }
+        const sel = `.eb-button-group-wrapper.${blockId} .eb-button-parent.eb-button-${key}.eb-button-has-icon`;
+        if (device !== "desktop") {
+            return `
+		${sel} { ${gap[device]} }
+		${sel} .eb-button-${key}-icon { ${size[device]} }
+	`;
+        }
+        return `
+		${sel} {
+			display: flex;
+			align-items: center;
+			justify-content: ${iconJustify};
+			${gap.desktop}
+		}
+		${sel} .eb-button-${key}-icon {
+			display: inline-flex;
+			align-items: center;
+			line-height: 1;
+			flex-shrink: 0;
+			${size.desktop}
+			${color ? `color: ${color};` : ""}
+		}
+		${sel} .eb-button-${key}-icon .dashicons,
+		${sel} .eb-button-${key}-icon svg,
+		${sel} .eb-button-${key}-icon img {
+			font-size: inherit;
+			width: 1em;
+			height: 1em;
+		}
+		${sel}:hover .eb-button-${key}-icon {
+			${hoverColor ? `color: ${hoverColor};` : ""}
+		}
+	`;
+    };
+    const buttonIconsCss = (device) => `
+		${buttonIconStyles("one", showButtonOneIcon, btnOneIconSize, btnOneIconGap, buttonOneIconColor || textOneColor, buttonOneIconHoverColor || hoverTextOneColor, device)}
+		${buttonIconStyles("two", showButtonTwoIcon, btnTwoIconSize, btnTwoIconGap, buttonTwoIconColor || textTwoColor, buttonTwoIconHoverColor || hoverTextTwoColor, device)}
+	`;
 
     // button background styles
     const {
@@ -406,6 +481,7 @@ export default function Style(props) {
 			${buttonOneStyleDesktop}
 			${buttonTwoStyleDesktop}
 			${connectorStylesDesktop}
+			${buttonIconsCss("desktop")}
 		`);
 
     // all css styles for Tab in strings ⬇
@@ -415,6 +491,7 @@ export default function Style(props) {
 			${buttonOneStyleTab}
 			${buttonTwoStyleTab}
 			${connectorStylesTab}
+			${buttonIconsCss("tab")}
 		`);
 
     // all css styles for Mobile in strings ⬇
@@ -424,6 +501,7 @@ export default function Style(props) {
 			${buttonOneStyleMobile}
 			${buttonTwoStyleMobile}
 			${connectorStylesMobile}
+			${buttonIconsCss("mobile")}
 		`);
 
     return (
