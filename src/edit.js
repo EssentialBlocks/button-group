@@ -33,7 +33,20 @@ export default function Edit(props) {
         showConnector,
         connectorType,
         classHook,
+        showButtonOneIcon,
+        buttonOneIcon,
+        buttonOneIconPosition,
+        showButtonTwoIcon,
+        buttonTwoIcon,
+        buttonTwoIconPosition,
     } = attributes;
+
+    const buttonIcon = (key, show, icon) =>
+        show && icon ? (
+            <span className={`eb-button-icon eb-button-${key}-icon`}>
+                <EBDisplayIcon icon={icon} />
+            </span>
+        ) : null;
 
     // this useEffect is for creating a unique id for each block's unique className by a random unique number
     useEffect(() => {
@@ -64,11 +77,13 @@ export default function Edit(props) {
                     >
                         {/* Button One */}
                         <a
-                            className={"eb-button-parent eb-button-one"}
+                            className={`eb-button-parent eb-button-one${showButtonOneIcon && buttonOneIcon ? " eb-button-has-icon" : ""}`}
                             // style={buttonStyleOne}
                             onMouseEnter={() => setAttributes({ isHoverOne: true })}
                             onMouseLeave={() => setAttributes({ isHoverOne: false })}
                         >
+                            {buttonOneIconPosition === "before" &&
+                                buttonIcon("one", showButtonOneIcon, buttonOneIcon)}
                             <DynamicInputValueHandler
                                 // style={textStylesOne}
                                 className={"eb-button-text eb-button-one-text"}
@@ -86,6 +101,8 @@ export default function Edit(props) {
                                     "core/text-color",
                                 ]}
                             />
+                            {buttonOneIconPosition !== "before" &&
+                                buttonIcon("one", showButtonOneIcon, buttonOneIcon)}
                         </a>
 
                         {/* Connector */}
@@ -106,11 +123,13 @@ export default function Edit(props) {
 
                         {/* Button Two */}
                         <a
-                            className={"eb-button-parent eb-button-two"}
+                            className={`eb-button-parent eb-button-two${showButtonTwoIcon && buttonTwoIcon ? " eb-button-has-icon" : ""}`}
                             // style={buttonStyleTwo}
                             onMouseEnter={() => setAttributes({ isHoverTwo: true })}
                             onMouseLeave={() => setAttributes({ isHoverTwo: false })}
                         >
+                            {buttonTwoIconPosition === "before" &&
+                                buttonIcon("two", showButtonTwoIcon, buttonTwoIcon)}
                             <DynamicInputValueHandler
                                 // style={textStylesTwo}
                                 className={"eb-button-text eb-button-two-text"}
@@ -128,6 +147,8 @@ export default function Edit(props) {
                                     "core/text-color",
                                 ]}
                             />
+                            {buttonTwoIconPosition !== "before" &&
+                                buttonIcon("two", showButtonTwoIcon, buttonTwoIcon)}
                         </a>
                     </div>
                 </div>

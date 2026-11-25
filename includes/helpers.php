@@ -88,6 +88,10 @@ class Button_Group_Helper
             wp_localize_script('buttongroup-block-controls-util', 'EssentialBlocksLocalize', array(
                 'eb_wp_version' => (float) get_bloginfo('version'),
                 'rest_rootURL' => get_rest_url(),
+                // The icon picker hides Font Awesome unless this is the string "true".
+                // This plugin always loads Font Awesome on the front end and its
+                // default icons are Font Awesome ones, so keep it enabled.
+                'fontAwesome' => 'true',
             ));
 
             if ($pagenow == 'post-new.php' || $pagenow == 'post.php') {
@@ -116,6 +120,22 @@ class Button_Group_Helper
                 $controls_version,
                 'all'
             );
+
+            /**
+             * wp-scripts splits every `style.scss` imported by the controls into a
+             * separate `style-modules.css`. It holds the icon picker styles (popup
+             * width, icon grid, hidden name tooltips), so without it the picker
+             * renders as a narrow list of icons with their names under them.
+             */
+            if (file_exists(BUTTONGROUP_BLOCK_ADMIN_PATH . '/dist/style-modules.css')) {
+                wp_enqueue_style(
+                    'buttongroup-block-editor-style-modules-css',
+                    BUTTONGROUP_BLOCK_ADMIN_URL . 'dist/style-modules.css',
+                    array('buttongroup-block-editor-css'),
+                    $controls_version,
+                    'all'
+                );
+            }
         }
     }
 

@@ -15,7 +15,22 @@ const Save = ({ attributes }) => {
         classHook,
         buttonOneNewWindow,
         buttonTwoNewWindow,
+        showButtonOneIcon,
+        buttonOneIcon,
+        buttonOneIconPosition,
+        showButtonTwoIcon,
+        buttonTwoIcon,
+        buttonTwoIconPosition,
     } = attributes;
+
+    // Icon markup only renders when the icon is on, so blocks saved before
+    // this option existed keep producing the exact same HTML.
+    const buttonIcon = (key, show, icon) =>
+        show && icon ? (
+            <span className={`eb-button-icon eb-button-${key}-icon`}>
+                <EBDisplayIcon icon={icon} />
+            </span>
+        ) : null;
 
     return (
         <div {...useBlockProps.save()}>
@@ -27,14 +42,18 @@ const Save = ({ attributes }) => {
                     data-id={blockId}
                 >
                     <a
-                        className={"eb-button-parent eb-button-one"}
+                        className={`eb-button-parent eb-button-one${showButtonOneIcon && buttonOneIcon ? " eb-button-has-icon" : ""}`}
                         href={buttonURLOne === '#' ? '' : buttonURLOne}
                         {...(buttonOneNewWindow && { target: "_blank" })}
                         rel="noopener"
                     >
+                        {buttonOneIconPosition === "before" &&
+                            buttonIcon("one", showButtonOneIcon, buttonOneIcon)}
                         <div className="eb-button-text eb-button-one-text">
                             {buttonTextOne}
                         </div>
+                        {buttonOneIconPosition !== "before" &&
+                            buttonIcon("one", showButtonOneIcon, buttonOneIcon)}
                     </a>
 
                     {showConnector && (
@@ -52,14 +71,18 @@ const Save = ({ attributes }) => {
                     )}
 
                     <a
-                        className={"eb-button-parent eb-button-two"}
+                        className={`eb-button-parent eb-button-two${showButtonTwoIcon && buttonTwoIcon ? " eb-button-has-icon" : ""}`}
                         href={buttonURLTwo === '#' ? '' : buttonURLTwo}
                         {...(buttonTwoNewWindow && { target: "_blank" })}
                         rel="noopener"
                     >
+                        {buttonTwoIconPosition === "before" &&
+                            buttonIcon("two", showButtonTwoIcon, buttonTwoIcon)}
                         <div className="eb-button-text eb-button-two-text">
                             {buttonTextTwo}
                         </div>
+                        {buttonTwoIconPosition !== "before" &&
+                            buttonIcon("two", showButtonTwoIcon, buttonTwoIcon)}
                     </a>
                 </div>
             </div>

@@ -3,6 +3,7 @@
  */
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
+import { useState } from "@wordpress/element";
 import {
     PanelBody,
     SelectControl,
@@ -39,6 +40,11 @@ import {
     CONTENT_POSITION,
     BUTTONS_CONNECTOR_ICON_SIZE,
     BUTTON_WIDTH_TYPE,
+    ICON_POSITION,
+    BUTTON_ONE_ICON_SIZE,
+    BUTTON_TWO_ICON_SIZE,
+    BUTTON_ONE_ICON_GAP,
+    BUTTON_TWO_ICON_GAP,
 } from "./constants/constants";
 import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 
@@ -79,13 +85,79 @@ function Inspector(props) {
         buttonsWidthType,
         buttonOneNewWindow,
         buttonTwoNewWindow,
+        showButtonOneIcon,
+        showButtonTwoIcon,
+        buttonOneIconColor,
+        buttonOneIconHoverColor,
+        buttonTwoIconColor,
+        buttonTwoIconHoverColor,
     } = attributes;
+
+    const [iconColorType, setIconColorType] = useState("normal");
 
     const resRequiredProps = {
         setAttributes,
         resOption,
         attributes,
         objAttributes,
+    };
+
+    // Icon controls for one button. `key` is "One" or "Two" and matches the attribute names.
+    const renderButtonIconControls = (key, sizeControl, gapControl) => {
+        const showAttr = `showButton${key}Icon`;
+        const iconAttr = `button${key}Icon`;
+        const positionAttr = `button${key}IconPosition`;
+
+        return (
+            <>
+                <ToggleControl
+                    label={__("Show Icon", "essential-blocks")}
+                    checked={attributes[showAttr]}
+                    onChange={() => setAttributes({ [showAttr]: !attributes[showAttr] })}
+                />
+                {attributes[showAttr] && (
+                    <>
+                        <EBIconPicker
+                            value={attributes[iconAttr]}
+                            onChange={(icon) => setAttributes({ [iconAttr]: icon })}
+                            title={__("Icon", "essential-blocks")}
+                        />
+                        <BaseControl label={__("Icon Position", "essential-blocks")}>
+                            <ButtonGroup>
+                                {ICON_POSITION.map((item) => (
+                                    <Button
+                                        key={item.value}
+                                        isPrimary={attributes[positionAttr] === item.value}
+                                        isSecondary={attributes[positionAttr] !== item.value}
+                                        onClick={() => setAttributes({ [positionAttr]: item.value })}
+                                    >
+                                        {item.label}
+                                    </Button>
+                                ))}
+                            </ButtonGroup>
+                        </BaseControl>
+                        <ResponsiveRangeController
+                            baseLabel={__("Icon Size", "essential-blocks")}
+                            controlName={sizeControl}
+                            resRequiredProps={resRequiredProps}
+                            units={UNIT_TYPES}
+                            min={0}
+                            max={100}
+                            step={1}
+                        />
+                        <ResponsiveRangeController
+                            baseLabel={__("Icon Gap", "essential-blocks")}
+                            controlName={gapControl}
+                            resRequiredProps={resRequiredProps}
+                            units={UNIT_TYPES}
+                            min={0}
+                            max={100}
+                            step={1}
+                        />
+                    </>
+                )}
+            </>
+        );
     };
 
     const changePreset = (selected) => {
@@ -249,6 +321,8 @@ function Inspector(props) {
                                             />
                                         )}
 
+                                        {renderButtonIconControls("One", BUTTON_ONE_ICON_SIZE, BUTTON_ONE_ICON_GAP)}
+
                                         {/* <TextControl
 											label={__("Button Two Text", "essential-blocks")}
 											value={buttonTextTwo}
@@ -286,6 +360,8 @@ function Inspector(props) {
                                                 }
                                             />
                                         )}
+
+                                        {renderButtonIconControls("Two", BUTTON_TWO_ICON_SIZE, BUTTON_TWO_ICON_GAP)}
                                     </PanelBody>
                                     <PanelBody title={__("Buttons", "essential-blocks")} initialOpen={true}>
                                         <BaseControl label={__("Button Width Type", "essential-blocks")}>
@@ -500,6 +576,65 @@ function Inspector(props) {
                                                         setAttributes({ hoverTextTwoColor })
                                                     }
                                                 />
+                                            </>
+                                        )}
+
+                                        {(showButtonOneIcon || showButtonTwoIcon) && (
+                                            <>
+                                                <BaseControl>
+                                                    <h3 className="eb-control-title">{__("Icon Color", "essential-blocks")}</h3>
+                                                </BaseControl>
+
+                                                <ButtonGroup className="eb-inspector-btn-group">
+                                                    {NORMAL_HOVER.map((item, index) => (
+                                                        <Button
+                                                            key={index}
+                                                            isPrimary={iconColorType === item.value}
+                                                            isSecondary={iconColorType !== item.value}
+                                                            onClick={() => setIconColorType(item.value)}
+                                                        >
+                                                            {item.label}
+                                                        </Button>
+                                                    ))}
+                                                </ButtonGroup>
+
+                                                {iconColorType === "normal" && (
+                                                    <>
+                                                        {showButtonOneIcon && (
+                                                            <ColorControl
+                                                                label={__("Button One Icon", "essential-blocks")}
+                                                                color={buttonOneIconColor}
+                                                                onChange={(buttonOneIconColor) => setAttributes({ buttonOneIconColor })}
+                                                            />
+                                                        )}
+                                                        {showButtonTwoIcon && (
+                                                            <ColorControl
+                                                                label={__("Button Two Icon", "essential-blocks")}
+                                                                color={buttonTwoIconColor}
+                                                                onChange={(buttonTwoIconColor) => setAttributes({ buttonTwoIconColor })}
+                                                            />
+                                                        )}
+                                                    </>
+                                                )}
+
+                                                {iconColorType === "hover" && (
+                                                    <>
+                                                        {showButtonOneIcon && (
+                                                            <ColorControl
+                                                                label={__("Button One Icon Hover", "essential-blocks")}
+                                                                color={buttonOneIconHoverColor}
+                                                                onChange={(buttonOneIconHoverColor) => setAttributes({ buttonOneIconHoverColor })}
+                                                            />
+                                                        )}
+                                                        {showButtonTwoIcon && (
+                                                            <ColorControl
+                                                                label={__("Button Two Icon Hover", "essential-blocks")}
+                                                                color={buttonTwoIconHoverColor}
+                                                                onChange={(buttonTwoIconHoverColor) => setAttributes({ buttonTwoIconHoverColor })}
+                                                            />
+                                                        )}
+                                                    </>
+                                                )}
                                             </>
                                         )}
 

@@ -12,6 +12,10 @@ import {
 	BUTTONS_GAP,
 	BUTTONS_CONNECTOR_SIZE,
 	BUTTONS_CONNECTOR_ICON_SIZE,
+	BUTTON_ONE_ICON_SIZE,
+	BUTTON_TWO_ICON_SIZE,
+	BUTTON_ONE_ICON_GAP,
+	BUTTON_TWO_ICON_GAP,
 } from "./constants/constants";
 
 // import {
@@ -157,6 +161,45 @@ const attributes = {
 		default: false,
 	},
 
+	// per-button icon ⬇ (off by default, so existing blocks save the same markup)
+	showButtonOneIcon: {
+		type: "boolean",
+		default: false,
+	},
+	buttonOneIcon: {
+		type: "string",
+		default: "fas fa-arrow-right",
+	},
+	buttonOneIconPosition: {
+		type: "string",
+		default: "after",
+	},
+	showButtonTwoIcon: {
+		type: "boolean",
+		default: false,
+	},
+	buttonTwoIcon: {
+		type: "string",
+		default: "fas fa-arrow-right",
+	},
+	buttonTwoIconPosition: {
+		type: "string",
+		default: "after",
+	},
+	// Empty means "use the button's text colour".
+	buttonOneIconColor: {
+		type: "string",
+	},
+	buttonOneIconHoverColor: {
+		type: "string",
+	},
+	buttonTwoIconColor: {
+		type: "string",
+	},
+	buttonTwoIconHoverColor: {
+		type: "string",
+	},
+
 	// typography attributes ⬇
 	...generateTypographyAttributes(Object.values(typographyObjs)),
 
@@ -227,6 +270,18 @@ const attributes = {
 	}),
 	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_ICON_SIZE, {
 		defaultRange: 16,
+	}),
+	...generateResponsiveRangeAttributes(BUTTON_ONE_ICON_SIZE, {
+		defaultRange: 16,
+	}),
+	...generateResponsiveRangeAttributes(BUTTON_TWO_ICON_SIZE, {
+		defaultRange: 16,
+	}),
+	...generateResponsiveRangeAttributes(BUTTON_ONE_ICON_GAP, {
+		defaultRange: 8,
+	}),
+	...generateResponsiveRangeAttributes(BUTTON_TWO_ICON_GAP, {
+		defaultRange: 8,
 	}),
 
 	// background Attributes

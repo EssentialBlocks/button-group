@@ -15,6 +15,15 @@ export const BUTTONS_WIDTH = "buttonsWidth";
 export const BUTTONS_GAP = "buttonsGap";
 export const BUTTONS_CONNECTOR_SIZE = "buttonsConnectorSize";
 export const BUTTONS_CONNECTOR_ICON_SIZE = "buttonsConnectorIconSize";
+export const BUTTON_ONE_ICON_SIZE = "buttonOneIconSize";
+export const BUTTON_TWO_ICON_SIZE = "buttonTwoIconSize";
+export const BUTTON_ONE_ICON_GAP = "buttonOneIconGap";
+export const BUTTON_TWO_ICON_GAP = "buttonTwoIconGap";
+
+export const ICON_POSITION = [
+    { label: __("Before", "essential-blocks"), value: "before" },
+    { label: __("After", "essential-blocks"), value: "after" },
+];
 
 export const BUTTON_STYLES = [
     { label: __("Fill", "essential-blocks"), value: "fill" },
