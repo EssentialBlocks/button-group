@@ -161,6 +161,16 @@ const attributes = {
 		default: false,
 	},
 
+	// button style ⬇ ("fill" keeps the original look)
+	buttonOneStyle: {
+		type: "string",
+		default: "fill",
+	},
+	buttonTwoStyle: {
+		type: "string",
+		default: "fill",
+	},
+
 	// per-button icon ⬇ (off by default, so existing blocks save the same markup)
 	showButtonOneIcon: {
 		type: "boolean",
