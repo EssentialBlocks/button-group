@@ -161,6 +161,24 @@ const attributes = {
 		default: false,
 	},
 
+	// link rel ⬇ (off by default; "noopener" is always kept)
+	buttonOneNofollow: {
+		type: "boolean",
+		default: false,
+	},
+	buttonOneSponsored: {
+		type: "boolean",
+		default: false,
+	},
+	buttonTwoNofollow: {
+		type: "boolean",
+		default: false,
+	},
+	buttonTwoSponsored: {
+		type: "boolean",
+		default: false,
+	},
+
 	// button style ⬇ ("fill" keeps the original look)
 	buttonOneStyle: {
 		type: "string",

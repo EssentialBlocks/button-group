@@ -21,7 +21,18 @@ const Save = ({ attributes }) => {
         showButtonTwoIcon,
         buttonTwoIcon,
         buttonTwoIconPosition,
+        buttonOneNofollow,
+        buttonOneSponsored,
+        buttonTwoNofollow,
+        buttonTwoSponsored,
     } = attributes;
+
+    // "noopener" stays first and always present, so blocks with both toggles
+    // off save the same rel value as before.
+    const linkRel = (nofollow, sponsored) =>
+        ["noopener", nofollow && "nofollow", sponsored && "sponsored"]
+            .filter(Boolean)
+            .join(" ");
 
     // Icon markup only renders when the icon is on, so blocks saved before
     // this option existed keep producing the exact same HTML.
@@ -45,7 +56,7 @@ const Save = ({ attributes }) => {
                         className={`eb-button-parent eb-button-one${showButtonOneIcon && buttonOneIcon ? " eb-button-has-icon" : ""}`}
                         href={buttonURLOne === '#' ? '' : buttonURLOne}
                         {...(buttonOneNewWindow && { target: "_blank" })}
-                        rel="noopener"
+                        rel={linkRel(buttonOneNofollow, buttonOneSponsored)}
                     >
                         {buttonOneIconPosition === "before" &&
                             buttonIcon("one", showButtonOneIcon, buttonOneIcon)}
@@ -74,7 +85,7 @@ const Save = ({ attributes }) => {
                         className={`eb-button-parent eb-button-two${showButtonTwoIcon && buttonTwoIcon ? " eb-button-has-icon" : ""}`}
                         href={buttonURLTwo === '#' ? '' : buttonURLTwo}
                         {...(buttonTwoNewWindow && { target: "_blank" })}
-                        rel="noopener"
+                        rel={linkRel(buttonTwoNofollow, buttonTwoSponsored)}
                     >
                         {buttonTwoIconPosition === "before" &&
                             buttonIcon("two", showButtonTwoIcon, buttonTwoIcon)}
