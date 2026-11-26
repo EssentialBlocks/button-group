@@ -161,6 +161,16 @@ const attributes = {
 		default: false,
 	},
 
+	// accessibility ⬇ (output only when filled in)
+	buttonOneAriaLabel: {
+		type: "string",
+		default: "",
+	},
+	buttonTwoAriaLabel: {
+		type: "string",
+		default: "",
+	},
+
 	// link rel ⬇ (off by default; "noopener" is always kept)
 	buttonOneNofollow: {
 		type: "boolean",

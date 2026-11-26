@@ -25,6 +25,8 @@ const Save = ({ attributes }) => {
         buttonOneSponsored,
         buttonTwoNofollow,
         buttonTwoSponsored,
+        buttonOneAriaLabel,
+        buttonTwoAriaLabel,
     } = attributes;
 
     // "noopener" stays first and always present, so blocks with both toggles
@@ -33,6 +35,21 @@ const Save = ({ attributes }) => {
         ["noopener", nofollow && "nofollow", sponsored && "sponsored"]
             .filter(Boolean)
             .join(" ");
+
+    // An empty or "#" link used to save as href="", which reloads the page on
+    // click and is announced as a link. Leave href (and target/rel) off instead,
+    // so the button does nothing when it has no real destination.
+    // aria-label is only valid on an element with a role, so it is output only
+    // together with a real link (an <a> without href has no role).
+    const linkProps = (url, newWindow, nofollow, sponsored, ariaLabel) =>
+        url && url !== "#"
+            ? {
+                href: url,
+                ...(newWindow && { target: "_blank" }),
+                rel: linkRel(nofollow, sponsored),
+                ...(ariaLabel && { "aria-label": ariaLabel }),
+            }
+            : {};
 
     // Icon markup only renders when the icon is on, so blocks saved before
     // this option existed keep producing the exact same HTML.
@@ -54,9 +71,7 @@ const Save = ({ attributes }) => {
                 >
                     <a
                         className={`eb-button-parent eb-button-one${showButtonOneIcon && buttonOneIcon ? " eb-button-has-icon" : ""}`}
-                        href={buttonURLOne === '#' ? '' : buttonURLOne}
-                        {...(buttonOneNewWindow && { target: "_blank" })}
-                        rel={linkRel(buttonOneNofollow, buttonOneSponsored)}
+                        {...linkProps(buttonURLOne, buttonOneNewWindow, buttonOneNofollow, buttonOneSponsored, buttonOneAriaLabel)}
                     >
                         {buttonOneIconPosition === "before" &&
                             buttonIcon("one", showButtonOneIcon, buttonOneIcon)}
@@ -83,9 +98,7 @@ const Save = ({ attributes }) => {
 
                     <a
                         className={`eb-button-parent eb-button-two${showButtonTwoIcon && buttonTwoIcon ? " eb-button-has-icon" : ""}`}
-                        href={buttonURLTwo === '#' ? '' : buttonURLTwo}
-                        {...(buttonTwoNewWindow && { target: "_blank" })}
-                        rel={linkRel(buttonTwoNofollow, buttonTwoSponsored)}
+                        {...linkProps(buttonURLTwo, buttonTwoNewWindow, buttonTwoNofollow, buttonTwoSponsored, buttonTwoAriaLabel)}
                     >
                         {buttonTwoIconPosition === "before" &&
                             buttonIcon("two", showButtonTwoIcon, buttonTwoIcon)}

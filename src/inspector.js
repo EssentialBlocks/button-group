@@ -343,6 +343,13 @@ function Inspector(props) {
                                             />
                                         )}
 
+                                        <TextControl
+                                            label={__("Button One ARIA Label", "essential-blocks")}
+                                            value={attributes.buttonOneAriaLabel}
+                                            onChange={(value) => setAttributes({ buttonOneAriaLabel: value })}
+                                            help={__("Optional. Describes the button for screen readers, for example \"Download the brochure\". Used only when the button has a link. Leave empty to use the button text.", "essential-blocks")}
+                                        />
+
                                         {buttonURLOne && renderLinkRelControls("One")}
 
                                         {renderButtonIconControls("One", BUTTON_ONE_ICON_SIZE, BUTTON_ONE_ICON_GAP)}
@@ -384,6 +391,13 @@ function Inspector(props) {
                                                 }
                                             />
                                         )}
+
+                                        <TextControl
+                                            label={__("Button Two ARIA Label", "essential-blocks")}
+                                            value={attributes.buttonTwoAriaLabel}
+                                            onChange={(value) => setAttributes({ buttonTwoAriaLabel: value })}
+                                            help={__("Optional. Describes the button for screen readers, for example \"Download the brochure\". Used only when the button has a link. Leave empty to use the button text.", "essential-blocks")}
+                                        />
 
                                         {buttonURLTwo && renderLinkRelControls("Two")}
 

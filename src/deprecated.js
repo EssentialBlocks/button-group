@@ -4,8 +4,13 @@
 import { useBlockProps } from "@wordpress/block-editor";
 
 import attributes from "./attributes";
+import SaveBeforeA11y from "./deprecations/save-before-a11y";
 
 const deprecated = [
+    {
+        attributes: { ...attributes },
+        save: SaveBeforeA11y,
+    },
     {
         attributes: { ...attributes },
         save: ({ attributes }) => {

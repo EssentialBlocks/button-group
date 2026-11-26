@@ -76,3 +76,7 @@
 	margin-right: 0 !important;
 	margin-bottom: 0 !important;
 }
+// A button without a real link does nothing on click, so don't show the hand cursor.
+.eb-button-group-wrapper a.eb-button-parent:not([href]) {
+	cursor: default;
+}
