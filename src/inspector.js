@@ -104,6 +104,26 @@ function Inspector(props) {
         objAttributes,
     };
 
+    // rel toggles for one button's link. `key` is "One" or "Two".
+    const renderLinkRelControls = (key) => {
+        const nofollowAttr = `button${key}Nofollow`;
+        const sponsoredAttr = `button${key}Sponsored`;
+        return (
+            <>
+                <ToggleControl
+                    label={__("Add nofollow", "essential-blocks")}
+                    checked={attributes[nofollowAttr]}
+                    onChange={() => setAttributes({ [nofollowAttr]: !attributes[nofollowAttr] })}
+                />
+                <ToggleControl
+                    label={__("Add sponsored", "essential-blocks")}
+                    checked={attributes[sponsoredAttr]}
+                    onChange={() => setAttributes({ [sponsoredAttr]: !attributes[sponsoredAttr] })}
+                />
+            </>
+        );
+    };
+
     // Icon controls for one button. `key` is "One" or "Two" and matches the attribute names.
     const renderButtonIconControls = (key, sizeControl, gapControl) => {
         const showAttr = `showButton${key}Icon`;
@@ -323,6 +343,8 @@ function Inspector(props) {
                                             />
                                         )}
 
+                                        {buttonURLOne && renderLinkRelControls("One")}
+
                                         {renderButtonIconControls("One", BUTTON_ONE_ICON_SIZE, BUTTON_ONE_ICON_GAP)}
 
                                         {/* <TextControl
@@ -362,6 +384,8 @@ function Inspector(props) {
                                                 }
                                             />
                                         )}
+
+                                        {buttonURLTwo && renderLinkRelControls("Two")}
 
                                         {renderButtonIconControls("Two", BUTTON_TWO_ICON_SIZE, BUTTON_TWO_ICON_GAP)}
                                     </PanelBody>
