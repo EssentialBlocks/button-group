@@ -167,13 +167,36 @@ function create_block_button_group_block_init() {
                         // attributes, so published posts work without a re-save.
                         Button_Group_Font_Loader::enqueue_for_attributes( $attributes );
                     }
-                    return $content;
+                    return button_group_strip_empty_links( $content );
                 }
             ]
         );
     }
 }
 add_action( 'init', 'create_block_button_group_block_init' );
+
+/**
+ * Remove the empty link left in content saved by 1.3.3 and earlier.
+ *
+ * Those versions saved a button with no link (or "#") as
+ * `<a class="eb-button-parent ..." href="" rel="noopener">`, which reloads the
+ * page on click. The editor migrates this when the post is next saved; this
+ * gives posts that are never re-saved the same markup on the front end.
+ *
+ * @param string $content Saved block HTML.
+ * @return string
+ */
+function button_group_strip_empty_links( $content ) {
+    if ( ! is_string( $content ) || false === strpos( $content, 'href=""' ) ) {
+        return $content;
+    }
+    $result = preg_replace(
+        '/(<a\s+class="eb-button-parent[^"]*")\s+href=""(?:\s+target="_blank")?(?:\s+rel="[^"]*")?/',
+        '$1',
+        $content
+    );
+    return null === $result ? $content : $result;
+}
 
 /**
  * Whether a Button Group block shows any Dashicon (button icons or connector icon).
